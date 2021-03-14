@@ -1,0 +1,17 @@
+name: tvshow
+recipe: drupal9
+config:
+  webroot: web
+  xdebug: true
+  php: '7.4'
+  via: nginx
+  database: mariadb
+  composer_version: '2.0.8'
+proxy:
+  mailhog:
+  - mail.tvshow.lndo.site
+services:
+  mailhog:
+    type: mailhog
+    hogfrom:
+    - appserver
