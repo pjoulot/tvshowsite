@@ -1,0 +1,17 @@
+$status-message-bg: #145242;
+$status-message-color: #32cea4;
+$warning-message-bg: #605328;
+$warning-message-color: #efcf64;
+$danger-message-bg: #583333;
+$danger-message-color: #f39b9d;
+$shadow-box: #efeff5;
+$white: #FFF;
+$item-hover: rgba(5,80,230,0.1);
+$primary: #0550e6;
+$primary-hover: #0444c4;
+$app-background: #fbfbff;
+$admin-font: Inter,-apple-system,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+$border-radius: 8px;
+
+@import './local-tasks';
+@import './status-messages';

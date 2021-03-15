@@ -1,0 +1,95 @@
+.messages-list {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  padding: 0;
+  list-style: none;
+  font-family: $admin-font;
+}
+
+.messages {
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: $border-radius;
+  box-shadow: 10px 10px 30px #c1c1d2,-6px -6px 16px $shadow-box;
+
+  a, a:hover {
+    color: $white;
+  }
+
+  .messages__title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0 2.5rem;
+    font-family: $admin-font;
+  }
+
+  .messages__content {
+    margin-left: 2.5rem;
+    font-size: 16px;
+  }
+
+  .messages__header {
+    position: relative;
+    background-image: none;
+    margin-bottom: .5rem;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 24px;
+        height: 24px;
+    }
+  }
+
+  &.messages--status {
+    color: $status-message-color;
+    background-color: $status-message-bg;
+
+    .messages__title {
+      color: $status-message-color;
+    }
+    .messages__header {
+      &:before {
+        background-color: $status-message-color;
+        mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M22 11.08V12a10 10 0 11-5.93-9.14'/%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M22 4L12 14.01l-3-3'/%3e%3c/svg%3e");
+      }
+    }
+  }
+  &.messages--warning {
+    color: $warning-message-color;
+    background-color: $warning-message-bg;
+
+    .messages__title {
+      color: $warning-message-color;
+    }
+    .messages__header {
+      &:before {
+        background-color: $warning-message-color;
+        mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86L7.86 2zM12 8v4'/%3e%3cpath fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M12 16h.01'/%3e%3c/svg%3e");
+      }
+    }
+  }
+  &.messages--danger {
+    color: $danger-message-color;
+    background-color: $danger-message-bg;
+
+    .messages__title {
+      color: $danger-message-color;
+    }
+    .messages__header {
+      &:before {
+        background-color: $danger-message-color;
+        mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3ccircle fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' cx='12' cy='12' r='10'/%3e%3cpath fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M4.93 4.93l14.14 14.14'/%3e%3c/svg%3e");
+      }
+    }
+  }
+
+  .layout-builder__message--overrides & {
+    background-image: none;
+  }
+}
