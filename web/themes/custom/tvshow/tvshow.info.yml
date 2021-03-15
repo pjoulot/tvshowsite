@@ -1,0 +1,35 @@
+# This theme is marked as @internal. It is intended to evolve and change over
+# minor releases.
+# As the UI of Drupal improves between minor versions, the markup and assets in
+# the Olivero theme will change. The Olivero theme is not backwards compatible
+# If you wish to modify the output or assets of Olivero you can:
+# 1. Copy the whole of Olivero and rename it as your own theme. You will need to
+# manually manage your own updates if you want to stay up to date with Olivero's
+# bug fixes and feature support.
+#
+# 2. Sub-theme Olivero. This is only recommended if you want to make minor
+# tweaks and understand that Olivero could break your modifications as it
+# changes.
+name: Tv Show Base Theme
+type: theme
+base theme: stable
+description: 'A theme for Tv show websites.'
+core_version_requirement: ^9
+alt text: 'Screenshot of Tv Show theme.'
+logo: 'logo.png'
+libraries:
+  - tv_show/theme-styles
+  - tv_show/theme-scripts
+ckeditor_stylesheets:
+  - css/ckeditor.css
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  featured_menu: 'Featured menu'
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  help: Help
+  content: Content
+  sidebar: 'Sidebar'
+  footer: 'Footer'
