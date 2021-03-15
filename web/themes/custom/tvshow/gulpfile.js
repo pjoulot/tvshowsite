@@ -25,7 +25,7 @@ function scssTask() {
     .pipe(sass()) // compile SCSS to CSS
     .pipe(postcss([autoprefixer(), cssnano()])) // PostCSS plugins
     .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
-    .pipe(dest('dist')
+    .pipe(dest('css')
     ); // put final CSS in dist folder
 }
 
@@ -37,7 +37,7 @@ function jsTask() {
   ])
     .pipe(concat('all.js'))
     .pipe(uglify())
-    .pipe(dest('dist')
+    .pipe(dest('js')
     );
 }
 

@@ -18,8 +18,8 @@ core_version_requirement: ^9
 alt text: 'Screenshot of Tv Show theme.'
 logo: 'logo.png'
 libraries:
-  - tv_show/theme-styles
-  - tv_show/theme-scripts
+  - tvshow/theme-styles
+  - tvshow/theme-scripts
 ckeditor_stylesheets:
   - css/ckeditor.css
 regions:
