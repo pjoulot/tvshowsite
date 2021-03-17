@@ -3,3 +3,10 @@ theme-styles:
   css:
     base:
       css/global/global.css: {}
+      css/layout/layout.css: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+
