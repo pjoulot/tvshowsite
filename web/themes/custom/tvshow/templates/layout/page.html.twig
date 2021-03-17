@@ -84,7 +84,14 @@
       <div class="footer__inner container">
         {% if page.footer %}
         <div class="footer__main">
-          {{ page.footer }}
+          <div class="row">
+            <div class="col-md-4 col-12">
+              {{ page.footer }}
+            </div>
+            <div class="col-md-8 col-12">
+              {{ page.footer_menu }}
+            </div>
+          </div>
         </div>
         {% endif %}
         {% if page.footer_bottom %}

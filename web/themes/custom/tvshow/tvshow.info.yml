@@ -33,4 +33,5 @@ regions:
   content: Content
   sidebar: 'Sidebar'
   footer: 'Footer'
+  footer_menu: 'Footer Menu'
   footer_bottom: 'Footer Bottom'
