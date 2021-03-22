@@ -6,3 +6,12 @@ body {
 h1, h2, h3, h4, h5 {
   font-family: $font-title;
 }
+
+h2 {
+  font-weight: $font-weight-bold;
+  font-size: 1.6rem;
+}
+
+.bold {
+  font-weight: $font-weight-bold;
+}

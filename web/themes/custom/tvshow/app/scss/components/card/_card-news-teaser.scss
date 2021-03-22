@@ -1,3 +1,19 @@
-.c-news-teaser {
+$el: '.c-news-teaser';
+#{$el} {
+  margin-bottom: 25px;
 
+  &__inner {
+    display: flex;
+  }
+
+  &__gutter {
+    font-size: .7rem;
+    color: $text-secondary-info;
+  }
+
+  &__content {
+    padding-top: 30px;
+    padding-left: 30px;
+    border-top: solid 1px $border-white-color;
+  }
 }

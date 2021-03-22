@@ -80,7 +80,8 @@
 			</h2>
 		{% endset %}
 		{% set gutter %}
-			{% trans %}{{ content.field_article_category }}
+			<span class="bold">{{ content.field_article_category }}</span>
+			{% trans %}
 			/
 			{{ date }}{% endtrans %}
 		{% endset %}

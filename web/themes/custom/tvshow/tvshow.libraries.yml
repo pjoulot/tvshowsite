@@ -4,7 +4,7 @@ theme-styles:
     base:
       css/global/global.css: {}
       css/layout/layout.css: {}
-      css/layout/components.css: {}
+      css/components/components.css: {}
   dependencies:
     - core/jquery
     - core/jquery.once
