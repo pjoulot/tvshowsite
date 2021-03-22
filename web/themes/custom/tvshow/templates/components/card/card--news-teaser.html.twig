@@ -1,0 +1,23 @@
+{% set el = 'c-news-teaser' %}
+
+<div class="{{ el }}">
+	<div class="{{ el ~ '__inner' }}">
+		{% if media|render %}
+			<div class="{{ el ~ '__media' }}">
+				{{ media }}
+			</div>
+		{% endif %}
+		<div class="{{ el ~ '__content' }}">
+			{% if gutter|render %}
+				<div class="{{ el ~ '__gutter' }}">{{ gutter }}</div>
+			{% endif %}
+			{% if title|render %}
+				<div class="{{ el ~ '__title' }}">{{ title }}</div>
+			{% endif %}
+			{% if text|render %}
+				<div class="{{ el ~ '__text' }}">{{ text }}</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,92 @@
+$font-default: "Roboto";
+$font-title: "Exo2";
+
+$font-weight-thin: 100;
+$font-weight-default: normal;
+$font-weight-bold: bold;
+
+@font-face {
+  font-family: $font-default;
+  src: url("../../fonts/Roboto/Roboto-Thin.ttf") format("truetype");
+  font-weight: $font-weight-thin;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-default;
+  src: url("../../fonts/Roboto/Roboto-ThinItalic.ttf") format("truetype");
+  font-weight: $font-weight-thin;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: $font-default;
+  src: url("../../fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: $font-weight-default;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-default;
+  src: url("../../fonts/Roboto/Roboto-Italic.ttf") format("truetype");
+  font-weight: $font-weight-default;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: $font-default;
+  src: url("../../fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: $font-weight-bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-default;
+  src: url("../../fonts/Roboto/Roboto-BoldItalic.ttf") format("truetype");
+  font-weight: $font-weight-bold;
+  font-style: italic;
+}
+
+// Font title.
+
+@font-face {
+  font-family: $font-title;
+  src: url("../../fonts/Exo_2/static/Exo2-Thin.ttf") format("truetype");
+  font-weight: $font-weight-thin;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-title;
+  src: url("../../fonts/Exo_2/static/Exo2-ThinItalic.ttf") format("truetype");
+  font-weight: $font-weight-thin;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: $font-title;
+  src: url("../../fonts/Exo_2/static/Exo2-Regular.ttf") format("truetype");
+  font-weight: $font-weight-default;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-title;
+  src: url("../../fonts/Exo_2/static/Exo2-Italic.ttf") format("truetype");
+  font-weight: $font-weight-default;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: $font-title;
+  src: url("../../fonts/Exo_2/static/Exo2-Bold.ttf") format("truetype");
+  font-weight: $font-weight-bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-title;
+  src: url("../../fonts/Exo_2/static/Exo2-BoldItalic.ttf") format("truetype");
+  font-weight: $font-weight-bold;
+  font-style: italic;
+}
