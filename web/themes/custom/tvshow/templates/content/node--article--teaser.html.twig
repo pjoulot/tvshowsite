@@ -80,12 +80,14 @@
 			</h2>
 		{% endset %}
 		{% set gutter %}
-			<span class="bold">{{ content.field_article_category }}</span>
+			<span class="bold uppercase">{{ content.field_article_category }}</span>
 			{% trans %}
 			/
 			{{ date }}{% endtrans %}
 		{% endset %}
-		{% set media = content.field_image %}
+		{% set media %}
+			<a href="{{ url }}" title="{{ node.label() }}">{{ content.field_image }}</a>
+		{% endset %}
 		{% set text = content.body %}
 		{% include '@tvshow/components/card/card--news-teaser.html.twig' %}
 	{% endblock %}
