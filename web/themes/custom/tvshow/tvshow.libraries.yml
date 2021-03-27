@@ -5,6 +5,8 @@ theme-styles:
       css/global/global.css: {}
       css/layout/layout.css: {}
       css/components/components.css: {}
+  js:
+    js/all.js: {}
   dependencies:
     - core/jquery
     - core/jquery.once

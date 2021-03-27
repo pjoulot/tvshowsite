@@ -80,4 +80,14 @@ function tvshow_preprocess_page(&$variables) {
     $variables['header_top_image'] = file_create_url(File::load($topImage[0])->getFileUri());
   }
   $variables['header_background_animated'] = theme_get_setting('header_background_animated');
+  $variables['menu_full_width'] = theme_get_setting('menu_full_width');
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function tvshow_preprocess_menu(&$variables, $hook) {
+  if (isset($variables['menu_name']) && 'main' == $variables['menu_name']) {
+    $variables['attributes']['data-hamburger'] = theme_get_setting('menu_hamburger');
+  }
 }

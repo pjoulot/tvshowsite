@@ -1,0 +1,1 @@
+!function(t){Drupal.behaviors.hamburgerMenu={attach:function(a,e){t(".hamburger",a).click(function(a){a.preventDefault(),t(".hamburger").toggleClass("is-active"),t(".main-menu-area").toggleClass("active")})}}}(jQuery,drupalSettings);

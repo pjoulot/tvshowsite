@@ -1,0 +1,83 @@
+$menu-breakpoint: 800px;
+$menu-color: #484848;
+$menu-color-hover: #777676;
+$menu-border: #6e6b6b;
+
+.main-menu-region {
+
+  &__inner {
+    background-color: $menu-color;
+    width: 100%;
+  }
+}
+
+.main-menu {
+  @media (min-width: #{$menu-breakpoint}) {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    color: $white;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+
+      a {
+        display: block;
+      }
+    }
+  }
+
+  .main-level {
+    display: flex;
+
+    &>li {
+      a {
+        padding: 20px 20px;
+
+        &:hover {
+          background-color: $menu-color-hover
+        }
+      }
+
+      &:hover {
+        &>.sublevel {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .sublevel {
+    display: block;
+    position: absolute;
+    min-width: 300px;
+    background-color: $menu-color;
+    display: none;
+    z-index: 100;
+    border-top: solid 1px $menu-border;
+
+    &>li {
+      a {
+        padding: 20px 20px;
+
+        &:hover {
+          background-color: $menu-color-hover
+        }
+      }
+    }
+  }
+
+}

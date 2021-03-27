@@ -70,4 +70,31 @@ function tvshow_form_system_theme_settings_alter(&$form, FormStateInterface $for
     '#title'         => t('Animate background'),
     '#default_value' => theme_get_setting('header_background_animated'),
   ];
+
+  $form['menu'] = [
+    '#type'          => 'details',
+    '#title'         => t('Menu'),
+    '#description'   => t("Configuration concerning the menu of the website."),
+    '#open' => TRUE,
+  ];
+
+  $form['menu']['menu_hamburger'] = [
+    '#type'          => 'select',
+    '#options'          => [
+      'spin' => t('Spin'),
+      'slider' => t('Slider'),
+      'squeeze' => t('Squeeze'),
+      'elastic' => t('Elastic'),
+      'collapse' => t('Collapse'),
+      'vortex' => t('Vortex'),
+    ],
+    '#title'         => t('Type of hamburger menu'),
+    '#default_value' => theme_get_setting('menu_hamburger'),
+  ];
+
+  $form['menu']['menu_full_width'] = [
+    '#type'          => 'checkbox',
+    '#title'         => t('Full width menu'),
+    '#default_value' => theme_get_setting('menu_full_width'),
+  ];
 }

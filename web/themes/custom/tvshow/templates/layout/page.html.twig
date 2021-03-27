@@ -67,7 +67,24 @@
     {% endif %}
   </header>
 
-  {{ page.primary_menu }}
+  {% if page.primary_menu %}
+  <div class="main-menu-region {{ (menu_full_width) ? '' : 'container' }}">
+    {% if not menu_full_width %}
+    <div class="row">
+    {% endif %}
+      <div class="main-menu-region__inner">
+        <div class="container">
+          <div class="row">
+            {{ page.primary_menu }}
+          </div>
+        </div>
+      </div>
+    {% if menu_full_width %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
   {{ page.secondary_menu }}
 
   {% if page.breadcrumb %}
