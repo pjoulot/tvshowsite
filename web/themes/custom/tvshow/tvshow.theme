@@ -1,7 +1,7 @@
 <?php
 
 use Drupal\Component\Utility\Html;
-
+use Drupal\file\Entity\File;
 /**
  * Implements hook_preprocess_HOOK() for block templates.
  */
@@ -63,4 +63,21 @@ function tvshow_theme_suggestions_taxonomy_term_alter(array &$suggestions, array
  */
 function tvshow_preprocess_views_view(&$variables) {
   $variables['attributes']['class'][] = 'view--' . $variables['id'] . '--' . $variables['display_id'];
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function tvshow_preprocess_page(&$variables) {
+  $variables['header_display'] = theme_get_setting('header_display');
+  $variables['header_full_width'] = theme_get_setting('header_full_width');
+  $background = theme_get_setting('header_background');
+  if (!empty($background)) {
+    $variables['header_background'] = file_create_url(File::load($background[0])->getFileUri());
+  }
+  $topImage = theme_get_setting('header_top_image');
+  if (!empty($topImage)) {
+    $variables['header_top_image'] = file_create_url(File::load($topImage[0])->getFileUri());
+  }
+  $variables['header_background_animated'] = theme_get_setting('header_background_animated');
 }

@@ -47,6 +47,24 @@
 
   <header role="banner">
     {{ page.header }}
+
+    {% if header_display %}
+      {% if not header_full_width %}
+      <div class="container">
+        <div class="row">
+      {% endif %}
+      <div class="header-site {{ (header_background_animated) ? 'has-animated-bg' : '' }}">
+          <div {{ (header_background_animated) ? 'class="header-animated-background"'|raw : '' }} {{ (header_background) ? ('style="background-image: url(\'' ~ header_background ~ '\')"')|raw : '' }}>
+          </div>
+          {% if header_top_image %}
+            <img src="{{ header_top_image|raw }}" alt="Header" />
+          {% endif %}
+      </div>
+      {% if not header_full_width %}
+        </div>
+      </div>
+      {% endif %}
+    {% endif %}
   </header>
 
   {{ page.primary_menu }}

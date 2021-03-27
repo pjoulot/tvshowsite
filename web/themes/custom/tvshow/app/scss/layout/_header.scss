@@ -1,0 +1,46 @@
+.header-site {
+  min-height: 140px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    margin: auto;
+    display: block;
+  }
+
+  &.has-animated-bg img {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.header-animated-background {
+  position: absolute;
+  animation: parallax_bg2 linear infinite;
+  right: 0;
+  width: auto;
+  background-repeat: repeat-x;
+  height: 100%;
+  top: 0;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: auto;
+  background-position: 0 0;
+  background-size: auto 100%;
+  animation-duration: 70s;
+}
+
+@keyframes parallax_bg2{
+  0% {
+    left:0
+  }
+  100% {
+    left:-992px
+  }
+}
