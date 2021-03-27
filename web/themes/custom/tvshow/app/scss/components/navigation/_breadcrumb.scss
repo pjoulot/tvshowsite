@@ -1,0 +1,8 @@
+.breadcrumb {
+  background-color: transparent;
+  color: theme-color('primary');
+
+  a {
+    color: $text-secondary-info;
+  }
+}

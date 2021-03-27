@@ -52,7 +52,13 @@
   {{ page.primary_menu }}
   {{ page.secondary_menu }}
 
-  {{ page.breadcrumb }}
+  {% if page.breadcrumb %}
+  <div class="container">
+    <div class="row">
+      {{ page.breadcrumb }}
+    </div>
+  </div>
+  {% endif %}
 
   {{ page.highlighted }}
 
