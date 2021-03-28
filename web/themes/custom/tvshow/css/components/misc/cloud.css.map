@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/misc/cloud.scss"],"names":[],"mappings":"AAAA,WACE,oBAAqB,CACrB,eAAgB,CAChB,uCAAwC","file":"cloud.css","sourcesContent":[".tagclouds {\n  display: inline-block;\n  padding: 4px 5px;\n  background-color: theme-color('primary');\n}\n"]}

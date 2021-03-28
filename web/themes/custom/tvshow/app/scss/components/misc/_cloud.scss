@@ -1,0 +1,18 @@
+.tagclouds {
+  display: inline-block;
+  font-size: 0.9rem !important;
+  line-height: 1rem;
+  margin: .5rem;
+  margin: 5px;
+  padding: .6rem 1.3rem;
+  border: 1px solid $text-secondary-info;
+  color: $text-secondary-info;
+  transition: all .3s ease 0s;
+
+  &:hover {
+    color: $white;
+    background-color: theme-color('primary');
+    border-color: theme-color('primary');
+    text-decoration: none;
+  }
+}
