@@ -54,7 +54,10 @@
         <div class="row">
       {% endif %}
       <div class="header-site {{ (header_background_animated) ? 'has-animated-bg' : '' }}">
-          <div {{ (header_background_animated) ? 'class="header-animated-background"'|raw : '' }} {{ (header_background) ? ('style="background-image: url(\'' ~ header_background ~ '\')"')|raw : '' }}>
+          <div {{ (header_background_animated) ? 'class="header-animated-background"'|raw : '' }} {{ (header_background and header_background_animated) ? ('style="background-image: url(\'' ~ header_background ~ '\')"')|raw : '' }}>
+            {% if (not header_background_animated) and header_background %}
+            <img src="{{ header_background }}" alt="{{ "Header background"|t }}" />
+            {% endif %}
           </div>
           {% if header_top_image %}
             <img src="{{ header_top_image|raw }}" alt="Header" />

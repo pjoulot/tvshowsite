@@ -73,11 +73,13 @@ function tvshow_preprocess_page(&$variables) {
   $variables['header_full_width'] = theme_get_setting('header_full_width');
   $background = theme_get_setting('header_background');
   if (!empty($background)) {
-    $variables['header_background'] = file_create_url(File::load($background[0])->getFileUri());
+    $file = File::load($background[0]);
+    $variables['header_background'] = (!empty($file)) ? file_create_url($file->getFileUri()) : NULL;
   }
   $topImage = theme_get_setting('header_top_image');
   if (!empty($topImage)) {
-    $variables['header_top_image'] = file_create_url(File::load($topImage[0])->getFileUri());
+    $file = File::load($topImage[0]);
+    $variables['header_top_image'] = (!empty($file)) ? file_create_url($file->getFileUri()) : NULL;
   }
   $variables['header_background_animated'] = theme_get_setting('header_background_animated');
   $variables['menu_full_width'] = theme_get_setting('menu_full_width');

@@ -97,4 +97,21 @@ function tvshow_form_system_theme_settings_alter(&$form, FormStateInterface $for
     '#title'         => t('Full width menu'),
     '#default_value' => theme_get_setting('menu_full_width'),
   ];
+
+  $form['#submit'][] = 'tvshow_form_system_theme_settings_submit';
+
+}
+
+/**
+ * Theme Settings Submit Callback.
+ */
+function tvshow_form_system_theme_settings_submit($form, FormStateInterface &$form_state) {
+  $permanent_files = ['header_background', 'header_top_image'];
+  foreach ($permanent_files as $file_key) {
+    if ($file_id = $form_state->getValue([$file_key, '0'])) {
+      $file = \Drupal::entityTypeManager()->getStorage('file')->load($file_id);
+      $file->setPermanent();
+      $file->save();
+    }
+  }
 }
