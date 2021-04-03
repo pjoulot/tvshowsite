@@ -1,6 +1,7 @@
 body {
   font-family: $font-default;
   font-weight: $font-weight-default;
+  color: $default-color;
 }
 
 h1, h2, h3, h4, h5 {
@@ -11,6 +12,10 @@ h1, h2, h3, h4, h5 {
 h2 {
   font-weight: $font-weight-bold;
   font-size: 1.8rem;
+}
+
+h3 {
+  font-weight: $font-weight-bold;
 }
 
 .bold {

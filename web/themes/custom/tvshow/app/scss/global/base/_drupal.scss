@@ -1,0 +1,5 @@
+.more-link {
+  a {
+    @include button(true, theme-color('primary'), true);
+  }
+}

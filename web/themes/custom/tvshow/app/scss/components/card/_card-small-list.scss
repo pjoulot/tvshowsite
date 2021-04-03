@@ -1,0 +1,31 @@
+$el: '.c-small-list';
+#{$el} {
+  margin-bottom: 15px;
+
+  &__inner {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &__media {
+    margin-left: 15px;
+  }
+
+  &__gutter {
+    font-size: .7rem;
+    color: $text-secondary-info;
+    margin-bottom: 2px;
+  }
+
+  &__title {
+    h3 {
+      font-size: 1rem;
+      line-height: 1.1;
+      margin-bottom: 0;
+
+      a {
+        color: $default-color;
+      }
+    }
+  }
+}
