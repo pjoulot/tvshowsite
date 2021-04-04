@@ -98,7 +98,12 @@
   </div>
   {% endif %}
 
-  {{ page.highlighted }}
+  {% if page.highlighted %}
+  <div class="container">
+    {{ page.highlighted }}
+  </div>
+  {% endif %}
+
 
   {{ page.help }}
 

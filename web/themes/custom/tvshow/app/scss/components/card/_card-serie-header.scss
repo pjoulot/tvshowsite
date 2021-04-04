@@ -1,0 +1,54 @@
+$el: '.c-serie-header';
+#{$el} {
+  margin-bottom: 25px;
+
+  &__inner {
+    display: flex;
+
+    @media (max-width: #{$mobile-screen}) {
+      flex-direction: column;
+    }
+  }
+
+  &__media {
+    @media (max-width: #{$mobile-screen}) {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &__content {
+    padding: 40px 20px 40px 75px;
+
+    @media (max-width: #{$mobile-screen}) {
+      padding: 30px 0;
+    }
+  }
+
+  &__date {
+    background-color: $grey-background;
+    color: $text-secondary-info;
+    display: inline-block;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  &__description {
+    color: $text-secondary-info;
+    font-size: 0.95rem;
+  }
+
+  &__infos-title {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    color: lighten($text-secondary-info, 20%);
+  }
+  &__infos-content {
+    color: $text-secondary-info;
+    font-size: 0.95rem;
+  }
+}

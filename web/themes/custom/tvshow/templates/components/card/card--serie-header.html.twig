@@ -1,0 +1,44 @@
+{% set el = 'c-serie-header' %}
+
+<div class="{{ el }}">
+	<div class="{{ el ~ '__inner' }}">
+		{% if media|render %}
+			<div class="{{ el ~ '__media' }}">
+				{{ media }}
+			</div>
+		{% endif %}
+		<div class="{{ el ~ '__content' }}">
+			{% if title|render %}
+				<div class="{{ el ~ '__title' }}"><h1>{{ title }}</h1></div>
+			{% endif %}
+			{% if date|render or additional|render %}
+				<div class="{{ el ~ '__gutter' }}">
+          {% if date|render %}
+          <div class="{{ el ~ '__date' }}">
+            {{ date }}
+          </div>
+          {% endif %}
+          {% if additional|render %}
+          <div class="{{ el ~ '__additional' }}">
+            {{ additional }}
+          </div>
+          {% endif %}
+        </div>
+			{% endif %}
+      {% if description|render %}
+        <div class="{{ el ~ '__description' }}">
+          {{ description }}
+        </div>
+      {% endif %}
+      {% if creators|render %}
+        <div class="{{ el ~ '__creators' }}">
+          <div class="{{ el ~ '__infos-title' }}">{{ "Creators"|t }}</div>
+          <div class="{{ el ~ '__infos-content' }}">
+            {{ creators }}
+          </div>
+        </div>
+      {% endif %}
+		</div>
+	</div>
+</div>
+
