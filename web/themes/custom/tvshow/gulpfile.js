@@ -32,6 +32,7 @@ function scssTask() {
 // JS task: concatenates and uglifies JS files to script.js
 function jsTask() {
   return src([
+    'node_modules/isotope-layout/dist/isotope.pkgd.min.js',
     files.jsPath
     //,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
   ])

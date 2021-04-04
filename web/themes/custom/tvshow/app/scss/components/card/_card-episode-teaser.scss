@@ -1,0 +1,55 @@
+$el: '.c-episode-teaser';
+#{$el} {
+  display: block;
+  color: $default-color;
+  max-width: 230px;
+
+  img {
+    transform-origin: 50% 50%;
+    transition: transform .25s, visibility .25s ease-in;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $default-color;
+
+    img {
+      transform: scale(1.2);
+    }
+  }
+
+  &__media {
+    overflow: hidden;
+  }
+
+  &__content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: $font-weight-default;
+      line-height: 1;
+    }
+  }
+
+  &__number {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    background-color: $background-dark;
+    line-height: 43px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 1.1rem;
+    color: $text-light;
+  }
+}

@@ -11,6 +11,8 @@ $el: '.c-serie-header';
   }
 
   &__media {
+    flex-shrink: 0;
+
     @media (max-width: #{$mobile-screen}) {
       img {
         width: 100%;

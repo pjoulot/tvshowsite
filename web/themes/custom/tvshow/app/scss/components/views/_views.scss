@@ -8,3 +8,30 @@
 
   margin-bottom: $sidebar-block-spacing;
 }
+
+
+// The episodes view.
+.view--all_episodes--block_1 {
+  margin-bottom: 70px;
+
+  .c-episode-teaser {
+    margin-bottom: 10px;
+  }
+}
+
+.grid-filters {
+  display: flex;
+  margin-bottom: 25px;
+
+  a[data-filter] {
+    @include button(true, theme-color('primary'), true);
+
+    &.is-checked {
+      @include button(false, theme-color('primary'), true);
+    }
+  }
+
+  .views-row+.views-row {
+    margin-left: 15px;
+  }
+}

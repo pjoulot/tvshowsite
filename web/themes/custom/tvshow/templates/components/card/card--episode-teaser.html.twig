@@ -1,0 +1,20 @@
+{% set el = 'c-episode-teaser' %}
+
+<a class="{{ el }} {{ season_filter }}" href="{{ url }}" title="{{ url_title|raw }}">
+	<div class="{{ el ~ '__inner' }}">
+		{% if media|render %}
+			<div class="{{ el ~ '__media' }}">
+				{{ media }}
+			</div>
+		{% endif %}
+		<div class="{{ el ~ '__content' }}">
+			{% if number|render %}
+				<div class="{{ el ~ '__number' }}">{{ number }}</div>
+			{% endif %}
+			{% if title|render %}
+				<div class="{{ el ~ '__title' }}">{{ title }}</div>
+			{% endif %}
+		</div>
+	</div>
+</a>
+
