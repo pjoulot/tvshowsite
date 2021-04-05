@@ -4,19 +4,7 @@ $el: '.c-episode-teaser';
   color: $default-color;
   max-width: 230px;
 
-  img {
-    transform-origin: 50% 50%;
-    transition: transform .25s, visibility .25s ease-in;
-  }
-
-  &:hover {
-    text-decoration: none;
-    color: $default-color;
-
-    img {
-      transform: scale(1.2);
-    }
-  }
+  @include zoom-image();
 
   &__media {
     overflow: hidden;

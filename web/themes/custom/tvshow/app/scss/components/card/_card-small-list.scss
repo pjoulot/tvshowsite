@@ -9,6 +9,8 @@ $el: '.c-small-list';
 
   &__media {
     margin-left: 15px;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 
   &__gutter {

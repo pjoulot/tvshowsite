@@ -3,3 +3,12 @@
     @include button(true, theme-color('primary'), true);
   }
 }
+
+.align-right {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.align-left {
+  margin-right: 30px;
+  margin-bottom: 20px;
+}

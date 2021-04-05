@@ -35,3 +35,20 @@
     margin-left: 15px;
   }
 }
+
+// The seasons list.
+.view--seasons--block_1 {
+  display: grid;
+  width: 100%;
+  row-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  .views-row>div {
+    height: 100%;
+
+    .c-season-list {
+      height: 100%;
+    }
+  }
+
+}

@@ -9,6 +9,8 @@
         },
         filter: '.saison-1',
       });
+      $('.grid-filters [data-filter=".saison-1"]', context).addClass('is-checked');
+
 
       $('.grid-filters [data-filter]', context).on('click', function (e) {
         e.preventDefault();
@@ -23,7 +25,6 @@
 
       // Create the filter select for mobile.
       var select = '<select>';
-      select += '<option value="all">All</option>';
       $('.grid-filters [data-filter]').each(function () {
         select += '<option value="' + $(this).attr('data-filter') + '">' + $(this).html() + '</option>';
       });
@@ -31,10 +32,6 @@
       $('.grid-filters .filter-select', context).html(select);
       $('.grid-filters .filter-select select', context).on('change', function (e) {
         var filterValue = $(this).val();
-        if (filterValue == 'all') {
-          // Display all.
-          filterValue = '*';
-        }
 
         $gridEpisodes.isotope({ filter: filterValue });
       });

@@ -6,6 +6,11 @@ $el: '.c-news-teaser';
     display: flex;
   }
 
+  &__media {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
   &__gutter {
     font-size: .7rem;
     color: $text-secondary-info;
