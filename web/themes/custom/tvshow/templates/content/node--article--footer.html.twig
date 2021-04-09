@@ -70,27 +70,13 @@
  *   in different view modes.
  */
 #}
-<article{{attributes}}>
+<div>
 	{{ title_prefix }}
 	{{ title_suffix }}
 	{% block content %}
-		{% set title %}
-			<h2{{title_attributes}}>
-				<a href="{{ url }}" rel="bookmark">{{ label }}</a>
-			</h2>
-		{% endset %}
-		{% set gutter %}
-			<span class="bold uppercase">{{ content.field_article_category }}</span>
-			{% set createdDate = node.getCreatedTime|format_date('short') %}
-			{% trans %}
-			/
-			{{ createdDate }}{% endtrans %}
-		{% endset %}
-		{% set media %}
-			<a href="{{ url }}" title="{{ node.label() }}">{{ content.field_image }}</a>
-		{% endset %}
-		{% set text = content.body %}
-		{% include '@tvshow/components/card/card--news-teaser.html.twig' %}
+		{% set tags = content.field_tags %}
+		{% set source = content.field_source %}
+		{% include '@tvshow/components/card/card--news-footer.html.twig' %}
 	{% endblock %}
-</article>
+</div>
 

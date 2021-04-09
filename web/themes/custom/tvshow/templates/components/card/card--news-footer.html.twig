@@ -1,0 +1,15 @@
+{% set el = 'c-news-footer' %}
+
+<div class="{{ el }}">
+	<div class="{{ el ~ '__inner' }}">
+		<div class="{{ el ~ '__infos' }}">
+			{% if tags|render %}
+				<div class="{{ el ~ '__tags' }}">{{ tags }}</div>
+			{% endif %}
+			{% if source %}
+				<div class="{{ el ~ '__source' }}"><span>{{ "Source"|t }}:</span> {{ source }}</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+

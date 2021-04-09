@@ -76,21 +76,18 @@
 	{% block content %}
 		{% set title %}
 			<h2{{title_attributes}}>
-				<a href="{{ url }}" rel="bookmark">{{ label }}</a>
+				{{ label }}
 			</h2>
 		{% endset %}
-		{% set gutter %}
-			<span class="bold uppercase">{{ content.field_article_category }}</span>
-			{% set createdDate = node.getCreatedTime|format_date('short') %}
+		{% set url_title = label|render|striptags|trim %}
+		{% set description %}
+			{% set createdDate = node.getCreatedTime|format_date('long') %}
 			{% trans %}
-			/
 			{{ createdDate }}{% endtrans %}
 		{% endset %}
-		{% set media %}
-			<a href="{{ url }}" title="{{ node.label() }}">{{ content.field_image }}</a>
-		{% endset %}
-		{% set text = content.body %}
-		{% include '@tvshow/components/card/card--news-teaser.html.twig' %}
+		{% set media = content.field_image %}
+		{% set gutter = content.field_article_category %}
+		{% include '@tvshow/components/card/card--news-featured.html.twig' %}
 	{% endblock %}
 </article>
 
