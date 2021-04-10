@@ -6,7 +6,7 @@
 			{% if tags|render %}
 				<div class="{{ el ~ '__tags' }}">{{ tags }}</div>
 			{% endif %}
-			{% if source %}
+			{% if source|render %}
 				<div class="{{ el ~ '__source' }}"><span>{{ "Source"|t }}:</span> {{ source }}</div>
 			{% endif %}
 		</div>

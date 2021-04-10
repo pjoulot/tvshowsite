@@ -1,0 +1,19 @@
+{% set el = 'c-simple-header' %}
+
+<div class="{{ el }} {{ (media|render) ? el ~ '--has-media' : '' }}">
+	<div class="{{ el ~ '__inner' }}">
+		{% if media|render %}
+			<div class="{{ el ~ '__media' }}">
+				{{ media }}
+			</div>
+		{% endif %}
+		<div class="{{ el ~ '__content' }}">
+			{% if title|render %}
+				<div class="{{ el ~ '__title' }}"><h1>{{ title }}</h1></div>
+			{% endif %}
+			{% if description|render %}
+				<div class="{{ el ~ '__description' }}">{{ description }}</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
