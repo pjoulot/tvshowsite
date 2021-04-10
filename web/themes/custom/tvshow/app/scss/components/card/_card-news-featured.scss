@@ -7,8 +7,11 @@ $el: '.c-news-featured';
     position: relative;
   }
 
+  @include zoom-image();
+
   &__media {
     position: relative;
+    overflow: hidden;
 
     &:after {
       content: '';

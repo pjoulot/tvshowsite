@@ -110,6 +110,7 @@ function tvshow_theme_suggestions_user_alter(array &$suggestions, array $variabl
 function tvshow_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
   $name = '';
   $type = '';
+  $display_id = '';
   if (isset($variables['element']['#name'])) {
     $name = $variables['element']['#name'];
   }
@@ -118,5 +119,10 @@ function tvshow_theme_suggestions_container_alter(array &$suggestions, array &$v
     $type = $variables['element']['#type'];
   }
 
+  if (isset($variables['element']['#display_id'])) {
+    $display_id = $variables['element']['#display_id'];
+  }
+
+  array_unshift($suggestions, 'container__' . $type . '__' . $name . '__' . $display_id);
   array_unshift($suggestions, 'container__' . $type . '__' . $name);
 }
