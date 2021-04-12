@@ -43,6 +43,7 @@
         "drupal/editor_advanced_link": "^1.8",
         "drupal/field_group": "^3.1",
         "drupal/focal_point": "^1.5",
+        "drupal/image_effects": "^3.1",
         "drupal/layout_builder_modal": "^1.1",
         "drupal/layout_builder_quick_add": "^1.0@beta",
         "drupal/linkit": "^6.0.0-beta2",

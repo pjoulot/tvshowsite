@@ -2,6 +2,7 @@ $el: '.c-news-featured';
 #{$el} {
   color: $default-color;
   display: inline-block;
+  @include shadow-box();
 
   &__inner {
     position: relative;

@@ -1,13 +1,13 @@
 (function ($, drupalSettings, Drupal) {
   Drupal.behaviors.episodeGrid = {
     attach: function (context, settings) {
-      var $gridEpisodes = $('.view--all_episodes--block_1', context).isotope({
+      var $gridEpisodes = $('.view-grid-episodes', context).isotope({
         itemSelector: '.c-episode-teaser',
         layoutMode: 'masonry',
         masonry: {
           "gutter": 25,
         },
-        filter: '.saison-1',
+        filter: ($('.grid-filters').length > 0) ? '.saison-1' : '',
       });
       $('.grid-filters [data-filter=".saison-1"]', context).addClass('is-checked');
 
