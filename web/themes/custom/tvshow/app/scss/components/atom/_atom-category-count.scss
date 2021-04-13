@@ -1,0 +1,7 @@
+$el: '.a-category-count';
+#{$el} {
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+}

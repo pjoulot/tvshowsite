@@ -1,5 +1,6 @@
 @import '../global/vars/all';
 @import 'misc/cloud';
+@import 'atom/atom-category-count';
 @import 'card/card-news-teaser';
 @import 'card/card-news-header';
 @import 'card/card-news-footer';
@@ -7,6 +8,7 @@
 @import 'card/card-small-list';
 @import 'card/card-serie-header';
 @import 'card/card-episode-teaser';
+@import 'card/card-episode-full';
 @import 'card/card-season-list';
 @import 'card/card-simple-header';
 @import 'navigation/pager';

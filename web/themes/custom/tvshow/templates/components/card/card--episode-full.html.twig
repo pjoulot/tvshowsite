@@ -1,0 +1,30 @@
+{% set el = 'c-episode-full' %}
+
+<div class="{{ el }}">
+	<div class="{{ el ~ '__inner' }}">
+		{% if media|render %}
+			<div class="{{ el ~ '__media' }}">
+				{{ media }}
+			</div>
+		{% endif %}
+    <div class="{{ el ~ '__header' }}">
+      {% for info in infos %}
+        {% if info['value']|render %}
+        <div class="{{ el ~ '__info' }}">
+          <span class="{{ el ~ '__info__label' }}">{{ info['label'] }}</span>
+          <span class="{{ el ~ '__info__value' }}">{{ info['value']|render|striptags('<a>') }}</span>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+		<div class="{{ el ~ '__content' }}">
+			{% if body|render %}
+				<div class="{{ el ~ '__body' }}">{{ body }}</div>
+			{% endif %}
+			{% if promo|render %}
+				<div class="{{ el ~ '__promo-photos' }}">{{ promo }}</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
