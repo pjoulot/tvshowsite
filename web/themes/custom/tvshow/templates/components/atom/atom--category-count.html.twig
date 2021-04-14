@@ -1,6 +1,6 @@
 {% set el = 'a-category-count' %}
 
-<a class="{{ el }}" href="{{ url }}">
+<a class="{{ el }}" href="{{ url|render|striptags|trim|raw }}">
 	<div class="{{ el ~ '__inner' }}">
     {% if title|render %}
       <div class="{{ el ~ '__title' }}">{{ title }}</div>
