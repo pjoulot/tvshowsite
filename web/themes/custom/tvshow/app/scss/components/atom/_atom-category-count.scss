@@ -1,7 +1,29 @@
 $el: '.a-category-count';
 #{$el} {
+  text-decoration: none;
+  display: block;
+  color: $text-secondary-info;
+  transition: color 0.1s ease-out;
+
+  &:hover {
+    color: theme-color('primary');
+    text-decoration: none;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  &__count {
+    text-align: right;
+  }
+}
+
+.views-row+.views-row {
+  #{$el} {
+    border-top: solid 1px $border-white-color;
   }
 }

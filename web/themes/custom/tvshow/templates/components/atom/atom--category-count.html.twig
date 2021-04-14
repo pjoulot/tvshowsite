@@ -1,6 +1,6 @@
 {% set el = 'a-category-count' %}
 
-<div class="{{ el }}">
+<a class="{{ el }}" href="{{ url }}">
 	<div class="{{ el ~ '__inner' }}">
     {% if title|render %}
       <div class="{{ el ~ '__title' }}">{{ title }}</div>
@@ -9,5 +9,5 @@
       <div class="{{ el ~ '__count' }}">{{ count }}</div>
     {% endif %}
 	</div>
-</div>
+</a>
 

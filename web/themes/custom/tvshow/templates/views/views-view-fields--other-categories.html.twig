@@ -31,5 +31,6 @@
 #}
 {% include '@tvshow/components/atom/atom--category-count.html.twig' with {
 	'title': fields.name.content,
+	'url': fields.name.view_taxonomy_term,
 	'count': fields.name_1.content,
 } %}
