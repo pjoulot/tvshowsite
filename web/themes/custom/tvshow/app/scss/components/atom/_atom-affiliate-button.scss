@@ -1,0 +1,56 @@
+$el: '.a-affiliate-button';
+$spacing: 30px;
+$border: 2px;
+$hover-size: $spacing * 2 - $border * 2;
+$hover-margin: -28px;
+
+#{$el} {
+  background-color: theme-color('primary');
+  color: $white;
+  display: block;
+  height: $spacing * 2;
+  position: relative;
+  text-decoration: none;
+  width: $spacing * 2;
+  text-align: center;
+
+  @include border-radius(50%);
+  @include transition(color 0.1s);
+
+  i {
+    position: relative;
+    z-index: 1;
+    line-height: 60px;
+    font-size: 2em;
+
+    &.fa-google-play {
+      font-size: 1.5em;
+      padding-left: 3px;
+    }
+  }
+
+  .inner {
+    background-color: $white;
+    display: block;
+    height: 0;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    width: 0;
+
+    @include border-radius(50%);
+    @include transition(all 0.1s);
+  }
+
+  &:hover {
+    color: theme-color('primary');
+
+    .inner {
+      height: $hover-size;
+      margin-left: $hover-margin;
+      margin-top: $hover-margin;
+      width: $hover-size;
+    }
+  }
+}

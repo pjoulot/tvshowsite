@@ -1,3 +1,14 @@
 .block--tagclouds-blocktags {
   margin-bottom: $sidebar-block-spacing;
 }
+
+.block--field-blocktaxonomy-termsaisonfield-affiliates-links {
+  &>div {
+    display: flex;
+    flex-wrap: wrap;
+
+    .a-affiliate-button {
+      margin-right: 15px;
+    }
+  }
+}
