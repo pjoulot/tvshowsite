@@ -1,4 +1,28 @@
 $el: '.c-episode-full';
 #{$el} {
+  &__media {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__info {
+    &__label {
+      text-transform: uppercase;
+      color: $text-secondary-info;
+      letter-spacing: 1px;
+    }
 
+    &:last-child {
+      grid-column: span 2;
+    }
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
 }

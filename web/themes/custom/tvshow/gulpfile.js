@@ -10,6 +10,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 var replace = require('gulp-replace');
+const merge = require('merge-stream');
 
 
 // File paths
@@ -42,6 +43,16 @@ function jsTask() {
     );
 }
 
+function copyLibrariesTask() {
+  var fortawesome_css = src('node_modules/@fortawesome/fontawesome-free/css/**/*')
+    .pipe(dest('libraries/fontawesome-free/css'));
+
+  var fortawesome_webfonts = src('node_modules/@fortawesome/fontawesome-free/webfonts/**/*')
+    .pipe(dest('libraries/fontawesome-free/webfonts'));
+
+  return merge(fortawesome_css, fortawesome_webfonts);
+}
+
 // Cachebust
 // function cacheBustTask() {
 //   var cbString = new Date().getTime();
@@ -66,7 +77,7 @@ function watchTask() {
 // Runs the scss and js tasks simultaneously
 // then runs cacheBust, then watch task
 exports.default = series(
-  parallel(scssTask, jsTask),
+  parallel(scssTask, jsTask, copyLibrariesTask),
   //cacheBustTask,
   watchTask
 );

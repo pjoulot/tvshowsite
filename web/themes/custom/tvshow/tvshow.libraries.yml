@@ -12,4 +12,8 @@ theme-styles:
     - core/jquery.once
     - core/drupal
     - core/drupalSettings
-
+    - tvshow/fontawesome
+fontawesome:
+  css:
+    base:
+      libraries/fontawesome-free/css/all.min.css: { minified: true }
