@@ -23,6 +23,24 @@ $el: '.c-episode-full';
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 45px;
+  }
+
+  &__affiliates {
+    margin-bottom: 45px;
+
+    &__links {
+      &>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    .button--icon {
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
   }
 }

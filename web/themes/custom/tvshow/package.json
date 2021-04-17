@@ -25,6 +25,7 @@
     "@fortawesome/fontawesome-free": "^5.15.3",
     "hamburgers": "^1.1.3",
     "isotope-layout": "^3.0.6",
-    "merge-stream": "^2.0.0"
+    "merge-stream": "^2.0.0",
+    "owl.carousel": "^2.3.4"
   }
 }

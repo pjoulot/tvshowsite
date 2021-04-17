@@ -40,3 +40,73 @@ img {
 .button--outline {
   @include button(true, theme-color('primary'), true);
 }
+.button--icon {
+
+  i {
+    margin-right: 15px;
+    font-size: 2rem;
+  }
+
+  .affiliate-content {
+    display: flex;
+    align-items: center;
+    line-height: 1rem;
+  }
+  .affiliate-prefix {
+    font-size: 0.7rem;
+  }
+  .affiliate-title {
+    font-weight: $font-weight-bold;
+    text-transform: none;
+  }
+}
+
+// Tabs.
+.nav-tabs {
+  border: 1px solid $border-white-color;
+
+  .nav-link {
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: 1px solid $border-white-color;
+    color: $text-secondary-info;
+    padding: 1rem 1.5rem;
+    font-family: $font-title;
+    background-color: $grey-background;
+    border-radius: 0;
+
+    &:hover, &:focus {
+      background-color: lighten($grey-background, 5%);
+    }
+
+    &.active {
+      color: theme-color('primary');
+      background-color: $white;
+    }
+
+    i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: #{$medium-screen}) {
+    display: flex;
+
+    .nav-item {
+      flex-grow: 1;
+    }
+
+    .nav-link {
+      text-align: center;
+      font-size: 0.7rem;
+
+      i {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

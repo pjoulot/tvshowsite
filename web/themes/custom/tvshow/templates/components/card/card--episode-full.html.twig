@@ -20,33 +20,35 @@
 
 		{% if affiliates %}
 		<div class="{{ el ~ '__affiliates' }}">
-			{{ affiliates }}
+			<div class="{{ el ~ '__affiliates__links' }}">
+				{{ affiliates }}
+			</div>
 		</div>
 		{% endif %}
 
-		<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+		<ul class="nav nav-tabs mb-3" id="episode-tab" role="tablist">
 			{% if promo|render %}
 			<li class="nav-item">
-				<a class="nav-link active" id="episode-promo-tab" data-toggle="pill" href="#episode-promo" role="tab" aria-controls="episode-promo" aria-selected="true">Images promo</a>
+				<a class="nav-link active" id="episode-promo-tab" data-toggle="pill" href="#episode-promo" role="tab" aria-controls="episode-promo" aria-selected="true"><i class="fas fa-camera-retro"></i> Images promo</a>
 			</li>
 			{% endif %}
 			{% if body|render %}
 			<li class="nav-item">
-				<a class="nav-link" id="episode-summary-tab" data-toggle="pill" href="#episode-summary" role="tab" aria-controls="episode-summary" aria-selected="false">Résumé</a>
+				<a class="nav-link" id="episode-summary-tab" data-toggle="pill" href="#episode-summary" role="tab" aria-controls="episode-summary" aria-selected="false"><i class="fas fa-book"></i> Résumé</a>
 			</li>
 			{% endif %}
 			{% if trailers|render %}
 			<li class="nav-item">
-				<a class="nav-link" id="episode-trailers-tab" data-toggle="pill" href="#episode-trailers" role="tab" aria-controls="episode-trailers" aria-selected="false">Trailers</a>
+				<a class="nav-link" id="episode-trailers-tab" data-toggle="pill" href="#episode-trailers" role="tab" aria-controls="episode-trailers" aria-selected="false"><i class="fas fa-film"></i> Trailers</a>
 			</li>
 			{% endif %}
 			{% if gallery|render %}
 			<li class="nav-item">
-				<a class="nav-link" id="episode-gallery-tab" data-toggle="pill" href="#episode-gallery" role="tab" aria-controls="episode-gallery" aria-selected="false">Gallerie</a>
+				<a class="nav-link" id="episode-gallery-tab" data-toggle="pill" href="#episode-gallery" role="tab" aria-controls="episode-gallery" aria-selected="false"><i class="far fa-images"></i> Gallerie</a>
 			</li>
 			{% endif %}
 		</ul>
-		<div class="tab-content" id="pills-tabContent">
+		<div class="tab-content" id="episode-tabContent">
 			{% if promo|render %}
 			<div class="tab-pane fade show active" id="episode-promo" role="tabpanel" aria-labelledby="episode-promo-tab">{{ promo }}</div>
 			{% endif %}
