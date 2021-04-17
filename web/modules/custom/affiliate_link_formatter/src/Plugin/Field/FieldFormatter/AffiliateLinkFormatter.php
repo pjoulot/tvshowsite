@@ -32,6 +32,7 @@ class AffiliateLinkFormatter extends LinkFormatter {
       'target' => '',
       'fa' => TRUE,
       'classes' => '',
+      'prefix' => '',
     ] + parent::defaultSettings();
   }
 
@@ -62,6 +63,11 @@ class AffiliateLinkFormatter extends LinkFormatter {
       '#type' => 'textfield',
       '#title' => t('Link classes'),
       '#default_value' => $this->getSetting('classes'),
+    ];
+    $elements['prefix'] = [
+      '#type' => 'textfield',
+      '#title' => t('Prefix'),
+      '#default_value' => $this->getSetting('prefix'),
     ];
 
     return $elements;
@@ -114,7 +120,20 @@ class AffiliateLinkFormatter extends LinkFormatter {
       if ($settings['fa']) {
         $icon = '<span class="inner"></span>';
         $icon .= '<i class="fab fa-' . $network . '"></i>';
+
+        if (!empty($settings['prefix'])) {
+          $icon = '<div class="affiliate-content">' . $icon;
+          $icon .= '<div class="affiliate-text"><span class="affiliate-prefix">' . $settings['prefix'] . '</span><br>';
+          $icon .= '<span class="affiliate-title">' . $formatted_link_title . '</span></div>';
+          $icon .= '</div>';
+        }
+
         $formatted_link_title = Markup::create($icon);
+      }
+      else {
+        if (!empty($settings['prefix'])) {
+          $formatted_link_title = $settings['prefix'] . $formatted_link_title;
+        }
       }
 
       $element[$delta] = [
