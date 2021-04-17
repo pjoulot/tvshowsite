@@ -5,15 +5,43 @@
   &__main {
     padding-top: 80px;
     padding-bottom: 50px;
-    color: $text-light;
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 
   &__bottom {
     padding: 30px 0;
     border-top: solid 1px $border-dark;
+    color: $text-copyright-color;
 
     p {
       margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    color: $text-light;
+  }
+}
+
+.menu-footer-section {
+  .col-12 {
+    span {
+      font-family: $font-title;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      display: block;
+      font-weight: $font-weight-bold;
+      color: $text-light;
+    }
+    div {
+      a {
+        color: $text-dark-color;
+      }
     }
   }
 }

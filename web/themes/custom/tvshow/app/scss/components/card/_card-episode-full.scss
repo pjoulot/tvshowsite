@@ -18,6 +18,16 @@ $el: '.c-episode-full';
     }
   }
 
+  &__synopsis {
+    &__label {
+      text-transform: uppercase;
+      color: $text-secondary-info;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+    margin-bottom: 45px;
+  }
+
   &__header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -27,7 +37,7 @@ $el: '.c-episode-full';
   }
 
   &__affiliates {
-    margin-bottom: 45px;
+    margin-bottom: 25px;
 
     &__links {
       &>div {

@@ -31,7 +31,7 @@
 	{% if items %}
     {% set row_class = '' %}
 		{% if menu_level == 0 %}
-      <div{{attributes.addClass('row justify-content-end')}}>
+      <div{{attributes.addClass('row justify-content-end', 'menu-footer-section')}}>
       {% set width_col = ((items|length) > 2) ? (12 / (items|length)) : (12 / (items|length)) - 2 %}
       {% set row_class = 'col-md-' ~ width_col ~ ' col-12' %}
     {% else %}

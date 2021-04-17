@@ -26,6 +26,13 @@
 		</div>
 		{% endif %}
 
+		{% if synopsis %}
+			<div class="{{ el ~ '__synopsis' }}">
+				<div class="{{ el ~ '__synopsis__label' }}">{{ "Synopsis"|t }}:</div>
+				{{ synopsis }}
+			</div>
+		{% endif %}
+
 		<ul class="nav nav-tabs mb-3" id="episode-tab" role="tablist">
 			{% if promo|render %}
 			<li class="nav-item">
