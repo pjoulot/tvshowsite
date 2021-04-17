@@ -1,0 +1,15 @@
+uuid: 511031a7-dc70-45b5-b6b1-28f7fccb2881
+name: 'Tv Show'
+mail: philippe.joulot@laposte.net
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node/5
+admin_compact_mode: false
+weight_select_max: 100
+langcode: fr
+default_langcode: fr
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
+mail_notification: ''

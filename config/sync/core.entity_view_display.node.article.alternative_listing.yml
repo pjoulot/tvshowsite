@@ -1,0 +1,53 @@
+uuid: 5b1e6736-4b4d-4756-aae8-72d28143174b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.alternative_listing
+    - field.field.node.article.body
+    - field.field.node.article.field_article_category
+    - field.field.node.article.field_image
+    - field.field.node.article.field_metatags
+    - field.field.node.article.field_source
+    - field.field.node.article.field_tags
+    - node.type.article
+    - responsive_image.styles.season_list
+  module:
+    - layout_builder
+    - media_responsive_thumbnail
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+_core:
+  default_config_hash: ChmU3AVqDKU32A_fyChG0W9dTRKmVBR58B6OClCLvZI
+id: node.article.alternative_listing
+targetEntityType: node
+bundle: article
+mode: alternative_listing
+content:
+  field_article_category:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: season_list
+      image_link: ''
+    third_party_settings: {  }
+    type: media_responsive_thumbnail
+    region: content
+hidden:
+  body: true
+  field_metatags: true
+  field_source: true
+  field_tags: true
+  langcode: true
+  links: true

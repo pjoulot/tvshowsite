@@ -1,0 +1,74 @@
+uuid: e3b2fc42-e53d-4d64-9b03-91fae05d5220
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.saison.field_affiliates_links
+    - field.field.taxonomy_term.saison.field_dates
+    - field.field.taxonomy_term.saison.field_image
+    - field.field.taxonomy_term.saison.field_season_number
+    - field.field.taxonomy_term.saison.field_serie
+    - taxonomy.vocabulary.saison
+  module:
+    - link
+    - text
+id: taxonomy_term.saison.default
+targetEntityType: taxonomy_term
+bundle: saison
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_affiliates_links:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_dates:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_image:
+    weight: 3
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_season_number:
+    weight: 2
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_serie:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  langcode: true

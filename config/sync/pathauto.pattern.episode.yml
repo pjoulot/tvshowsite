@@ -1,0 +1,22 @@
+uuid: f57703f3-d1ad-4045-b55a-8fcbabdc0f10
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: episode
+label: Episode
+type: 'canonical_entities:node'
+pattern: '/[node:field_season:entity:field_serie:entity:field_abreviation]/[node:field_season:entity:name]/[node:title]'
+selection_criteria:
+  06ee6f7b-22d8-4fbd-9299-2a8ca9959565:
+    id: node_type
+    bundles:
+      episode: episode
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 06ee6f7b-22d8-4fbd-9299-2a8ca9959565
+selection_logic: and
+weight: -5
+relationships: {  }

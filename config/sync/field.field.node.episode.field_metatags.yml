@@ -1,0 +1,21 @@
+uuid: 0e8a2665-e3b8-4043-b560-429154612b3e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.episode
+  module:
+    - metatag
+id: node.episode.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: episode
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

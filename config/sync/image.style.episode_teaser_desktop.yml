@@ -1,0 +1,17 @@
+uuid: fd390412-7659-43ec-98f6-b6832a7c3878
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: episode_teaser_desktop
+label: 'Episode teaser desktop'
+effects:
+  f8b9ccb0-7f3e-40e8-b25d-c86d7e7c4924:
+    uuid: f8b9ccb0-7f3e-40e8-b25d-c86d7e7c4924
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 230
+      height: 160
+      crop_type: focal_point

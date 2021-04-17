@@ -1,0 +1,57 @@
+uuid: ac953b80-eaf9-44e0-a569-a294fdbcfc62
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.people.body
+    - field.field.node.people.field_job
+    - field.field.node.people.field_metatags
+    - field.field.node.people.field_picture
+    - node.type.people
+  module:
+    - metatag
+    - text
+    - user
+id: node.people.default
+targetEntityType: node
+bundle: people
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_job:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_metatags:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_picture:
+    type: entity_reference_entity_view
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

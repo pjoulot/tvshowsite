@@ -1,0 +1,17 @@
+uuid: c1a78738-97d3-4e17-82c6-c9131ffbb736
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: episode_full_desktop
+label: 'Episode Full Desktop'
+effects:
+  2d2f6ac5-939a-4495-a888-e8817fa73b72:
+    uuid: 2d2f6ac5-939a-4495-a888-e8817fa73b72
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 825
+      height: 500
+      crop_type: focal_point

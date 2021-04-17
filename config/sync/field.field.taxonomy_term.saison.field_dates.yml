@@ -1,0 +1,19 @@
+uuid: bc12c0bf-d13a-4e39-97d9-0a5d3b6e35ac
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_dates
+    - taxonomy.vocabulary.saison
+id: taxonomy_term.saison.field_dates
+field_name: field_dates
+entity_type: taxonomy_term
+bundle: saison
+label: Dates
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

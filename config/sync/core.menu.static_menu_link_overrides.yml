@@ -1,0 +1,16 @@
+definitions:
+  contact__site_page:
+    weight: -50
+    parent: 'menu_link_content:ad0f21ed-761d-4580-82fc-a836fa4fee70'
+    menu_name: footer
+    enabled: true
+    expanded: false
+  standard__front_page:
+    weight: -50
+    menu_name: main
+    parent: ''
+    enabled: true
+    expanded: false
+_core:
+  default_config_hash: o4bYR9ZupWb3AsOIizTUG4g-nu1mdJqA59UB7QT-ifQ
+langcode: fr

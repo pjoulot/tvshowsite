@@ -1,0 +1,24 @@
+uuid: 5fa7b917-55f9-401b-8a27-97da75ae0574
+langcode: fr
+status: true
+dependencies:
+  config:
+    - image.style.season_list_desktop
+    - image.style.season_list_mobile
+  theme:
+    - tvshow
+id: season_list
+label: 'Season List'
+image_style_mappings:
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: season_list_mobile
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: season_list_mobile
+breakpoint_group: tvshow
+fallback_image_style: season_list_desktop

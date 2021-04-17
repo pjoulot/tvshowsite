@@ -1,0 +1,19 @@
+uuid: f6193acf-f275-4847-8830-31a9ed118771
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_audience
+    - node.type.episode
+id: node.episode.field_audience
+field_name: field_audience
+entity_type: node
+bundle: episode
+label: Audience
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: 48d42310-9761-4646-a751-b73995d4779d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_creators
+    - taxonomy.vocabulary.serie
+id: taxonomy_term.serie.field_creators
+field_name: field_creators
+entity_type: taxonomy_term
+bundle: serie
+label: Créateurs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,8 @@
+start_year: ''
+separator: '-'
+text:
+  value: Copyright
+  format: basic_html
+_core:
+  default_config_hash: IGI1jd3YjFkM-yoWtIT4JmHi-SkIjvM3IC0OXHHceSk
+langcode: fr

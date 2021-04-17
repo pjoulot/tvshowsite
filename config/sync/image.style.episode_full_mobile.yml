@@ -1,0 +1,17 @@
+uuid: d2ad5a79-0dc1-483a-ab98-3a060dfa6793
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: episode_full_mobile
+label: 'Episode Full Mobile'
+effects:
+  23ba919f-3ac5-4b71-b48a-bd2bc5abac75:
+    uuid: 23ba919f-3ac5-4b71-b48a-bd2bc5abac75
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 550
+      height: 300
+      crop_type: focal_point

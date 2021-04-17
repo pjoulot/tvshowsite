@@ -1,0 +1,19 @@
+uuid: 7427c906-e617-471a-9bc4-f51644b09c09
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_guest_stars
+field_name: field_guest_stars
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

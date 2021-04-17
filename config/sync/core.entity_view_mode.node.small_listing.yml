@@ -1,0 +1,10 @@
+uuid: 6194c292-e5eb-4304-a41e-7a2a30008fab
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.small_listing
+label: 'Small listing'
+targetEntityType: node
+cache: true

@@ -1,0 +1,23 @@
+uuid: 063195de-7fc5-4e16-b0ee-1692b0317678
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source
+    - node.type.article
+  module:
+    - link
+id: node.article.field_source
+field_name: field_source
+entity_type: node
+bundle: article
+label: Source
+description: 'Les sources utilisées pour rédiger l''article.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

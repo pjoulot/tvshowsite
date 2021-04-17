@@ -1,0 +1,24 @@
+uuid: ab478694-45cb-4057-8cfc-67819341daff
+langcode: fr
+status: true
+dependencies:
+  config:
+    - image.style.news_featured_desktop
+    - image.style.season_list_mobile
+  theme:
+    - tvshow
+id: featured_news
+label: 'Featured News'
+image_style_mappings:
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: season_list_mobile
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: season_list_mobile
+breakpoint_group: tvshow
+fallback_image_style: news_featured_desktop

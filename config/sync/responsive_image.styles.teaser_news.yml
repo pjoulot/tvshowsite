@@ -1,0 +1,24 @@
+uuid: 2658a94c-cd55-4581-8430-b79b5ecf2c36
+langcode: fr
+status: true
+dependencies:
+  config:
+    - image.style.news_teaser
+    - image.style.news_teaser_mobile
+  theme:
+    - tvshow
+id: teaser_news
+label: 'Teaser News'
+image_style_mappings:
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_mobile
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: news_teaser_mobile
+breakpoint_group: tvshow
+fallback_image_style: news_teaser

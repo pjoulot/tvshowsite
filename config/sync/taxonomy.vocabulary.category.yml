@@ -1,0 +1,8 @@
+uuid: adf71154-ec71-453e-9bae-1edf7381117d
+langcode: fr
+status: true
+dependencies: {  }
+name: Category
+vid: category
+description: 'The categories for the editorial content'
+weight: 0

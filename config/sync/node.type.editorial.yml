@@ -1,0 +1,18 @@
+uuid: 3f774da0-7a0c-4c2a-8718-b8cbe3024076
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Editorial
+type: editorial
+description: 'Les différents articles qui constituent l''encyclopédie.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,187 @@
+uuid: 158c1bdd-c9df-4e69-8bdb-e4a80be53d53
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.episode.body
+    - field.field.node.episode.field_affiliates_links
+    - field.field.node.episode.field_audience
+    - field.field.node.episode.field_date_de_diffusion
+    - field.field.node.episode.field_director
+    - field.field.node.episode.field_duration
+    - field.field.node.episode.field_episode
+    - field.field.node.episode.field_guest_stars
+    - field.field.node.episode.field_image
+    - field.field.node.episode.field_linked_content
+    - field.field.node.episode.field_metatags
+    - field.field.node.episode.field_original_title
+    - field.field.node.episode.field_promotional_pictures
+    - field.field.node.episode.field_season
+    - field.field.node.episode.field_synopsis
+    - field.field.node.episode.field_trailers
+    - field.field.node.episode.field_writers
+    - node.type.episode
+    - responsive_image.styles.episode_full
+  module:
+    - affiliate_link_formatter
+    - datetime
+    - media_responsive_thumbnail
+    - metatag
+    - text
+    - time_formatter
+    - user
+id: node.episode.default
+targetEntityType: node
+bundle: episode
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_affiliates_links:
+    weight: 115
+    label: hidden
+    settings:
+      trim_length: '80'
+      rel: nofollow
+      target: _blank
+      fa: '1'
+      classes: button--outline
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: affiliate_link_formatter
+    region: content
+  field_audience:
+    weight: 112
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_date_de_diffusion:
+    weight: 102
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: short
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_director:
+    weight: 113
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_duration:
+    weight: 111
+    label: hidden
+    settings:
+      storage: '0'
+      display: '1'
+      hours: '1'
+    third_party_settings: {  }
+    type: number_time
+    region: content
+  field_episode:
+    weight: 109
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_guest_stars:
+    weight: 110
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    weight: 107
+    label: hidden
+    settings:
+      responsive_image_style: episode_full
+      image_link: ''
+    third_party_settings: {  }
+    type: media_responsive_thumbnail
+    region: content
+  field_linked_content:
+    weight: 105
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_metatags:
+    weight: 106
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_original_title:
+    weight: 103
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_promotional_pictures:
+    type: entity_reference_entity_view
+    weight: 116
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_season:
+    weight: 108
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_synopsis:
+    weight: 104
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_trailers:
+    type: entity_reference_entity_view
+    weight: 117
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_writers:
+    weight: 114
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

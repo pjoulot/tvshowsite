@@ -1,0 +1,21 @@
+uuid: f6b4bbf4-245a-4357-bdc8-48a866ced50a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_de_diffusion
+    - node.type.episode
+  module:
+    - datetime
+id: node.episode.field_date_de_diffusion
+field_name: field_date_de_diffusion
+entity_type: node
+bundle: episode
+label: 'Date de diffusion'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,59 @@
+uuid: 96e6e206-baa7-46e7-96e7-a3928ab1c31c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.serie.field_abreviation
+    - field.field.taxonomy_term.serie.field_creators
+    - field.field.taxonomy_term.serie.field_dates
+    - field.field.taxonomy_term.serie.field_image
+    - taxonomy.vocabulary.serie
+  module:
+    - text
+id: taxonomy_term.serie.default
+targetEntityType: taxonomy_term
+bundle: serie
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_abreviation:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_creators:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_dates:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

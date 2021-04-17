@@ -1,0 +1,14 @@
+uuid: 7747f1da-8a6a-4282-8f35-0318fb20125f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.saison
+id: taxonomy_vocabulary_saison
+entity_type_id: taxonomy_vocabulary
+entity_id: saison
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,19 @@
+uuid: fa34a02a-20cb-432a-b3e1-500ed2ace7fe
+langcode: fr
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_affiliates_links
+field_name: field_affiliates_links
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

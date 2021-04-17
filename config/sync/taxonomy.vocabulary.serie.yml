@@ -1,0 +1,8 @@
+uuid: 5fb392d5-36c6-4f6f-8c63-92ee2f9062ee
+langcode: fr
+status: true
+dependencies: {  }
+name: Série
+vid: serie
+description: 'Les différentes séries télé si le site en contient plusieurs.'
+weight: 0

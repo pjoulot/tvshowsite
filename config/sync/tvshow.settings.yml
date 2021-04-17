@@ -1,0 +1,20 @@
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 0
+  path: ''
+favicon:
+  use_default: 1
+show_slogan: 0
+header_show_slogan: 0
+header_background:
+  - '23'
+header_background_animated: 0
+header_display: 1
+header_top_image: {  }
+header_full_width: 0
+menu_hamburger: elastic
+menu_full_width: 0

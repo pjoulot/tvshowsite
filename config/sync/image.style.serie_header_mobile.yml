@@ -1,0 +1,17 @@
+uuid: 1145e62c-8cf3-4e48-b82e-b337fcb3eb67
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: serie_header_mobile
+label: 'Serie Header mobile'
+effects:
+  0d53408e-0058-436e-8ac0-8508debbc402:
+    uuid: 0d53408e-0058-436e-8ac0-8508debbc402
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 576
+      height: 350
+      crop_type: focal_point

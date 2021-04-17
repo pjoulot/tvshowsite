@@ -1,0 +1,17 @@
+uuid: 08781786-38a7-4226-a34f-f46d15f7ae80
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: small_listing
+label: 'Small listing'
+effects:
+  3e4928d8-8578-4546-9e1f-2b428f7ffe55:
+    uuid: 3e4928d8-8578-4546-9e1f-2b428f7ffe55
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 80
+      height: 80
+      crop_type: focal_point

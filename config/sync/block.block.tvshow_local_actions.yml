@@ -1,0 +1,20 @@
+uuid: 33945277-17c4-45e0-9192-f8fc45712f00
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - tvshow
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: tvshow_local_actions
+theme: tvshow
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,23 @@
+uuid: 6552010f-08c5-4d1c-9848-f5109f28eb03
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_affiliates_links
+    - node.type.episode
+  module:
+    - link
+id: node.episode.field_affiliates_links
+field_name: field_affiliates_links
+entity_type: node
+bundle: episode
+label: 'Affiliates links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

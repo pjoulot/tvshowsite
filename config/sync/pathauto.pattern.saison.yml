@@ -1,0 +1,23 @@
+uuid: a8a65c4c-66e7-44bb-b742-fbe67bc38f85
+langcode: fr
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: saison
+label: Saison
+type: 'canonical_entities:taxonomy_term'
+pattern: '/[term:field_serie:entity:field_abreviation]/[term:name]'
+selection_criteria:
+  d67b8d29-8c31-471c-a515-fdb2eef8e701:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      saison: saison
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: d67b8d29-8c31-471c-a515-fdb2eef8e701
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,24 @@
+uuid: 6c599fa1-f6e2-4452-8b19-b9ba0e6758bf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - image.style.episode_full_desktop
+    - image.style.episode_full_mobile
+  theme:
+    - tvshow
+id: episode_full
+label: 'Episode Full'
+image_style_mappings:
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: episode_full_mobile
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: episode_full_mobile
+breakpoint_group: tvshow
+fallback_image_style: episode_full_desktop

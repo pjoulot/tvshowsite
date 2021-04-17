@@ -1,0 +1,20 @@
+uuid: 9ccb50f9-778b-49e1-bd23-40cc66bfa01b
+langcode: fr
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.field_promotional_pictures
+field_name: field_promotional_pictures
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

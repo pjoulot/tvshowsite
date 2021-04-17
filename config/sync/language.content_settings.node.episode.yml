@@ -1,0 +1,11 @@
+uuid: 5cb7990a-ab30-4523-893e-b27c1fd7af5b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.episode
+id: node.episode
+target_entity_type_id: node
+target_bundle: episode
+default_langcode: site_default
+language_alterable: false

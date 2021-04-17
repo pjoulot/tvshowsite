@@ -1,0 +1,17 @@
+uuid: 6d2142b8-674a-413c-817d-f268bbb462e3
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: news_teaser_mobile
+label: 'News Teaser Mobile'
+effects:
+  e6a32535-c55d-4980-87c7-a272c3cf9ad0:
+    uuid: e6a32535-c55d-4980-87c7-a272c3cf9ad0
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 100
+      height: 100
+      crop_type: focal_point

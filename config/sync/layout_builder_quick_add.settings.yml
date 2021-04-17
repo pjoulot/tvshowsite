@@ -1,0 +1,9 @@
+enable_styling: 1
+display_description: 1
+multiple_view_mode: 0
+multiple_view_mode_message: 'This block has multiple view modes.'
+blocks_order: {  }
+inline_blocks: {  }
+_core:
+  default_config_hash: 4BNh37adxFzXOHsJMz_zuRX5mPzUkDJotmb6dj4rCVw
+langcode: fr

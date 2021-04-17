@@ -1,0 +1,31 @@
+uuid: 53933040-7ea4-4f42-94f3-2d44d68675cc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.article_category.field_image
+    - taxonomy.vocabulary.article_category
+  module:
+    - text
+id: taxonomy_term.article_category.default
+targetEntityType: taxonomy_term
+bundle: article_category
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,7 @@
+uuid: 31cbc03b-6f79-4184-be94-f5e9c667b17e
+langcode: fr
+status: true
+dependencies: {  }
+name: season_list_mobile
+label: 'Season List mobile'
+effects: {  }

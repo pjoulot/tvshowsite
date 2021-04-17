@@ -1,0 +1,10 @@
+uuid: 1567a50f-21ba-4a60-a7c5-6f486c287fff
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+id: user.author
+label: Author
+targetEntityType: user
+cache: true

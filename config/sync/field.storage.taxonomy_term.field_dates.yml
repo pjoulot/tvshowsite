@@ -1,0 +1,21 @@
+uuid: e0fab7cd-1074-4982-b724-fad2cf9f4d2f
+langcode: fr
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_dates
+field_name: field_dates
+entity_type: taxonomy_term
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

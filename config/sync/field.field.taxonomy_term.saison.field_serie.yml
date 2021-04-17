@@ -1,0 +1,29 @@
+uuid: b06f8e3d-fc85-4bf6-b010-a9b5fcd798e0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_serie
+    - taxonomy.vocabulary.saison
+    - taxonomy.vocabulary.serie
+id: taxonomy_term.saison.field_serie
+field_name: field_serie
+entity_type: taxonomy_term
+bundle: saison
+label: Série
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      serie: serie
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

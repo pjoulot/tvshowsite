@@ -1,0 +1,11 @@
+uuid: 513f77a3-8b9b-4efc-9c85-bcd59d45fca7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.editorial
+id: node.editorial
+target_entity_type_id: node
+target_bundle: editorial
+default_langcode: site_default
+language_alterable: false

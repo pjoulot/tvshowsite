@@ -1,0 +1,8 @@
+uuid: 4dd15e17-a21a-46a7-89da-73174f6e5791
+langcode: fr
+status: true
+dependencies: {  }
+name: Saison
+vid: saison
+description: 'Les saisons d''une série: saison 1, 2, 3 etc...'
+weight: 0

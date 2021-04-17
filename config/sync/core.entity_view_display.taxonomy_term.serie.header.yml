@@ -1,0 +1,60 @@
+uuid: 0e6eed7a-6e9d-4db5-a713-d540580aedb8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.header
+    - field.field.taxonomy_term.serie.field_abreviation
+    - field.field.taxonomy_term.serie.field_creators
+    - field.field.taxonomy_term.serie.field_dates
+    - field.field.taxonomy_term.serie.field_image
+    - responsive_image.styles.serie_header
+    - taxonomy.vocabulary.serie
+  module:
+    - layout_builder
+    - media_responsive_thumbnail
+    - text
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: taxonomy_term.serie.header
+targetEntityType: taxonomy_term
+bundle: serie
+mode: header
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_creators:
+    type: string
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_dates:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_image:
+    type: media_responsive_thumbnail
+    weight: 1
+    label: hidden
+    settings:
+      responsive_image_style: serie_header
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_abreviation: true
+  langcode: true

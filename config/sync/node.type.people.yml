@@ -1,0 +1,18 @@
+uuid: 9629e458-453f-4827-955f-7b17523b88ef
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: People
+type: people
+description: 'Personnes célèbres ayant travailler sur les séries.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

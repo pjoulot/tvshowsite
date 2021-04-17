@@ -1,0 +1,317 @@
+uuid: 101fcaf2-448e-42b8-a8d0-dccbbb14d046
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.page
+    - field.field.taxonomy_term.serie.field_abreviation
+    - field.field.taxonomy_term.serie.field_creators
+    - field.field.taxonomy_term.serie.field_dates
+    - field.field.taxonomy_term.serie.field_image
+    - taxonomy.vocabulary.serie
+    - views.view.all_episodes
+  module:
+    - ctools
+    - layout_builder
+    - text
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: color
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              text_alignment:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+        components:
+          3ec69c0d-d5af-4acc-a5e8-2255121e0095:
+            uuid: 3ec69c0d-d5af-4acc-a5e8-2255121e0095
+            region: blb_region_col_1
+            configuration:
+              id: 'entity_view:taxonomy_term'
+              label: 'Entity view (Taxonomy term)'
+              provider: ctools
+              label_display: '0'
+              view_mode: header
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: color
+              background_color:
+                class: _none
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              text_alignment:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: bs-pb-5
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_12
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-12
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-12
+              - col-12
+          remove_gutters: '0'
+        components:
+          725f07ab-5bd4-44e7-8f1e-c39c4e43aba7:
+            uuid: 725f07ab-5bd4-44e7-8f1e-c39c4e43aba7
+            region: blb_region_col_2
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:taxonomy_term:serie:field_image'
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            additional: {  }
+            weight: 0
+          6d69ebcf-603f-4802-8f90-e3659b52bde2:
+            uuid: 6d69ebcf-603f-4802-8f90-e3659b52bde2
+            region: blb_region_col_1
+            configuration:
+              id: 'views_block:all_episodes-block_1'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+id: taxonomy_term.serie.page
+targetEntityType: taxonomy_term
+bundle: serie
+mode: page
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dates:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_abreviation: true
+  field_creators: true
+  langcode: true

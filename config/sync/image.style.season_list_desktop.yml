@@ -1,0 +1,17 @@
+uuid: c391399f-8ded-4671-94f2-fe37ea3715c6
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: season_list_desktop
+label: 'Season list desktop'
+effects:
+  a203ca58-61db-4d0b-a7c5-88cd35ca92e4:
+    uuid: a203ca58-61db-4d0b-a7c5-88cd35ca92e4
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 268
+      height: 358
+      crop_type: focal_point

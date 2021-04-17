@@ -1,0 +1,55 @@
+uuid: 9e46cf36-9d5c-4317-93c4-ee5a148b6fb9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.small_listing
+    - field.field.node.editorial.body
+    - field.field.node.editorial.field_category
+    - field.field.node.editorial.field_gallery
+    - field.field.node.editorial.field_image
+    - field.field.node.editorial.field_metatags
+    - field.field.node.editorial.field_serie
+    - image.style.small_listing
+    - node.type.editorial
+  module:
+    - layout_builder
+    - media
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: node.editorial.small_listing
+targetEntityType: node
+bundle: editorial
+mode: small_listing
+content:
+  field_category:
+    weight: 2
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_image:
+    type: media_thumbnail
+    weight: 1
+    label: hidden
+    settings:
+      image_style: small_listing
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_gallery: true
+  field_metatags: true
+  field_serie: true
+  langcode: true

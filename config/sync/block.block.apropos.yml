@@ -1,0 +1,25 @@
+uuid: 31d4587f-d208-412e-bfbd-19f279bcbb1b
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:39b4b4f6-1737-41d2-84b0-f1f8e944c77b'
+  module:
+    - block_content
+  theme:
+    - tvshow
+id: apropos
+theme: tvshow
+region: footer
+weight: 0
+provider: null
+plugin: 'block_content:39b4b4f6-1737-41d2-84b0-f1f8e944c77b'
+settings:
+  id: 'block_content:39b4b4f6-1737-41d2-84b0-f1f8e944c77b'
+  label: 'A propos'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

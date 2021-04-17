@@ -1,0 +1,17 @@
+uuid: 9762e3bb-206b-41b0-b979-5bc45c1a7292
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: serie_header_desktop
+label: 'Serie header desktop'
+effects:
+  3fb1424c-afe7-428d-b0e0-d201cedff755:
+    uuid: 3fb1424c-afe7-428d-b0e0-d201cedff755
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 535
+      height: 435
+      crop_type: focal_point

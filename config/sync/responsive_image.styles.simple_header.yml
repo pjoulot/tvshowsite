@@ -1,0 +1,23 @@
+uuid: b7d078e5-6e8f-4626-9daf-da8394a607ed
+langcode: fr
+status: true
+dependencies:
+  config:
+    - image.style.simple_header_desktop
+  theme:
+    - tvshow
+id: simple_header
+label: 'Simple Header'
+image_style_mappings:
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: '_original image_'
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: '_original image_'
+breakpoint_group: tvshow
+fallback_image_style: simple_header_desktop

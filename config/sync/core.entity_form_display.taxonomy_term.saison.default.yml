@@ -1,0 +1,99 @@
+uuid: 7c18f551-825c-4d48-8076-6e6afead3af8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.saison.field_affiliates_links
+    - field.field.taxonomy_term.saison.field_dates
+    - field.field.taxonomy_term.saison.field_image
+    - field.field.taxonomy_term.saison.field_season_number
+    - field.field.taxonomy_term.saison.field_serie
+    - taxonomy.vocabulary.saison
+  module:
+    - link
+    - media_library
+    - path
+    - text
+id: taxonomy_term.saison.default
+targetEntityType: taxonomy_term
+bundle: saison
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_affiliates_links:
+    weight: 10
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_dates:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_image:
+    weight: 6
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_season_number:
+    weight: 4
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_serie:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  langcode:
+    type: language_select
+    weight: 3
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 8
+    region: content
+    third_party_settings: {  }
+  tvi:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

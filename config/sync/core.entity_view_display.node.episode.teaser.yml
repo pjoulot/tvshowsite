@@ -1,0 +1,80 @@
+uuid: 272d9bbf-0d71-43e1-a32b-938bb2ce58aa
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.episode.body
+    - field.field.node.episode.field_affiliates_links
+    - field.field.node.episode.field_audience
+    - field.field.node.episode.field_date_de_diffusion
+    - field.field.node.episode.field_director
+    - field.field.node.episode.field_duration
+    - field.field.node.episode.field_episode
+    - field.field.node.episode.field_guest_stars
+    - field.field.node.episode.field_image
+    - field.field.node.episode.field_linked_content
+    - field.field.node.episode.field_metatags
+    - field.field.node.episode.field_original_title
+    - field.field.node.episode.field_promotional_pictures
+    - field.field.node.episode.field_season
+    - field.field.node.episode.field_synopsis
+    - field.field.node.episode.field_trailers
+    - field.field.node.episode.field_writers
+    - image.style.episode_teaser_desktop
+    - node.type.episode
+  module:
+    - media
+    - user
+id: node.episode.teaser
+targetEntityType: node
+bundle: episode
+mode: teaser
+content:
+  field_episode:
+    type: number_integer
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+  field_image:
+    type: media_thumbnail
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      image_style: episode_teaser_desktop
+      image_link: ''
+    third_party_settings: {  }
+  field_season:
+    type: entity_reference_label
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_affiliates_links: true
+  field_audience: true
+  field_date_de_diffusion: true
+  field_director: true
+  field_duration: true
+  field_guest_stars: true
+  field_linked_content: true
+  field_metatags: true
+  field_original_title: true
+  field_promotional_pictures: true
+  field_synopsis: true
+  field_trailers: true
+  field_writers: true
+  langcode: true

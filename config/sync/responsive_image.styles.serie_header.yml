@@ -1,0 +1,24 @@
+uuid: cb2c139c-4926-47e0-8945-c769c23dd647
+langcode: fr
+status: true
+dependencies:
+  config:
+    - image.style.serie_header_desktop
+    - image.style.serie_header_mobile
+  theme:
+    - tvshow
+id: serie_header
+label: 'Serie header'
+image_style_mappings:
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: serie_header_mobile
+  -
+    breakpoint_id: tvshow.screen.xs-max
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: serie_header_mobile
+breakpoint_group: tvshow
+fallback_image_style: serie_header_desktop

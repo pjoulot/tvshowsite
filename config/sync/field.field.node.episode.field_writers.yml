@@ -1,0 +1,21 @@
+uuid: d7158f13-7dba-4da6-96bd-236536c164d9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_writers
+    - node.type.episode
+  module:
+    - text
+id: node.episode.field_writers
+field_name: field_writers
+entity_type: node
+bundle: episode
+label: Scénaristes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

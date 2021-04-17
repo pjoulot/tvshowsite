@@ -1,0 +1,17 @@
+uuid: c3f106d6-9403-4aed-9b0a-7ef6f1ff57bc
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: news_featured_desktop
+label: 'News Featured Desktop'
+effects:
+  d447b6d3-3a2b-4971-8b52-406a4ff1ccac:
+    uuid: d447b6d3-3a2b-4971-8b52-406a4ff1ccac
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 540
+      height: 477
+      crop_type: focal_point

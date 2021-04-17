@@ -1,0 +1,21 @@
+uuid: 7e10986d-dc5b-4e27-b9be-2b9aa0f1cf99
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.people
+  module:
+    - metatag
+id: node.people.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: people
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

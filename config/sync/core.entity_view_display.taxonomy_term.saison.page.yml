@@ -1,0 +1,341 @@
+uuid: 94241b9b-0ef2-4c46-9e8f-593f5eb6046f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.page
+    - field.field.taxonomy_term.saison.field_affiliates_links
+    - field.field.taxonomy_term.saison.field_dates
+    - field.field.taxonomy_term.saison.field_image
+    - field.field.taxonomy_term.saison.field_season_number
+    - field.field.taxonomy_term.saison.field_serie
+    - taxonomy.vocabulary.saison
+    - views.view.episodes
+    - views.view.other_seasons
+  module:
+    - ctools
+    - layout_builder
+    - text
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: color
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              text_alignment:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+          breakpoints: {  }
+          layout_regions_classes: {  }
+          remove_gutters: '0'
+        components:
+          fbda6088-4a48-4f13-aff6-981808ba2f16:
+            uuid: fbda6088-4a48-4f13-aff6-981808ba2f16
+            region: blb_region_col_1
+            configuration:
+              id: 'entity_view:taxonomy_term'
+              label: 'Entity view (Taxonomy term)'
+              provider: ctools
+              label_display: '0'
+              view_mode: header
+              context_mapping:
+                entity: layout_builder.entity
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: color
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              text_alignment:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: site-sidebar
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_12
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-12
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-12
+              - col-12
+          remove_gutters: '0'
+        components:
+          63269ccc-68bc-496c-a3b9-2157d8cd7248:
+            uuid: 63269ccc-68bc-496c-a3b9-2157d8cd7248
+            region: blb_region_col_1
+            configuration:
+              id: 'views_block:episodes-block_1'
+              label: ''
+              provider: views
+              label_display: '0'
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+          037b24c5-bbdc-4d1b-9a6c-f8ce06d9c196:
+            uuid: 037b24c5-bbdc-4d1b-9a6c-f8ce06d9c196
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:other_seasons-block_1'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
+          decf1cef-6385-4378-8a68-a82747de9e91:
+            uuid: decf1cef-6385-4378-8a68-a82747de9e91
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:taxonomy_term:saison:field_affiliates_links'
+              label: 'Télécharge maintenant'
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: affiliate_link_formatter
+                settings:
+                  trim_length: '80'
+                  url_only: ''
+                  url_plain: ''
+                  rel: nofollow
+                  target: _blank
+                  fa: 1
+                  classes: a-affiliate-button
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+        third_party_settings: {  }
+id: taxonomy_term.saison.page
+targetEntityType: taxonomy_term
+bundle: saison
+mode: page
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_season_number:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_serie:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_affiliates_links: true
+  field_dates: true
+  field_image: true
+  langcode: true

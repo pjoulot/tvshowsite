@@ -1,0 +1,21 @@
+uuid: 5756ac4a-fe35-4799-8142-bb25c0dd7341
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_director
+    - node.type.episode
+  module:
+    - text
+id: node.episode.field_director
+field_name: field_director
+entity_type: node
+bundle: episode
+label: Director
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

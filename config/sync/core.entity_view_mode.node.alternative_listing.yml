@@ -1,0 +1,10 @@
+uuid: 59702a59-2d8b-4572-a3e4-5f7bfe049be6
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.alternative_listing
+label: 'Alternative listing'
+targetEntityType: node
+cache: true

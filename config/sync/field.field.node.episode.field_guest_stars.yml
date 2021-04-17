@@ -1,0 +1,21 @@
+uuid: 4ecf2ddb-6b6f-48ef-b10f-c1d40629b739
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_guest_stars
+    - node.type.episode
+  module:
+    - text
+id: node.episode.field_guest_stars
+field_name: field_guest_stars
+entity_type: node
+bundle: episode
+label: 'Guest stars'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

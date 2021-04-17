@@ -1,0 +1,23 @@
+uuid: 655995ff-ff76-49a4-bd76-235e7b35362f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_season_number
+    - taxonomy.vocabulary.saison
+id: taxonomy_term.saison.field_season_number
+field_name: field_season_number
+entity_type: taxonomy_term
+bundle: saison
+label: 'Numéro de saison'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

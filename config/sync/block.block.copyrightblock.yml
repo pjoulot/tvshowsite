@@ -1,0 +1,25 @@
+uuid: 2f7347cf-c673-4280-958d-091bc0449331
+langcode: fr
+status: true
+dependencies:
+  module:
+    - copyright_block
+  theme:
+    - tvshow
+id: copyrightblock
+theme: tvshow
+region: footer_bottom
+weight: 0
+provider: null
+plugin: copyright_block
+settings:
+  id: copyright_block
+  label: 'Copyright block'
+  provider: copyright_block
+  label_display: '0'
+  start_year: '2009'
+  separator: '-'
+  text:
+    value: "<p>Copyright © [copyright_statement:dates] stargateuniverse.fr</p>\r\n"
+    format: basic_html
+visibility: {  }

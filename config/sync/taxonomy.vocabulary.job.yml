@@ -1,0 +1,8 @@
+uuid: a34ea2f4-ccea-49f1-8801-1dfdf037a8e7
+langcode: fr
+status: true
+dependencies: {  }
+name: Métier
+vid: job
+description: 'Les métiers des personnes célèbres: acteur, réalisateur etc...'
+weight: 0

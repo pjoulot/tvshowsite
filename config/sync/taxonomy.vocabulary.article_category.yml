@@ -1,0 +1,8 @@
+uuid: bbec3c76-b39e-4369-adb6-5bda361f8110
+langcode: fr
+status: true
+dependencies: {  }
+name: 'News Category'
+vid: article_category
+description: 'Categories pour les actualités.'
+weight: 0

@@ -1,0 +1,70 @@
+uuid: dc44d8c5-8541-4448-a476-08c9b54168f5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.header
+    - field.field.taxonomy_term.saison.field_affiliates_links
+    - field.field.taxonomy_term.saison.field_dates
+    - field.field.taxonomy_term.saison.field_image
+    - field.field.taxonomy_term.saison.field_season_number
+    - field.field.taxonomy_term.saison.field_serie
+    - responsive_image.styles.serie_header
+    - taxonomy.vocabulary.saison
+  module:
+    - layout_builder
+    - media_responsive_thumbnail
+    - text
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: taxonomy_term.saison.header
+targetEntityType: taxonomy_term
+bundle: saison
+mode: header
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dates:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_image:
+    weight: 3
+    label: hidden
+    settings:
+      responsive_image_style: serie_header
+      image_link: ''
+    third_party_settings: {  }
+    type: media_responsive_thumbnail
+    region: content
+  field_season_number:
+    weight: 2
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_serie:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_affiliates_links: true
+  langcode: true

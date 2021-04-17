@@ -1,0 +1,23 @@
+uuid: e28bb82f-dfc7-44ef-a615-d329ee872e31
+langcode: fr
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: serie
+label: Serie
+type: 'canonical_entities:taxonomy_term'
+pattern: '/[term:field_abreviation]'
+selection_criteria:
+  f508f56d-5e1d-412f-9bc0-1f5dc42e0f96:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      serie: serie
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: f508f56d-5e1d-412f-9bc0-1f5dc42e0f96
+selection_logic: and
+weight: -5
+relationships: {  }

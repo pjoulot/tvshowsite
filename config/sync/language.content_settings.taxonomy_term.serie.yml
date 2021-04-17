@@ -1,0 +1,11 @@
+uuid: ae1bb9c6-bce8-4055-9eb1-a7f4b25e444a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.serie
+id: taxonomy_term.serie
+target_entity_type_id: taxonomy_term
+target_bundle: serie
+default_langcode: site_default
+language_alterable: false

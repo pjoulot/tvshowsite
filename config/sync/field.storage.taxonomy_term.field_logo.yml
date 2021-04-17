@@ -1,0 +1,20 @@
+uuid: 5db1464f-d34f-406b-84ab-eb13f56c566a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - media
+    - taxonomy
+id: taxonomy_term.field_logo
+field_name: field_logo
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

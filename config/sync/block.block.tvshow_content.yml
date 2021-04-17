@@ -1,0 +1,22 @@
+uuid: 161627c2-0ca2-430f-9de7-30d6f7ccd749
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tvshow
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: tvshow_content
+theme: tvshow
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

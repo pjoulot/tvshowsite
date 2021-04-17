@@ -1,0 +1,22 @@
+uuid: 9080dd0a-2c7f-4920-bb6b-1ae1beab1180
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tvshow
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: tvshow_messages
+theme: tvshow
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

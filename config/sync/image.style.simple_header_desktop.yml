@@ -1,0 +1,25 @@
+uuid: 08744387-93a2-48f6-9424-44d19a14058c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: simple_header_desktop
+label: 'Simple Header desktop'
+effects:
+  e79a535e-eecc-4562-a6bd-1480bff30392:
+    uuid: e79a535e-eecc-4562-a6bd-1480bff30392
+    id: image_scale
+    weight: 2
+    data:
+      width: 1900
+      height: null
+      upscale: false
+  a2d444c1-e32b-4bdd-a3cc-e3ca24c5424f:
+    uuid: a2d444c1-e32b-4bdd-a3cc-e3ca24c5424f
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 1110
+      height: 250
+      crop_type: focal_point

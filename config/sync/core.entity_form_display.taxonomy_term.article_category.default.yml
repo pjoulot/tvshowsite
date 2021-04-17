@@ -1,0 +1,65 @@
+uuid: 779f39a8-49f2-4ad6-a7e0-4ed0a348be3f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.article_category.field_image
+    - taxonomy.vocabulary.article_category
+  module:
+    - media_library
+    - path
+    - text
+id: taxonomy_term.article_category.default
+targetEntityType: taxonomy_term
+bundle: article_category
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_image:
+    weight: 2
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  langcode:
+    type: language_select
+    weight: 4
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  tvi:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
