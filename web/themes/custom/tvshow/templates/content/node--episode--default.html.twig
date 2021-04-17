@@ -111,6 +111,12 @@
       "value": content.field_guest_stars,
     }]) %}
 
+    {% set body = content.body %}
+    {% set promo = content.field_promotional_pictures %}
+    {% set trailers = content.field_trailers %}
+    {% set affiliates = content.field_affiliates_links %}
+    {% set related_content = content.field_linked_content %}
+
 		{% include '@tvshow/components/card/card--episode-full.html.twig' %}
 	{% endblock %}
 </article>
