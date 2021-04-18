@@ -1,0 +1,30 @@
+uuid: 79ad87d6-3f6e-46d0-afc4-1ce1b97bc510
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+    - image_effects
+name: episode_trailer
+label: 'Episode Trailer'
+effects:
+  a370435a-2fea-4777-87e8-d3ce61551fa1:
+    uuid: a370435a-2fea-4777-87e8-d3ce61551fa1
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 380
+      height: 275
+      crop_type: focal_point
+  ea32ef26-e020-4990-80a1-697a2ba9f6f7:
+    uuid: ea32ef26-e020-4990-80a1-697a2ba9f6f7
+    id: image_effects_watermark
+    weight: 2
+    data:
+      watermark_image: themes/custom/tvshow/images/play.png
+      watermark_width: '75'
+      watermark_height: '75'
+      placement: center-center
+      x_offset: ''
+      y_offset: ''
+      opacity: 100

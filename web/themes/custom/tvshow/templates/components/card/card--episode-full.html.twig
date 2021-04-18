@@ -36,22 +36,22 @@
 		<ul class="nav nav-tabs mb-3" id="episode-tab" role="tablist">
 			{% if promo|render %}
 			<li class="nav-item">
-				<a class="nav-link active" id="episode-promo-tab" data-toggle="pill" href="#episode-promo" role="tab" aria-controls="episode-promo" aria-selected="true"><i class="fas fa-camera-retro"></i> Images promo</a>
+				<a class="nav-link active" id="episode-promo-tab" data-toggle="tab" href="#episode-promo" role="tab" aria-controls="episode-promo" aria-selected="true"><i class="fas fa-camera-retro"></i> Images promo</a>
 			</li>
 			{% endif %}
 			{% if body|render %}
 			<li class="nav-item">
-				<a class="nav-link" id="episode-summary-tab" data-toggle="pill" href="#episode-summary" role="tab" aria-controls="episode-summary" aria-selected="false"><i class="fas fa-book"></i> Résumé</a>
+				<a class="nav-link" id="episode-summary-tab" data-toggle="tab" href="#episode-summary" role="tab" aria-controls="episode-summary" aria-selected="false"><i class="fas fa-book"></i> Résumé</a>
 			</li>
 			{% endif %}
 			{% if trailers|render %}
 			<li class="nav-item">
-				<a class="nav-link" id="episode-trailers-tab" data-toggle="pill" href="#episode-trailers" role="tab" aria-controls="episode-trailers" aria-selected="false"><i class="fas fa-film"></i> Trailers</a>
+				<a class="nav-link" id="episode-trailers-tab" data-toggle="tab" href="#episode-trailers" role="tab" aria-controls="episode-trailers" aria-selected="false"><i class="fas fa-film"></i> Trailers</a>
 			</li>
 			{% endif %}
 			{% if gallery|render %}
 			<li class="nav-item">
-				<a class="nav-link" id="episode-gallery-tab" data-toggle="pill" href="#episode-gallery" role="tab" aria-controls="episode-gallery" aria-selected="false"><i class="far fa-images"></i> Gallerie</a>
+				<a class="nav-link" id="episode-gallery-tab" data-toggle="tab" href="#episode-gallery" role="tab" aria-controls="episode-gallery" aria-selected="false"><i class="far fa-images"></i> Gallerie</a>
 			</li>
 			{% endif %}
 		</ul>

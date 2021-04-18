@@ -42,6 +42,7 @@ module:
   layout_builder: 0
   layout_builder_quick_add: 0
   layout_discovery: 0
+  lightgallery: 0
   link: 0
   linkit: 0
   locale: 0

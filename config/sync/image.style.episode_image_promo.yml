@@ -1,0 +1,15 @@
+uuid: 9b8126bc-0915-434a-a3b6-4ac45b094e34
+langcode: fr
+status: true
+dependencies: {  }
+name: episode_image_promo
+label: 'Episode image promo'
+effects:
+  61e4e367-d5d2-417a-8bee-adaca61938bf:
+    uuid: 61e4e367-d5d2-417a-8bee-adaca61938bf
+    id: image_scale
+    weight: 1
+    data:
+      width: 180
+      height: 350
+      upscale: false
