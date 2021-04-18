@@ -1,0 +1,5 @@
+name: 'Tvshow General'
+description: 'Some general code specific to the tvshow project.'
+package: Tvshow
+type: module
+core_version_requirement: ^8 || ^9

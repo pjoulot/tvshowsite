@@ -1,0 +1,5 @@
+services:
+  tvshow.twig_extension:
+    class: Drupal\tvshow_general\TwigExtension\TwigExtension
+    tags:
+      - { name: twig.extension }

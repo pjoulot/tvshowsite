@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.episode.field_trailers
     - field.field.node.episode.field_writers
     - node.type.episode
+    - views.view.episodes
   module:
     - ctools
     - datetime
@@ -29,6 +30,7 @@ dependencies:
     - metatag
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     allow_custom: false
@@ -160,6 +162,38 @@ third_party_settings:
               view_mode: default
               context_mapping:
                 entity: layout_builder.entity
+            additional: {  }
+            weight: 0
+          b5e60c2b-b086-4108-820e-921a6f5dc174:
+            uuid: b5e60c2b-b086-4108-820e-921a6f5dc174
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:episode:field_linked_content'
+              label: Encyclopédie
+              provider: layout_builder
+              label_display: visible
+              formatter:
+                label: hidden
+                type: entity_reference_entity_view
+                settings:
+                  view_mode: small_listing
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional: {  }
+            weight: 1
+          2f92359f-1048-48ba-bb6a-cea3bc66e08b:
+            uuid: 2f92359f-1048-48ba-bb6a-cea3bc66e08b
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:episodes-block_2'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
             additional: {  }
             weight: 0
         third_party_settings: {  }
