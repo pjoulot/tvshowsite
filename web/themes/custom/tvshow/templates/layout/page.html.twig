@@ -145,7 +145,16 @@
         {% endif %}
         {% if page.footer_bottom %}
         <div class="footer__bottom">
-          {{ page.footer_bottom }}
+          <div class="footer__bottom__main">
+            {{ page.footer_bottom }}
+          </div>
+          {% if social_media is not empty %}
+          <div class="footer__bottom__social-media">
+            {% for media in social_media %}
+              {{ media }}
+            {% endfor %}
+          </div>
+          {% endif %}
         </div>
         {% endif %}
       </div>

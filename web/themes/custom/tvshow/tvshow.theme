@@ -1,6 +1,8 @@
 <?php
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 /**
  * Implements hook_preprocess_HOOK() for block templates.
@@ -83,6 +85,8 @@ function tvshow_preprocess_page(&$variables) {
   }
   $variables['header_background_animated'] = theme_get_setting('header_background_animated');
   $variables['menu_full_width'] = theme_get_setting('menu_full_width');
+
+  $variables['social_media'] = _tvshow_theme_get_social_media();
 }
 
 /**
@@ -125,4 +129,35 @@ function tvshow_theme_suggestions_container_alter(array &$suggestions, array &$v
 
   array_unshift($suggestions, 'container__' . $type . '__' . $name . '__' . $display_id);
   array_unshift($suggestions, 'container__' . $type . '__' . $name);
+}
+
+function _tvshow_theme_get_social_media() {
+  $social_media = [
+    'facebook',
+    'twitter',
+    'instagram',
+    'steam',
+  ];
+  $links = [];
+  foreach ($social_media as $media) {
+    $url_string = theme_get_setting($media . '_url');
+    if (!empty($url_string)) {
+      $url = Url::fromUri($url_string);
+      $link_text =  [
+        '#type' => 'html_tag',
+        '#tag' => 'i',
+        '#value' => '',
+        '#attributes' => [
+          'class' => [
+            'fab',
+            'fa-' . $media,
+          ],
+          'rel' => 'nofollow',
+        ],
+      ];
+      $link = Link::fromTextAndUrl($link_text, $url);
+      $links[] = $link->toRenderable();
+    }
+  }
+  return $links;
 }

@@ -16,9 +16,29 @@
     border-top: solid 1px $border-dark;
     color: $text-copyright-color;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     p {
       margin: 0;
       font-size: 0.9rem;
+    }
+
+    &__social-media {
+      a+a {
+        margin-left: 15px;
+      }
+
+      a {
+        color: $text-dark-color;
+        font-size: 1.5rem;
+
+        &:hover, &:focus {
+          color: $white;
+          text-decoration: none;
+        }
+      }
     }
   }
 

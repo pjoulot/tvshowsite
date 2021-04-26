@@ -37,7 +37,7 @@ tvshow.screen.md-min:
 tvshow.screen.md-max:
   label: md-max
   mediaQuery: '(max-width: 991.98px)'
-  weight: 5tvshow
+  weight: 5
   group: tvshow
   multipliers:
     - 1x

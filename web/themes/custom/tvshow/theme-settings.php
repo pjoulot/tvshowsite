@@ -98,6 +98,34 @@ function tvshow_form_system_theme_settings_alter(&$form, FormStateInterface $for
     '#default_value' => theme_get_setting('menu_full_width'),
   ];
 
+  $form['social_media'] = [
+    '#type'          => 'details',
+    '#title'         => t('Social media'),
+    '#description'   => t("Configuration of the URLs of the social media."),
+    '#open' => TRUE,
+  ];
+
+  $form['social_media']['twitter_url'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Twitter'),
+    '#default_value' => theme_get_setting('twitter_url'),
+  ];
+  $form['social_media']['facebook_url'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Facebook'),
+    '#default_value' => theme_get_setting('facebook_url'),
+  ];
+  $form['social_media']['instagram_url'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Instagram'),
+    '#default_value' => theme_get_setting('instagram_url'),
+  ];
+  $form['social_media']['steam_url'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Steam'),
+    '#default_value' => theme_get_setting('steam_url'),
+  ];
+
   $form['#submit'][] = 'tvshow_form_system_theme_settings_submit';
 
 }

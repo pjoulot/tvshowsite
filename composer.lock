@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0df15c062c311b795da14840a010890a",
+    "content-hash": "e4c71c2717f312d1c4f84af14c12abb3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2899,6 +2899,56 @@
             }
         },
         {
+            "name": "drupal/lightgallery",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/lightgallery.git",
+                "reference": "c8049ce5a1250ccfd9fb91028bda9c6aacca9741"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "sachinchoolur/lightgallery": "^1.2.21"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1+2-dev",
+                    "datestamp": "1618833143",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "dietr_ch",
+                    "homepage": "https://www.drupal.org/user/9438"
+                },
+                {
+                    "name": "phjou",
+                    "homepage": "https://www.drupal.org/user/3344054"
+                },
+                {
+                    "name": "robin.ingelbrecht",
+                    "homepage": "https://www.drupal.org/user/2339074"
+                }
+            ],
+            "description": "Integrate the Light Gallery library with Drupal.",
+            "homepage": "https://www.drupal.org/project/lightgallery",
+            "support": {
+                "source": "https://git.drupalcode.org/project/lightgallery"
+            }
+        },
+        {
             "name": "drupal/linkit",
             "version": "6.0.0-beta2",
             "source": {
@@ -4245,28 +4295,29 @@
         },
         {
             "name": "enlightn/security-checker",
-            "version": "v1.7.0",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/enlightn/security-checker.git",
-                "reference": "1ac108ba278ba0c2e71d2ce2ac4fac07ed6e8a29"
+                "reference": "2054fbce2f8df681c8f71b36656222bcd241b77f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/enlightn/security-checker/zipball/1ac108ba278ba0c2e71d2ce2ac4fac07ed6e8a29",
-                "reference": "1ac108ba278ba0c2e71d2ce2ac4fac07ed6e8a29",
+                "url": "https://api.github.com/repos/enlightn/security-checker/zipball/2054fbce2f8df681c8f71b36656222bcd241b77f",
+                "reference": "2054fbce2f8df681c8f71b36656222bcd241b77f",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "ext-zip": "*",
                 "guzzlehttp/guzzle": "^6.3|^7.0",
                 "php": ">=5.6",
                 "symfony/console": "^3.4|^4|^5",
                 "symfony/finder": "^3|^4|^5",
+                "symfony/process": "^3.4|^4|^5",
                 "symfony/yaml": "^3.4|^4|^5"
             },
             "require-dev": {
+                "ext-zip": "*",
                 "friendsofphp/php-cs-fixer": "^2.18",
                 "phpunit/phpunit": "^5.5|^6|^7|^8|^9"
             },
@@ -4304,9 +4355,9 @@
             ],
             "support": {
                 "issues": "https://github.com/enlightn/security-checker/issues",
-                "source": "https://github.com/enlightn/security-checker/tree/v1.7.0"
+                "source": "https://github.com/enlightn/security-checker/tree/v1.8.0"
             },
-            "time": "2021-03-03T11:56:26+00:00"
+            "time": "2021-04-19T07:13:16+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
@@ -5564,35 +5615,6 @@
                 "source": "https://github.com/PhenX/php-font-lib/tree/0.5.2"
             },
             "time": "2020-03-08T15:31:32+00:00"
-        },
-        {
-            "name": "pjoulot/lightgallery",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pjoulot/lightgallery.git",
-                "reference": "d39b9cbe445537bf23d1c624a9fbf9547a13a57a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pjoulot/lightgallery/zipball/d39b9cbe445537bf23d1c624a9fbf9547a13a57a",
-                "reference": "d39b9cbe445537bf23d1c624a9fbf9547a13a57a",
-                "shasum": ""
-            },
-            "require": {
-                "sachinchoolur/lightgallery": "^1.2.21"
-            },
-            "default-branch": true,
-            "type": "drupal-module",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Integrate the Light Gallery library with Drupal.",
-            "support": {
-                "source": "https://github.com/pjoulot/lightgallery/tree/master",
-                "issues": "https://github.com/pjoulot/lightgallery/issues"
-            },
-            "time": "2021-04-17T23:00:15+00:00"
         },
         {
             "name": "psr/container",
@@ -8751,7 +8773,7 @@
         "drupal/rabbit_hole": 10,
         "drupal/time_formatter": 20,
         "drupal/tvi": 5,
-        "pjoulot/lightgallery": 20
+        "drupal/lightgallery": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

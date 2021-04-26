@@ -78,7 +78,7 @@
         "drupal/tvi": "^1.0@RC",
         "drupal/webform": "^6.0",
         "drush/drush": "^10.4",
-        "pjoulot/lightgallery": "dev-master",
+        "drupal/lightgallery": "1.x-dev",
         "sachinchoolur/lightgallery": "1.10.0"
     },
     "conflict": {
@@ -148,6 +148,9 @@
         "patches": {
             "drupal/back_to_top": {
                 "Does not work in Drupal 9: S.easing[this.easing] is not a function": "https://www.drupal.org/files/issues/2021-03-03/3151196_fix_for_D9_no_dependencies.patch"
+            },
+            "drupal/lightgallery": {
+                "Support for Media Image and Video": "https://www.drupal.org/files/issues/2021-04-18/lightgallery-media_support-3204181-8.patch"
             }
         }
     }
