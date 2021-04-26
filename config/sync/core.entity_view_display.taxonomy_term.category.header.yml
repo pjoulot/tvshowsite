@@ -1,16 +1,22 @@
-uuid: 2f5eb894-1915-48c1-90c3-24ef6461205a
+uuid: 25a4be02-50a9-4818-8e8c-9304fec565d7
 langcode: fr
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.taxonomy_term.header
     - field.field.taxonomy_term.category.field_image
     - taxonomy.vocabulary.category
   module:
+    - layout_builder
     - text
-id: taxonomy_term.category.default
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: taxonomy_term.category.header
 targetEntityType: taxonomy_term
 bundle: category
-mode: default
+mode: header
 content:
   description:
     label: hidden
@@ -19,13 +25,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_image:
-    weight: 1
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
 hidden:
+  field_image: true
   langcode: true

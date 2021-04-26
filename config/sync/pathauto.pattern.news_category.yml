@@ -1,0 +1,23 @@
+uuid: 1ba4df0a-1ca4-4441-855d-4d478f7ea596
+langcode: fr
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: news_category
+label: 'News Category'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/actualites/categorie/[term:name]'
+selection_criteria:
+  d58e4877-40ab-4c67-9e03-d68f48dc698b:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      article_category: article_category
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: d58e4877-40ab-4c67-9e03-d68f48dc698b
+selection_logic: and
+weight: -5
+relationships: {  }

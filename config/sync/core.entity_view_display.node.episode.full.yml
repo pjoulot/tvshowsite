@@ -81,7 +81,7 @@ third_party_settings:
               margin_right:
                 class: _none
               margin_bottom:
-                class: _none
+                class: bs-mb-4
               border:
                 border_style:
                   class: null
@@ -132,7 +132,7 @@ third_party_settings:
           section_attributes: null
           regions_classes:
             blb_region_col_1: ''
-            blb_region_col_2: ''
+            blb_region_col_2: site-sidebar
           regions_attributes:
             blb_region_col_1: null
             blb_region_col_2: null

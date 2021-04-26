@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.taxonomy_term.teaser
+    - field.field.taxonomy_term.category.field_image
     - taxonomy.vocabulary.category
   module:
     - layout_builder
@@ -25,4 +26,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_image: true
   langcode: true

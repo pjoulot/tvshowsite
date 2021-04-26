@@ -7,3 +7,4 @@ inline_blocks: {  }
 _core:
   default_config_hash: 4BNh37adxFzXOHsJMz_zuRX5mPzUkDJotmb6dj4rCVw
 langcode: fr
+theme: default

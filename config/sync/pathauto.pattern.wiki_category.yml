@@ -1,0 +1,23 @@
+uuid: 040e7385-f53b-44ba-889f-5d7de07a6b07
+langcode: fr
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: wiki_category
+label: 'Wiki Category'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/wiki/[term:name]'
+selection_criteria:
+  bf633667-a1e9-472c-845d-139a39b63e27:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      category: category
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: bf633667-a1e9-472c-845d-139a39b63e27
+selection_logic: and
+weight: -5
+relationships: {  }
