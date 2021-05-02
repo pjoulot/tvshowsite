@@ -1,0 +1,35 @@
+$el: '.c-wiki-teaser';
+#{$el} {
+  border: solid 1px $border-white-color;
+  @include shadow-box();
+
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__media {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  &__gutter {
+    font-size: .7rem;
+    color: $text-secondary-info;
+    margin-bottom: 5px;
+  }
+  &__title {
+    h2 {
+      font-size: 1.1rem;
+      line-height: 1.1;
+    }
+  }
+
+  &__text {
+    line-height: 1.3;
+  }
+
+  &__content {
+    padding: 10px 15px 10px 30px;
+  }
+}

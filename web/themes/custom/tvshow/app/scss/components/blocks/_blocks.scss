@@ -1,7 +1,3 @@
-.block--tagclouds-blocktags {
-  margin-bottom: $sidebar-block-spacing;
-}
-
 .block--field-blocktaxonomy-termsaisonfield-affiliates-links {
   &>div {
     display: flex;
@@ -10,5 +6,11 @@
     .a-affiliate-button {
       margin-right: 15px;
     }
+  }
+}
+
+.site-sidebar {
+  div[class*="block-type--"] {
+    margin-bottom: $sidebar-block-spacing;
   }
 }

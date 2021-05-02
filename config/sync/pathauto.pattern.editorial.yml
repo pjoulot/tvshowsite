@@ -7,16 +7,16 @@ dependencies:
 id: editorial
 label: Editorial
 type: 'canonical_entities:node'
-pattern: '/[node:field_category:entity:name]/[node:title]'
+pattern: '/wiki/[node:field_category:entity:name]/[node:title]'
 selection_criteria:
-  2f8120c4-10a7-4872-89a8-0ad0a1692f1c:
+  f7f544cb-c064-465d-9c8d-1fb22a87cff1:
     id: node_type
     bundles:
       editorial: editorial
     negate: false
     context_mapping:
       node: node
-    uuid: 2f8120c4-10a7-4872-89a8-0ad0a1692f1c
+    uuid: f7f544cb-c064-465d-9c8d-1fb22a87cff1
 selection_logic: and
 weight: -5
 relationships: {  }

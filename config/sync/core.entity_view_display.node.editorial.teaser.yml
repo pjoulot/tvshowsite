@@ -10,8 +10,10 @@ dependencies:
     - field.field.node.editorial.field_image
     - field.field.node.editorial.field_metatags
     - field.field.node.editorial.field_serie
+    - image.style.wiki_teaser
     - node.type.editorial
   module:
+    - media
     - text
     - user
 id: node.editorial.teaser
@@ -22,20 +24,35 @@ content:
   body:
     label: hidden
     type: text_summary_or_trimmed
-    weight: 101
+    weight: 3
     settings:
-      trim_length: 600
+      trim_length: 200
     third_party_settings: {  }
     region: content
+  field_category:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_image:
+    type: media_thumbnail
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      image_style: wiki_teaser
+      image_link: ''
+    third_party_settings: {  }
   links:
-    weight: 100
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
-  field_category: true
   field_gallery: true
-  field_image: true
   field_metatags: true
   field_serie: true
   langcode: true

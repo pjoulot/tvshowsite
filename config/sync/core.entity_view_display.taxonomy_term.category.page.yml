@@ -6,6 +6,8 @@ dependencies:
     - core.entity_view_mode.taxonomy_term.page
     - field.field.taxonomy_term.category.field_image
     - taxonomy.vocabulary.category
+    - views.view.last_editorial
+    - views.view.other_wiki_categories
     - views.view.wiki
   module:
     - ctools
@@ -62,7 +64,7 @@ third_party_settings:
               margin_right:
                 class: _none
               margin_bottom:
-                class: _none
+                class: bs-mb-5
               border:
                 border_style:
                   class: null
@@ -113,7 +115,7 @@ third_party_settings:
           section_attributes: null
           regions_classes:
             blb_region_col_1: ''
-            blb_region_col_2: ''
+            blb_region_col_2: site-sidebar
           regions_attributes:
             blb_region_col_1: null
             blb_region_col_2: null
@@ -158,6 +160,32 @@ third_party_settings:
                 entity: layout_builder.entity
             additional: {  }
             weight: 0
+          42bc3901-a070-4f4e-929b-ff91808a021a:
+            uuid: 42bc3901-a070-4f4e-929b-ff91808a021a
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:last_editorial-block_1'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 2
+          8c632fb7-a237-487e-949a-35827516c507:
+            uuid: 8c632fb7-a237-487e-949a-35827516c507
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:other_wiki_categories-block_1'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
         third_party_settings: {  }
 id: taxonomy_term.category.page
 targetEntityType: taxonomy_term

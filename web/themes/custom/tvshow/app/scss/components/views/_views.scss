@@ -5,8 +5,6 @@
       text-align: center;
     }
   }
-
-  margin-bottom: $sidebar-block-spacing;
 }
 
 
@@ -51,4 +49,8 @@
     }
   }
 
+}
+
+.view--grid2 {
+  @include grid(2);
 }

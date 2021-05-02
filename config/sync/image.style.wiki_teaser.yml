@@ -1,0 +1,17 @@
+uuid: c02878c6-cc91-4c97-8812-4543da7e64c2
+langcode: fr
+status: true
+dependencies:
+  module:
+    - focal_point
+name: wiki_teaser
+label: 'Wiki teaser'
+effects:
+  a6ead87e-39e2-4f0c-bc90-1c69315bcd4c:
+    uuid: a6ead87e-39e2-4f0c-bc90-1c69315bcd4c
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 100
+      height: 100
+      crop_type: focal_point
