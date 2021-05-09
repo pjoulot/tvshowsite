@@ -151,6 +151,9 @@
             },
             "drupal/lightgallery": {
                 "Support for Media Image and Video": "https://www.drupal.org/files/issues/2021-04-18/lightgallery-media_support-3204181-8.patch"
+            },
+            "drupal/tagclouds": {
+                "Display more is defined in config but the feature is just missing": "https://git.drupalcode.org/project/tagclouds/-/merge_requests/1.patch"
             }
         }
     }
