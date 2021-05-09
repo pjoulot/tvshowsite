@@ -62,11 +62,14 @@
         "drupal/image_effects": "^3.1",
         "drupal/layout_builder_modal": "^1.1",
         "drupal/layout_builder_quick_add": "^1.0@beta",
+        "drupal/lightgallery": "1.x-dev",
         "drupal/linkit": "^6.0.0-beta2",
         "drupal/media_oembed_control": "1.x-dev",
         "drupal/media_responsive_thumbnail": "^1.2",
         "drupal/metatag": "^1.15",
+        "drupal/oembed_providers": "^1.1",
         "drupal/pathauto": "^1.8",
+        "drupal/peertube": "^2.0@beta",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/redirect": "^1.6",
         "drupal/schema_metatag": "^2.1",
@@ -78,7 +81,6 @@
         "drupal/tvi": "^1.0@RC",
         "drupal/webform": "^6.0",
         "drush/drush": "^10.4",
-        "drupal/lightgallery": "1.x-dev",
         "sachinchoolur/lightgallery": "1.10.0"
     },
     "conflict": {
