@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * File containing hooks for tvshow general module.
+ */
+
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
+
+/**
+ * Implements hook_cron().
+ */
+function tvshow_general_cron() {
+  $terms = \Drupal::service('entity_type.manager')
+    ->getStorage("taxonomy_term")
+    ->loadTree('partenaires', 0, NULL, TRUE);
+
+  // Disable all partners with a broken URL.
+  foreach ($terms as $term) {
+    try {
+      $uri = $term->get('field_url')->uri;
+      $response = \Drupal::httpClient()->get($uri, ['headers' => ['Accept' => 'text/plain']]);
+      $data = (string) $response->getStatusCode();
+      $invalid_request = empty($data) || substr($data, 0, 1) !== '2';
+
+      if ($invalid_request) {
+        $term->setUnpublished();
+        $term->save();
+      }
+      // Enable again if the website is back.
+      elseif (!$invalid_request && !$term->isPublished()) {
+        $term->setPublished();
+        $term->save();
+      }
+    }
+    catch (RequestException $e) {
+      $term->setUnpublished();
+      $term->save();
+    }
+    catch (ConnectException $e) {
+      $term->setUnpublished();
+      $term->save();
+    }
+  }
+}
