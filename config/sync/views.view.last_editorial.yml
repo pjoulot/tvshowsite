@@ -179,7 +179,7 @@ display:
       use_more: true
       use_more_always: true
       use_more_text: 'Voir plus'
-      link_url: '#'
+      link_url: /wiki
       link_display: custom_url
     cache_metadata:
       max-age: -1

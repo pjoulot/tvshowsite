@@ -1,0 +1,10 @@
+uuid: b72580dd-b134-42e8-a916-7e97c0e6d464
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.wiki
+label: Wiki
+targetEntityType: node
+cache: true

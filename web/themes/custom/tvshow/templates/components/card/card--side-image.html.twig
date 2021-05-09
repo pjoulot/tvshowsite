@@ -1,0 +1,29 @@
+{% set el = 'c-side-image' %}
+
+<div class="{{ el }}">
+	<div class="{{ el ~ '__inner' }}">
+    <div class="{{ el ~ '__left' }}">
+      <div class="{{ el ~ '__gutter' }}">
+        {% if category|render %}
+          <div class="{{ el ~ '__category' }}">{{ category }}</div>
+        {% endif %}
+        {% if date %}
+          <div class="{{ el ~ '__date' }}">{{ date }}</div>
+        {% endif %}
+      </div>
+      <div class="{{ el ~ '__content' }}">
+        {% if title|render %}
+          <div class="{{ el ~ '__title' }}">{{ title }}</div>
+        {% endif %}
+        {% if author|render %}
+          <div class="{{ el ~ '__author' }}">{{ author }}</div>
+        {% endif %}
+      </div>
+    </div>
+		{% if media|render %}
+			<div class="{{ el ~ '__media' }}">
+				{{ media }}
+			</div>
+		{% endif %}
+	</div>
+</div>

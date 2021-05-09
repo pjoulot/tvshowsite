@@ -1,0 +1,10 @@
+uuid: 03723d77-f84a-49ac-93ca-b24629cfe648
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.side_image
+label: 'Side Image'
+targetEntityType: node
+cache: true

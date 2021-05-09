@@ -1,0 +1,40 @@
+$el: '.c-side-image';
+#{$el} {
+  &__gutter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  &__category {
+    a {
+      display: inline-block;
+      background: lighten(theme-color('primary'), 55%);
+      color: theme-color('primary');
+      padding: 5px 14px;
+      font-size: 14px;
+      font-weight: $font-weight-bold;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  &__date {
+    color: $text-secondary-info;
+    margin-left: 30px;
+  }
+
+  &__media {
+    text-align: center;
+
+    @media (min-width: #{$mobile-screen}) {
+      float: right;
+      margin-left: 25px;
+      margin-bottom: 25px;
+      margin-top: 50px;
+    }
+  }
+
+  margin-bottom: 50px;
+}

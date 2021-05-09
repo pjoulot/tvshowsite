@@ -1,0 +1,15 @@
+uuid: 556ec442-6193-4ccf-9da3-b6f1bfb9f853
+langcode: fr
+status: true
+dependencies: {  }
+name: side_image
+label: 'Side image'
+effects:
+  0e17937f-1e35-4737-b1bf-9dafac253cc9:
+    uuid: 0e17937f-1e35-4737-b1bf-9dafac253cc9
+    id: image_scale
+    weight: 1
+    data:
+      width: 300
+      height: null
+      upscale: false

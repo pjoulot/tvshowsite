@@ -301,7 +301,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Taille
+          label: Size
           exclude: false
           alter:
             alter_text: false
