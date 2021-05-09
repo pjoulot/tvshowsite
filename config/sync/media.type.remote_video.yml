@@ -1,7 +1,12 @@
 uuid: 289d70fc-2cde-4abf-97ec-fc6acb326970
 langcode: fr
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: null
 _core:
   default_config_hash: FvzYbqrSLeKG-eXDngFRYlGe3_f8RaSXPBf3i4jWpa0
 id: remote_video
@@ -14,7 +19,7 @@ source_configuration:
   thumbnails_directory: 'public://oembed_thumbnails'
   providers:
     - YouTube
-    - Vimeo
+    - PeerTube
   source_field: field_media_oembed_video
 field_map:
   title: name

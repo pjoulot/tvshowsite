@@ -54,10 +54,12 @@ module:
   menu_ui: 0
   metatag: 0
   node: 0
+  oembed_providers: 0
   options: 0
   page_cache: 0
   path: 0
   path_alias: 0
+  peertube: 0
   rabbit_hole: 0
   rdf: 0
   redirect: 0

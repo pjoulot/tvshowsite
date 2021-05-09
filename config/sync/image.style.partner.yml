@@ -1,0 +1,15 @@
+uuid: 6a051dc9-bf32-43e6-91f8-8a330bac069b
+langcode: fr
+status: true
+dependencies: {  }
+name: partner
+label: Partner
+effects:
+  39b52c25-91ce-4acd-acdf-966916a0e8d1:
+    uuid: 39b52c25-91ce-4acd-acdf-966916a0e8d1
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 90
+      upscale: false

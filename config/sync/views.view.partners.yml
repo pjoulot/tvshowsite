@@ -3,6 +3,7 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.taxonomy_term.teaser
     - taxonomy.vocabulary.partenaires
   module:
     - taxonomy
@@ -55,6 +56,9 @@ display:
         type: default
       row:
         type: 'entity:taxonomy_term'
+        options:
+          relationship: none
+          view_mode: teaser
       fields:
         name:
           id: name
@@ -131,13 +135,14 @@ display:
             operator_limit_selection: false
             operator_list: {  }
       sorts: {  }
-      title: Partners
+      title: Partenaires
       header: {  }
       footer: {  }
       empty: {  }
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      css_class: view--grid3
     cache_metadata:
       max-age: -1
       contexts:

@@ -1,18 +1,26 @@
-uuid: 19ac2ae5-886c-4131-94e1-f1befc958e8d
+uuid: a2d236ae-9d88-47d7-a054-2c2cbd2ae995
 langcode: fr
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.taxonomy_term.teaser
     - field.field.taxonomy_term.partenaires.field_logo
     - field.field.taxonomy_term.partenaires.field_url
+    - image.style.partner
     - taxonomy.vocabulary.partenaires
   module:
+    - layout_builder
     - link
+    - media
     - text
-id: taxonomy_term.partenaires.default
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: taxonomy_term.partenaires.teaser
 targetEntityType: taxonomy_term
 bundle: partenaires
-mode: default
+mode: teaser
 content:
   description:
     label: hidden
@@ -22,12 +30,12 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_logo:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     weight: 1
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_style: partner
+      image_link: ''
     third_party_settings: {  }
     region: content
   field_url:
@@ -40,7 +48,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    type: link_separate
     region: content
 hidden:
   langcode: true

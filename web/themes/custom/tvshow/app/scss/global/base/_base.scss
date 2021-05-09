@@ -4,22 +4,20 @@ body {
   color: $default-color;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: $font-title;
-  margin-bottom: .7rem;
-}
-
 h1 {
-  margin-bottom: 1.4rem;
+  @include h1();
 }
 
 h2 {
-  font-weight: $font-weight-bold;
-  font-size: 1.8rem;
+  @include h2();
 }
 
 h3 {
-  font-weight: $font-weight-bold;
+  @include h3();
+}
+
+h4 {
+  @include h4();
 }
 
 img {
@@ -114,4 +112,8 @@ img {
 .lightgallery {
   padding: 0;
   list-style-type: none;
+}
+
+.block--field-blocknodepagebody {
+  margin-bottom: 50px;
 }

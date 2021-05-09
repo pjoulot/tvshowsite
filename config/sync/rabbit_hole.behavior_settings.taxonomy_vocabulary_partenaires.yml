@@ -1,0 +1,14 @@
+uuid: 9280d480-2acf-4781-80df-01c860667836
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.partenaires
+id: taxonomy_vocabulary_partenaires
+entity_type_id: taxonomy_vocabulary
+entity_id: partenaires
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

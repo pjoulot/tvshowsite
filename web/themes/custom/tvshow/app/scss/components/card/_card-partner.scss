@@ -1,0 +1,33 @@
+$el: '.c-partner';
+#{$el} {
+  display: block;
+  border: solid 1px $border-white-color;
+  @include shadow-box();
+  text-align: center;
+  padding: 30px;
+
+  &__title {
+    @include h4();
+  }
+
+  &__content {
+    color: $default-color;
+  }
+
+  &__media {
+    margin-bottom: 20px;
+    img {
+      width: auto;
+      transition: all 0.5s ease-out;
+      filter: grayscale(100%);
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    #{$el}__media img {
+      filter: grayscale(0%);
+    }
+  }
+}

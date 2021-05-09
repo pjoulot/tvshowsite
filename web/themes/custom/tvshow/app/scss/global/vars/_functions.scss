@@ -1,4 +1,30 @@
+@mixin heading() {
+  font-family: $font-title;
+  margin-bottom: .7rem;
+}
 
+@mixin h1() {
+  @include heading();
+  margin-bottom: 1.4rem;
+}
+
+@mixin h2() {
+  @include heading();
+  font-weight: $font-weight-bold;
+  font-size: 1.8rem;
+}
+
+@mixin h3() {
+  @include heading();
+  font-weight: $font-weight-bold;
+  font-size: 1.5rem;
+}
+
+@mixin h4() {
+  @include heading();
+  font-weight: $font-weight-bold;
+  font-size: 1.2rem;
+}
 
 /** Override function for buttons **/
 @mixin button ($outline: false, $color: theme-color('primary'), $uppercase: false) {

@@ -7,11 +7,14 @@ dependencies:
     - field.field.node.page.field_metatags
     - field.field.node.page.layout_builder__layout
     - node.type.page
+    - views.view.last_editorial
   module:
     - layout_builder
     - metatag
+    - tagclouds
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     allow_custom: true
@@ -172,6 +175,35 @@ third_party_settings:
                 type: metatag_empty_formatter
             additional: {  }
             weight: 4
+          982d6b31-c6e1-4cfd-b8e1-84880d001b0a:
+            uuid: 982d6b31-c6e1-4cfd-b8e1-84880d001b0a
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:last_editorial-block_1'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 1
+          b9fa479e-ef41-41f3-a76c-b83cd1850e1c:
+            uuid: b9fa479e-ef41-41f3-a76c-b83cd1850e1c
+            region: blb_region_col_2
+            configuration:
+              id: 'tagclouds_block:article_category'
+              label: Mots-Clefs
+              provider: tagclouds
+              label_display: visible
+              cache:
+                max_age: 0
+                contexts: {  }
+              tags: '10'
+              vocabulary: tags
+              context_mapping: {  }
+            additional: {  }
+            weight: 0
         third_party_settings: {  }
 _core:
   default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
