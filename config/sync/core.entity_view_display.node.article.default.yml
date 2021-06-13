@@ -17,7 +17,6 @@ dependencies:
     - layout_builder
     - link
     - metatag
-    - search
     - text
     - user
     - views
@@ -182,18 +181,6 @@ third_party_settings:
                 entity: layout_builder.entity
             additional: {  }
             weight: 6
-          92e63b90-238b-4a54-91c8-43460d4d4ef2:
-            uuid: 92e63b90-238b-4a54-91c8-43460d4d4ef2
-            region: blb_region_col_2
-            configuration:
-              id: search_form_block
-              label: 'Formulaire de recherche'
-              provider: search
-              label_display: '0'
-              page_id: ''
-              context_mapping: {  }
-            additional: {  }
-            weight: 0
           4a4ac6ab-9174-49b5-b75d-3ad9209b861f:
             uuid: 4a4ac6ab-9174-49b5-b75d-3ad9209b861f
             region: blb_region_col_2

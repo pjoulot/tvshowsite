@@ -30,6 +30,7 @@ $el: '.c-news-teaser';
   &__content {
     padding-top: 30px;
     padding-left: 30px;
+    flex-grow: 1;
     border-top: solid 1px $border-white-color;
   }
 }

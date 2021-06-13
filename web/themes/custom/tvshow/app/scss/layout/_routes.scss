@@ -1,0 +1,14 @@
+// Add a container for custom routes.
+.route-layout-builderoverridesnoderevert,
+.route-layout-builderoverridesnodediscard-changes,
+.route-entitywebformcanonical,
+.route-entityusercanonical,
+.route-entity-dialog-formatterdialog-renderer,
+.route-viewsearchpage-1 {
+  .block--system-main-block {
+    @include make-container();
+    @include make-container-max-widths();
+
+    padding-bottom: 60px;
+  }
+}

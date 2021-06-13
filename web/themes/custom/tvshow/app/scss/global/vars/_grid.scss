@@ -2,3 +2,12 @@ $sidebar-block-spacing: 45px;
 
 $mobile-screen: 576px;
 $medium-screen: 720px;
+
+$mobile-gutter: 30px;
+
+@mixin mobile-gutter($fn-breakpoint: $small-screen, $fn-gutter: $mobile-gutter) {
+  @include breakpoint(max-width $fn-breakpoint) {
+    padding-left: $fn-gutter;
+    padding-right: $fn-gutter;
+  }
+}

@@ -161,3 +161,19 @@ function _tvshow_theme_get_social_media() {
   }
   return $links;
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function tvshow_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'search_block_form') {
+    $form['search_block_form']['#attributes']['placeholder'] = t('Search');
+    //unset($form['actions']['submit']);
+    $form['actions']['submit']['#value'] = Html::decodeEntities('&#xf002;');
+    $form['actions']['submit']['#value'] = html_entity_decode('&#xf002;');
+
+    // $form['actions']['button']['#prefix'] = '<button type="submit" value="Search">';
+    // $form['actions']['button']['#suffix'] = '</button>';
+    // $form['actions']['button']['#markup'] = '<i class="fa fa-search"></i>';
+  }
+}

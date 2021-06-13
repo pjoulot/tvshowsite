@@ -94,3 +94,50 @@
     grid-template-columns: 1fr;
   }
 }
+
+@mixin max-width($width) {
+  max-width: $width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin form-focus() {
+  border: solid 1px theme-color('primary');
+}
+
+@mixin has-float-label {
+  // taken from https://github.com/tonystar/bootstrap-float-label/blob/master/bootstrap-float-label.css
+  display: block;
+  position: relative;
+
+  label, & > span {
+    background: white;
+    position: absolute;
+    cursor: text;
+    font-size: 75%;
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    top: -.5em;
+    left: 0.75rem;
+    z-index: 3;
+    line-height: 1;
+    padding: 0 2px;
+  }
+
+  .form-control {
+
+    &::placeholder {
+      opacity: 0;
+      transition: all .2s;
+    }
+
+    &:placeholder-shown:not(:focus) + * {
+      font-size: 100%;
+      color: $input-placeholder-color;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+  }
+
+}

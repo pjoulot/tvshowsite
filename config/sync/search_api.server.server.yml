@@ -1,0 +1,14 @@
+uuid: 4e2ad507-7399-4185-b7a8-775b4037e05c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - search_api_db
+id: server
+name: Server
+description: ''
+backend: search_api_db
+backend_config:
+  database: 'default:default'
+  min_chars: 3
+  matching: partial

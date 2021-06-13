@@ -1,0 +1,65 @@
+$inputs: 'textarea, input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="search"], .StripeElement';
+// In order to avoid messing up the layout builder forms.
+// Any form that need frontend theme should be added in that variable.
+$formsSelector: '.webform-submission-form, .views-exposed-form';
+
+#{$formsSelector} {
+  #{$inputs} {
+    border: 0;
+    margin: 0;
+    appearance: none;
+    border: solid 1px $text-secondary-info;
+    padding: 0;
+    outline: none;
+    padding: 11px 16px;
+    width: 100%;
+    max-width: 100%;
+
+    &:placeholder {
+      color: $text-secondary-info;
+    }
+
+    &:focus {
+      @include form-focus();
+
+      // &:invalid {
+      //   @include form-invalid();
+      // }
+    }
+  }
+
+  .webform-flexbox {
+    margin-bottom: 0;
+  }
+
+  .form-item {
+    margin-bottom: 1em;
+
+    &.js-form-type-processed-text {
+      margin-bottom: 2em;
+    }
+
+    label {
+      font-family: $font-title;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// Search block.
+#views-exposed-form-search-page-1 {
+  &.views-exposed-form {
+    input[type="submit"] {
+      padding: 11px 16px;
+    }
+
+    @media (min-width: #{$mobile-screen}) {
+      display: flex;
+
+      input[type="submit"] {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+

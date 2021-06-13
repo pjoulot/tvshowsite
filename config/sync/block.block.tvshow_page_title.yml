@@ -2,8 +2,10 @@ uuid: 2fd33850-3604-4ccc-880e-c78c0d723426
 langcode: fr
 status: true
 dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.page_title
   module:
-    - ctools
+    - block_visibility_groups
   theme:
     - tvshow
 _core:
@@ -20,11 +22,7 @@ settings:
   provider: core
   label_display: '0'
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      article: article
-      editorial: editorial
-    negate: true
-    context_mapping:
-      node: '@node.node_route_context:node'
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: page_title

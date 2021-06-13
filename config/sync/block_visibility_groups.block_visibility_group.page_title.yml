@@ -1,0 +1,38 @@
+uuid: 448d9af9-d3fb-40b6-ba1c-0b8a2a6d64bb
+langcode: fr
+status: true
+dependencies:
+  module:
+    - ctools
+    - views
+    - views_condition
+    - webform
+id: page_title
+label: 'Page Title'
+logic: or
+conditions:
+  9e631753-5714-4608-92fb-5e46af789b8a:
+    id: webform
+    webforms:
+      contact: contact
+    negate: false
+    context_mapping:
+      webform: '@webform.webform_route_context:webform'
+    uuid: 9e631753-5714-4608-92fb-5e46af789b8a
+  4f645f25-caa3-47ed-bfaf-055727ff5477:
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+      editorial: editorial
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    uuid: 4f645f25-caa3-47ed-bfaf-055727ff5477
+  776ad0c3-e603-413e-9e4f-a52fdeaa6929:
+    id: views_condition
+    application: all_pages
+    views: {  }
+    negate: 0
+    context_mapping: {  }
+    uuid: 776ad0c3-e603-413e-9e4f-a52fdeaa6929
+allow_other_conditions: false
