@@ -4,16 +4,25 @@
 # for pictures hosted elsewhere. Run from the repo root on a machine with open
 # internet access:  bash scripts/fetch_wayback_extras.sh
 # Files land in content/sgu/wayback/ (safe to re-run: existing files are kept).
+# Takes five to ten minutes: the Wayback Machine throttles fast clients.
 set -u
 cd "$(dirname "$0")/.."
 dest=content/sgu/wayback
 ok=0; failed=0
 get() {
-  local file="$dest/$1"
+  local file="$dest/$1" try
   [ -s "$file" ] && { ok=$((ok+1)); return; }
   mkdir -p "$(dirname "$file")"
-  if curl -sSfL --retry 3 --retry-delay 5 --max-time 90 -o "$file" "https://web.archive.org/web/$2id_/$3"; then ok=$((ok+1)); else rm -f "$file"; failed=$((failed+1)); echo "failed: $1"; fi
-  sleep 1
+  # The Wayback Machine refuses connections for a while after a burst of
+  # requests: go slowly, and wait longer after each refusal.
+  for try in 1 2 3 4; do
+    if curl -sSfL --max-time 120 -o "$file" "https://web.archive.org/web/$2id_/$3" 2>/dev/null; then
+      ok=$((ok+1)); sleep 5; return
+    fi
+    rm -f "$file"
+    sleep $((try * 45))
+  done
+  failed=$((failed+1)); echo "failed: $1"
 }
 get 'thumbs/wp-content/uploads/2009/08/2.jpg.png' 20150201050807 'http://www.stargateuniverse.fr/wp-content/themes/church_40/tools/timthumb.php?src=http://www.stargateuniverse.fr/wp-content/uploads/2009/08/2.jpg&h=128&w=188&zc=1'
 get 'thumbs/wp-content/uploads/2011/05/4.jpg.png' 20110701122605 'http://www.stargateuniverse.fr/wp-content/themes/church_40/tools/timthumb.php?src=http://www.stargateuniverse.fr/wp-content/uploads/2011/05/4.jpg&h=128&w=188&zc=1'
@@ -57,4 +66,6 @@ get 'html/home-20140214015932.html' 20140214015932 'http://www.stargateuniverse.
 get 'html/home-20141006163450.html' 20141006163450 'http://www.stargateuniverse.fr:80/'
 get 'html/home-20141225223659.html' 20141225223659 'http://www.stargateuniverse.fr/'
 get 'html/home-20150720215523.html' 20150720215523 'http://www.stargateuniverse.fr:80/'
-echo "Done: $ok fetched or already there, $failed failed. Files are in $dest/"
+# One flat archive next to the folder, easy to hand over.
+tar czf content/sgu/wayback.tar.gz -C content/sgu wayback
+echo "Done: $ok fetched or already there, $failed failed. Files are in $dest/ and content/sgu/wayback.tar.gz"
