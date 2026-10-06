@@ -66,6 +66,7 @@ class ContentPackImporter {
     $log('Episodes ready.');
     $this->pages();
     $this->articles($log);
+    $this->linkEpisodes();
     $this->legacyRedirects();
     $this->indexContent();
     return $this->stats;
@@ -250,10 +251,12 @@ class ContentPackImporter {
   protected function people(): array {
     $jobs = [];
     $bodies = [];
+    $pictures = [];
     foreach ($this->pack['characters'] as $character) {
       if (!empty($character['actor'])) {
         $jobs[$character['actor']]['Interprète'] = TRUE;
         $bodies[$character['actor']] = $character['actor_body'] ?? '';
+        $pictures[$character['actor']] = $character['actor_image'] ?? NULL;
       }
     }
     foreach ($this->pack['episodes'] as $episode) {
@@ -272,6 +275,9 @@ class ContentPackImporter {
       $node->set('field_job', $terms);
       if (!empty($bodies[$name])) {
         $node->set('body', ['value' => $this->html($bodies[$name]), 'format' => 'full_html']);
+      }
+      if (!empty($pictures[$name]) && ($picture = $this->file($pictures[$name]))) {
+        $node->set('field_picture', ['target_id' => $picture, 'alt' => $name]);
       }
       $node->save();
       $this->remember('node', 'people:' . mb_strtolower($name), $node);
@@ -293,6 +299,7 @@ class ContentPackImporter {
       $node->set('field_actor', isset($people[$data['actor']]) ? [$people[$data['actor']]] : []);
       $image = $this->file($data['image'] ?? NULL);
       $node->set('field_image', $image ? ['target_id' => $image, 'alt' => $data['character']] : []);
+      $node->set('field_gallery', $this->images(array_values(array_diff($data['gallery'] ?? [], [$data['image'] ?? ''])), $data['character']));
       // Keeps the old site's cast order on the cast page.
       $node->setCreatedTime($created + $index * 60);
       $node->save();
@@ -320,6 +327,8 @@ class ContentPackImporter {
       $node->set('field_director', array_values(array_filter(array_map(fn($name) => $people[$name] ?? NULL, $data['directors'] ?? []))));
       $node->set('field_writers', array_values(array_filter(array_map(fn($name) => $people[$name] ?? NULL, $data['writers'] ?? []))));
       $node->set('field_guest_stars', $data['guest_cast'] ?? NULL);
+      $viewers = $data['us_viewers_millions'] ?? NULL;
+      $node->set('field_audience', $viewers ? str_replace('.', ',', (string) round($viewers, 2)) . ' million' . ($viewers >= 2 ? 's' : '') . ' de téléspectateurs (États-Unis)' : NULL);
       $node->set('field_synopsis', !empty($data['synopsis']) ? ['value' => $this->html($data['synopsis']), 'format' => 'full_html'] : NULL);
       $image = $this->file($data['image'] ?? NULL);
       $node->set('field_image', $image ? ['target_id' => $image, 'alt' => $title] : []);
@@ -395,6 +404,29 @@ class ContentPackImporter {
       if (($index + 1) % 100 === 0) {
         $log('Articles: ' . ($index + 1) . ' / ' . count($articles));
       }
+    }
+  }
+
+  /**
+   * Attaches to each episode the news posts written about it.
+   */
+  protected function linkEpisodes(): void {
+    $storage = $this->entityTypeManager->getStorage('node');
+    foreach ($this->pack['episodes'] as $data) {
+      $episode_id = $this->map->get(self::key(sprintf('node:episode:%d:%d', $data['season'], $data['number'])));
+      $episode = $episode_id ? $storage->load($episode_id) : NULL;
+      if (!$episode) {
+        continue;
+      }
+      $ids = [];
+      foreach ($data['posts'] ?? [] as $slug) {
+        if ($id = $this->map->get(self::key('node:article:' . $slug))) {
+          $ids[] = $id;
+        }
+      }
+      // Newest first, like every other news list.
+      $episode->set('field_linked_content', array_reverse($ids));
+      $episode->save();
     }
   }
 

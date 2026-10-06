@@ -1,0 +1,2056 @@
+{
+  "sources": {
+    "viewers": [
+      "https://en.wikipedia.org/wiki/List_of_Stargate_Universe_episodes",
+      "https://en.wikipedia.org/wiki/Stargate_Universe_season_1"
+    ],
+    "guest_cast": [
+      "GateWorld episode guide, per-episode pages under https://www.gateworld.net/universe/"
+    ]
+  },
+  "episodes": [
+    {
+      "season": 1,
+      "number": 1,
+      "title_original": "Air (Part 1)",
+      "us_viewers_millions": 2.346,
+      "guest_cast": [
+        {
+          "actor": "Richard Dean Anderson",
+          "character": "Jack O'Neill"
+        },
+        {
+          "actor": "Amanda Tapping",
+          "character": "Samantha Carter"
+        },
+        {
+          "actor": "Michael Shanks",
+          "character": "Daniel Jackson"
+        },
+        {
+          "actor": "Ona Grauer",
+          "character": "Mrs. Young"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Jeremy Franklin"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Martin Christopher",
+          "character": "Major Marks"
+        },
+        {
+          "actor": "Gary Jones",
+          "character": "Walter Harriman"
+        },
+        {
+          "actor": "Bradley Stryker",
+          "character": "Curtis"
+        },
+        {
+          "actor": "Christopher McDonald",
+          "character": "Senator Armstrong"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Glynis Davies",
+          "character": "Maryann Wallace"
+        },
+        {
+          "actor": "Christina Schild",
+          "character": "Andrea Palmer"
+        },
+        {
+          "actor": "Michael Lenic",
+          "character": "Eli's Friend"
+        },
+        {
+          "actor": "Andrew Dunbar",
+          "character": "Marine Cpl. Gorman"
+        },
+        {
+          "actor": "Agam Darshi",
+          "character": "Dr. Sonja Damji"
+        },
+        {
+          "actor": "Jim K. Chan",
+          "character": "Dr. Simms"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/air-part-1/",
+      "viewers_note": "Wikipedia gives a single figure (2.346) for the pilot 'Air'; applied to each part. Part 3 aired a week later (2009-10-09) and has no separate figure."
+    },
+    {
+      "season": 1,
+      "number": 2,
+      "title_original": "Air (Part 2)",
+      "us_viewers_millions": 2.346,
+      "guest_cast": [
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Jeremy Franklin"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Bill Dow",
+          "character": "Dr. Lee"
+        },
+        {
+          "actor": "Bradley Stryker",
+          "character": "Curtis"
+        },
+        {
+          "actor": "Christopher McDonald",
+          "character": "Senator Armstrong"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Christina Schild",
+          "character": "Andrea Palmer"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Andrew Dunbar",
+          "character": "Marine Cpl. Gorman"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/air-part-2/",
+      "viewers_note": "Wikipedia gives a single figure (2.346) for the pilot 'Air'; applied to each part. Part 3 aired a week later (2009-10-09) and has no separate figure."
+    },
+    {
+      "season": 1,
+      "number": 3,
+      "title_original": "Air (Part 3)",
+      "us_viewers_millions": 2.346,
+      "guest_cast": [
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Jeremy Franklin"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/air-part-3/",
+      "viewers_note": "Wikipedia gives a single figure (2.346) for the pilot 'Air'; applied to each part. Part 3 aired a week later (2009-10-09) and has no separate figure."
+    },
+    {
+      "season": 1,
+      "number": 4,
+      "title_original": "Darkness",
+      "us_viewers_millions": 2.099,
+      "guest_cast": [
+        {
+          "actor": "Ona Grauer",
+          "character": "Emily Young"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Franklin"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Hunter Riley"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Michael Karl Richards",
+          "character": "Major Peterson"
+        },
+        {
+          "actor": "Peter DeLuise",
+          "character": "Scientist"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/darkness/"
+    },
+    {
+      "season": 1,
+      "number": 5,
+      "title_original": "Light",
+      "us_viewers_millions": 2.015,
+      "guest_cast": [
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Franklin"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Hunter Riley"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Glynis Davies",
+          "character": "Maryann Wallace"
+        },
+        {
+          "actor": "Dominic Zamprogna",
+          "character": "Boone"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/light/"
+    },
+    {
+      "season": 1,
+      "number": 6,
+      "title_original": "Water",
+      "us_viewers_millions": 1.974,
+      "guest_cast": [
+        {
+          "actor": "Mark Burgess",
+          "character": "Franklin"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Hunter Riley"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Andrew Dunbar",
+          "character": "Marine Cpl. Gorman"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/water/"
+    },
+    {
+      "season": 1,
+      "number": 7,
+      "title_original": "Earth",
+      "us_viewers_millions": 1.626,
+      "guest_cast": [
+        {
+          "actor": "Carlo Rota",
+          "character": "Carl Strom"
+        },
+        {
+          "actor": "Ona Grauer",
+          "character": "Emily Young"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Anna Galvin",
+          "character": "Mrs. Armstrong"
+        },
+        {
+          "actor": "Ryan Kennedy",
+          "character": "Dr. Williams"
+        },
+        {
+          "actor": "Richard Dean Anderson",
+          "character": "Jack O'Neill"
+        },
+        {
+          "actor": "Janelle Monáe",
+          "character": "Herself"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Hunter Riley"
+        },
+        {
+          "actor": "Glynis Davies",
+          "character": "Maryann Wallace"
+        },
+        {
+          "actor": "Mar Andersons",
+          "character": "Major Green"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Alana Husband",
+          "character": "Dr. McCormack"
+        },
+        {
+          "actor": "Sarah Mutch",
+          "character": "Celina"
+        },
+        {
+          "actor": "Carlo Marks",
+          "character": "Andy"
+        },
+        {
+          "actor": "Raquel Riskin",
+          "character": "Mindy"
+        },
+        {
+          "actor": "Kerry James",
+          "character": "Josh"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/earth/"
+    },
+    {
+      "season": 1,
+      "number": 8,
+      "title_original": "Time",
+      "us_viewers_millions": 1.802,
+      "guest_cast": [
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Franklin"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Ryan Booth",
+          "character": "Cpl. Marsden"
+        },
+        {
+          "actor": "Michael Sangha",
+          "character": "Cpl. Lipton"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/time/"
+    },
+    {
+      "season": 1,
+      "number": 9,
+      "title_original": "Life",
+      "us_viewers_millions": 1.891,
+      "guest_cast": [
+        {
+          "actor": "Carlo Rota",
+          "character": "Carl Strom"
+        },
+        {
+          "actor": "Ona Grauer",
+          "character": "Emily Young"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Franklin"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Reiko Aylesworth",
+          "character": "Sharon"
+        },
+        {
+          "actor": "Sarah Smyth",
+          "character": "Annie Balic"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Sandy Sidhu",
+          "character": "Dr. Mehta"
+        },
+        {
+          "actor": "Michael Karl Richards",
+          "character": "Major Peterson"
+        },
+        {
+          "actor": "Dominic Zamprogna",
+          "character": "Boone"
+        },
+        {
+          "actor": "Kyle Horton",
+          "character": "Airman"
+        },
+        {
+          "actor": "Marissa Smith",
+          "character": "Female Airman"
+        },
+        {
+          "actor": "Zak Santiago",
+          "character": "Rivers"
+        },
+        {
+          "actor": "Gordon Grice",
+          "character": "Matt Balic"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/life/"
+    },
+    {
+      "season": 1,
+      "number": 10,
+      "title_original": "Justice",
+      "us_viewers_millions": 1.34,
+      "guest_cast": [
+        {
+          "actor": "Mark Burgess",
+          "character": "Franklin"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Tygh Runyan",
+          "character": "Dr. Caine"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Josh Blacker",
+          "character": "Marine Sgt. Spencer"
+        },
+        {
+          "actor": "Josette Jorge",
+          "character": "Dr. Fisher"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Ronald Thompson",
+          "character": "Airman Rennie"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/justice/"
+    },
+    {
+      "season": 1,
+      "number": 11,
+      "title_original": "Space",
+      "us_viewers_millions": 1.486,
+      "guest_cast": [
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Tygh Runyan",
+          "character": "Dr. Caine"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Rukiya Bernard",
+          "character": "Airman Richmond"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/space/"
+    },
+    {
+      "season": 1,
+      "number": 12,
+      "title_original": "Divided",
+      "us_viewers_millions": 1.6,
+      "guest_cast": [
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Alisen Down",
+          "character": "Dr. Brightman"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Anna Galvin",
+          "character": "Mrs. Armstrong"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/divided/"
+    },
+    {
+      "season": 1,
+      "number": 13,
+      "title_original": "Faith",
+      "us_viewers_millions": 1.422,
+      "guest_cast": [
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Tygh Runyan",
+          "character": "Dr. Caine"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Vincent Gale",
+          "character": "Morrison"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/faith/"
+    },
+    {
+      "season": 1,
+      "number": 14,
+      "title_original": "Human",
+      "us_viewers_millions": 1.313,
+      "guest_cast": [
+        {
+          "actor": "Michael Shanks",
+          "character": "Daniel Jackson"
+        },
+        {
+          "actor": "Suleka Mathew",
+          "character": "Constance"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Louise Lombard",
+          "character": "Gloria Rush"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Chad Krowchuk",
+          "character": "Student"
+        },
+        {
+          "actor": "Ron Halder",
+          "character": "Priest"
+        },
+        {
+          "actor": "Jasmine Chan",
+          "character": "Little Girl"
+        },
+        {
+          "actor": "Melina Ham",
+          "character": "Little Girl's Mother"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/human/"
+    },
+    {
+      "season": 1,
+      "number": 15,
+      "title_original": "Lost",
+      "us_viewers_millions": 1.587,
+      "guest_cast": [
+        {
+          "actor": "Sean Blakemore",
+          "character": "Reginald Greer"
+        },
+        {
+          "actor": "Cameron Shang Forbes",
+          "character": "Young Ronald"
+        },
+        {
+          "actor": "William MacDonald",
+          "character": "Hospital Patient"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Stefanie Samuels",
+          "character": "Angela Greer"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/lost/"
+    },
+    {
+      "season": 1,
+      "number": 16,
+      "title_original": "Sabotage",
+      "us_viewers_millions": 1.391,
+      "guest_cast": [
+        {
+          "actor": "Kathleen Munroe",
+          "character": "Amanda Perry"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Jeremy Franklin"
+        },
+        {
+          "actor": "Reiko Aylesworth",
+          "character": "Sharon"
+        },
+        {
+          "actor": "Catherine Lough Haggquist",
+          "character": "Mary"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Michael Karl Richards",
+          "character": "Major Peterson"
+        },
+        {
+          "actor": "Vera Mendoza-Cuadra",
+          "character": "Airman"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/sabotage/"
+    },
+    {
+      "season": 1,
+      "number": 17,
+      "title_original": "Pain",
+      "us_viewers_millions": 1.554,
+      "guest_cast": [
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Sean Blakemore",
+          "character": "Reginald Greer"
+        },
+        {
+          "actor": "Christopher McDonald",
+          "character": "Alan Armstrong"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        },
+        {
+          "actor": "Ryan Booth",
+          "character": "Cpl. Marsden"
+        },
+        {
+          "actor": "Leanne Adachi",
+          "character": "Cpl. Barnes"
+        },
+        {
+          "actor": "Gordon Grice",
+          "character": "Matt Balic"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/pain/"
+    },
+    {
+      "season": 1,
+      "number": 18,
+      "title_original": "Subversion",
+      "us_viewers_millions": 1.454,
+      "guest_cast": [
+        {
+          "actor": "Rhona Mitra",
+          "character": "Kiva"
+        },
+        {
+          "actor": "Michael Shanks",
+          "character": "Daniel Jackson"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Volker"
+        },
+        {
+          "actor": "Richard Dean Anderson",
+          "character": "Jack O'Neill"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Ian Butcher",
+          "character": "Dannic"
+        },
+        {
+          "actor": "John Murphy",
+          "character": "Olan"
+        },
+        {
+          "actor": "Trevor Carroll",
+          "character": "Staff Sgt. Graham"
+        },
+        {
+          "actor": "Kathryn Kirkpatrick",
+          "character": "Bank Employee"
+        },
+        {
+          "actor": "Ryan Booth",
+          "character": "Cpl. Marsden"
+        },
+        {
+          "actor": "Sean Carey",
+          "character": "Guard"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/subversion/"
+    },
+    {
+      "season": 1,
+      "number": 19,
+      "title_original": "Incursion (Part 1)",
+      "us_viewers_millions": 1.178,
+      "guest_cast": [
+        {
+          "actor": "Rhona Mitra",
+          "character": "Kiva"
+        },
+        {
+          "actor": "Amanda Tapping",
+          "character": "Samantha Carter"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Richard Dean Anderson",
+          "character": "Jack O'Neill"
+        },
+        {
+          "actor": "Michael Shanks",
+          "character": "Dr. Daniel Jackson"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Kirby Morrow",
+          "character": "Bridge Officer"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Patricia Cullen",
+          "character": "Scientist"
+        },
+        {
+          "actor": "Primo Allon",
+          "character": "Koz"
+        },
+        {
+          "actor": "Ilan Srulovicz",
+          "character": "Squad Member"
+        },
+        {
+          "actor": "Ian Butcher",
+          "character": "Dannic"
+        },
+        {
+          "actor": "Conan Graham",
+          "character": "Calvos"
+        },
+        {
+          "actor": "Ken Tran",
+          "character": "Chen"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/incursion-part-1/"
+    },
+    {
+      "season": 1,
+      "number": 20,
+      "title_original": "Incursion (Part 2)",
+      "us_viewers_millions": 1.469,
+      "guest_cast": [
+        {
+          "actor": "Rhona Mitra",
+          "character": "Kiva"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Primo Allon",
+          "character": "Koz"
+        },
+        {
+          "actor": "Conan Graham",
+          "character": "Calvos"
+        },
+        {
+          "actor": "Ian Butcher",
+          "character": "Dannic"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Ken Tran",
+          "character": "Chen"
+        },
+        {
+          "actor": "Zak Santiago",
+          "character": "Rivers"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s1/incursion-part-2/"
+    },
+    {
+      "season": 2,
+      "number": 1,
+      "title_original": "Intervention",
+      "us_viewers_millions": 1.175,
+      "guest_cast": [
+        {
+          "actor": "Julie McNiven",
+          "character": "Ginn"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Caroline Cave",
+          "character": "Dana"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Tygh Runyan",
+          "character": "Caine"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Alisen Down",
+          "character": "Dr. Brightman"
+        },
+        {
+          "actor": "Tobias Slezak",
+          "character": "Peter"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Robert Knepper",
+          "character": "Simeon"
+        },
+        {
+          "actor": "Ian Butcher",
+          "character": "Dannic"
+        },
+        {
+          "actor": "Rob Hayter",
+          "character": "Alliance Soldier"
+        },
+        {
+          "actor": "Primo Allon",
+          "character": "Koz"
+        },
+        {
+          "actor": "Ash Lee",
+          "character": "Alliance Tech"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/intervention/"
+    },
+    {
+      "season": 2,
+      "number": 2,
+      "title_original": "Aftermath",
+      "us_viewers_millions": 1.07,
+      "guest_cast": [
+        {
+          "actor": "Louise Lombard",
+          "character": "Gloria"
+        },
+        {
+          "actor": "Julie McNiven",
+          "character": "Ginn"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Haig Sutherland",
+          "character": "Sgt. Hunter Riley"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Jeremy Franklin"
+        },
+        {
+          "actor": "Robert Knepper",
+          "character": "Simeon"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        },
+        {
+          "actor": "Elfina Y. Luk",
+          "character": "Marine"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Primo Allon",
+          "character": "Koz"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/aftermath/"
+    },
+    {
+      "season": 2,
+      "number": 3,
+      "title_original": "Awakening",
+      "us_viewers_millions": 1.222,
+      "guest_cast": [
+        {
+          "actor": "Louise Lombard",
+          "character": "Gloria Rush"
+        },
+        {
+          "actor": "Julie McNiven",
+          "character": "Ginn"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Robert Knepper",
+          "character": "Simeon"
+        },
+        {
+          "actor": "Leanne Adachi",
+          "character": "Cpl. Barnes"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        },
+        {
+          "actor": "Ryan Booth",
+          "character": "Cpl. Marsden"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Marie-Eve Boudreau",
+          "character": "Alien Reference"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/awakening/"
+    },
+    {
+      "season": 2,
+      "number": 4,
+      "title_original": "Pathogen",
+      "us_viewers_millions": 0.974,
+      "guest_cast": [
+        {
+          "actor": "Reiko Aylesworth",
+          "character": "Sharon Walker"
+        },
+        {
+          "actor": "Louise Lombard",
+          "character": "Gloria Rush"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Franklin"
+        },
+        {
+          "actor": "Alisen Down",
+          "character": "Dr. Brightman"
+        },
+        {
+          "actor": "Robert Knepper",
+          "character": "Simeon"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Glynis Davies",
+          "character": "Maryann Wallace"
+        },
+        {
+          "actor": "Leanne Adachi",
+          "character": "Cpl. Barnes"
+        },
+        {
+          "actor": "Colin Bremner",
+          "character": "Airman Tracy"
+        },
+        {
+          "actor": "Haley Beauchamp",
+          "character": "Female Airman"
+        },
+        {
+          "actor": "Primo Allon",
+          "character": "Koz"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/pathogen/"
+    },
+    {
+      "season": 2,
+      "number": 5,
+      "title_original": "Cloverdale",
+      "us_viewers_millions": 1.012,
+      "guest_cast": [
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Cole Humphrey",
+          "character": "Movie Scott"
+        },
+        {
+          "actor": "Mittita Barber",
+          "character": "Movie Chloe"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Darren Becker"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/cloverdale/"
+    },
+    {
+      "season": 2,
+      "number": 6,
+      "title_original": "Trial and Error",
+      "us_viewers_millions": 0.967,
+      "guest_cast": [
+        {
+          "actor": "Julie McNiven",
+          "character": "Ginn"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Mark Burgess",
+          "character": "Jeremy Franklin"
+        },
+        {
+          "actor": "Leanne Adachi",
+          "character": "Cpl. Barnes"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        },
+        {
+          "actor": "Ryan Booth",
+          "character": "Cpl. Marsden"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Darren Becker"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/trial-and-error/"
+    },
+    {
+      "season": 2,
+      "number": 7,
+      "title_original": "The Greater Good",
+      "us_viewers_millions": 1.074,
+      "guest_cast": [
+        {
+          "actor": "Julie McNiven",
+          "character": "Ginn"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Robert Knepper",
+          "character": "Simeon"
+        },
+        {
+          "actor": "Kathleen Munroe",
+          "character": "Amanda Perry"
+        },
+        {
+          "actor": "Leanne Adachi",
+          "character": "Cpl. Barnes"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/the-greater-good/"
+    },
+    {
+      "season": 2,
+      "number": 8,
+      "title_original": "Malice",
+      "us_viewers_millions": 1.025,
+      "guest_cast": [
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Julie McNiven",
+          "character": "Ginn"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Robert Knepper",
+          "character": "Simeon"
+        },
+        {
+          "actor": "Leanne Adachi",
+          "character": "Cpl. Barnes"
+        },
+        {
+          "actor": "Darcy Laurie",
+          "character": "Airman Dunning"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/malice/"
+    },
+    {
+      "season": 2,
+      "number": 9,
+      "title_original": "Visitation",
+      "us_viewers_millions": 1.169,
+      "guest_cast": [
+        {
+          "actor": "Tygh Runyan",
+          "character": "Caine"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Tobias Slezak",
+          "character": "Peter"
+        },
+        {
+          "actor": "Camille Sullivan",
+          "character": "Val"
+        },
+        {
+          "actor": "Michelle Harrison",
+          "character": "Rachel"
+        },
+        {
+          "actor": "Vincent Gale",
+          "character": "Morrison"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/visitation/"
+    },
+    {
+      "season": 2,
+      "number": 10,
+      "title_original": "Resurgence",
+      "us_viewers_millions": 1.094,
+      "guest_cast": [
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Jacob Blair",
+          "character": "Cpl. Baras"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/resurgence/"
+    },
+    {
+      "season": 2,
+      "number": 11,
+      "title_original": "Deliverance",
+      "us_viewers_millions": 1.035,
+      "guest_cast": [
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "Vanessa James"
+        },
+        {
+          "actor": "Jacob Blair",
+          "character": "Cpl. Baras"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/deliverance/"
+    },
+    {
+      "season": 2,
+      "number": 12,
+      "title_original": "Twin Destinies",
+      "us_viewers_millions": 0.928,
+      "guest_cast": [
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Bill Dow",
+          "character": "Bill Lee"
+        },
+        {
+          "actor": "Jeffrey Bowyer-Chapman",
+          "character": "Pvt. Darren Becker"
+        },
+        {
+          "actor": "Michael Karl Richards",
+          "character": "Major Peterson"
+        },
+        {
+          "actor": "Michael Cound",
+          "character": "Twinning Double"
+        },
+        {
+          "actor": "Dan Pelchat",
+          "character": "Twinning Double"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/twin-destinies/"
+    },
+    {
+      "season": 2,
+      "number": 13,
+      "title_original": "Alliances",
+      "us_viewers_millions": 0.814,
+      "guest_cast": [
+        {
+          "actor": "Kathleen Quinlan",
+          "character": "Senator Michaels"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Morgan David Jones",
+          "character": "Airman Evans"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "French Stewart",
+          "character": "Andrew Covel"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/alliances/"
+    },
+    {
+      "season": 2,
+      "number": 14,
+      "title_original": "Hope",
+      "us_viewers_millions": 0.876,
+      "guest_cast": [
+        {
+          "actor": "Julie McNiven",
+          "character": "Ginn"
+        },
+        {
+          "actor": "Kathleen Munroe",
+          "character": "Amanda Perry"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Vincent Gale",
+          "character": "Morrison"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/hope/"
+    },
+    {
+      "season": 2,
+      "number": 15,
+      "title_original": "Seizure",
+      "us_viewers_millions": 0.823,
+      "guest_cast": [
+        {
+          "actor": "Victor Garber",
+          "character": "Ambassador Ovirda"
+        },
+        {
+          "actor": "David Hewlett",
+          "character": "Rodney McKay"
+        },
+        {
+          "actor": "Robert Picardo",
+          "character": "Richard Woolsey"
+        },
+        {
+          "actor": "Kathleen Munroe",
+          "character": "Amanda Perry"
+        },
+        {
+          "actor": "Julie McNiven",
+          "character": "Ginn"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Richard Beauchamp",
+          "character": "Soldier"
+        },
+        {
+          "actor": "Daren Herbert",
+          "character": "Captain"
+        },
+        {
+          "actor": "John Shaw",
+          "character": "Administrator"
+        },
+        {
+          "actor": "Adam Thomas",
+          "character": "Airman"
+        },
+        {
+          "actor": "Jackie Blackmore",
+          "character": "Worker"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/seizure/"
+    },
+    {
+      "season": 2,
+      "number": 16,
+      "title_original": "The Hunt",
+      "us_viewers_millions": 1.02,
+      "guest_cast": [
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Greyston Holt",
+          "character": "Corporal Reynolds"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Vincent Gale",
+          "character": "Morrison"
+        },
+        {
+          "actor": "Kyra Zagorsky",
+          "character": "Tasia"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/the-hunt/"
+    },
+    {
+      "season": 2,
+      "number": 17,
+      "title_original": "Common Descent",
+      "us_viewers_millions": 0.861,
+      "guest_cast": [
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Reilly Dolman",
+          "character": "Jason"
+        },
+        {
+          "actor": "Katie Findlay",
+          "character": "Ellie"
+        },
+        {
+          "actor": "August Schellenburg",
+          "character": "Yaozu"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/common-descent/"
+    },
+    {
+      "season": 2,
+      "number": 18,
+      "title_original": "Epilogue",
+      "us_viewers_millions": 1.092,
+      "guest_cast": [
+        {
+          "actor": "August Schellenburg",
+          "character": "Yaozu"
+        },
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Reilly Dolman",
+          "character": "Jason"
+        },
+        {
+          "actor": "Katie Findlay",
+          "character": "Ellie"
+        },
+        {
+          "actor": "Leanne Adachi",
+          "character": "Cpl. Barnes"
+        },
+        {
+          "actor": "Shaughnessy Redden",
+          "character": "Steven"
+        },
+        {
+          "actor": "Lane Edwards",
+          "character": "Matthew Wallace"
+        },
+        {
+          "actor": "Shauna Johannesen",
+          "character": "Sara"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/epilogue/"
+    },
+    {
+      "season": 2,
+      "number": 19,
+      "title_original": "Blockade",
+      "us_viewers_millions": 0.993,
+      "guest_cast": [
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Vincent Gale",
+          "character": "Morrison"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/blockade/"
+    },
+    {
+      "season": 2,
+      "number": 20,
+      "title_original": "Gauntlet",
+      "us_viewers_millions": 1.134,
+      "guest_cast": [
+        {
+          "actor": "Mike Dopud",
+          "character": "Varro"
+        },
+        {
+          "actor": "Jennifer Spence",
+          "character": "Lisa Park"
+        },
+        {
+          "actor": "Patrick Gilmore",
+          "character": "Dale Volker"
+        },
+        {
+          "actor": "Peter Kelamis",
+          "character": "Adam Brody"
+        },
+        {
+          "actor": "Julia Benson",
+          "character": "2nd Lt. Vanessa James"
+        },
+        {
+          "actor": "Vincent Gale",
+          "character": "Morrison"
+        },
+        {
+          "actor": "Anna Galvin",
+          "character": "Mrs. Armstrong"
+        }
+      ],
+      "guest_cast_source": "https://www.gateworld.net/universe/s2/gauntlet/"
+    }
+  ]
+}

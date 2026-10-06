@@ -100,7 +100,11 @@
     "/episodes/episode-01-air-part-1",
     "/galerie/saison-1/episode-01-air",
     "/galerie/making-off/episode-1-air-part-1"
-   ]
+   ],
+   "posts": [
+    "extrait-de-lepisode-1-air"
+   ],
+   "us_viewers_millions": 2.346
   },
   {
    "season": 1,
@@ -218,7 +222,9 @@
     "/episodes/episode-02-air-part-2",
     "/galerie/saison-1/episode-02-air-part-2",
     "/galerie/making-off/episode-02-air-part-2"
-   ]
+   ],
+   "us_viewers_millions": 2.346,
+   "posts": []
   },
   {
    "season": 1,
@@ -277,7 +283,13 @@
     "/episodes/episode-03-air-part-3",
     "/galerie/saison-1/episode-03-air-part-3",
     "/galerie/making-off/episode-3-air-part-3"
-   ]
+   ],
+   "posts": [
+    "photos-promos-de-lepisode-3-air-part-3-de-sgu",
+    "audience-de-lepisode-3-air-part-3",
+    "sous-titres-de-lepisode-3-air-part-3"
+   ],
+   "us_viewers_millions": 2.346
   },
   {
    "season": 1,
@@ -332,7 +344,13 @@
     "/episodes/episode-04-darkness",
     "/galerie/saison-1/episode-04-darkness",
     "/galerie/making-off/episode-04-darkness"
-   ]
+   ],
+   "posts": [
+    "trailer-de-lepisode-4-darkness",
+    "extrait-de-lepisode-4-darkness",
+    "sous-titres-vostfr-de-lepisode-4-darkness"
+   ],
+   "us_viewers_millions": 2.099
   },
   {
    "season": 1,
@@ -348,8 +366,10 @@
    ],
    "synopsis": "<p>Le Destiny se dirige toujours vers un soleil et l’atteindra d’ici. La navette est le seul moyen pour quitter le vaisseau et rejoindre l’une des planète potentiellement habitable mais elle ne peut emporter que 17 personnes. Le colonel Young décide donc de tirer au sort 15 noms, les 2 autres personnes étant nommés par lui même (en raison des compétences nécessaires au pilotage et à la survie). Par soucis d’équité il se retire volontairement du tirage. Un peu plus tard, Camile Wray demande au colonel de revenir sur sa décision et de nommer lui même toutes les personnes mais elle ne pense en réalité qu’à elle même.</p><p>L’ensemble de l’équipage est résigné, Eli décide d’envoyer un kino dans l’espace comme un message dans une bouteille. Rush annonce au colonel qu’il renonce aussi à participer au tirage et lui demande quels sont les deux noms qu’il a choisit lui même. Young lui répond qu’il a choisit Matthew Scott pour le pilotage de la navette et Tamara Johansen pour ses connaissances médicales. Rush lui suggère alors de saboter le tirage mais Young s’y refuse.</p><p>Tout le monde attend dans la salle de la porte le déroulement du tirage, si le nom de l’un d’entre eux est appelé il doit monter immédiatement et rejoindre la navette. Parmi le 15 noms tirés au sort : le soldat Darren Becker, David Walters, Camile Wray, le lieutenant Vanessa James, le Dr. Lisa Park, Adam Brody, le Sergent Hunter Riley (à qui Eli remet le kino pour le larguer dans l’espace), le Dr. Bone. Spencer proteste en disant qu’il y a plus de place dans la navette mais Greer l’assomme.</p><p>Scott fait décoller la navette, le kino retransmet les images et pour la première fois les occupant du Destiny voient leur vaisseau de l’extérieur. Puis tout le monde attend la fin : certains jouent aux cartes, d’autres prient. Il est plus de minuit à bord de la navette lorsque Riley réalise que c’est son anniversaire. Sur le Destiny c’est un véritable coup de théâtre, le vaisseau est encore entier alors qu’il aurait dut exploser il y a longtemps et l’énergie revient progressivement. Rush découvre alors que ce n’est pas un hasard : le vaisseau puise directement son énergie du soleil ! Dès que les communications reviennent, Young contacte la navette et ordonne leur retour mais un problème se pose : il est impossible de rejoindre le Destiny car ce dernier va trop vite. Ils entament une manœuvre autour de la planète pour se servir de la force gravitationnelle et accélérer. Tant bien que mal Scott finit par s’arrimer au vaisseau.</p>",
    "guest_cast": "Peter Kelamis (Adam Brody), Mark Burgess (Jeremy Franklin), Jennifer Spence (Lisa Park), Julia Anderson (Vanessa James), Haig Sutherland (Sergent Hunter Riley), Josh Blacker (Spencer), Jeffrey Bowyer-Chapman (Darren Becker).",
-   "image": "wp-content/uploads/2009/10/s1e05.jpg",
-   "promo": [],
+   "image": "wp-content/uploads/2009/10/trailer_s1e05.jpg",
+   "promo": [
+    "wp-content/uploads/2009/10/trailer_s1e05.jpg"
+   ],
    "backstage": [
     "wp-content/gallery/mo-episode-05-light/large-fullsize-sgu0105-0603xb.jpg",
     "wp-content/gallery/mo-episode-05-light/large-fullsize-sgu0105-0081xb.jpg"
@@ -358,7 +378,14 @@
     "/episodes/episode-5-light",
     "/galerie/saison-1/episode-05-light",
     "/galerie/making-off/episode-05-light"
-   ]
+   ],
+   "posts": [
+    "photos-promos-de-lepisode-5-light",
+    "trailer-de-lepisode-5-light",
+    "extrait-de-lepisode-5-light",
+    "sous-titres-de-lepisode-5-light"
+   ],
+   "us_viewers_millions": 2.015
   },
   {
    "season": 1,
@@ -375,7 +402,7 @@
     "Carl Binder"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Mark Burgess (Franklin), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Volker), Haig Sutherland (Hunter Riley), Josh Blacker (Marine Sgt. Spencer), Andrew Dunbar (Marine Cpl. Gorman).",
    "image": "wp-content/gallery/episode-06-water/large-fullsize-sgu0106-0021xe.jpg",
    "promo": [
     "wp-content/gallery/episode-06-water/large-fullsize-sgu0106-0021xe.jpg",
@@ -442,7 +469,14 @@
    "legacy": [
     "/galerie/saison-1/episode-06-water",
     "/galerie/making-off/episode-06-water"
-   ]
+   ],
+   "posts": [
+    "extrait-de-lepisode-6-water",
+    "trailer-de-lepisode-6-water",
+    "sous-titres-de-lepisode-6-water",
+    "les-photos-making-off-de-lepisode-6-water"
+   ],
+   "us_viewers_millions": 1.974
   },
   {
    "season": 1,
@@ -459,7 +493,7 @@
     "Martin Gero"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Carlo Rota (Carl Strom), Ona Grauer (Emily Young), Peter Kelamis (Adam Brody), Anna Galvin (Mrs. Armstrong), Ryan Kennedy (Dr. Williams), Richard Dean Anderson (Jack O'Neill), Janelle Monáe (Herself), Haig Sutherland (Hunter Riley), Glynis Davies (Maryann Wallace), Mar Andersons (Major Green), Patrick Gilmore (Volker), Alana Husband (Dr. McCormack), Sarah Mutch (Celina), Carlo Marks (Andy), Raquel Riskin (Mindy), Kerry James (Josh).",
    "image": "wp-content/gallery/episode-07-earth/large-fullsize-sgu0107-0015xe.jpg",
    "promo": [
     "wp-content/gallery/episode-07-earth/large-fullsize-sgu0107-0015xe.jpg",
@@ -507,13 +541,23 @@
     "wp-content/gallery/episode-07-earth/large-fullsize-sgu0107-0981xe.jpg",
     "wp-content/gallery/episode-07-earth/large-fullsize-sgu0107-1005xe.jpg",
     "wp-content/gallery/episode-07-earth/large-fullsize-sgu0107-1030xe.jpg",
-    "wp-content/gallery/episode-07-earth/large-fullsize-sgu0107-1063xe.jpg"
+    "wp-content/gallery/episode-07-earth/large-fullsize-sgu0107-1063xe.jpg",
+    "wp-content/uploads/2009/10/photos_promos_s1e07.jpg",
+    "wp-content/uploads/2009/10/trailer_s1e07.jpg"
    ],
    "backstage": [],
    "legacy": [
     "/galerie/saison-1/episode-17-earth",
     "/galerie/making-off/episode-07-earth"
-   ]
+   ],
+   "posts": [
+    "photos-promos-de-lepisode-7-earth",
+    "trailer-de-lepisode-7-earth",
+    "extrait-de-lepisode-7-earth",
+    "sous-titres-vostfr-de-lepisode-7-earth",
+    "les-photos-making-off-de-l’episode-7-«-earth-»"
+   ],
+   "us_viewers_millions": 1.626
   },
   {
    "season": 1,
@@ -528,7 +572,7 @@
     "Robert C. Cooper"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Peter Kelamis (Adam Brody), Mark Burgess (Franklin), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Volker), Josh Blacker (Marine Sgt. Spencer), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Ryan Booth (Cpl. Marsden), Michael Sangha (Cpl. Lipton).",
    "image": "wp-content/gallery/episode-08-time/large-fullsize-sgu0108-0078xe.jpg",
    "promo": [
     "wp-content/gallery/episode-08-time/large-fullsize-sgu0108-0078xe.jpg",
@@ -542,7 +586,8 @@
     "wp-content/gallery/episode-08-time/large-fullsize-sgu0108-0596xe.jpg",
     "wp-content/gallery/episode-08-time/large-fullsize-sgu0108-0623xe.jpg",
     "wp-content/gallery/episode-08-time/large-fullsize-sgu0108-0628xe.jpg",
-    "wp-content/gallery/episode-08-time/large-fullsize-sgu0108-0683xe.jpg"
+    "wp-content/gallery/episode-08-time/large-fullsize-sgu0108-0683xe.jpg",
+    "wp-content/uploads/2009/11/photo_promo_s1e08.jpg"
    ],
    "backstage": [
     "wp-content/gallery/mo-episode-08-time/large-fullsize-sgu0108-0001xb.jpg",
@@ -572,7 +617,15 @@
    "legacy": [
     "/galerie/saison-1/episode-08-time",
     "/galerie/making-off/episode-08-time"
-   ]
+   ],
+   "posts": [
+    "photos-promos-de-lepisode-8-time",
+    "trailer-de-lepisode-8-time",
+    "sous-titres-vostfr-de-l’episode-8-«-time-»",
+    "les-photos-making-off-de-lepisode-8-time",
+    "de-nouvelles-photos-promos-de-lepisode-8-time"
+   ],
+   "us_viewers_millions": 1.802
   },
   {
    "season": 1,
@@ -587,7 +640,7 @@
     "Carl Binder"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Carlo Rota (Carl Strom), Ona Grauer (Emily Young), Peter Kelamis (Adam Brody), Mark Burgess (Franklin), Jennifer Spence (Lisa Park), Reiko Aylesworth (Sharon), Sarah Smyth (Annie Balic), Patrick Gilmore (Volker), Julia Benson (2nd Lt. Vanessa James), Josh Blacker (Marine Sgt. Spencer), Sandy Sidhu (Dr. Mehta), Michael Karl Richards (Major Peterson), Dominic Zamprogna (Boone), Kyle Horton (Airman), Marissa Smith (Female Airman), Zak Santiago (Rivers), Gordon Grice (Matt Balic).",
    "image": "wp-content/gallery/episode-09-life/large-fullsize-sgu0109-0006xe.jpg",
    "promo": [
     "wp-content/gallery/episode-09-life/large-fullsize-sgu0109-0006xe.jpg",
@@ -624,7 +677,9 @@
     "wp-content/gallery/episode-09-life/large-fullsize-sgu0109-0626xe.jpg",
     "wp-content/gallery/episode-09-life/large-fullsize-sgu0109-0640xe.jpg",
     "wp-content/gallery/episode-09-life/large-fullsize-sgu0109-0667xe.jpg",
-    "wp-content/gallery/episode-09-life/large-fullsize-sgu0109-0673xe.jpg"
+    "wp-content/gallery/episode-09-life/large-fullsize-sgu0109-0673xe.jpg",
+    "wp-content/uploads/2009/11/photos_promos_s1e09.jpg",
+    "wp-content/uploads/2009/11/photos_promos_2_s1e09.jpg"
    ],
    "backstage": [
     "wp-content/gallery/mo-episode-09-life/large-fullsize-sgu0109-0002xb.jpg",
@@ -636,12 +691,23 @@
     "wp-content/gallery/mo-episode-09-life/large-fullsize-sgu0109-0344xb.jpg",
     "wp-content/gallery/mo-episode-09-life/large-fullsize-sgu0109-0347xb.jpg",
     "wp-content/gallery/mo-episode-09-life/large-fullsize-sgu0109-0356xb.jpg",
-    "wp-content/gallery/mo-episode-09-life/large-fullsize-sgu0109-0556xb.jpg"
+    "wp-content/gallery/mo-episode-09-life/large-fullsize-sgu0109-0556xb.jpg",
+    "wp-content/uploads/2009/11/photos_making_off_s1e09.jpg"
    ],
    "legacy": [
     "/galerie/saison-1/episode-09-life",
     "/galerie/making-off/episode-09-life"
-   ]
+   ],
+   "posts": [
+    "extrait-de-lepisode-9-time",
+    "photos-promos-de-lepisode-9-life",
+    "trailer-de-lepisode-9-life",
+    "extrait-de-lepisode-9-life",
+    "sous-titres-vostfr-de-l’episode-9-«-life-»",
+    "les-photos-making-off-de-l’episode-9-«-life-»",
+    "deux-nouvelles-photos-promos-de-lepisode-9-life"
+   ],
+   "us_viewers_millions": 1.891
   },
   {
    "season": 1,
@@ -656,10 +722,22 @@
     "Alan McCullough"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Mark Burgess (Franklin), Peter Kelamis (Adam Brody), Tygh Runyan (Dr. Caine), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Volker), Josh Blacker (Marine Sgt. Spencer), Josette Jorge (Dr. Fisher), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Ronald Thompson (Airman Rennie).",
+   "image": "wp-content/uploads/2009/08/1.jpg",
+   "promo": [
+    "wp-content/uploads/2009/08/1.jpg",
+    "wp-content/uploads/2009/11/photos_promos_s1e10.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "extrait-de-lepisode-10-justice",
+    "trailer-de-lepisode-10-justice",
+    "photos-promos-de-lepisode-10-justice",
+    "sous-titres-vostfr-de-lepisode-10-justice",
+    "les-photos-making-off-de-l’episode-10-«-justice-»",
+    "nouvelles-photos-promos-de-l’episode-10-«-justice-»"
+   ],
+   "us_viewers_millions": 1.34
   },
   {
    "season": 1,
@@ -675,10 +753,18 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Peter Kelamis (Adam Brody), Tygh Runyan (Dr. Caine), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Rukiya Bernard (Airman Richmond), Darcy Laurie (Airman Dunning).",
+   "image": "wp-content/uploads/2011/01/alien2.jpg",
+   "promo": [
+    "wp-content/uploads/2011/01/alien2.jpg",
+    "wp-content/uploads/2011/01/222718180-1.jpeg"
+   ],
+   "backstage": [],
+   "posts": [
+    "retour-de-sgu-sur-syfy-trailer-de-lepisode-11",
+    "saison-1-episode-11-les-aliens-en-images"
+   ],
+   "us_viewers_millions": 1.486
   },
   {
    "season": 1,
@@ -694,10 +780,23 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Peter Kelamis (Adam Brody), Alisen Down (Dr. Brightman), Jennifer Spence (Lisa Park), Anna Galvin (Mrs. Armstrong), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Volker), Darcy Laurie (Airman Dunning).",
+   "image": "wp-content/uploads/2010/03/divided_02.jpg",
+   "promo": [
+    "wp-content/uploads/2010/03/divided_02.jpg",
+    "wp-content/uploads/2010/03/divided_04.jpg",
+    "wp-content/uploads/2010/03/divided5.jpg",
+    "wp-content/uploads/2010/04/a6f3068bd3ae0c70ce9eb8052994eec21.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "photos-promo-saison-1-episode-12",
+    "resume-episode-12-et-nouveau-trailer",
+    "trailer-episode-12-divided",
+    "divided-21-photos-promos",
+    "divided-un-nouveau-trailer-plus-long-de-lepisode-12"
+   ],
+   "us_viewers_millions": 1.6
   },
   {
    "season": 1,
@@ -712,10 +811,21 @@
     "Denis McGrath"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Peter Kelamis (Adam Brody), Tygh Runyan (Dr. Caine), Jennifer Spence (Lisa Park), Patrick Gilmore (Volker), Vincent Gale (Morrison), Julia Benson (2nd Lt. Vanessa James), Darcy Laurie (Airman Dunning).",
+   "image": "wp-content/uploads/2010/04/3fae41462475a2af64d914546ec85d26.jpg",
+   "promo": [
+    "wp-content/uploads/2010/04/3fae41462475a2af64d914546ec85d26.jpg"
+   ],
+   "backstage": [
+    "wp-content/uploads/2010/04/preview-FullSize-sgu0113-0581xb.jpg"
+   ],
+   "posts": [
+    "videos-promo-episode-13-faith",
+    "faith-42-photos-promo-et-resume",
+    "faith-lenvers-du-decor-en-images",
+    "faith-sous-titres-vo-et-vf"
+   ],
+   "us_viewers_millions": 1.422
   },
   {
    "season": 1,
@@ -730,10 +840,21 @@
     "Jeff Vlaming"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Michael Shanks (Daniel Jackson), Suleka Mathew (Constance), Peter Kelamis (Adam Brody), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Volker), Louise Lombard (Gloria Rush), Haig Sutherland (Sgt. Hunter Riley), Chad Krowchuk (Student), Ron Halder (Priest), Jasmine Chan (Little Girl), Melina Ham (Little Girl's Mother).",
+   "image": "wp-content/uploads/2010/04/c142191bb9bfbddc7d59c13adec2a045.jpg",
+   "promo": [
+    "wp-content/uploads/2010/04/c142191bb9bfbddc7d59c13adec2a045.jpg",
+    "wp-content/uploads/2010/04/2630851db402fb8bb416287e630aa61e.jpg",
+    "wp-content/uploads/2010/04/d03c8119ea3e764f52dab85cf3de0786.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "human-29-photos-promo-et-trailer-officiel",
+    "nouvelle-video-de-lepisode-14-human",
+    "human-sous-titres-vo-et-vf",
+    "human-7-nouvelles-images"
+   ],
+   "us_viewers_millions": 1.313
   },
   {
    "season": 1,
@@ -748,10 +869,19 @@
     "Martin Gero"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Sean Blakemore (Reginald Greer), Cameron Shang Forbes (Young Ronald), William MacDonald (Hospital Patient), Julia Benson (2nd Lt. Vanessa James), Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Haig Sutherland (Sgt. Hunter Riley), Stefanie Samuels (Angela Greer).",
+   "image": "wp-content/uploads/2010/04/fb879d0529ad35a08f4715b8604e15b9.jpg",
+   "promo": [
+    "wp-content/uploads/2010/04/fb879d0529ad35a08f4715b8604e15b9.jpg",
+    "wp-content/uploads/2010/04/c88b9c9f243117021756b513e5f534ed.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "episode-15-lost-29-photos-promo-et-resume",
+    "episode-15-lost-nouvelle-video-promo",
+    "lost-sous-titres-vo-et-vf"
+   ],
+   "us_viewers_millions": 1.587
   },
   {
    "season": 1,
@@ -766,10 +896,17 @@
     "Barbara Marshall"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Kathleen Munroe (Amanda Perry), Julia Benson (2nd Lt. Vanessa James), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Mark Burgess (Jeremy Franklin), Reiko Aylesworth (Sharon), Catherine Lough Haggquist (Mary), Haig Sutherland (Sgt. Hunter Riley), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Michael Karl Richards (Major Peterson), Vera Mendoza-Cuadra (Airman).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "episode-16-sabotage-27-photos-promo",
+    "sneak-peek-episode-16-sabotage",
+    "sabotage-decouvrez-le-second-sneak-peek",
+    "sabotage-sous-titres-vo-et-vf"
+   ],
+   "us_viewers_millions": 1.391
   },
   {
    "season": 1,
@@ -784,10 +921,16 @@
     "Carl Binder"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Volker), Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Sean Blakemore (Reginald Greer), Christopher McDonald (Alan Armstrong), Haig Sutherland (Sgt. Hunter Riley), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Darcy Laurie (Airman Dunning), Ryan Booth (Cpl. Marsden), Leanne Adachi (Cpl. Barnes), Gordon Grice (Matt Balic).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "video-sneak-peek-episode-17-pain",
+    "pain-nouvelle-video-promo",
+    "sous-titres-vostfr-episode-17-pain"
+   ],
+   "us_viewers_millions": 1.554
   },
   {
    "season": 1,
@@ -803,10 +946,18 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
+   "guest_cast": "Rhona Mitra (Kiva), Michael Shanks (Daniel Jackson), Mike Dopud (Varro), Peter Kelamis (Adam Brody), Patrick Gilmore (Volker), Richard Dean Anderson (Jack O'Neill), Haig Sutherland (Sgt. Hunter Riley), Ian Butcher (Dannic), John Murphy (Olan), Trevor Carroll (Staff Sgt. Graham), Kathryn Kirkpatrick (Bank Employee), Ryan Booth (Cpl. Marsden), Sean Carey (Guard).",
+   "image": "wp-content/uploads/2010/05/preview-FullSize-sgu0118-0001xx-150x150.jpg",
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "resume-episode-18-sabotage",
+    "trailer-video-et-photos-promo-episode-18-subversion",
+    "subversion-nouvelle-video-episode-18",
+    "episode-18-subversion-sous-titres-vostfr",
+    "subversion-le-making-off-en-images"
+   ],
+   "us_viewers_millions": 1.454
   },
   {
    "season": 1,
@@ -822,10 +973,23 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Rhona Mitra (Kiva), Amanda Tapping (Samantha Carter), Mike Dopud (Varro), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Richard Dean Anderson (Jack O'Neill), Michael Shanks (Dr. Daniel Jackson), Haig Sutherland (Sgt. Hunter Riley), Kirby Morrow (Bridge Officer), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Patricia Cullen (Scientist), Primo Allon (Koz), Ilan Srulovicz (Squad Member), Ian Butcher (Dannic), Conan Graham (Calvos), Ken Tran (Chen).",
+   "image": "wp-content/uploads/2010/05/preview-FullSize-sgu0118-0071xe1.jpg",
+   "promo": [
+    "wp-content/uploads/2010/05/preview-FullSize-sgu0118-0071xe1.jpg",
+    "wp-content/uploads/2010/05/incursion.jpg",
+    "wp-content/uploads/2010/05/large-FullSize-sgu0119-0068xe.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "trailer-video-episode-19-incursion",
+    "episode-19-incursion-nouvelle-video-promo",
+    "episode-19-resume-et-photos-promo",
+    "episode-19-decouvrez-une-nouvelle-video-promo",
+    "saison-1-episode-19-une-nouvelle-serie-de-photos-promo",
+    "saison-1-episode-19-sous-titres-vostfr"
+   ],
+   "us_viewers_millions": 1.178
   },
   {
    "season": 1,
@@ -841,10 +1005,17 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Rhona Mitra (Kiva), Mike Dopud (Varro), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Primo Allon (Koz), Conan Graham (Calvos), Ian Butcher (Dannic), Haig Sutherland (Sgt. Hunter Riley), Julia Benson (2nd Lt. Vanessa James), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Ken Tran (Chen), Zak Santiago (Rivers).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "saison-1-episode-20-video-promo-season-finale",
+    "saison-1-episode-20-nouveau-video-sneak-peek",
+    "saison-1-episode-20-resume-et-spoilers",
+    "saison-1-episode-20-sous-titres-vo"
+   ],
+   "us_viewers_millions": 1.469
   },
   {
    "season": 2,
@@ -860,10 +1031,16 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Julie McNiven (Ginn), Mike Dopud (Varro), Caroline Cave (Dana), Peter Kelamis (Adam Brody), Tygh Runyan (Caine), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Alisen Down (Dr. Brightman), Tobias Slezak (Peter), Haig Sutherland (Sgt. Hunter Riley), Robert Knepper (Simeon), Ian Butcher (Dannic), Rob Hayter (Alliance Soldier), Primo Allon (Koz), Ash Lee (Alliance Tech).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "photos-promos-saison-2-episode-1-intervention",
+    "trailer-video-saison-2-episode-1",
+    "saison-2-episode-1-sous-titres-vostfr"
+   ],
+   "us_viewers_millions": 1.175
   },
   {
    "season": 2,
@@ -878,10 +1055,17 @@
     "Robert C. Cooper"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Louise Lombard (Gloria), Julie McNiven (Ginn), Mike Dopud (Varro), Haig Sutherland (Sgt. Hunter Riley), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Julia Benson (2nd Lt. Vanessa James), Jennifer Spence (Lisa Park), Mark Burgess (Jeremy Franklin), Robert Knepper (Simeon), Darcy Laurie (Airman Dunning), Elfina Y. Luk (Marine), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Primo Allon (Koz).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "photos-promos-saison-2-episode-2-aftermath",
+    "saison-2-episode-2-trailer-video-et-photos-promo",
+    "saison-2-episode-2-sous-titres-vostfr",
+    "video-effets-speciaux-saison-2-episode-2"
+   ],
+   "us_viewers_millions": 1.07
   },
   {
    "season": 2,
@@ -897,10 +1081,16 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
+   "guest_cast": "Louise Lombard (Gloria Rush), Julie McNiven (Ginn), Mike Dopud (Varro), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Robert Knepper (Simeon), Leanne Adachi (Cpl. Barnes), Darcy Laurie (Airman Dunning), Ryan Booth (Cpl. Marsden), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Marie-Eve Boudreau (Alien Reference).",
+   "image": "wp-content/uploads/2010/10/0b11552355a01ee8fc5b2aff0d4037ef1.jpeg",
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "trailer-video-saison-2-episode-3-awakenings",
+    "saison-2-episode-3-photos-promo-et-sneak-peek",
+    "sous-titres-vostfr-saison-2-episode-3-awakenings"
+   ],
+   "us_viewers_millions": 1.222
   },
   {
    "season": 2,
@@ -915,10 +1105,16 @@
     "Carl Binder"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Reiko Aylesworth (Sharon Walker), Louise Lombard (Gloria Rush), Peter Kelamis (Adam Brody), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Mark Burgess (Franklin), Alisen Down (Dr. Brightman), Robert Knepper (Simeon), Mike Dopud (Varro), Glynis Davies (Maryann Wallace), Leanne Adachi (Cpl. Barnes), Colin Bremner (Airman Tracy), Haley Beauchamp (Female Airman), Primo Allon (Koz).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "saison-2-episode-4-photos-promos-et-trailer-video",
+    "saison-2-episode-4-nouveau-trailer-video",
+    "sous-titres-vostfr-saison-2-episode-4-pathogen"
+   ],
+   "us_viewers_millions": 0.974
   },
   {
    "season": 2,
@@ -933,10 +1129,20 @@
     "Brad Wright"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Dale Volker), Cole Humphrey (Movie Scott), Mittita Barber (Movie Chloe), Jeffrey Bowyer-Chapman (Darren Becker).",
+   "image": "wp-content/uploads/2010/10/fullsize-sgu0205-x229xe.jpeg",
+   "promo": [
+    "wp-content/uploads/2010/10/fullsize-sgu0205-x229xe.jpeg",
+    "wp-content/uploads/2010/10/fullsize-sgu0205-0187xe1.jpeg"
+   ],
+   "backstage": [],
+   "posts": [
+    "saison-2-premiere-news-sur-lepisode-5",
+    "saison-2-episode-5-photos-promo-et-sneak-peek",
+    "video-trailer-saison-2-episode-5",
+    "saison-2-episode-5-sous-titres-vostfr"
+   ],
+   "us_viewers_millions": 1.012
   },
   {
    "season": 2,
@@ -952,10 +1158,18 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Julie McNiven (Ginn), Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Patrick Gilmore (Dale Volker), Julia Benson (2nd Lt. Vanessa James), Mark Burgess (Jeremy Franklin), Leanne Adachi (Cpl. Barnes), Darcy Laurie (Airman Dunning), Ryan Booth (Cpl. Marsden), Jeffrey Bowyer-Chapman (Darren Becker).",
+   "image": "wp-content/uploads/2010/10/fullsize-sgu0206-0146xe.jpeg",
+   "promo": [
+    "wp-content/uploads/2010/10/fullsize-sgu0206-0146xe.jpeg"
+   ],
+   "backstage": [],
+   "posts": [
+    "saison-2-episode-6-photos-promos-trailer-video",
+    "video-sneak-peek-saison-2-episode-6-trial-and-error",
+    "saison-2-episode-6-sous-titres-vostfr"
+   ],
+   "us_viewers_millions": 0.967
   },
   {
    "season": 2,
@@ -970,10 +1184,17 @@
     "Carl Binder"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Julie McNiven (Ginn), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Robert Knepper (Simeon), Kathleen Munroe (Amanda Perry), Leanne Adachi (Cpl. Barnes), Darcy Laurie (Airman Dunning).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "saison-2-episode-7-photos-promo",
+    "video-trailer-saison-2-episode-7-the-greater-good",
+    "saison-2-episode-7-photos-et-videos-backstage",
+    "saison-2-episode-7-sous-titres-vo"
+   ],
+   "us_viewers_millions": 1.074
   },
   {
    "season": 2,
@@ -988,10 +1209,21 @@
     "Robert C. Cooper"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Mike Dopud (Varro), Julie McNiven (Ginn), Julia Benson (2nd Lt. Vanessa James), Jennifer Spence (Lisa Park), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Robert Knepper (Simeon), Leanne Adachi (Cpl. Barnes), Darcy Laurie (Airman Dunning).",
+   "image": "wp-content/uploads/2010/03/c.jpg",
+   "promo": [
+    "wp-content/uploads/2010/03/c.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "saison-2-titre-episode-8-et-recapitulatif",
+    "spoilers-saison-2-episode-8-malice",
+    "photos-promo-saison-2-episode-8-malice",
+    "sneak-peek-video-saison-2-episode-8-malice",
+    "trailer-video-saison-2-episode-8-malice",
+    "saison-2-episode-8-sous-titres-vostfr"
+   ],
+   "us_viewers_millions": 1.025
   },
   {
    "season": 2,
@@ -1006,10 +1238,16 @@
     "Remi Aubuchon"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Tygh Runyan (Caine), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Tobias Slezak (Peter), Camille Sullivan (Val), Michelle Harrison (Rachel), Vincent Gale (Morrison).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "photos-et-trailer-video-saison-2-episode-9-visitation",
+    "sneak-peek-video-saison-2-episode-9-visitation",
+    "saison-2-episode-9-sous-titres-vostfr"
+   ],
+   "us_viewers_millions": 1.169
   },
   {
    "season": 2,
@@ -1025,10 +1263,18 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
+   "guest_cast": "Mike Dopud (Varro), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Jacob Blair (Cpl. Baras).",
    "image": null,
    "promo": [],
-   "backstage": []
+   "backstage": [],
+   "posts": [
+    "saison-2-episode-10-malozzi-annonce-la-couleur",
+    "photos-promo-saison-2-episode-10-resurgence",
+    "trailer-video-saison-2-episode-10-resurgence",
+    "video-sneak-peek-saison-2-episode-10-resurgence",
+    "photos-behind-the-scenes-saison-2-episode-10-resurgence"
+   ],
+   "us_viewers_millions": 1.094
   },
   {
    "season": 2,
@@ -1044,10 +1290,22 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Patrick Gilmore (Dale Volker), Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Julia Benson (Vanessa James), Jacob Blair (Cpl. Baras).",
+   "image": "wp-content/uploads/2011/03/fullsize-sgu0211-0096xe1.jpg",
+   "promo": [
+    "wp-content/uploads/2011/03/fullsize-sgu0211-0096xe1.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "photos-promo-saison-2-episode-11-deliverance",
+    "spoiler-saison-2-episode-11-deliverance",
+    "photos-promo-saison-2-episode-11-deliverance-2",
+    "sneak-peek-saison-2-episode-11-deliverance",
+    "trailer-saison-2-episode-11-deliverance",
+    "saison-2-episode-11-sous-titres-vostfr",
+    "photos-effets-speciaux-saison-2-episode-11-deliverance"
+   ],
+   "us_viewers_millions": 1.035
   },
   {
    "season": 2,
@@ -1062,10 +1320,22 @@
     "Brad Wright"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Mike Dopud (Varro), Patrick Gilmore (Dale Volker), Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Bill Dow (Bill Lee), Jeffrey Bowyer-Chapman (Pvt. Darren Becker), Michael Karl Richards (Major Peterson), Michael Cound (Twinning Double), Dan Pelchat (Twinning Double).",
+   "image": "wp-content/uploads/2011/03/fullsize-sgu0212-0084xe1.jpg",
+   "promo": [
+    "wp-content/uploads/2011/03/fullsize-sgu0212-0084xe1.jpg"
+   ],
+   "backstage": [
+    "wp-content/uploads/2011/03/212-fx17.jpg"
+   ],
+   "posts": [
+    "photos-promo-saison-2-episode-12-twin-destinies",
+    "sneak-peek-saison-2-episode-12-–-twin-destinies",
+    "saison-2-episode-12-twin-destinies-trailer-video",
+    "photos-effets-speciaux-–-saison-2-episode-12-twin-destinies",
+    "sous-titres-vostfr-saison-2-episode-12-twin-destinies"
+   ],
+   "us_viewers_millions": 0.928
   },
   {
    "season": 2,
@@ -1080,10 +1350,18 @@
     "Linda McGibney"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Kathleen Quinlan (Senator Michaels), Mike Dopud (Varro), Morgan David Jones (Airman Evans), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), French Stewart (Andrew Covel).",
+   "image": "wp-content/uploads/2011/03/3.jpg",
+   "promo": [
+    "wp-content/uploads/2011/03/3.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "episode-13-saison-2-titre-revele-et-nouvelle-interview",
+    "trailer-video-saison-2-episode-13-–-alliances",
+    "sous-titres-vostfr-–-saison-2-episode-13-alliances"
+   ],
+   "us_viewers_millions": 0.814
   },
   {
    "season": 2,
@@ -1098,10 +1376,19 @@
     "Carl Binder"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Julie McNiven (Ginn), Kathleen Munroe (Amanda Perry), Patrick Gilmore (Dale Volker), Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Vincent Gale (Morrison).",
+   "image": "wp-content/uploads/2011/03/21.jpg",
+   "promo": [
+    "wp-content/uploads/2011/03/21.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "photos-promo-saison-2-episode-14-–-hope",
+    "sneak-peek-saison-2-episode-14-–-hope",
+    "trailer-video-saison-2-episode-14-–-hope",
+    "sous-titres-vostfr-–-saison-2-episode-14-hope"
+   ],
+   "us_viewers_millions": 0.876
   },
   {
    "season": 2,
@@ -1116,10 +1403,19 @@
     "Remi Aubuchon"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Victor Garber (Ambassador Ovirda), David Hewlett (Rodney McKay), Robert Picardo (Richard Woolsey), Kathleen Munroe (Amanda Perry), Julie McNiven (Ginn), Julia Benson (2nd Lt. Vanessa James), Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Patrick Gilmore (Dale Volker), Richard Beauchamp (Soldier), Daren Herbert (Captain), John Shaw (Administrator), Adam Thomas (Airman), Jackie Blackmore (Worker).",
+   "image": "wp-content/uploads/2011/03/32.jpg",
+   "promo": [
+    "wp-content/uploads/2011/03/32.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "photos-promo-saison-2-episode-15-–-seizure",
+    "sneak-peek-saison-2-episode-15-–-seizure",
+    "trailer-video-saison-2-episode-15-–-seizure",
+    "sous-titres-vostfr-–-saison-2-episode-15-seizure"
+   ],
+   "us_viewers_millions": 0.823
   },
   {
    "season": 2,
@@ -1135,10 +1431,19 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Mike Dopud (Varro), Patrick Gilmore (Dale Volker), Julia Benson (2nd Lt. Vanessa James), Greyston Holt (Corporal Reynolds), Peter Kelamis (Adam Brody), Jennifer Spence (Lisa Park), Vincent Gale (Morrison), Kyra Zagorsky (Tasia).",
+   "image": "wp-content/uploads/2011/04/3.jpg",
+   "promo": [
+    "wp-content/uploads/2011/04/3.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "saison-2-deux-mini-videos-de-lepisode-16-the-hunt",
+    "sneak-peek-saison-2-episode-16-the-hunt",
+    "trailer-video-saison-2-episode-16-–-the-hunt",
+    "sous-titres-vostfr-–-saison-2-episode-16-the-hunt"
+   ],
+   "us_viewers_millions": 1.02
   },
   {
    "season": 2,
@@ -1153,10 +1458,20 @@
     "Robert C. Cooper"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Reilly Dolman (Jason), Katie Findlay (Ellie), August Schellenburg (Yaozu).",
+   "image": "wp-content/uploads/2011/04/21.jpg",
+   "promo": [
+    "wp-content/uploads/2011/04/21.jpg",
+    "wp-content/uploads/2011/04/31.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "photos-promo-saison-2-episode-17-common-descent",
+    "trailer-video-saison-2-episode-17-–-common-descent",
+    "sneak-peek-saison-2-episode-17-common-descent",
+    "sous-titres-vostfr-–-saison-2-episode-17-–-common-descent"
+   ],
+   "us_viewers_millions": 0.861
   },
   {
    "season": 2,
@@ -1171,10 +1486,22 @@
     "Carl Binder"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "August Schellenburg (Yaozu), Mike Dopud (Varro), Peter Kelamis (Adam Brody), Patrick Gilmore (Dale Volker), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Reilly Dolman (Jason), Katie Findlay (Ellie), Leanne Adachi (Cpl. Barnes), Shaughnessy Redden (Steven), Lane Edwards (Matthew Wallace), Shauna Johannesen (Sara).",
+   "image": "wp-content/uploads/2011/04/12.jpg",
+   "promo": [
+    "wp-content/uploads/2011/04/12.jpg",
+    "wp-content/uploads/2011/04/43.jpg",
+    "wp-content/uploads/2011/04/22.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "photos-promo-saison-2-episode-18-epilogue",
+    "sneak-peek-saison-2-episode-18-epilogue",
+    "trailer-video-saison-2-episode-18-epilogue",
+    "photos-effets-speciaux-saison-2-episode-18-–-epilogue",
+    "sous-titres-vostfr-–-saison-2-episode-18-epilogue"
+   ],
+   "us_viewers_millions": 1.092
   },
   {
    "season": 2,
@@ -1189,10 +1516,20 @@
     "Linda McGibney"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Mike Dopud (Varro), Jennifer Spence (Lisa Park), Julia Benson (2nd Lt. Vanessa James), Patrick Gilmore (Dale Volker), Peter Kelamis (Adam Brody), Vincent Gale (Morrison).",
+   "image": "wp-content/uploads/2011/04/13.jpg",
+   "promo": [
+    "wp-content/uploads/2011/04/13.jpg",
+    "wp-content/uploads/2011/04/23.jpg"
+   ],
+   "backstage": [],
+   "posts": [
+    "photos-promo-saison-2-episode-19-blockade",
+    "sneak-peek-saison-2-episode-19-blockade",
+    "trailer-video-saison-2-episode-19-blockade",
+    "sous-titres-vostfr-–-saison-2-episode-19-blockade"
+   ],
+   "us_viewers_millions": 0.993
   },
   {
    "season": 2,
@@ -1208,10 +1545,29 @@
     "Paul Mullie"
    ],
    "synopsis": "",
-   "guest_cast": null,
-   "image": null,
-   "promo": [],
-   "backstage": []
+   "guest_cast": "Mike Dopud (Varro), Jennifer Spence (Lisa Park), Patrick Gilmore (Dale Volker), Peter Kelamis (Adam Brody), Julia Benson (2nd Lt. Vanessa James), Vincent Gale (Morrison), Anna Galvin (Mrs. Armstrong).",
+   "image": "wp-content/uploads/2011/05/2.jpg",
+   "promo": [
+    "wp-content/uploads/2011/05/2.jpg",
+    "wp-content/uploads/2011/05/5.jpg",
+    "wp-content/uploads/2011/05/3.jpg",
+    "wp-content/uploads/2011/05/1.jpg"
+   ],
+   "backstage": [
+    "wp-content/uploads/2011/05/FX1.jpg",
+    "wp-content/uploads/2011/05/FX15.jpg",
+    "wp-content/uploads/2011/05/FX8.jpg",
+    "wp-content/uploads/2011/05/FX6.jpg"
+   ],
+   "posts": [
+    "photos-promo-saison-2-episode-20-gauntlet",
+    "sneak-peek-saison-2-episode-20-gauntlet",
+    "trailer-video-saison-2-episode-20-gauntlet",
+    "video-promo-saison-2-episode-20-gauntlet",
+    "photos-effets-speciaux-saison-2-episode-20-gauntlet",
+    "sous-titres-vostfr-–-saison-2-episode-20-gauntlet"
+   ],
+   "us_viewers_millions": 1.134
   }
  ],
  "characters": [
@@ -1221,11 +1577,18 @@
     "/equipe/nicholas-rush-robert-carlyle",
     "/casting/nicholas-rush-robert-carlyle"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/carlyle_as_nicholas_rush1.jpg",
+    "wp-content/gallery/casting-saison-1/carlyle_as_nicholas_rush2.jpg",
+    "wp-content/gallery/casting-saison-1/carlyle_as_nicholas_rush3.jpg",
+    "wp-content/gallery/casting-saison-1/carlyle_as_nicholas_rush4.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/carlyle_as_nicholas_rush4.jpg",
    "character": "Nicholas Rush",
    "actor": "Robert Carlyle",
    "character_body": "<p>Scientifique brillant du vaisseau animé d’un esprit machiavélique que Joseph Mallozzi a tout d’abord appelé Dr. David Rush dans son blog vers la mi-novembre 2008. L’équipage du vaisseau croit que Rush est en train de perdre la tête, mais en fait il a toujours une raison pour ses actions. Mallozzi rectifia les rapports de distribution vers la mi-décembre 2008 en disant que Rush «n’est pas le leader de l’expédition improvisée. Cet honneur incombe au Colonel Everett Young. Pour le moment. Mais les choses peuvent changer à bord du vaisseau opéré par un groupe disparate dont chaque membre a des préoccupations très différentes…» Rush est le seul personnage principal confirmé qui n’a pas été mis dans les ébauches initiales de casting.</p>",
    "actor_body": "<p>Robert Carlyle est un acteur écossais né à Glasgow le 14 avril 1961. Après avoir débuté au théâtre et à la télévision en tant qu’acteur mais aussi peintre et décorateur, il fait ses premiers pas au cinéma sous la direction de Ken Loach dans <em>Riff Raff</em> en 1990, avec qui il tourne à nouveau dans <em>Carla’s Song</em> en 1996. C’est grâce à sa participation dans d’importants films britanniques de la fin des années 1990 (<em>Trainspotting</em>, <em>Full Monty</em>) qu’il acquiert une réputation mondiale. Il apparaît dès lors de plus en plus dans des productions hollywoodiennes (<em>Le monde ne suffit pas</em>, <em>La plage</em>) sans toutefois délaisser les films britanniques. Il a tourné de nombreux films avec le réalisateur Danny Boyle.</p>",
-   "image": null
+   "image": "wp-content/gallery/casting-saison-1/carlyle_as_nicholas_rush1.jpg"
   },
   {
    "slug": "everett-young",
@@ -1233,6 +1596,12 @@
     "/equipe/everett-young-justin-louis",
     "/casting/everett-young-justin-louis"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/ferreira_as_everettyoung1.jpg",
+    "wp-content/gallery/casting-saison-1/ferreira_as_everettyoung2.jpg",
+    "wp-content/gallery/casting-saison-1/ferreira_as_everettyoung3.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/ferreira_as_everettyoung3.jpg",
    "character": "Everett Young",
    "actor": "Justin Louis",
    "character_body": "<p>Décrit dans l’ébauche initiale comme «beau, compétent, ancien leader d’une équipe SG» dans la quarantaine et ayant le grade de Colonel. Il est un peu «le Jack O’Neill d’il y a dix ans» bien qu’il ait des abords plus difficiles. Au début de <em>Stargate Universe</em>, il a été marié pendant deux ans et est le commandant par intérim d’une base secrète hors Terre.</p>",
@@ -1245,6 +1614,11 @@
     "/equipe/eli-wallace-david-blue",
     "/casting/eli-wallace-david-blue"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/blue_as_eli_wallace1.jpg",
+    "wp-content/gallery/casting-saison-1/blue_as_eli_wallace2.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/blue_as_eli_wallace2.jpg",
    "character": "Eli Wallace",
    "actor": "David Blue",
    "character_body": "<p>Appelé Eli Hitchcock dans l’appel de distribution, Eli Wallace est un «tire-au-flanc de première» du haut de ses vingt ans tout juste atteints et un «génie extrème» en mathématiques, ordinateur et dans d’autres domaines. Il est un rejeté social avec un «sens acerbe de l’humour», et manque de confiance en ses capacités. L’ébauche de personnages le compare au «personnage de Matt Damon dans <em>Will Hunting</em> avec un peu de Jack Black en plus». Il sera la principale source de la partie comique de la série.</p>",
@@ -1257,6 +1631,12 @@
     "/equipe/matthew-scott-brian-j-smith",
     "/casting/matthew-scott-brian-j-smith"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/smith_as_matthew_scott1.jpg",
+    "wp-content/gallery/casting-saison-1/smith_as_matthew_scott2.jpg",
+    "wp-content/gallery/casting-saison-1/smith_as_matthew_scott3.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/smith_as_matthew_scott3.jpg",
    "character": "Matthew Scott",
    "actor": "Brian J. Smith",
    "character_body": "<p>Un jeune membre du SGC talentueux et bien entrainé de vingt ans tenant le grade de Lieutenant. Il est «mentalement non préparé à l’urgence de la situation» à l’intérieur du vaisseau. Il était nommé Jared Nash dans l’appel de distribution initial.</p>",
@@ -1269,6 +1649,12 @@
     "/equipe/ronald-greer-jamil-walker-smith",
     "/casting/ronald-greer-jamil-walker-smith"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/jamil_smith_as_ronald_greer1.jpg",
+    "wp-content/gallery/casting-saison-1/jamil_smith_as_ronald_greer2.jpg",
+    "wp-content/gallery/casting-saison-1/jamil_smith_as_ronald_greer3.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/jamil_smith_as_ronald_greer3.jpg",
    "character": "Ronald Greer",
    "actor": "Jamil Walker Smith",
    "character_body": "<p>Nommé dans les premiers documents de distribution Ron « Psycho » Stasiak, Ronald Greer est un Marine «grand, fort, silencieux» âgé de 20 ans avec un passé mystérieux, qui a du mal à contrôler son tempérament dans des situations hors combat. l’ébauche des personnages le compare au personnage d’Eric Bana (« Hoot ») dans <em>La chute du faucon noir</em>. Il a le grade de Master sergeant.</p>",
@@ -1281,6 +1667,11 @@
     "/equipe/chloe-armstrong",
     "/casting/chloe-armstrong"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/levesque_as_chloe_armstrong.jpg",
+    "wp-content/gallery/casting-saison-1/levesque_as_chloe_armstrong3.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/levesque_as_chloe_armstrong3.jpg",
    "character": "Chloe Armstrong",
    "actor": "Elyse Levesque",
    "character_body": "",
@@ -1293,6 +1684,12 @@
     "/equipe/tamara-johansen-alaina-huffman",
     "/casting/tamara-johansen-alaina-huffman"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/huffman_as_tamara_johansen1.jpg",
+    "wp-content/gallery/casting-saison-1/huffman_as_tamara_johansen2.jpg",
+    "wp-content/gallery/casting-saison-1/huffman_as_tamara_johansen3.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/huffman_as_tamara_johansen3.jpg",
    "character": "Tamara Johansen",
    "actor": "Alaina Huffman",
    "character_body": "<p>Appelée Tamara Jon dans l’ébauche des personnages, elle est une aide-médicale du SGC d’environ vingt ans avec une expérience du terrain hors de la Terre. Elle vient d’un milieu modeste, pourtant elle est «belle, forte, intelligente, compétente». Au début de la série, elle est dépassée par son manque de connaissances et d’expérience en médecine, et par le manque de médicaments et de matériel médical dans le vaisseau. Elle a le grade de Sergent-Maître.</p>",
@@ -1305,6 +1702,13 @@
     "/equipe/camille-wray-ming-na",
     "/casting/camille-wray-ming-na"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/mingna_as_camile_wray1.jpg",
+    "wp-content/gallery/casting-saison-1/mingna_as_camile_wray2.jpg",
+    "wp-content/gallery/casting-saison-1/mingna_as_camile_wray3.jpg",
+    "wp-content/gallery/casting-saison-1/mingna_as_camile_wray4.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/mingna_as_camile_wray4.jpg",
    "character": "Camille Wray",
    "actor": "Ming Na",
    "character_body": "<p>Une comptable du qui devient par défaut le membre le plus important du CIS isolé dans le vaisseau. Elle possède «une fausse idée de l’importance et de la supériorité sur les autres populations militaire et civile allant de pair avec son obstination à le revendiquer». Mallozzi pensait en décembre 2008 que le personnage «possède plein de potentiel pour se mettre dans la peau de Young et compagnie. Elle est en fin de compte le genre de personnage qu’on aime ou qu’on déteste, qui démontrera le fléau à beaucoup de principaux dans la série, et probablement aussi à certains qui la verront». D’abord mentionné dans le blog de Mallozzi fin novembre 2008,<sup> </sup>Camille Wray fut considéré comme un personnage potentiellement récurrent après sa première apparition dans l’épisode pilote.</p>",
@@ -1317,18 +1721,24 @@
     "/equipe/colonel-telford-lou-diamond-phillips",
     "/casting/colonel-telford-lou-diamond-phillips"
    ],
+   "gallery": [
+    "wp-content/gallery/casting-saison-1/lou_diamond_phillips_as_telford1.jpg",
+    "wp-content/gallery/casting-saison-1/lou_diamond_phillips_as_telford2.jpg",
+    "wp-content/gallery/casting-saison-1/lou_diamond_phillips_as_telford3.jpg"
+   ],
+   "actor_image": "wp-content/gallery/casting-saison-1/lou_diamond_phillips_as_telford3.jpg",
    "character": "Colonel Telford",
    "actor": "Lou Diamond Phillips",
    "character_body": "<p>Un militaire de carrière «sûr de lui et entêté». Il est grandement considéré par ses supérieurs et se trouve être le leader choisi de l’expédition.</p>",
    "actor_body": "<p>Il est né le 17 Février 1962 sur une base navale des Philippines, sous le nom de Lou Diamond Upchurch. Lou a des origines Cherokee, Espagnoles, Ecossaises, Irlandaises, Chinoises, Philippines, et Hawaiennes, un vrai cocktail de cultures ! Il s’est marié trois fois et a eu trois enfants de son second mariage avec Kelly Preston, et une fille avec son épouse Yvonne Boismiers Phillips. Il a obtenu un BFA de Théâtre à l’Université texane d’Arligton et est diplômé de la Flour Bluff High School de la ville de Corpus Christi au Texas. Il a toujours aimé le théâtre et a fait ses débuts sur les planches au Stage West à Fort Worth au Texas. Lou est très ami avec Kiefer Sutherland et Brandon Lee.</p>",
-   "image": null
+   "image": "wp-content/gallery/casting-saison-1/lou_diamond_phillips_as_telford1.jpg"
   }
  ],
  "pages": [
   {
    "slug": "la-serie",
    "title": "La série",
-   "body": "<p><img alt=\"\" loading=\"lazy\" src=\"archive:wp-content/uploads/2009/08/la_serie.jpg\"/><strong>Titre :</strong> Stargate Universe<br/>\n<strong>Genre :</strong> Science-Fiction, Fantastique<br/>\n<strong>Pays d’origine :</strong> Etats-Unis, Canada<br/>\n<strong>Statut :</strong> En Production<br/>\n<strong>Chaîne d’origine :</strong> SyFy, 2 Octobre 2009<br/>\n<strong>Durée :</strong> 50 minutes<br/>\n<strong>Nombre de Saison :</strong> 1<br/>\n<strong>Créateurs :</strong> Brad Wright, Robert C. Cooper<br/>\n<strong>Producteurs :</strong> Brad Wright, Robert C. Cooper, Carl Binder, Martin Gero, Alan MacCullough, Paul Mullie, Joseph Mallozzi, John Scalzi</p>\n<p><strong>Synopsis<br/>\n</strong>Cette série sera basée sur l’utilisation du 9e chevron et sur les voyages dans l’espace. Le 9e chevron servira à rejoindre le vaisseau Destiny qui servit de lieu d’expérience aux Anciens.Une équipe d’explorateurs se retrouve bloquée à bord d’un vaisseau Ancien abandonné qui les emmène aux confins de l’univers. Selon la MGM, SGU suivra un groupe de soldats, scientifiques et de civils abandonnés à eux-mêmes après qu’ils furent forcés de fuir à travers la porte des étoiles suite à une attaque de leur base secrète. Les survivants qui en réchappent se retrouvent à bord d’un vaisseau Ancien (le Destiny) perdu au fin fond de l’espace. Ils seront conduits par le Dr David Rush, qui fera tout pour découvrir les mystères de ce vaisseau et ramener le groupe à la maison, mais il pourrait aussi avoir d’autres motifs… inavoués.</p>\n<p><strong>Infos des créateurs<br/>\n</strong>Universe se déroulera dans un vaisseau qui servit de lieu d’expérience pour les Anciens il y a plusieurs millions d’années. Ceux-ci n’ont jamais vu l’aboutissement de cette expérience, car ils se sont focalisés sur l’ascension. L’expérience des anciens consistait à envoyer un vaisseau à travers l’univers jusqu’à la frontière de galaxies inconnues et de rejoindre le vaisseau grâce au neuvième chevron de la porte des étoiles. Le concept de la série sera donc centré sur l’utilisation du neuvième chevron.<br/>\nDes millions d’années plus tôt (bien avant que les Anciens ne quittent la Voie Lactée pour Pégase, la série montrera que les Anciens ont envoyé 2 vaisseaux automatiques à travers l’univers. Le premier pour placer des portes des étoiles et le second pour suivre le tracé des portes et explorer l’univers.<br/>\nUne adresse standard de 7 symboles sert à contacter une autre planète dans une même galaxie. Une adresse à 8 symboles permet de contacter une autre galaxie. Le neuvième chevron servira à contacter le vaisseau Ancien.<br/>\nLa série Stargate Universe a été lancée avant la grève des scénaristes américains. Selon Brad Wright, le concept de la série est bon mais le prix demeure une inconnue importante. Les studios de production veulent une série qui ne restera pas sur un goût d’inachevé.<br/>\nLes futures équipes terriennes qui se rendront aux confins de l’univers vont entamer un voyage vers les frontières de l’inconnu qui sera plein de surprises…<br/>\nLe rapport de Hollywood Reporter apporte quelques informations supplémentaires concernant l’histoire : « Universe introduira une équipe d’explorateurs qui trouve un vaisseau Ancien abandonné appelé ‘Destiny’. Incapable de retourner sur Terre, l’équipage devra se débrouiller par lui-même à bord du vaisseau, dont la mission préprogrammée est de les emmener aux confins de l’univers. »<br/>\nNouvelle série implique nouveaux personnages et donc nouveau casting. Le nouvel acteur principal sera Robert Carlyle. L’apparition d’anciens acteurs de la franchise est tout à fait possible, voire probable.<br/>\n« Nous avons l’opportunité de réinventer la franchise et de la rendre plus accessible à une nouvelle génération » explique Dave Howe, président de Sci-Fi. « On ne veut pas refaire la même chose (que Stargate SG-1). Il s’agira de construire quelque chose de différent de l’actuelle franchise, tout en misant sur un nouveau casting pour lui redonner un coup de jeune. »</p>",
+   "body": "<p><img alt=\"\" class=\"align-right\" loading=\"lazy\" src=\"archive:wp-content/uploads/2009/08/la_serie.jpg\"/><strong>Titre :</strong> Stargate Universe<br/>\n<strong>Genre :</strong> Science-Fiction, Fantastique<br/>\n<strong>Pays d’origine :</strong> Etats-Unis, Canada<br/>\n<strong>Statut :</strong> En Production<br/>\n<strong>Chaîne d’origine :</strong> SyFy, 2 Octobre 2009<br/>\n<strong>Durée :</strong> 50 minutes<br/>\n<strong>Nombre de Saison :</strong> 1<br/>\n<strong>Créateurs :</strong> Brad Wright, Robert C. Cooper<br/>\n<strong>Producteurs :</strong> Brad Wright, Robert C. Cooper, Carl Binder, Martin Gero, Alan MacCullough, Paul Mullie, Joseph Mallozzi, John Scalzi</p>\n<p><strong>Synopsis<br/>\n</strong>Cette série sera basée sur l’utilisation du 9e chevron et sur les voyages dans l’espace. Le 9e chevron servira à rejoindre le vaisseau Destiny qui servit de lieu d’expérience aux Anciens.Une équipe d’explorateurs se retrouve bloquée à bord d’un vaisseau Ancien abandonné qui les emmène aux confins de l’univers. Selon la MGM, SGU suivra un groupe de soldats, scientifiques et de civils abandonnés à eux-mêmes après qu’ils furent forcés de fuir à travers la porte des étoiles suite à une attaque de leur base secrète. Les survivants qui en réchappent se retrouvent à bord d’un vaisseau Ancien (le Destiny) perdu au fin fond de l’espace. Ils seront conduits par le Dr David Rush, qui fera tout pour découvrir les mystères de ce vaisseau et ramener le groupe à la maison, mais il pourrait aussi avoir d’autres motifs… inavoués.</p>\n<p><strong>Infos des créateurs<br/>\n</strong>Universe se déroulera dans un vaisseau qui servit de lieu d’expérience pour les Anciens il y a plusieurs millions d’années. Ceux-ci n’ont jamais vu l’aboutissement de cette expérience, car ils se sont focalisés sur l’ascension. L’expérience des anciens consistait à envoyer un vaisseau à travers l’univers jusqu’à la frontière de galaxies inconnues et de rejoindre le vaisseau grâce au neuvième chevron de la porte des étoiles. Le concept de la série sera donc centré sur l’utilisation du neuvième chevron.<br/>\nDes millions d’années plus tôt (bien avant que les Anciens ne quittent la Voie Lactée pour Pégase, la série montrera que les Anciens ont envoyé 2 vaisseaux automatiques à travers l’univers. Le premier pour placer des portes des étoiles et le second pour suivre le tracé des portes et explorer l’univers.<br/>\nUne adresse standard de 7 symboles sert à contacter une autre planète dans une même galaxie. Une adresse à 8 symboles permet de contacter une autre galaxie. Le neuvième chevron servira à contacter le vaisseau Ancien.<br/>\nLa série Stargate Universe a été lancée avant la grève des scénaristes américains. Selon Brad Wright, le concept de la série est bon mais le prix demeure une inconnue importante. Les studios de production veulent une série qui ne restera pas sur un goût d’inachevé.<br/>\nLes futures équipes terriennes qui se rendront aux confins de l’univers vont entamer un voyage vers les frontières de l’inconnu qui sera plein de surprises…<br/>\nLe rapport de Hollywood Reporter apporte quelques informations supplémentaires concernant l’histoire : « Universe introduira une équipe d’explorateurs qui trouve un vaisseau Ancien abandonné appelé ‘Destiny’. Incapable de retourner sur Terre, l’équipage devra se débrouiller par lui-même à bord du vaisseau, dont la mission préprogrammée est de les emmener aux confins de l’univers. »<br/>\nNouvelle série implique nouveaux personnages et donc nouveau casting. Le nouvel acteur principal sera Robert Carlyle. L’apparition d’anciens acteurs de la franchise est tout à fait possible, voire probable.<br/>\n« Nous avons l’opportunité de réinventer la franchise et de la rendre plus accessible à une nouvelle génération » explique Dave Howe, président de Sci-Fi. « On ne veut pas refaire la même chose (que Stargate SG-1). Il s’agira de construire quelque chose de différent de l’actuelle franchise, tout en misant sur un nouveau casting pour lui redonner un coup de jeune. »</p>",
    "image": null,
    "gallery": []
   },
@@ -7254,7 +7664,7 @@
     "stargate universe"
    ],
    "category": "Photos",
-   "body": "<p>Alors que la diffusion de la seconde partie de la saison 2 de<strong> Stargate Universe</strong> se fait attendre, lebuzz reprend doucement autour de la série. Mark Savela qui s’occupe de superviser les effets spéciaux publie cette semaine le dessin des aliens(voir le processus de création des aliens <a href=\"/actualites/le-processus-de-creation-des-aliens-en-photos\">ici</a>) qui figurent dans l’épisode 11 de la saison 1 <em>Space.</em></p>\n<p><em><img alt=\"\" loading=\"lazy\" src=\"archive:wp-content/uploads/2011/01/222718180-1.jpeg\"/></em></p>",
+   "body": "<p>Alors que la diffusion de la seconde partie de la saison 2 de<strong> Stargate Universe</strong> se fait attendre, lebuzz reprend doucement autour de la série. Mark Savela qui s’occupe de superviser les effets spéciaux publie cette semaine le dessin des aliens(voir le processus de création des aliens <a href=\"/actualites/le-processus-de-creation-des-aliens-en-photos\">ici</a>) qui figurent dans l’épisode 11 de la saison 1 <em>Space.</em></p>\n<p><em><img alt=\"\" class=\"align-center\" loading=\"lazy\" src=\"archive:wp-content/uploads/2011/01/222718180-1.jpeg\"/></em></p>",
    "image": "wp-content/uploads/2011/01/alien2.jpg",
    "gallery": [],
    "videos": []
@@ -8358,7 +8768,7 @@
     "stargate universe"
    ],
    "category": "DVD et Blu-ray",
-   "body": "<p>Une mois après la diffusion du dernier épisode de Stargate Universe, le coffret DVD contenant l’intégrale de la saison de la série est désormais disponible dans le commerce chez nos voisins américains. Si c’est une bonne nouvelle en soi, en revanche, on regrettera l’absence de Blu-Ray pour lequel il faudra sans doute attendre une réédition.</p>\n<p>En guise de bonus, chaque épisode de la saison est accompagné d’un commentaire audio tenu tantôt par les producteurs, scénaristes et acteurs de la série. Une vingtaine de scènes coupées, soit un total de 25 minutes, est également présent sur les DVD.</p>\n<p>Un coffret à la hauteur de la série dont on attend avec impatience la sortie française même si ça reste une faible consolation face à l’annulation de la série qui se termine sur un cliffhanger.</p>\n<p><img alt=\"\" loading=\"lazy\" src=\"archive:wp-content/uploads/2011/07/dvd_sgu_season2.jpg\"/></p>",
+   "body": "<p>Une mois après la diffusion du dernier épisode de Stargate Universe, le coffret DVD contenant l’intégrale de la saison de la série est désormais disponible dans le commerce chez nos voisins américains. Si c’est une bonne nouvelle en soi, en revanche, on regrettera l’absence de Blu-Ray pour lequel il faudra sans doute attendre une réédition.</p>\n<p>En guise de bonus, chaque épisode de la saison est accompagné d’un commentaire audio tenu tantôt par les producteurs, scénaristes et acteurs de la série. Une vingtaine de scènes coupées, soit un total de 25 minutes, est également présent sur les DVD.</p>\n<p>Un coffret à la hauteur de la série dont on attend avec impatience la sortie française même si ça reste une faible consolation face à l’annulation de la série qui se termine sur un cliffhanger.</p>\n<p><img alt=\"\" class=\"align-center\" loading=\"lazy\" src=\"archive:wp-content/uploads/2011/07/dvd_sgu_season2.jpg\"/></p>",
    "image": "wp-content/uploads/2011/07/dvd_sgu_season2.jpg",
    "gallery": [],
    "videos": []

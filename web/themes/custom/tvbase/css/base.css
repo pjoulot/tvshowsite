@@ -35,6 +35,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .tv-prose img { display: inline-block; vertical-align: top; margin: 4px 6px 4px 0; border: 1px solid var(--tv-line); }
 .tv-prose p:has(> img:only-child), .tv-prose p:has(> a:only-child > img) { margin-block: 1.2em; }
 .tv-prose p > a > img, .tv-prose p > img { margin: 0.4em 0; }
+/* Alignment kept from the old site, same classes as Drupal's editor. */
+.tv-prose img.align-right { float: right; max-width: min(45%, 400px); margin: 4px 0 20px 28px; }
+.tv-prose img.align-left { float: left; max-width: min(45%, 400px); margin: 4px 28px 20px 0; }
+.tv-prose img.align-center { display: block; margin: 1.2em auto; }
+.tv-prose::after { content: ""; display: block; clear: both; }
+.tv-prose h2, .tv-prose h3 { clear: both; }
+@media (max-width: 560px) { .tv-prose img.align-right, .tv-prose img.align-left { float: none; display: block; max-width: 100%; margin: 0 0 16px; } }
 /* Runs of linked thumbnails (old photo posts) flow as a grid, not a column. */
 .tv-prose p:has(> a:only-child > img:only-child) { display: inline-block; margin: 0 8px 8px 0; vertical-align: top; }
 .tv-prose p:has(> a:only-child > img:only-child) img { margin: 0; max-height: 220px; width: auto; }

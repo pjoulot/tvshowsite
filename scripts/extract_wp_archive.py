@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Extract content from the static WordPress archive of stargateuniverse.fr.
 
-Usage: extract_wp_archive.py <archive_dir> <episodes.json> <output.json>
+Usage: extract_wp_archive.py <archive_dir> <episodes.json> <output.json> [episodes_extra.json]
 
 Reads the Wayback Machine copy (a tree of index.html files plus wp-content)
 and writes one JSON content pack that the Drupal importer
@@ -17,6 +17,7 @@ import unicodedata
 from bs4 import BeautifulSoup, Comment, NavigableString
 
 ARCHIVE, EPISODES_JSON, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
+EXTRA_JSON = sys.argv[4] if len(sys.argv) > 4 else None
 HOSTS = ('http://stargateuniverse.lndo.site', 'https://stargateuniverse.lndo.site',
          'http://www.stargateuniverse.fr', 'http://stargateuniverse.fr',
          'https://www.stargateuniverse.fr', 'https://stargateuniverse.fr')
@@ -63,6 +64,61 @@ def existing_image(url):
 def youtube_id(html):
     m = re.search(r'youtube(?:-nocookie)?\.com/(?:v|embed)/([A-Za-z0-9_-]{11})', html)
     return m.group(1) if m else None
+
+
+CAST_GALLERY = {
+    'nicholas-rush': 'carlyle_as_nicholas_rush', 'everett-young': 'ferreira_as_everettyoung', 'eli-wallace': 'blue_as_eli_wallace',
+    'matthew-scott': 'smith_as_matthew_scott', 'ronald-greer': 'jamil_smith_as_ronald_greer', 'chloe-armstrong': 'levesque_as_chloe_armstrong',
+    'tamara-johansen': 'huffman_as_tamara_johansen', 'camille-wray': 'mingna_as_camile_wray', 'colonel-telford': 'lou_diamond_phillips_as_telford',
+}
+# English episode titles distinctive enough to identify an episode in a post address.
+TITLE_WORDS = {
+    (1, 4): ['darkness'], (1, 6): ['water'], (1, 7): ['earth'], (1, 10): ['justice'], (1, 12): ['divided'], (1, 13): ['faith'],
+    (1, 14): ['human'], (1, 15): ['lost'], (1, 16): ['sabotage'], (1, 17): ['pain'], (1, 18): ['subversion'], (1, 19): ['incursion'],
+    (2, 1): ['intervention'], (2, 2): ['aftermath'], (2, 3): ['awakenings', 'awakening'], (2, 4): ['pathogen'], (2, 5): ['cloverdale'],
+    (2, 6): ['trial-and-error'], (2, 7): ['greater-good'], (2, 8): ['malice'], (2, 9): ['visitation'], (2, 10): ['resurgence'],
+    (2, 11): ['deliverance'], (2, 12): ['twin-destinies'], (2, 13): ['alliances'], (2, 14): ['hope'], (2, 15): ['seizure'],
+    (2, 16): ['the-hunt'], (2, 17): ['common-descent'], (2, 18): ['epilogue'], (2, 19): ['blockade'], (2, 20): ['gauntlet'],
+}
+
+
+def episode_of_post(post):
+    """(season, number) a news post is about, or None when unclear."""
+    slug = slugify(post['slug'])
+    if re.search(r'episodes?-\d+-(?:et-|a-)?\d+|episodes-1112|-et-\d+$', slug):
+        return None
+    m = re.search(r'saison-(\d)-episode-(\d+)', slug)
+    if m:
+        return int(m.group(1)), int(m.group(2))
+    hits = {key for key, words in TITLE_WORDS.items() for w in words if re.search(r'(^|-)%s(-|$)' % w, slug)}
+    m = re.search(r'(?:l?episode)-0?(\d+)(?:-|$)', slug)
+    if m:
+        number = int(m.group(1))
+        season = 2 if (post['date'] >= '2010-07-01' or 'saison-2' in slug) and 'saison-1' not in slug else 1
+        if len(hits) == 1 and next(iter(hits))[1] == number:
+            return next(iter(hits))
+        return (season, number) if 1 <= number <= 20 else None
+    return next(iter(hits)) if len(hits) == 1 else None
+
+
+def post_pictures(post):
+    """Full-size pictures of a post: gallery, linked originals, then inline images."""
+    found = list(post['gallery'])
+    for m in re.finditer(r'href="archive:([^"]+)"', post['body']):
+        found.append(m.group(1))
+    for m in re.finditer(r'src="archive:([^"]+)"', post['body']):
+        found.append(m.group(1))
+    if post['image']:
+        found.insert(0, post['image'])
+    out, seen = [], set()
+    for f in found:
+        base = re.sub(r'-\d+x\d+(\.\w+)$', r'\1', f)
+        if os.path.isfile(os.path.join(ARCHIVE, base)):
+            f = base
+        if f not in seen and not re.search(r'-\d+x\d+\.\w+$', f):
+            seen.add(f)
+            out.append(f)
+    return out
 
 
 class Site:
@@ -139,7 +195,11 @@ def clean_body(nodes, collect_gallery=None):
         if lead is None:
             lead = p
         alt = (img.get('alt') or '').strip()
+        classes = img.get('class') or []
+        align = next((a for a in ('right', 'left', 'center') if 'align' + a in classes), None)
         img.attrs = {'src': 'archive:' + p, 'alt': '' if re.match(r'^[\w.-]+$', alt) else alt, 'loading': 'lazy'}
+        if align:
+            img['class'] = 'align-' + align
     for a in wrap.find_all('a'):
         href = SITE.rewrite_link(a.get('href'))
         if href is None:
@@ -326,7 +386,16 @@ def main():
         actor_html = clean_body([n.extract() for n in sections['actor']])[0]
         char_html = re.sub(r'</?strong>', '', char_html)
         actor_html = re.sub(r'</?strong>', '', actor_html)
-        characters.append({'slug': SITE.link_map['/equipe/' + d].rsplit('/', 1)[1], 'legacy': ['/equipe/' + d, '/casting/' + d],
+        slug = SITE.link_map['/equipe/' + d].rsplit('/', 1)[1]
+        prefix = CAST_GALLERY.get(slug)
+        gdir = os.path.join(ARCHIVE, 'wp-content', 'gallery', 'casting-saison-1')
+        shots = sorted('wp-content/gallery/casting-saison-1/' + f for f in os.listdir(gdir)
+                       if prefix and f.startswith(prefix) and f.lower().endswith(IMG_EXT))
+        # The casting portrait was never archived for two characters: use a promo shot.
+        if not img and shots:
+            img = shots[0]
+        characters.append({'slug': slug, 'legacy': ['/equipe/' + d, '/casting/' + d],
+                           'gallery': shots, 'actor_image': shots[-1] if shots else None,
                            'character': char, 'actor': actor,
                            'character_body': char_html, 'actor_body': actor_html, 'image': img})
 
@@ -392,9 +461,33 @@ def main():
             if m and os.path.isdir(os.path.join(base, d)):
                 number = 7 if d == 'episode-17-earth' else int(m.group(1))
                 episodes[(1, number)].setdefault('legacy', []).append('/galerie/%s/%s' % (sub, d))
+    # News posts about one episode: their pictures and a link back.
+    for post in posts:
+        key = episode_of_post(post)
+        if key not in episodes:
+            continue
+        ep = episodes[key]
+        ep.setdefault('posts', []).append(post['slug'])
+        if post['category'] in ('Photos', 'Spoilers', 'Vidéos'):
+            target = ep['backstage'] if re.search(r'making|coulisses|envers|behind|effets-speciaux|tournage', slugify(post['slug'])) else ep['promo']
+            for picture in post_pictures(post):
+                if picture not in ep['promo'] and picture not in ep['backstage']:
+                    target.append(picture)
+    if EXTRA_JSON:
+        for extra in json.load(open(EXTRA_JSON, encoding='utf-8'))['episodes']:
+            ep = episodes.get((extra['season'], extra['number']))
+            if not ep:
+                continue
+            ep['us_viewers_millions'] = extra.get('us_viewers_millions')
+            if not ep.get('guest_cast') and extra.get('guest_cast'):
+                ep['guest_cast'] = ', '.join('%s (%s)' % (g['actor'], g['character']) if g.get('character') else g['actor'] for g in extra['guest_cast']) + '.'
     for ep in episodes.values():
+        ep.setdefault('posts', [])
         banner = existing_image('/wp-content/uploads/2009/10/s%de%02d.jpg' % (ep['season'], ep['number']))
         ep['image'] = ep['promo'][0] if ep['promo'] else banner
+        if not ep['image']:
+            by_slug = {post['slug']: post for post in posts}
+            ep['image'] = next((by_slug[slug]['image'] for slug in ep['posts'] if by_slug[slug]['image']), None)
 
     tags = sorted({t for p in posts for t in p['tags']}, key=str.lower)
     out = {
