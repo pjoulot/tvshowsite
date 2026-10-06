@@ -79,6 +79,11 @@ form .description { font-size: 0.9rem; color: var(--tv-muted); margin-top: 6px; 
 input[type="text"], input[type="email"], input[type="search"], input[type="password"], input[type="url"], textarea, select {
   width: 100%; max-width: 560px; min-height: 46px; padding: 10px 14px; background: var(--tv-surface); border: 1px solid var(--tv-line-strong); border-radius: var(--tv-radius);
 }
+/* Fields show focus on their own border: a ring offset from the box reads as a glitch. */
+input[type="text"]:focus-visible, input[type="email"]:focus-visible, input[type="search"]:focus-visible, input[type="password"]:focus-visible, input[type="url"]:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 0; border-color: var(--tv-accent); box-shadow: 0 0 0 1px var(--tv-accent);
+}
+input[type="search"]::-webkit-search-cancel-button { filter: invert(1) opacity(0.6); cursor: pointer; }
 textarea { min-height: 180px; max-width: 720px; }
 .form-required::after { content: " *"; color: var(--tv-accent); }
 input[type="submit"], .button { display: inline-block; min-height: 46px; padding: 11px 24px; background: var(--tv-button-bg); color: var(--tv-button-ink); border: 1px solid var(--tv-button-bg); border-radius: var(--tv-radius); font-family: var(--tv-font-title); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; cursor: pointer; }

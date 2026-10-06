@@ -49,3 +49,7 @@
 /.idea/
 /composer.workspace.json
 /composer.workspace.lock
+
+# Wayback extras: page snapshots and the hand-over archive stay local
+/content/*/wayback/html/
+/content/*/wayback.tar.gz

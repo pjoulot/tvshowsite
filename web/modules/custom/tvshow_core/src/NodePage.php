@@ -34,7 +34,8 @@ class NodePage {
       'date_iso' => gmdate('Y-m-d', $node->getCreatedTime()),
       'category' => $this->presenter->termLink($category),
       'byline' => $node->get('field_byline')->value,
-      'image' => $this->presenter->image($node, 'field_image', 'tv_wide'),
+      // A thumbnail-sized picture is fine on cards, not stretched across the page.
+      'image' => (int) ($node->get('field_image')->width ?? 0) >= 300 ? $this->presenter->image($node, 'field_image', 'tv_wide') : NULL,
       'tags' => $this->presenter->references($node, 'field_tags'),
       'source' => $source ? ['url' => $source->getUrl()->toString(), 'title' => $source->title ?: parse_url($source->getUrl()->toString(), PHP_URL_HOST)] : NULL,
       'related' => $this->presenter->cards(array_slice(array_values($related), 0, 3)),

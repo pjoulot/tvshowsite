@@ -217,12 +217,16 @@ display:
           value:
             article: article
           group: 1
-        field_image_target_id:
-          id: field_image_target_id
+        field_image_width:
+          id: field_image_width
           table: node__field_image
-          field: field_image_target_id
+          field: field_image_width
           plugin_id: numeric
-          operator: 'not empty'
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: '300'
           group: 1
       filter_groups:
         operator: AND

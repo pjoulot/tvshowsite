@@ -144,7 +144,10 @@ tv_view('tvshow_news', 'Actualités', 'Liste des actualités, flux RSS, blocs de
     'empty' => $empty('Aucune actualité dans cette rubrique pour le moment.'),
   ]],
   'featured' => ['embed', 'Accueil : à la une', [
-    'filters' => $published + $bundle('article') + ['field_image_target_id' => $field('node', 'field_image', 'target_id', 'numeric', ['operator' => 'not empty', 'group' => 1])],
+    'filters' => $published + $bundle('article') + [
+      // "À la une" is shown large: only pictures big enough for it.
+      'field_image_width' => $field('node', 'field_image', 'width', 'numeric', ['operator' => '>=', 'value' => ['value' => '300', 'min' => '', 'max' => ''], 'group' => 1]),
+    ],
     'sorts' => ['promote' => $node('promote', 'standard', ['order' => 'DESC'])] + $newest,
     'row' => $rows('node', 'feature'),
     'pager' => $some(2),

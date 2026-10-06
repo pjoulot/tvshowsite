@@ -346,6 +346,26 @@ def main():
                       'gallery': gallery, 'videos': videos})
     posts.sort(key=lambda p: (p['date'], p['slug']))
 
+    # Lead pictures the dump lost. The old front page (Wayback snapshots, see
+    # scripts/fetch_wayback_extras.sh) tells which picture each post had; use the
+    # full-size file when the dump has it, else the small thumbnail the Wayback
+    # Machine kept.
+    pack_dir = os.path.dirname(os.path.abspath(OUT))
+    lead_file = os.path.join(pack_dir, 'lead_images.json')
+    leads = json.load(open(lead_file, encoding='utf-8')) if os.path.isfile(lead_file) else {}
+    recovered = 0
+    for post in posts:
+        if post['image'] or post['slug'] not in leads:
+            continue
+        path = leads[post['slug']].lstrip('/')
+        small = re.sub(r'(\.\w+)$', r'-150x150\1', path)
+        for candidate, root in ((path, ARCHIVE), ('wayback/files/' + path, pack_dir), ('wayback/thumbs/' + path + '.png', pack_dir), ('wayback/files/' + small, pack_dir)):
+            if os.path.isfile(os.path.join(root, candidate)):
+                post['image'] = candidate if root == ARCHIVE else 'pack:' + candidate
+                recovered += 1
+                break
+    print('lead pictures recovered from the Wayback Machine', recovered)
+
     # La série page
     pages = []
     area = post_area(soup_of(os.path.join(ARCHIVE, 'la-serie', 'index.html')))
