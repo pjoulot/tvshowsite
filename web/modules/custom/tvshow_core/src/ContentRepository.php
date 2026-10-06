@@ -28,8 +28,15 @@ class ContentRepository {
     return $query;
   }
 
+  /**
+   * Loads nodes, keeping the order of the ids.
+   */
   protected function loadNodes(array $ids): array {
-    return $ids ? array_values($this->entityTypeManager->getStorage('node')->loadMultiple($ids)) : [];
+    if (!$ids) {
+      return [];
+    }
+    $nodes = $this->entityTypeManager->getStorage('node')->loadMultiple($ids);
+    return array_values(array_filter(array_map(fn($id) => $nodes[$id] ?? NULL, array_values($ids))));
   }
 
   public function articles(int $limit, int $offset = 0, array $conditions = []): array {
@@ -137,13 +144,58 @@ class ContentRepository {
    * Full-text-ish search on titles and body text.
    */
   public function search(string $keys, int $limit, int $offset = 0): array {
+    $found = $this->searchApi($keys, $limit, $offset);
+    if ($found !== NULL) {
+      return $this->loadNodes($found['ids']);
+    }
     $query = $this->searchQuery($keys);
     return $query ? $this->loadNodes($query->sort('created', 'DESC')->range($offset, $limit)->execute()) : [];
   }
 
   public function countSearch(string $keys): int {
+    $found = $this->searchApi($keys, 1, 0);
+    if ($found !== NULL) {
+      return $found['count'];
+    }
     $query = $this->searchQuery($keys);
     return $query ? (int) $query->count()->execute() : 0;
+  }
+
+  /**
+   * Searches through the Search API index when it exists and is filled.
+   *
+   * @return array|null
+   *   Node ids in relevance order and the total, or NULL to fall back on the
+   *   plain database search.
+   */
+  protected function searchApi(string $keys, int $limit, int $offset): ?array {
+    if (trim($keys) === '' || !\Drupal::moduleHandler()->moduleExists('search_api')) {
+      return NULL;
+    }
+    try {
+      $index = $this->entityTypeManager->getStorage('search_api_index')->load(ContribSetup::SEARCH_INDEX);
+      if (!$index || !$index->status() || !$index->getTrackerInstance()->getIndexedItemsCount()) {
+        return NULL;
+      }
+      $query = $index->query();
+      $query->keys($keys);
+      $query->range($offset, $limit);
+      $query->sort('search_api_relevance', 'DESC');
+      $query->sort('created', 'DESC');
+      $results = $query->execute();
+      $ids = [];
+      foreach ($results->getResultItems() as $item) {
+        if (preg_match('~^entity:node/(\d+):~', $item->getId(), $match)) {
+          $ids[] = (int) $match[1];
+        }
+      }
+      // loadMultiple() does not keep the order it is given.
+      return ['ids' => $ids, 'count' => (int) $results->getResultCount()];
+    }
+    catch (\Throwable $e) {
+      \Drupal::logger('tvshow_core')->warning('Search API query failed, using the database search: @message', ['@message' => $e->getMessage()]);
+      return NULL;
+    }
   }
 
   protected function searchQuery(string $keys) {

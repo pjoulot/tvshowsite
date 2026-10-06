@@ -19,6 +19,10 @@ class RouteSubscriber extends RouteSubscriberBase {
   }
 
   protected function alterRoutes(RouteCollection $collection) {
+    // Simple XML Sitemap serves /sitemap.xml when it is installed.
+    if (\Drupal::moduleHandler()->moduleExists('simple_sitemap')) {
+      $collection->remove('tvshow_core.sitemap');
+    }
     if ($route = $collection->get('entity.taxonomy_term.canonical')) {
       $route->setDefaults(array_diff_key($route->getDefaults(), ['view_id' => 1, 'display_id' => 1, '_view_display_show_admin_links' => 1, '_view_display_plugin_id' => 1, '_view_display_plugin_class' => 1]));
       $route->setDefault('_controller', '\Drupal\tvshow_core\Controller\TermController::view');

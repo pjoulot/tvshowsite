@@ -6,7 +6,33 @@ green-arrow-france.fr and stargate-pegasus.com follow on the same base.
 
 It is a rebuild from scratch of the Drupal 9 `tvshowsite` project. The content
 model (news, wiki, episodes, people, series, seasons, partners) is the same;
-the stack is new: Drupal 11 core only, no contrib module, no CSS framework.
+the stack is new: Drupal 11, the usual contributed modules, no CSS framework.
+
+## Contributed modules
+
+Installed by Composer and enabled and configured at the end of the profile
+install (`ContribSetup`):
+
+| Module | Used for |
+| --- | --- |
+| Pathauto + Token | URL patterns (`/actualites/[title]`, `/sgu/saison-1/[title]`…). |
+| Redirect | 301s from the old site's addresses, and from an alias that changes. |
+| Metatag (+ Open Graph) | Description and social sharing tags. |
+| Simple XML Sitemap | `/sitemap.xml`. |
+| Search API (+ Database Search) | The index behind `/recherche`. |
+| Webform | The contact form at `/contact`. |
+| Rabbit Hole | Partner terms have no page: they redirect to `/partenaires`. |
+| Admin Toolbar | Drop-down admin menu. |
+
+`tvshow_core` keeps a small built-in equivalent of each feature and uses it
+only when the module is absent, so a module that fails to install does not
+take the site down. To see what the setup did, or to run it again:
+
+```bash
+ddev drush php:script scripts/configure_contrib.php
+```
+
+Each line starts with `OK` or `FAILED`.
 
 ## What is in the repo
 
@@ -57,8 +83,8 @@ ddev drush en locale -y && ddev drush locale:check && ddev drush locale:update
 | `/partenaires`, `/contact`, `/recherche` | Partners, contact form, search. |
 | `/actualites/rss.xml`, `/sitemap.xml` | Feeds. |
 
-Addresses are generated from titles by `AliasGenerator` and follow title
-changes. An alias typed by hand in the edit form is left alone.
+Addresses are generated from titles by Pathauto patterns (ids `tv_*`) and
+follow title changes; the old alias then redirects to the new one.
 
 Old addresses of the WordPress site (`/my-post/`, `/equipe/…`, `/episodes/…`,
 `/tag/…`) redirect to their new home with a 301.

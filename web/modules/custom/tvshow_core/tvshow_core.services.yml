@@ -27,3 +27,9 @@ services:
   tvshow_core.importer:
     class: Drupal\tvshow_core\Import\ContentPackImporter
     arguments: ['@entity_type.manager', '@file_system', '@file_url_generator', '@keyvalue', '@config.factory', '@tvshow_core.alias_generator', '@tvshow_core.presenter']
+  tvshow_core.logger:
+    parent: logger.channel_base
+    arguments: ['tvshow_core']
+  tvshow_core.contrib_setup:
+    class: Drupal\tvshow_core\ContribSetup
+    arguments: ['@extension.list.module', '@module_installer', '@module_handler', '@entity_type.manager', '@config.factory', '@tvshow_core.logger']

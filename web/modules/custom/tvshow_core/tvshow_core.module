@@ -21,7 +21,7 @@ function tvshow_core_theme(): array {
     'tvshow_listing' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'layout' => 'news', 'filters' => [], 'cards' => [], 'pager' => NULL, 'empty_text' => '', 'feed_url' => NULL]],
     'tvshow_wiki' => ['variables' => ['categories' => [], 'latest' => []]],
     'tvshow_cast' => ['variables' => ['roles' => [], 'crew' => []]],
-    'tvshow_partners' => ['variables' => ['partners' => []]],
+    'tvshow_partners' => ['variables' => ['partners' => [], 'contact_url' => '/contact']],
     'tvshow_search' => ['variables' => ['keys' => '', 'total' => 0, 'cards' => [], 'pager' => NULL, 'action' => '']],
     'tvshow_serie' => ['variables' => ['serie' => [], 'seasons' => [], 'show_episodes' => TRUE]],
     'tvshow_not_found' => ['variables' => ['action' => '', 'news' => []]],
@@ -51,7 +51,10 @@ function tvshow_core_node_view(array &$build, NodeInterface $node, EntityViewDis
   $build['#cache']['tags'][] = 'node_list';
   $build['#cache']['tags'][] = 'taxonomy_term_list';
 
-  // Description and social sharing tags.
+  // Description and social sharing tags, unless Metatag provides them.
+  if (\Drupal::moduleHandler()->moduleExists('metatag')) {
+    return;
+  }
   $presenter = \Drupal::service('tvshow_core.presenter');
   $description = trim((string) $node->get('field_meta_description')->value) ?: $presenter->summary($node, $node->bundle() === 'episode' ? 'field_synopsis' : 'body', 160);
   $image_field = $node->bundle() === 'people' ? 'field_picture' : 'field_image';

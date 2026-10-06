@@ -12,8 +12,17 @@
     "require": {
         "php": ">=8.3",
         "composer/installers": "^2.3",
+        "drupal/admin_toolbar": "^3.6",
         "drupal/core-composer-scaffold": "^11.4",
         "drupal/core-recommended": "^11.4",
+        "drupal/metatag": "^2.1",
+        "drupal/pathauto": "^1.13",
+        "drupal/rabbit_hole": "^2.0@beta",
+        "drupal/redirect": "^1.10",
+        "drupal/search_api": "^1.35",
+        "drupal/simple_sitemap": "^4.2",
+        "drupal/token": "^1.15",
+        "drupal/webform": "^6.3@beta",
         "drush/drush": "^13"
     },
     "conflict": {
@@ -37,12 +46,24 @@
             }
         },
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
         }
     }
 }

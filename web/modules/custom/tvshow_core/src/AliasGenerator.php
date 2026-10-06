@@ -88,6 +88,10 @@ class AliasGenerator {
    * Creates or refreshes the alias of an entity after it was saved.
    */
   public function sync(ContentEntityInterface $entity): void {
+    // Pathauto owns the patterns when it is installed (see ContribSetup).
+    if (\Drupal::moduleHandler()->moduleExists('pathauto')) {
+      return;
+    }
     $wanted = $this->pattern($entity);
     if (!$wanted) {
       return;

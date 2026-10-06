@@ -127,7 +127,7 @@ class PageController extends TvControllerBase {
         'summary' => $this->presenter->summary($term, 'description', 220),
       ];
     }
-    return ['#theme' => 'tvshow_partners', '#partners' => $partners, '#cache' => self::CACHE];
+    return ['#theme' => 'tvshow_partners', '#partners' => $partners, '#contact_url' => Url::fromUserInput('/contact')->toString(), '#cache' => self::CACHE];
   }
 
   public function search(): array {

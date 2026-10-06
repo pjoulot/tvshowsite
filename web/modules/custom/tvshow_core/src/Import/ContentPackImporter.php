@@ -67,6 +67,7 @@ class ContentPackImporter {
     $this->pages();
     $this->articles($log);
     $this->legacyRedirects();
+    $this->indexContent();
     return $this->stats;
   }
 
@@ -186,6 +187,18 @@ class ContentPackImporter {
     $term->save();
     $this->remember('taxonomy_term', $key, $term);
     return $term;
+  }
+
+  /**
+   * Gives a node a fixed alias that Pathauto must not regenerate.
+   */
+  protected function presetAlias($node, string $alias): void {
+    $path = ['alias' => $alias];
+    if (\Drupal::moduleHandler()->moduleExists('pathauto')) {
+      // 0 = PathautoState::SKIP.
+      $path['pathauto'] = 0;
+    }
+    $node->set('path', $path);
   }
 
   protected function setAlias($entity, string $alias): void {
@@ -332,6 +345,7 @@ class ContentPackImporter {
       $image = $this->file($data['image'] ?? NULL);
       $node->set('field_image', $image ? ['target_id' => $image, 'alt' => $data['title']] : []);
       $node->set('field_gallery', $this->images($data['gallery'] ?? [], $data['title']));
+      $this->presetAlias($node, '/' . $data['slug']);
       $node->save();
       $this->remember('node', $key, $node);
       $this->setAlias($node, '/' . $data['slug']);
@@ -372,9 +386,12 @@ class ContentPackImporter {
       $node->set('field_gallery', $this->images($data['gallery'] ?? []));
       $node->setCreatedTime(strtotime($data['date'] . ' 12:00:00 Europe/Paris'));
       $node->setPromoted(isset($promoted[$data['slug']]));
+      $this->presetAlias($node, '/actualites/' . $data['slug']);
       $node->save();
       $this->remember('node', $key, $node);
       $this->setAlias($node, '/actualites/' . $data['slug']);
+      // Old WordPress posts lived at the root: /my-post/.
+      $this->legacy['/' . $data['slug']] = $node;
       if (($index + 1) % 100 === 0) {
         $log('Articles: ' . ($index + 1) . ' / ' . count($articles));
       }
@@ -386,8 +403,12 @@ class ContentPackImporter {
    */
   protected function legacyRedirects(): void {
     $store = $this->keyValue->get('tvshow_core.legacy');
+    $with_redirect_module = \Drupal::moduleHandler()->moduleExists('redirect');
     foreach ($this->legacy as $old => $entity) {
       $store->set(self::key(rtrim($old, '/')), $entity->toUrl()->toString());
+      if ($with_redirect_module) {
+        $this->redirect($old, '/' . $entity->toUrl()->getInternalPath());
+      }
     }
     $fixed = [
       '/equipe' => '/casting',
@@ -403,15 +424,60 @@ class ContentPackImporter {
     ];
     foreach ($fixed as $old => $new) {
       $store->set(self::key($old), $new);
+      if ($with_redirect_module) {
+        $this->redirect($old, $new);
+      }
     }
     foreach ($this->pack['tags'] ?? [] as $tag) {
       $id = $this->map->get(self::key('taxonomy_term:tags:' . mb_strtolower(trim($tag))));
       $term = $id ? $this->entityTypeManager->getStorage('taxonomy_term')->load($id) : NULL;
       if ($term) {
         $store->set(self::key('/tag/' . $this->aliasGenerator->slug($tag)), $term->toUrl()->toString());
+        if ($with_redirect_module) {
+          $this->redirect('/tag/' . $this->aliasGenerator->slug($tag), '/' . $term->toUrl()->getInternalPath());
+        }
       }
     }
     $this->stats['old addresses redirected'] = count($this->legacy) + count($fixed);
+  }
+
+  /**
+   * Creates a 301 with the Redirect module, once per old address.
+   */
+  protected function redirect(string $old, string $target): void {
+    try {
+      $storage = $this->entityTypeManager->getStorage('redirect');
+      $source = trim($old, '/');
+      if ($source === '' || $storage->loadByProperties(['redirect_source__path' => $source])) {
+        return;
+      }
+      $redirect = $storage->create(['status_code' => 301, 'language' => 'und']);
+      $redirect->setSource($source);
+      $redirect->setRedirect(ltrim($target, '/'));
+      $redirect->save();
+      $this->count('redirect entities');
+    }
+    catch (\Throwable $e) {
+      $this->count('redirects that failed');
+    }
+  }
+
+  /**
+   * Fills the Search API index, when there is one.
+   */
+  protected function indexContent(): void {
+    if (!\Drupal::moduleHandler()->moduleExists('search_api')) {
+      return;
+    }
+    try {
+      $index = $this->entityTypeManager->getStorage('search_api_index')->load(\Drupal\tvshow_core\ContribSetup::SEARCH_INDEX);
+      if ($index && $index->status()) {
+        $this->stats['items indexed for search'] = $index->indexItems();
+      }
+    }
+    catch (\Throwable $e) {
+      $this->stats['search indexing'] = 'failed: ' . $e->getMessage();
+    }
   }
 
 }
