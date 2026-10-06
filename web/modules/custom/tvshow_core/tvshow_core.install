@@ -35,6 +35,8 @@ function tvshow_core_install($is_syncing): void {
       \Drupal\language\Entity\ConfigurableLanguage::createFromLangcode('fr')->save();
     }
     \Drupal::configFactory()->getEditable('system.site')->set('default_langcode', 'fr')->save();
+    // One language, so no /fr prefix in addresses.
+    \Drupal::configFactory()->getEditable('language.negotiation')->set('url.prefixes.fr', '')->set('url.prefixes.en', 'en')->save();
   }
   \Drupal::configFactory()->getEditable('system.site')->set('page.404', '/introuvable')->save();
   // Accounts are for the editorial team only.
