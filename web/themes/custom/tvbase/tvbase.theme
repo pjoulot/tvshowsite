@@ -1,0 +1,141 @@
+<?php
+
+/**
+ * @file
+ * Preprocess functions of the TV Show base theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Url;
+
+/**
+ * Links of a menu the current user may see, two levels deep.
+ */
+function _tvbase_menu(string $menu_name): array {
+  $tree_service = \Drupal::menuTree();
+  $parameters = (new MenuTreeParameters())->setMaxDepth(2)->onlyEnabledLinks();
+  $parameters->setActiveTrail(\Drupal::service('menu.active_trail')->getActiveTrailIds($menu_name));
+  $tree = $tree_service->transform($tree_service->load($menu_name, $parameters), [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ]);
+  $convert = function (array $elements) use (&$convert) {
+    $links = [];
+    foreach ($elements as $element) {
+      if ($element->access !== NULL && !$element->access->isAllowed()) {
+        continue;
+      }
+      $links[] = [
+        'title' => $element->link->getTitle(),
+        'url' => $element->link->getUrlObject()->toString(),
+        'active' => $element->inActiveTrail,
+        'below' => $element->subtree ? $convert($element->subtree) : [],
+      ];
+    }
+    return $links;
+  };
+  return $convert($tree);
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function tvbase_preprocess_page(array &$variables): void {
+  $site = \Drupal::config('system.site');
+  $settings = \Drupal::config('tvshow_core.settings');
+  $variables['site_name'] = $site->get('name');
+  $variables['tagline'] = $settings->get('tagline') ?: $site->get('slogan');
+  $variables['main_menu'] = _tvbase_menu('main');
+  $variables['footer_menu'] = _tvbase_menu('footer');
+  $variables['footer_text'] = $settings->get('footer_text');
+  $variables['social'] = array_filter($settings->get('social') ?: []);
+  $variables['search_action'] = Url::fromRoute('tvshow_core.search')->toString();
+  $variables['front_url'] = Url::fromRoute('<front>')->toString();
+
+  // The current front-end path marks "Accueil" active on the front page.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    foreach ($variables['main_menu'] as &$link) {
+      $link['active'] = $link['url'] === $variables['front_url'];
+    }
+  }
+
+  // Pages the module does not lay out itself (contact, login…) get a title.
+  $route_match = \Drupal::routeMatch();
+  $route_name = (string) $route_match->getRouteName();
+  $variables['fallback_title'] = NULL;
+  if (!str_starts_with($route_name, 'tvshow_core.') && !in_array($route_name, ['entity.node.canonical', 'entity.taxonomy_term.canonical']) && $route_match->getRouteObject()) {
+    $variables['fallback_title'] = \Drupal::service('title_resolver')->getTitle(\Drupal::request(), $route_match->getRouteObject());
+    if ($route_name === 'contact.site_page') {
+      $variables['fallback_title'] = 'Contact';
+    }
+  }
+  $variables['#cache']['contexts'][] = 'route';
+
+  // Header banner: an uploaded file, else the theme's own default, else none.
+  $header = NULL;
+  $fid = theme_get_setting('header_image');
+  $fid = is_array($fid) ? reset($fid) : $fid;
+  if ($fid && ($file = \Drupal::entityTypeManager()->getStorage('file')->load($fid))) {
+    $header = \Drupal::service('file_url_generator')->generateString($file->getFileUri());
+  }
+  elseif ($default = theme_get_setting('header_image_default')) {
+    $theme = \Drupal::theme()->getActiveTheme();
+    $header = base_path() . $theme->getPath() . '/' . ltrim($default, '/');
+  }
+  $variables['header_image'] = $header;
+  $variables['header_title_position'] = theme_get_setting('header_title_position') ?: 'center';
+  $variables['#cache']['tags'][] = 'config:system.menu.main';
+  $variables['#cache']['tags'][] = 'config:system.menu.footer';
+  $variables['#cache']['tags'][] = 'config:tvshow_core.settings';
+  $variables['#cache']['tags'][] = 'config:system.site';
+  $variables['#cache']['contexts'][] = 'route.menu_active_trails:main';
+  $variables['#cache']['contexts'][] = 'url.path.is_front';
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function tvbase_preprocess_html(array &$variables): void {
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route) {
+    $variables['attributes']['class'][] = 'route-' . strtr($route, ['.' => '-', '_' => '-']);
+  }
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function tvbase_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state, $form_id = NULL): void {
+  if (isset($form_id)) {
+    return;
+  }
+  $form['tvshow_header'] = ['#type' => 'details', '#title' => t('Header'), '#open' => TRUE];
+  $form['tvshow_header']['header_image'] = [
+    '#type' => 'managed_file',
+    '#title' => t('Header banner'),
+    '#description' => t('Wide image shown at the top of every page. Leave empty to use the theme default, if it has one.'),
+    '#upload_location' => 'public://theme',
+    '#upload_validators' => ['FileExtension' => ['extensions' => 'png jpg jpeg webp']],
+    '#default_value' => theme_get_setting('header_image'),
+  ];
+  $form['tvshow_header']['header_title_position'] = [
+    '#type' => 'select',
+    '#title' => t('Site name position on the banner'),
+    '#options' => ['center' => t('Centre'), 'left' => t('Left'), 'left-centre' => t('Left of centre'), 'below' => t('Below the banner')],
+    '#default_value' => theme_get_setting('header_title_position') ?: 'center',
+  ];
+  $form['#submit'][] = 'tvbase_theme_settings_submit';
+}
+
+/**
+ * Keeps the uploaded banner file.
+ */
+function tvbase_theme_settings_submit(array $form, FormStateInterface $form_state): void {
+  $fid = $form_state->getValue(['header_image', 0]);
+  if ($fid && ($file = \Drupal::entityTypeManager()->getStorage('file')->load($fid))) {
+    $file->setPermanent();
+    $file->save();
+    \Drupal::service('file.usage')->add($file, 'tvbase', 'theme', 1);
+  }
+}

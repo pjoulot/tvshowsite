@@ -1,0 +1,23 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<div class="tv-page tv-wiki">
+  {{ ui.breadcrumb([], 'Wiki') }}
+  <header class="tv-pagehead">{{ ui.heading('Wiki', null, null, 1) }}</header>
+  {% if categories %}
+    <nav class="tv-categories" aria-label="Rubriques du wiki">
+      {% for card in categories %}
+        <a class="tv-category" href="{{ card.url }}">
+          {{ ui.img(card.image, 'tv-category__image') }}
+          <span class="tv-category__body"><span class="tv-category__title">{{ card.title }}</span><span class="tv-category__count">{{ card.count }} {{ card.count > 1 ? 'fiches' : 'fiche' }}</span></span>
+        </a>
+      {% endfor %}
+    </nav>
+  {% endif %}
+  <section class="tv-section">
+    {{ ui.heading('Dernières fiches') }}
+    {% if latest %}
+      <div class="tv-grid tv-grid--tiles">{% for card in latest %}{{ ui.wiki(card) }}{% endfor %}</div>
+    {% else %}
+      <p class="tv-empty">Le wiki est encore vide.</p>
+    {% endif %}
+  </section>
+</div>

@@ -1,0 +1,59 @@
+{#
+  Page chrome: banner header, main menu, content, footer.
+  Menus and settings come from tvshow_preprocess_page().
+#}
+<a class="tv-skip" href="#main-content">Aller au contenu</a>
+<header class="tv-header tv-header--{{ header_title_position }}{{ header_image ? ' has-banner' }}">
+  <div class="tv-header__inner">
+    {% if header_image %}<img class="tv-header__banner" src="{{ header_image }}" alt="" fetchpriority="high">{% endif %}
+    <div class="tv-header__brand">
+      <a class="tv-header__name" href="{{ front_url }}" rel="home">{{ site_name }}</a>
+      {% if tagline %}<p class="tv-header__tagline"><span aria-hidden="true"></span>{{ tagline }}<span aria-hidden="true"></span></p>{% endif %}
+    </div>
+  </div>
+</header>
+
+<div class="tv-nav">
+  <div class="tv-nav__inner">
+    <button class="tv-nav__toggle" type="button" aria-expanded="false" aria-controls="tv-main-menu"><span class="tv-nav__burger" aria-hidden="true"></span>Menu</button>
+    <nav class="tv-nav__menu" id="tv-main-menu" aria-label="Navigation principale">
+      <ul>
+        {% for link in main_menu %}
+          <li{% if link.below %} class="has-children"{% endif %}>
+            <a href="{{ link.url }}"{% if link.active %} class="is-active" aria-current="{{ link.below ? 'true' : 'page' }}"{% endif %}>{{ link.title }}</a>
+            {% if link.below %}
+              <ul>{% for child in link.below %}<li><a href="{{ child.url }}"{% if child.active %} class="is-active"{% endif %}>{{ child.title }}</a></li>{% endfor %}</ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <form class="tv-nav__search" action="{{ search_action }}" method="get" role="search">
+      <label class="visually-hidden" for="tv-header-search">Rechercher</label>
+      <input id="tv-header-search" type="search" name="q" placeholder="Rechercher" required>
+      <button type="submit" aria-label="Lancer la recherche"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg></button>
+    </form>
+  </div>
+</div>
+
+<main class="tv-main" id="main-content" tabindex="-1">
+  <div class="tv-container">
+    {% if fallback_title %}
+      <header class="tv-pagehead tv-pagehead--fallback"><div class="tv-heading"><h1 class="tv-heading__title">{{ fallback_title }}</h1><span class="tv-heading__rule" aria-hidden="true"></span></div></header>
+    {% endif %}
+    {{ page.content }}
+  </div>
+</main>
+
+<footer class="tv-footer">
+  <div class="tv-footer__inner">
+    <div class="tv-footer__about">
+      <p class="tv-footer__name">{{ site_name }}</p>
+      {% if footer_text %}<p class="tv-footer__text">{{ footer_text }}</p>{% endif %}
+    </div>
+    <nav class="tv-footer__menu" aria-label="Pied de page">
+      {% for link in footer_menu %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+      {% for network, url in social %}<a href="{{ url }}" rel="noopener me">{{ network == 'x' ? 'X' : network|capitalize }}</a>{% endfor %}
+    </nav>
+  </div>
+</footer>

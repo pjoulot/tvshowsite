@@ -1,0 +1,42 @@
+name: 'TV Show'
+type: profile
+description: 'Fan site for one or several TV shows: news, episode guide, wiki, cast, partners.'
+core_version_requirement: ^11
+install:
+  - node
+  - taxonomy
+  - field
+  - field_ui
+  - text
+  - image
+  - file
+  - link
+  - datetime
+  - options
+  - path
+  - path_alias
+  - menu_ui
+  - menu_link_content
+  - block
+  - views
+  - views_ui
+  - user
+  - filter
+  - editor
+  - ckeditor5
+  - contact
+  - language
+  - toolbar
+  - contextual
+  - dblog
+  - automated_cron
+  - big_pipe
+  - dynamic_page_cache
+  - page_cache
+  - config
+  - help
+  - breakpoint
+  - tvshow_core
+themes:
+  - claro
+  - tvbase

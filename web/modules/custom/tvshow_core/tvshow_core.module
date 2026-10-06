@@ -1,0 +1,196 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the TV Show core module.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+use GuzzleHttp\Exception\GuzzleException;
+
+/**
+ * Implements hook_theme().
+ */
+function tvshow_core_theme(): array {
+  $hooks = [
+    'tvshow_front' => ['variables' => ['featured' => [], 'news' => [], 'wiki' => [], 'series' => []]],
+    'tvshow_listing' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'layout' => 'news', 'filters' => [], 'cards' => [], 'pager' => NULL, 'empty_text' => '', 'feed_url' => NULL]],
+    'tvshow_wiki' => ['variables' => ['categories' => [], 'latest' => []]],
+    'tvshow_cast' => ['variables' => ['roles' => [], 'crew' => []]],
+    'tvshow_partners' => ['variables' => ['partners' => []]],
+    'tvshow_search' => ['variables' => ['keys' => '', 'total' => 0, 'cards' => [], 'pager' => NULL, 'action' => '']],
+    'tvshow_serie' => ['variables' => ['serie' => [], 'seasons' => [], 'show_episodes' => TRUE]],
+    'tvshow_not_found' => ['variables' => ['action' => '', 'news' => []]],
+    'tvshow_season' => ['variables' => ['season' => [], 'serie' => NULL, 'siblings' => [], 'episodes' => []]],
+  ];
+  foreach (['article', 'editorial', 'episode', 'people', 'page'] as $bundle) {
+    $hooks['tvshow_node_' . $bundle] = ['variables' => ['data' => []]];
+  }
+  return $hooks;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view() for nodes.
+ *
+ * Full pages are rendered by the module's own templates.
+ */
+function tvshow_core_node_view(array &$build, NodeInterface $node, EntityViewDisplayInterface $display, $view_mode): void {
+  if ($view_mode !== 'full' || !in_array($node->bundle(), ['article', 'editorial', 'episode', 'people', 'page'])) {
+    return;
+  }
+  $data = \Drupal::service('tvshow_core.node_page')->build($node);
+  $build['tvshow'] = [
+    '#theme' => 'tvshow_node_' . $node->bundle(),
+    '#data' => $data,
+    '#weight' => -100,
+  ];
+  $build['#cache']['tags'][] = 'node_list';
+  $build['#cache']['tags'][] = 'taxonomy_term_list';
+
+  // Description and social sharing tags.
+  $presenter = \Drupal::service('tvshow_core.presenter');
+  $description = trim((string) $node->get('field_meta_description')->value) ?: $presenter->summary($node, $node->bundle() === 'episode' ? 'field_synopsis' : 'body', 160);
+  $image_field = $node->bundle() === 'people' ? 'field_picture' : 'field_image';
+  $image = $presenter->image($node, $image_field, 'tv_wide');
+  $tags = [
+    ['name' => 'description', 'content' => $description],
+    ['property' => 'og:title', 'content' => $node->label()],
+    ['property' => 'og:description', 'content' => $description],
+    ['property' => 'og:type', 'content' => $node->bundle() === 'article' ? 'article' : 'website'],
+    ['property' => 'og:url', 'content' => $node->toUrl('canonical', ['absolute' => TRUE])->toString()],
+    ['property' => 'og:site_name', 'content' => \Drupal::config('system.site')->get('name')],
+  ];
+  if ($image) {
+    $tags[] = ['property' => 'og:image', 'content' => \Drupal::request()->getSchemeAndHttpHost() . $image['src']];
+    $tags[] = ['name' => 'twitter:card', 'content' => 'summary_large_image'];
+  }
+  foreach ($tags as $index => $attributes) {
+    if ($attributes['content'] !== '' && $attributes['content'] !== NULL) {
+      $build['#attached']['html_head'][] = [['#tag' => 'meta', '#attributes' => $attributes], 'tvshow_meta_' . $index];
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function tvshow_core_entity_insert(EntityInterface $entity): void {
+  _tvshow_core_sync_alias($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function tvshow_core_entity_update(EntityInterface $entity): void {
+  _tvshow_core_sync_alias($entity);
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function tvshow_core_entity_delete(EntityInterface $entity): void {
+  if ($entity instanceof ContentEntityInterface && in_array($entity->getEntityTypeId(), ['node', 'taxonomy_term'])) {
+    \Drupal::service('tvshow_core.alias_generator')->forget($entity);
+  }
+}
+
+/**
+ * Keeps the generated alias of a node or term up to date.
+ */
+function _tvshow_core_sync_alias(EntityInterface $entity): void {
+  if (!$entity instanceof ContentEntityInterface || !in_array($entity->getEntityTypeId(), ['node', 'taxonomy_term'])) {
+    return;
+  }
+  $generator = \Drupal::service('tvshow_core.alias_generator');
+  $generator->sync($entity);
+  // Addresses of episodes and seasons contain their parents' names.
+  if ($entity->getEntityTypeId() === 'taxonomy_term' && !$entity->isNew() && $entity->getOriginal() && $entity->getOriginal()->label() !== $entity->label()) {
+    $repository = \Drupal::service('tvshow_core.repository');
+    if ($entity->bundle() === 'serie') {
+      foreach ($repository->seasons((int) $entity->id()) as $season) {
+        $generator->sync($season);
+        foreach ($repository->episodes((int) $season->id()) as $episode) {
+          $generator->sync($episode);
+        }
+      }
+    }
+    elseif ($entity->bundle() === 'saison') {
+      foreach ($repository->episodes((int) $entity->id()) as $episode) {
+        $generator->sync($episode);
+      }
+    }
+    elseif ($entity->bundle() === 'category') {
+      foreach ($repository->wikiEntries(NULL, ['field_category' => $entity->id()], 'title') as $entry) {
+        $generator->sync($entry);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Hides partners whose site no longer answers and shows them again when it
+ * comes back. A partner is only hidden after three failed checks in a row.
+ */
+function tvshow_core_cron(): void {
+  $state = \Drupal::state();
+  if (\Drupal::time()->getRequestTime() - (int) $state->get('tvshow_core.partners_checked', 0) < 86400) {
+    return;
+  }
+  $state->set('tvshow_core.partners_checked', \Drupal::time()->getRequestTime());
+  $failures = $state->get('tvshow_core.partner_failures', []);
+  $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  $ids = $storage->getQuery()->accessCheck(FALSE)->condition('vid', 'partenaires')->execute();
+  foreach ($storage->loadMultiple($ids) as $term) {
+    $link = $term->get('field_url')->first();
+    if (!$link) {
+      continue;
+    }
+    $ok = FALSE;
+    try {
+      $response = \Drupal::httpClient()->get($link->getUrl()->toString(), ['timeout' => 10, 'http_errors' => FALSE, 'headers' => ['Accept' => 'text/html']]);
+      $ok = $response->getStatusCode() < 400;
+    }
+    catch (GuzzleException $e) {
+      $ok = FALSE;
+    }
+    $failures[$term->id()] = $ok ? 0 : ($failures[$term->id()] ?? 0) + 1;
+    if ($ok && !$term->isPublished()) {
+      $term->setPublished()->save();
+    }
+    elseif (!$ok && $failures[$term->id()] >= 3 && $term->isPublished()) {
+      $term->setUnpublished()->save();
+      \Drupal::logger('tvshow_core')->notice('Partner %name hidden: its site did not answer three checks in a row.', ['%name' => $term->label()]);
+    }
+  }
+  $state->set('tvshow_core.partner_failures', $failures);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for the site contact form.
+ *
+ * Visitor-facing labels are French even before interface translations are
+ * installed.
+ */
+function tvshow_core_form_contact_message_feedback_form_alter(array &$form, FormStateInterface $form_state): void {
+  $labels = ['name' => 'Votre nom', 'mail' => 'Votre adresse e-mail', 'subject' => 'Sujet', 'message' => 'Message', 'copy' => 'M’envoyer une copie'];
+  foreach ($labels as $key => $label) {
+    if (isset($form[$key]['widget'][0]['value'])) {
+      $form[$key]['widget'][0]['value']['#title'] = $label;
+    }
+    elseif (isset($form[$key])) {
+      $form[$key]['#title'] = $label;
+    }
+  }
+  if (isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = 'Envoyer le message';
+  }
+  if (isset($form['actions']['preview'])) {
+    $form['actions']['preview']['#access'] = FALSE;
+  }
+}

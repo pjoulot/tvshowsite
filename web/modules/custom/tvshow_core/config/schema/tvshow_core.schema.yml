@@ -1,0 +1,34 @@
+tvshow_core.settings:
+  type: config_object
+  label: 'TV Show settings'
+  mapping:
+    footer_text:
+      type: text
+      label: 'Footer text'
+    tagline:
+      type: label
+      label: 'Tagline shown in the header'
+    social:
+      type: mapping
+      label: 'Social network addresses'
+      mapping:
+        facebook:
+          type: uri
+          label: 'Facebook'
+          nullable: true
+        x:
+          type: uri
+          label: 'X'
+          nullable: true
+        instagram:
+          type: uri
+          label: 'Instagram'
+          nullable: true
+        youtube:
+          type: uri
+          label: 'YouTube'
+          nullable: true
+        bluesky:
+          type: uri
+          label: 'Bluesky'
+          nullable: true

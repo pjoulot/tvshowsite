@@ -1,0 +1,54 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<article class="tv-page tv-episodepage">
+  {{ ui.breadcrumb([data.serie, data.season], null) }}
+  <header class="tv-episodehead">
+    {{ ui.medallion(data.number, 'large') }}
+    <div>
+      <p class="tv-kicker">{% if data.season %}{{ data.season.name }}{% endif %}{% if data.season and data.number %} · {% endif %}{% if data.number %}Épisode {{ data.number }}{% endif %}</p>
+      <h1 class="tv-title">{{ data.title }}</h1>
+    </div>
+  </header>
+  {% if data.image %}<figure class="tv-lead">{{ ui.img(data.image, 'tv-lead__image') }}</figure>{% endif %}
+
+  <dl class="tv-facts tv-facts--panel">
+    {% for label, value in data.facts %}<div><dt>{{ label }}</dt><dd>{{ value }}</dd></div>{% endfor %}
+    {% if data.directors %}<div><dt>Réalisation</dt><dd>{{ ui.links(data.directors) }}</dd></div>{% endif %}
+    {% if data.writers %}<div><dt>Scénario</dt><dd>{{ ui.links(data.writers) }}</dd></div>{% endif %}
+    {% if data.guest_stars %}<div class="tv-facts__wide"><dt>Casting secondaire</dt><dd>{{ data.guest_stars }}</dd></div>{% endif %}
+  </dl>
+  {{ ui.stores(data.stores) }}
+
+  {% if data.synopsis %}
+    <section class="tv-section"><h2 class="tv-subheading">Synopsis</h2><div class="tv-prose">{{ data.synopsis }}</div></section>
+  {% endif %}
+  {% if data.body %}
+    <section class="tv-section"><h2 class="tv-subheading">Résumé détaillé</h2><div class="tv-prose">{{ data.body }}</div></section>
+  {% endif %}
+  {% if not data.synopsis and not data.body %}
+    <p class="tv-empty">Le synopsis de cet épisode n’a pas encore été rédigé.</p>
+  {% endif %}
+  {% if data.trailers %}
+    <section class="tv-section">
+      <h2 class="tv-subheading">Bandes-annonces</h2>
+      <div class="tv-videos">
+        {% for video in data.trailers %}
+          {% if video.youtube %}<div class="video-embed" data-youtube="{{ video.youtube }}" data-title="{{ video.title }}"></div>{% else %}<p><a class="tv-button tv-button--ghost" href="{{ video.url }}" rel="noopener">{{ video.title }}</a></p>{% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+  {{ ui.gallery(data.promo, 'Photos promotionnelles') }}
+  {{ ui.gallery(data.gallery, 'Photos des coulisses') }}
+  {% if data.linked %}
+    <section class="tv-section">
+      {{ ui.heading('À lire aussi') }}
+      <div class="tv-newslist tv-newslist--wide">{% for card in data.linked %}{{ ui.news(card) }}{% endfor %}</div>
+    </section>
+  {% endif %}
+  {% if data.previous or data.next %}
+    <nav class="tv-prevnext" aria-label="Épisodes voisins">
+      {% if data.previous %}<a class="tv-prevnext__link" href="{{ data.previous.url }}" rel="prev"><span class="tv-prevnext__label"><span aria-hidden="true">←</span> Épisode précédent</span><span class="tv-prevnext__title">{{ data.previous.number }}. {{ data.previous.title }}</span></a>{% else %}<span></span>{% endif %}
+      {% if data.next %}<a class="tv-prevnext__link tv-prevnext__link--next" href="{{ data.next.url }}" rel="next"><span class="tv-prevnext__label">Épisode suivant <span aria-hidden="true">→</span></span><span class="tv-prevnext__title">{{ data.next.number }}. {{ data.next.title }}</span></a>{% endif %}
+    </nav>
+  {% endif %}
+</article>

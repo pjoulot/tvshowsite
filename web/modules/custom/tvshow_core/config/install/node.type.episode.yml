@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Épisode
+type: episode
+description: 'Un épisode rattaché à une saison.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

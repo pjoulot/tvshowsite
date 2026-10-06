@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.article_category.field_image
+    - taxonomy.vocabulary.article_category
+  module:
+    - text
+id: taxonomy_term.article_category.default
+targetEntityType: taxonomy_term
+bundle: article_category
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_image: true
+  langcode: true

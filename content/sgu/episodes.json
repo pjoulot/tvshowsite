@@ -1,0 +1,567 @@
+{
+  "sources": [
+    "https://en.wikipedia.org/wiki/List_of_Stargate_Universe_episodes",
+    "https://en.wikipedia.org/wiki/Stargate_Universe_season_1",
+    "https://en.wikipedia.org/wiki/Stargate_Universe_season_2",
+    "https://fr.wikipedia.org/wiki/Saison_1_de_Stargate_Universe",
+    "https://fr.wikipedia.org/wiki/Saison_2_de_Stargate_Universe",
+    "https://www.techno-science.net/fr/definitions/saison-1-de-stargate-universe",
+    "https://www.scifi-universe.com/series/20562/stargate-universe/episodes",
+    "https://www.allocine.fr/series/ficheserie-3768/saison-15978/"
+  ],
+  "seasons": [
+    {
+      "number": 1,
+      "first_aired": "2009-10-02",
+      "last_aired": "2010-06-11",
+      "episode_count": 20
+    },
+    {
+      "number": 2,
+      "first_aired": "2010-09-28",
+      "last_aired": "2011-05-09",
+      "episode_count": 20
+    }
+  ],
+  "episodes": [
+    {
+      "season": 1,
+      "number": 1,
+      "title_fr": "Air - Partie 1",
+      "title_original": "Air (Part 1)",
+      "air_date": "2009-10-02",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Brad Wright",
+        "Robert C. Cooper"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 2,
+      "title_fr": "Air - Partie 2",
+      "title_original": "Air (Part 2)",
+      "air_date": "2009-10-02",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Brad Wright",
+        "Robert C. Cooper"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 3,
+      "title_fr": "Air - Partie 3",
+      "title_original": "Air (Part 3)",
+      "air_date": "2009-10-09",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Brad Wright",
+        "Robert C. Cooper"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 4,
+      "title_fr": "Ombre et lumière - Partie 1",
+      "title_original": "Darkness",
+      "air_date": "2009-10-16",
+      "directors": [
+        "Peter DeLuise"
+      ],
+      "writers": [
+        "Brad Wright"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 5,
+      "title_fr": "Ombre et lumière - Partie 2",
+      "title_original": "Light",
+      "air_date": "2009-10-23",
+      "directors": [
+        "Peter DeLuise"
+      ],
+      "writers": [
+        "Brad Wright"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 6,
+      "title_fr": "Eau",
+      "title_original": "Water",
+      "air_date": "2009-10-30",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Brad Wright",
+        "Robert C. Cooper",
+        "Carl Binder"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 7,
+      "title_fr": "Terre",
+      "title_original": "Earth",
+      "air_date": "2009-11-06",
+      "directors": [
+        "Ernest Dickerson"
+      ],
+      "writers": [
+        "Brad Wright",
+        "Robert C. Cooper",
+        "Martin Gero"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 8,
+      "title_fr": "Les naufragés du temps",
+      "title_original": "Time",
+      "air_date": "2009-11-13",
+      "directors": [
+        "Robert C. Cooper"
+      ],
+      "writers": [
+        "Robert C. Cooper"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 9,
+      "title_fr": "Un nouvel espoir",
+      "title_original": "Life",
+      "air_date": "2009-11-20",
+      "directors": [
+        "Alex Chapple"
+      ],
+      "writers": [
+        "Carl Binder"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 10,
+      "title_fr": "Soupçons",
+      "title_original": "Justice",
+      "air_date": "2009-12-04",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Alan McCullough"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 11,
+      "title_fr": "Premier contact",
+      "title_original": "Space",
+      "air_date": "2010-04-02",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 12,
+      "title_fr": "Mutinerie",
+      "title_original": "Divided",
+      "air_date": "2010-04-09",
+      "directors": [
+        "Félix Enríquez Alcalá"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 13,
+      "title_fr": "Éden",
+      "title_original": "Faith",
+      "air_date": "2010-04-16",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Denis McGrath"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 14,
+      "title_fr": "Regrets éternels",
+      "title_original": "Human",
+      "air_date": "2010-04-23",
+      "directors": [
+        "Robert C. Cooper"
+      ],
+      "writers": [
+        "Jeff Vlaming"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 15,
+      "title_fr": "Seuls au monde",
+      "title_original": "Lost",
+      "air_date": "2010-04-30",
+      "directors": [
+        "Rohn Schmidt"
+      ],
+      "writers": [
+        "Martin Gero"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 16,
+      "title_fr": "À la dérive",
+      "title_original": "Sabotage",
+      "air_date": "2010-05-07",
+      "directors": [
+        "Peter DeLuise"
+      ],
+      "writers": [
+        "Barbara Marshall"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 17,
+      "title_fr": "La somme de toutes les peurs",
+      "title_original": "Pain",
+      "air_date": "2010-05-14",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Carl Binder"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 18,
+      "title_fr": "Ennemi intérieur",
+      "title_original": "Subversion",
+      "air_date": "2010-05-21",
+      "directors": [
+        "Alex Chapple"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 19,
+      "title_fr": "L'assaut - Partie 1",
+      "title_original": "Incursion (Part 1)",
+      "air_date": "2010-06-04",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 1,
+      "number": 20,
+      "title_fr": "L'assaut - Partie 2",
+      "title_original": "Incursion (Part 2)",
+      "air_date": "2010-06-11",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 1,
+      "title_fr": "Main mise",
+      "title_original": "Intervention",
+      "air_date": "2010-09-28",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 2,
+      "title_fr": "Retombées",
+      "title_original": "Aftermath",
+      "air_date": "2010-10-05",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Robert C. Cooper"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 3,
+      "title_fr": "Miroir",
+      "title_original": "Awakening",
+      "air_date": "2010-10-12",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 4,
+      "title_fr": "Influence",
+      "title_original": "Pathogen",
+      "air_date": "2010-10-19",
+      "directors": [
+        "Robert Carlyle"
+      ],
+      "writers": [
+        "Carl Binder"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 5,
+      "title_fr": "Cloverdale",
+      "title_original": "Cloverdale",
+      "air_date": "2010-10-26",
+      "directors": [
+        "Alex Chapple"
+      ],
+      "writers": [
+        "Brad Wright"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 6,
+      "title_fr": "À bout",
+      "title_original": "Trial and Error",
+      "air_date": "2010-11-02",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 7,
+      "title_fr": "Pour le bien de tous",
+      "title_original": "The Greater Good",
+      "air_date": "2010-11-09",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Carl Binder"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 8,
+      "title_fr": "Sans pitié",
+      "title_original": "Malice",
+      "air_date": "2010-11-16",
+      "directors": [
+        "Robert C. Cooper"
+      ],
+      "writers": [
+        "Robert C. Cooper"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 9,
+      "title_fr": "Retour d'Éden",
+      "title_original": "Visitation",
+      "air_date": "2010-11-23",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Remi Aubuchon"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 10,
+      "title_fr": "Confrontation - Partie 1",
+      "title_original": "Resurgence",
+      "air_date": "2010-11-30",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 11,
+      "title_fr": "Confrontation - Partie 2",
+      "title_original": "Deliverance",
+      "air_date": "2011-03-07",
+      "directors": [
+        "Peter DeLuise"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 12,
+      "title_fr": "Rush²",
+      "title_original": "Twin Destinies",
+      "air_date": "2011-03-14",
+      "directors": [
+        "Peter DeLuise"
+      ],
+      "writers": [
+        "Brad Wright"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 13,
+      "title_fr": "De part et d'autre",
+      "title_original": "Alliances",
+      "air_date": "2011-03-21",
+      "directors": [
+        "Peter DeLuise"
+      ],
+      "writers": [
+        "Linda McGibney"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 14,
+      "title_fr": "D'un corps à l'autre",
+      "title_original": "Hope",
+      "air_date": "2011-03-28",
+      "directors": [
+        "William Waring"
+      ],
+      "writers": [
+        "Carl Binder"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 15,
+      "title_fr": "Passage en force",
+      "title_original": "Seizure",
+      "air_date": "2011-04-04",
+      "directors": [
+        "Helen Shaver"
+      ],
+      "writers": [
+        "Remi Aubuchon"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 16,
+      "title_fr": "La peur en face",
+      "title_original": "The Hunt",
+      "air_date": "2011-04-11",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 17,
+      "title_fr": "Les enfants du Destinée",
+      "title_original": "Common Descent",
+      "air_date": "2011-04-18",
+      "directors": [
+        "Peter DeLuise"
+      ],
+      "writers": [
+        "Robert C. Cooper"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 18,
+      "title_fr": "Novus",
+      "title_original": "Epilogue",
+      "air_date": "2011-04-25",
+      "directors": [
+        "Alex Chapple"
+      ],
+      "writers": [
+        "Carl Binder"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 19,
+      "title_fr": "Les ailes d'Icare",
+      "title_original": "Blockade",
+      "air_date": "2011-05-02",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Linda McGibney"
+      ]
+    },
+    {
+      "season": 2,
+      "number": 20,
+      "title_fr": "Une famille",
+      "title_original": "Gauntlet",
+      "air_date": "2011-05-09",
+      "directors": [
+        "Andy Mikita"
+      ],
+      "writers": [
+        "Joseph Mallozzi",
+        "Paul Mullie"
+      ]
+    }
+  ]
+}

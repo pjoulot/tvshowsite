@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_square
+label: 'Carré (400×400)'
+effects:
+  49492507-a6c1-4de7-a49d-e122abf2e848:
+    uuid: 49492507-a6c1-4de7-a49d-e122abf2e848
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 400
+      height: 400
+      anchor: center-top
+  55c14777-f232-41e7-a357-8ca1b3461e8f:
+    uuid: 55c14777-f232-41e7-a357-8ca1b3461e8f
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

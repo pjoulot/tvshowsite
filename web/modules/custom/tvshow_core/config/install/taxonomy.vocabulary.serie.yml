@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Série
+vid: serie
+description: 'Les séries couvertes par le site.'
+weight: 0
+new_revision: false

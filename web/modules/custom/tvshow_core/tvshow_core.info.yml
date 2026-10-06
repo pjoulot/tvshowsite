@@ -1,0 +1,16 @@
+name: 'TV Show core'
+type: module
+description: 'Content model, listings, URL patterns and site features shared by every TV show site.'
+package: 'TV Show'
+core_version_requirement: ^11
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:image
+  - drupal:link
+  - drupal:datetime
+  - drupal:text
+  - drupal:path
+  - drupal:path_alias
+  - drupal:menu_link_content
+  - drupal:file

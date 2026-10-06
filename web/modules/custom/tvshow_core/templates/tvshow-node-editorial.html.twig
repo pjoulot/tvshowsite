@@ -1,0 +1,28 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<article class="tv-page tv-entry">
+  {{ ui.breadcrumb([{name: 'Wiki', url: path('tvshow_core.wiki')}, data.category], null) }}
+  <div class="tv-entry__layout">
+    <div class="tv-entry__main">
+      <header>
+        {% if data.category %}<p class="tv-meta"><a class="tv-meta__category" href="{{ data.category.url }}">{{ data.category.name }}</a></p>{% endif %}
+        <h1 class="tv-title">{{ data.title }}</h1>
+      </header>
+      {% if data.body %}<div class="tv-prose">{{ data.body }}</div>{% else %}<p class="tv-empty">Cette fiche n’a pas encore de texte.</p>{% endif %}
+    </div>
+    <aside class="tv-infobox">
+      {{ ui.img(data.image, 'tv-infobox__image') }}
+      <dl class="tv-infobox__facts">
+        {% if data.actors %}<div><dt>{{ data.actors|length > 1 ? 'Interprètes' : 'Interprète' }}</dt><dd>{{ ui.links(data.actors) }}</dd></div>{% endif %}
+        {% if data.serie %}<div><dt>Série</dt><dd><a href="{{ data.serie.url }}">{{ data.serie.name }}</a></dd></div>{% endif %}
+        {% if data.category %}<div><dt>Rubrique</dt><dd><a href="{{ data.category.url }}">{{ data.category.name }}</a></dd></div>{% endif %}
+      </dl>
+    </aside>
+  </div>
+  {{ ui.gallery(data.gallery, 'Galerie') }}
+  {% if data.related %}
+    <section class="tv-section">
+      {{ ui.heading('Dans la même rubrique', data.category.url, 'Toute la rubrique') }}
+      <div class="tv-grid tv-grid--tiles">{% for card in data.related %}{{ ui.wiki(card) }}{% endfor %}</div>
+    </section>
+  {% endif %}
+</article>

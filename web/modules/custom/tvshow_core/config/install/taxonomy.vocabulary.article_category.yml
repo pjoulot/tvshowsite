@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Catégorie d’actualité'
+vid: article_category
+description: 'Les rubriques des actualités.'
+weight: 0
+new_revision: false

@@ -1,0 +1,12 @@
+name: 'Stargate Universe'
+type: theme
+description: 'Identity of stargateuniverse.fr: aged brass on dark bronze, amber lights, Barlow type.'
+core_version_requirement: ^11
+base theme: tvbase
+libraries:
+  - sgu/identity
+regions:
+  content: 'Content'
+  hidden: 'Hidden'
+regions_hidden:
+  - hidden

@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - tvbase
+id: tvbase_local_actions
+theme: tvbase
+region: content
+weight: -15
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Métier
+vid: job
+description: 'Les métiers des personnalités (acteur, réalisateur, scénariste…).'
+weight: 0
+new_revision: false

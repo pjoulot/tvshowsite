@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_linked_content
+    - node.type.article
+    - node.type.editorial
+    - node.type.episode
+id: node.episode.field_linked_content
+field_name: field_linked_content
+entity_type: node
+bundle: episode
+label: 'Contenus liés'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      editorial: editorial
+    auto_create: false
+field_type: entity_reference

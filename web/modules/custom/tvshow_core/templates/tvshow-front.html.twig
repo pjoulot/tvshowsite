@@ -1,0 +1,38 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<div class="tv-page tv-front">
+  <h1 class="visually-hidden">{{ 'Accueil' }}</h1>
+  {% if featured %}
+    <section class="tv-features" aria-label="À la une">
+      {% for card in featured %}{{ ui.feature(card) }}{% endfor %}
+    </section>
+  {% endif %}
+
+  <div class="tv-columns">
+    <section class="tv-columns__main">
+      {{ ui.heading('Dernières actualités') }}
+      {% if news %}
+        <div class="tv-newslist">{% for card in news %}{{ ui.news(card) }}{% endfor %}</div>
+        <p><a class="tv-more" href="{{ path('tvshow_core.news') }}">Toutes les actualités <span aria-hidden="true">→</span></a></p>
+      {% else %}
+        <p class="tv-empty">Aucune actualité pour le moment.</p>
+      {% endif %}
+    </section>
+
+    <aside class="tv-columns__side">
+      {{ ui.heading('Dernières fiches du wiki') }}
+      {% if wiki %}
+        <div class="tv-wikilist">{% for card in wiki %}{{ ui.wiki_row(card) }}{% endfor %}</div>
+        <p><a class="tv-more" href="{{ path('tvshow_core.wiki') }}">Tout le wiki <span aria-hidden="true">→</span></a></p>
+      {% else %}
+        <p class="tv-empty">Le wiki est encore vide.</p>
+      {% endif %}
+    </aside>
+  </div>
+
+  {% if series %}
+    <section class="tv-section">
+      {{ ui.heading('Les séries', path('tvshow_core.episodes'), 'Guide des épisodes') }}
+      <div class="tv-grid tv-grid--posters">{% for card in series %}{{ ui.poster(card) }}{% endfor %}</div>
+    </section>
+  {% endif %}
+</div>

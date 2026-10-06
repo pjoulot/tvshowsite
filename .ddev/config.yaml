@@ -1,0 +1,9 @@
+name: tvshow
+type: drupal11
+docroot: web
+php_version: "8.3"
+webserver_type: nginx-fpm
+database:
+  type: mariadb
+  version: "10.11"
+composer_version: "2"

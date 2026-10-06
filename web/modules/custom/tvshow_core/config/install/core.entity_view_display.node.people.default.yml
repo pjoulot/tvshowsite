@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.people.body
+    - field.field.node.people.field_job
+    - field.field.node.people.field_meta_description
+    - field.field.node.people.field_picture
+    - node.type.people
+  module:
+    - user
+id: node.people.default
+targetEntityType: node
+bundle: people
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_job: true
+  field_meta_description: true
+  field_picture: true
+  langcode: true

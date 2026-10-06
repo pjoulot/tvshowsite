@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_gallery
+label: 'Vignette de galerie (360×240)'
+effects:
+  0eef0a87-7b0b-4056-b20b-b6606394b388:
+    uuid: 0eef0a87-7b0b-4056-b20b-b6606394b388
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 360
+      height: 240
+      anchor: center-top
+  9f9076b1-926f-472c-87f1-24b6ac7d70bc:
+    uuid: 9f9076b1-926f-472c-87f1-24b6ac7d70bc
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

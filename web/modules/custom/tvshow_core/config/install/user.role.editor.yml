@@ -1,0 +1,52 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.editorial
+    - node.type.episode
+    - node.type.page
+    - node.type.people
+  module:
+    - contextual
+    - file
+    - node
+    - path
+    - system
+    - taxonomy
+    - toolbar
+id: editor
+label: Rédacteur
+weight: 3
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access toolbar'
+  - 'administer menu'
+  - 'administer taxonomy'
+  - 'create article content'
+  - 'create editorial content'
+  - 'create episode content'
+  - 'create page content'
+  - 'create people content'
+  - 'create url aliases'
+  - 'delete own article content'
+  - 'delete own editorial content'
+  - 'delete own episode content'
+  - 'delete own page content'
+  - 'delete own people content'
+  - 'edit any article content'
+  - 'edit any editorial content'
+  - 'edit any episode content'
+  - 'edit any page content'
+  - 'edit any people content'
+  - 'view article revisions'
+  - 'view editorial revisions'
+  - 'view episode revisions'
+  - 'view own unpublished content'
+  - 'view page revisions'
+  - 'view people revisions'
+  - 'view the administration theme'

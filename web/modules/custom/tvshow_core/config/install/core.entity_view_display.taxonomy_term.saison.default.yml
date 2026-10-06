@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.saison.field_affiliates_links
+    - field.field.taxonomy_term.saison.field_dates
+    - field.field.taxonomy_term.saison.field_image
+    - field.field.taxonomy_term.saison.field_season_number
+    - field.field.taxonomy_term.saison.field_serie
+    - taxonomy.vocabulary.saison
+  module:
+    - text
+id: taxonomy_term.saison.default
+targetEntityType: taxonomy_term
+bundle: saison
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_affiliates_links: true
+  field_dates: true
+  field_image: true
+  field_season_number: true
+  field_serie: true
+  langcode: true

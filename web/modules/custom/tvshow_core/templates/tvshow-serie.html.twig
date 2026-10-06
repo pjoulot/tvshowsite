@@ -1,0 +1,44 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<div class="tv-page tv-serie">
+  {{ ui.breadcrumb([], serie.title) }}
+  <header class="tv-hero">
+    <div class="tv-hero__media">{{ ui.img(serie.image, 'tv-hero__image') }}</div>
+    <div class="tv-hero__body">
+      <p class="tv-kicker">Guide des épisodes</p>
+      <h1 class="tv-hero__title">{{ serie.title }}</h1>
+      <dl class="tv-facts">
+        {% if serie.dates %}<div><dt>Diffusion</dt><dd>{{ serie.dates }}</dd></div>{% endif %}
+        {% if seasons %}<div><dt>Saisons</dt><dd>{{ seasons|length }}</dd></div>{% endif %}
+        {% if serie.episode_total %}<div><dt>Épisodes</dt><dd>{{ serie.episode_total }}</dd></div>{% endif %}
+        {% if serie.creators %}<div><dt>Créateurs</dt><dd>{{ serie.creators }}</dd></div>{% endif %}
+      </dl>
+      {% if serie.description %}<div class="tv-prose">{{ serie.description }}</div>{% endif %}
+      {{ ui.stores(serie.stores) }}
+    </div>
+  </header>
+
+  {% if not seasons %}
+    <p class="tv-empty">Aucune saison n’a encore été ajoutée.</p>
+  {% elseif show_episodes %}
+    {% if seasons|length > 1 %}
+      <nav class="tv-filters" aria-label="Saisons">
+        {% for season in seasons %}<a class="tv-filter" href="#{{ season.anchor }}">{{ season.title }}</a>{% endfor %}
+      </nav>
+    {% endif %}
+    {% for season in seasons %}
+      <section class="tv-section" id="{{ season.anchor }}">
+        {{ ui.heading(season.title, season.url, 'La saison en détail') }}
+        {% if season.episodes %}
+          <div class="tv-grid tv-grid--episodes">{% for card in season.episodes %}{{ ui.episode(card) }}{% endfor %}</div>
+        {% else %}
+          <p class="tv-empty">Aucun épisode pour cette saison.</p>
+        {% endif %}
+      </section>
+    {% endfor %}
+  {% else %}
+    <section class="tv-section">
+      {{ ui.heading('Saisons') }}
+      <div class="tv-grid tv-grid--posters">{% for season in seasons %}{{ ui.poster(season) }}{% endfor %}</div>
+    </section>
+  {% endif %}
+</div>

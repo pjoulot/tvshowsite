@@ -1,0 +1,25 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<div class="tv-page tv-notfound">
+  <header class="tv-pagehead">
+    <p class="tv-kicker">Erreur 404</p>
+    {{ ui.heading('Page introuvable', null, null, 1) }}
+    <p class="tv-lede">Cette adresse ne mène nulle part. La page a peut-être été déplacée lors de la refonte du site.</p>
+  </header>
+  <form class="tv-searchform" action="{{ action }}" method="get" role="search">
+    <label class="visually-hidden" for="tv-404-keys">Rechercher sur le site</label>
+    <input id="tv-404-keys" type="search" name="q" placeholder="Rechercher sur le site" required>
+    <button class="tv-button" type="submit">Rechercher</button>
+  </form>
+  <p class="tv-stores">
+    <a class="tv-button tv-button--ghost" href="{{ path('<front>') }}">Accueil</a>
+    <a class="tv-button tv-button--ghost" href="{{ path('tvshow_core.news') }}">Actualités</a>
+    <a class="tv-button tv-button--ghost" href="{{ path('tvshow_core.episodes') }}">Épisodes</a>
+    <a class="tv-button tv-button--ghost" href="{{ path('tvshow_core.wiki') }}">Wiki</a>
+  </p>
+  {% if news %}
+    <section class="tv-section">
+      {{ ui.heading('Dernières actualités') }}
+      <div class="tv-newslist tv-newslist--wide">{% for card in news %}{{ ui.news(card) }}{% endfor %}</div>
+    </section>
+  {% endif %}
+</div>

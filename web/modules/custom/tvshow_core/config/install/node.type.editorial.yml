@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Fiche du wiki'
+type: editorial
+description: 'Une fiche encyclopédique : personnage, vaisseau, technologie, planète…'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

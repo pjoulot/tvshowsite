@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_thumb
+label: 'Vignette (200×150)'
+effects:
+  8f4b54a5-6211-4bb5-8373-ff7ceaed8795:
+    uuid: 8f4b54a5-6211-4bb5-8373-ff7ceaed8795
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 200
+      height: 150
+      anchor: center-top
+  81e8275d-5803-4fb2-a477-09b9e717efc6:
+    uuid: 81e8275d-5803-4fb2-a477-09b9e717efc6
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

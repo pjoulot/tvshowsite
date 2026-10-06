@@ -1,0 +1,29 @@
+services:
+  tvshow_core.repository:
+    class: Drupal\tvshow_core\ContentRepository
+    arguments: ['@entity_type.manager']
+  tvshow_core.presenter:
+    class: Drupal\tvshow_core\Presenter
+    arguments: ['@entity_type.manager', '@file_url_generator', '@config.factory']
+  tvshow_core.alias_generator:
+    class: Drupal\tvshow_core\AliasGenerator
+    arguments: ['@entity_type.manager', '@transliteration', '@keyvalue']
+  tvshow_core.route_subscriber:
+    class: Drupal\tvshow_core\EventSubscriber\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  tvshow_core.legacy_redirect:
+    class: Drupal\tvshow_core\EventSubscriber\LegacyRedirectSubscriber
+    arguments: ['@path_alias.repository', '@keyvalue', '@language_manager']
+    tags:
+      - { name: event_subscriber }
+  tvshow_core.twig:
+    class: Drupal\tvshow_core\Twig\TvshowExtension
+    tags:
+      - { name: twig.extension }
+  tvshow_core.node_page:
+    class: Drupal\tvshow_core\NodePage
+    arguments: ['@tvshow_core.repository', '@tvshow_core.presenter']
+  tvshow_core.importer:
+    class: Drupal\tvshow_core\Import\ContentPackImporter
+    arguments: ['@entity_type.manager', '@file_system', '@file_url_generator', '@keyvalue', '@config.factory', '@tvshow_core.alias_generator', '@tvshow_core.presenter']

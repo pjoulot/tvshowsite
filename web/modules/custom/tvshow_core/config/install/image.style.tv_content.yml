@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_content
+label: 'Dans le texte (900 px)'
+effects:
+  5ddd239a-75ad-48c4-a25a-2cbb4356e343:
+    uuid: 5ddd239a-75ad-48c4-a25a-2cbb4356e343
+    id: image_scale
+    weight: 0
+    data:
+      width: 900
+      height: null
+      upscale: false
+  435b04df-0ddd-4326-88ea-d26c42e87322:
+    uuid: 435b04df-0ddd-4326-88ea-d26c42e87322
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

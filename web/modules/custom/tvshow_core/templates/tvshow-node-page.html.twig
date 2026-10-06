@@ -1,0 +1,8 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<article class="tv-page tv-basic">
+  {{ ui.breadcrumb([], data.title) }}
+  <header class="tv-pagehead">{{ ui.heading(data.title, null, null, 1) }}</header>
+  {% if data.image and not data.gallery %}<figure class="tv-lead">{{ ui.img(data.image, 'tv-lead__image') }}</figure>{% endif %}
+  {% if data.body %}<div class="tv-prose">{{ data.body }}</div>{% endif %}
+  {{ ui.gallery(data.gallery, data.body ? 'Galerie' : null) }}
+</article>

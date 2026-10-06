@@ -1,0 +1,19 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<div class="tv-page tv-search">
+  {{ ui.breadcrumb([], 'Recherche') }}
+  <header class="tv-pagehead">{{ ui.heading('Recherche', null, null, 1) }}</header>
+  <form class="tv-searchform" action="{{ action }}" method="get" role="search">
+    <label class="visually-hidden" for="tv-search-keys">Rechercher sur le site</label>
+    <input id="tv-search-keys" type="search" name="q" value="{{ keys }}" placeholder="Un épisode, un personnage, une actualité…" required>
+    <button class="tv-button" type="submit">Rechercher</button>
+  </form>
+  {% if keys %}
+    <p class="tv-resultcount">{{ total }} {{ total > 1 ? 'résultats' : 'résultat' }} pour « {{ keys }} »</p>
+    {% if cards %}
+      <div class="tv-newslist tv-newslist--wide">{% for card in cards %}{{ ui.news(card) }}{% endfor %}</div>
+      {{ ui.pager(pager) }}
+    {% else %}
+      <p class="tv-empty">Rien ne correspond à cette recherche. Essayez avec moins de mots ou un autre terme.</p>
+    {% endif %}
+  {% endif %}
+</div>

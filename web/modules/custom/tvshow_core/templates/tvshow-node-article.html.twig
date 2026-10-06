@@ -1,0 +1,23 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<article class="tv-page tv-article">
+  {{ ui.breadcrumb([{name: 'Actualités', url: path('tvshow_core.news')}, data.category], null) }}
+  <header class="tv-articlehead">
+    <p class="tv-meta">{% if data.category %}<a class="tv-meta__category" href="{{ data.category.url }}">{{ data.category.name }}</a><span aria-hidden="true"> · </span>{% endif %}<time datetime="{{ data.date_iso }}">{{ data.date }}</time>{% if data.byline %}<span aria-hidden="true"> · </span>par {{ data.byline }}{% endif %}</p>
+    <h1 class="tv-title">{{ data.title }}</h1>
+  </header>
+  {% if data.image %}<figure class="tv-lead">{{ ui.img(data.image, 'tv-lead__image') }}</figure>{% endif %}
+  {% if data.body %}<div class="tv-prose">{{ data.body }}</div>{% endif %}
+  {{ ui.gallery(data.gallery, 'Galerie') }}
+  {% if data.tags or data.source %}
+    <footer class="tv-articlefoot">
+      {% if data.tags %}<p class="tv-tags"><span class="tv-tags__label">Tags</span>{% for tag in data.tags %}<a class="tv-tag" href="{{ tag.url }}">{{ tag.name }}</a>{% endfor %}</p>{% endif %}
+      {% if data.source %}<p class="tv-source">Source : <a href="{{ data.source.url }}" rel="noopener">{{ data.source.title }}</a></p>{% endif %}
+    </footer>
+  {% endif %}
+  {% if data.related %}
+    <section class="tv-section">
+      {{ ui.heading('Dans la même rubrique') }}
+      <div class="tv-newslist tv-newslist--wide">{% for card in data.related %}{{ ui.news(card) }}{% endfor %}</div>
+    </section>
+  {% endif %}
+</article>

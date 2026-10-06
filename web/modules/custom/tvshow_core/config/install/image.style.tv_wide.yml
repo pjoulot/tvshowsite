@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_wide
+label: 'Large (1040×585)'
+effects:
+  6fb07f29-76c5-41b1-9735-4bf16fae0a5c:
+    uuid: 6fb07f29-76c5-41b1-9735-4bf16fae0a5c
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 1040
+      height: 585
+      anchor: center-top
+  d72348e6-5832-4093-8fb9-bcd70f5c0cfe:
+    uuid: d72348e6-5832-4093-8fb9-bcd70f5c0cfe
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

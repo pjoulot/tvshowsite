@@ -1,0 +1,6 @@
+{% if primary or secondary %}
+  <nav class="tv-tabs" aria-label="Onglets">
+    {% if primary %}<ul>{{ primary }}</ul>{% endif %}
+    {% if secondary %}<ul>{{ secondary }}</ul>{% endif %}
+  </nav>
+{% endif %}

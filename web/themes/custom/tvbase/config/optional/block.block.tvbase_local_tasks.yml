@@ -1,0 +1,19 @@
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - tvbase
+id: tvbase_local_tasks
+theme: tvbase
+region: content
+weight: -20
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Onglets'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

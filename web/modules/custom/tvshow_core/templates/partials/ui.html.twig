@@ -1,0 +1,190 @@
+{#
+  Shared building blocks. Import with:
+  {% import '@tvshow_core/partials/ui.html.twig' as ui %}
+#}
+
+{% macro img(image, class) %}
+  {%- if image -%}
+    <img class="{{ class }}" src="{{ image.src }}" alt="{{ image.alt }}"{% if image.width %} width="{{ image.width }}"{% endif %}{% if image.height %} height="{{ image.height }}"{% endif %} loading="lazy" decoding="async">
+  {%- else -%}
+    <span class="tv-ph {{ class }}" aria-hidden="true"></span>
+  {%- endif -%}
+{% endmacro %}
+
+{% macro medallion(number, size) %}
+  <span class="tv-medallion{{ size ? ' tv-medallion--' ~ size }}">
+    <svg aria-hidden="true" viewBox="0 0 100 100" focusable="false"><circle class="tv-medallion__rim" cx="50" cy="50" r="48"/><circle class="tv-medallion__well" cx="50" cy="50" r="41"/><polygon class="tv-medallion__teeth" points="50.0,13.0 54.9,22.4 62.7,15.2 64.0,25.8 73.8,21.7 71.4,32.0 82.0,31.5 76.3,40.4 86.4,43.6 78.0,50.0 86.4,56.4 76.3,59.6 82.0,68.5 71.4,68.0 73.8,78.3 64.0,74.2 62.7,84.8 54.9,77.6 50.0,87.0 45.1,77.6 37.3,84.8 36.0,74.2 26.2,78.3 28.6,68.0 18.0,68.5 23.7,59.6 13.6,56.4 22.0,50.0 13.6,43.6 23.7,40.4 18.0,31.5 28.6,32.0 26.2,21.7 36.0,25.8 37.3,15.2 45.1,22.4"/><circle class="tv-medallion__core" cx="50" cy="50" r="24"/></svg>
+    {% if number is not null and number != '' %}<span class="tv-medallion__number">{{ number }}</span>{% endif %}
+  </span>
+{% endmacro %}
+
+{% macro heading(title, link_url, link_label, level) %}
+  <div class="tv-heading">
+    <h{{ level|default(2) }} class="tv-heading__title">{{ title }}</h{{ level|default(2) }}>
+    <span class="tv-heading__rule" aria-hidden="true"></span>
+    {% if link_url %}<a class="tv-more" href="{{ link_url }}">{{ link_label }} <span aria-hidden="true">→</span></a>{% endif %}
+  </div>
+{% endmacro %}
+
+{% macro meta(card) %}
+  {% if card.category or card.date %}
+    <p class="tv-meta">
+      {%- if card.category %}<span class="tv-meta__category">{{ card.category.name }}</span>{% endif -%}
+      {%- if card.category and card.date %}<span aria-hidden="true"> · </span>{% endif -%}
+      {%- if card.date %}<time{% if card.date_iso %} datetime="{{ card.date_iso }}"{% endif %}>{{ card.date }}</time>{% endif -%}
+    </p>
+  {% endif %}
+{% endmacro %}
+
+{% macro feature(card) %}
+  {% import _self as ui %}
+  <a class="tv-feature" href="{{ card.url }}">
+    {{ ui.img(card.image_wide ?: card.image, 'tv-feature__image') }}
+    <span class="tv-feature__body">
+      <span class="tv-meta">{% if card.category %}<span class="tv-meta__category">{{ card.category.name }}</span><span aria-hidden="true"> · </span>{% endif %}{{ card.date }}</span>
+      <span class="tv-feature__title">{{ card.title }}</span>
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro news(card) %}
+  {% import _self as ui %}
+  <article class="tv-news">
+    <a class="tv-news__media" href="{{ card.url }}" tabindex="-1" aria-hidden="true">{{ ui.img(card.image, 'tv-news__image') }}</a>
+    <div class="tv-news__body">
+      {% if card.type == 'article' %}{{ ui.meta(card) }}{% else %}<p class="tv-meta"><span class="tv-meta__category">{{ card.kicker }}</span>{% if card.category %}<span aria-hidden="true"> · </span>{{ card.category.name }}{% endif %}</p>{% endif %}
+      <h3 class="tv-news__title"><a href="{{ card.url }}">{{ card.title }}</a></h3>
+      {% if card.summary %}<p class="tv-news__summary">{{ card.summary }}</p>{% endif %}
+    </div>
+  </article>
+{% endmacro %}
+
+{% macro wiki_row(card) %}
+  {% import _self as ui %}
+  <a class="tv-wikirow" href="{{ card.url }}">
+    {{ ui.img(card.image, 'tv-wikirow__image') }}
+    <span class="tv-wikirow__body">
+      {% if card.category %}<span class="tv-meta"><span class="tv-meta__category">{{ card.category.name }}</span></span>{% endif %}
+      <span class="tv-wikirow__title">{{ card.title }}</span>
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro wiki(card) %}
+  {% import _self as ui %}
+  <a class="tv-tile" href="{{ card.url }}">
+    {{ ui.img(card.image, 'tv-tile__image') }}
+    <span class="tv-tile__body">
+      {% if card.category %}<span class="tv-meta"><span class="tv-meta__category">{{ card.category.name }}</span></span>{% endif %}
+      <span class="tv-tile__title">{{ card.title }}</span>
+      {% if card.summary %}<span class="tv-tile__summary">{{ card.summary }}</span>{% endif %}
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro person(card) %}
+  {% import _self as ui %}
+  <a class="tv-tile tv-tile--person" href="{{ card.url }}">
+    {{ ui.img(card.image, 'tv-tile__image') }}
+    <span class="tv-tile__body">
+      {% if card.jobs %}<span class="tv-meta"><span class="tv-meta__category">{{ card.jobs|map(j => j.name)|join(', ') }}</span></span>{% endif %}
+      <span class="tv-tile__title">{{ card.title }}</span>
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro episode(card) %}
+  {% import _self as ui %}
+  <a class="tv-episode" href="{{ card.url }}">
+    {{ ui.img(card.image, 'tv-episode__image') }}
+    <span class="tv-episode__row">
+      {{ ui.medallion(card.number) }}
+      <span class="tv-episode__text">
+        <span class="tv-episode__title">{{ card.title }}</span>
+        <span class="tv-episode__meta">{% if card.original_title and card.original_title != card.title %}{{ card.original_title }}{% endif %}{% if card.original_title and card.original_title != card.title and card.date %} · {% endif %}{{ card.date }}</span>
+      </span>
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro poster(card) %}
+  {% import _self as ui %}
+  <a class="tv-poster" href="{{ card.url }}">
+    {{ ui.img(card.image, 'tv-poster__image') }}
+    <span class="tv-poster__body">
+      <span class="tv-poster__title">{{ card.title }}</span>
+      {% if card.count is not null %}<span class="tv-poster__meta">{{ card.count }} {{ card.type == 'saison' ? (card.count > 1 ? 'épisodes' : 'épisode') : (card.count > 1 ? 'fiches' : 'fiche') }}</span>{% elseif card.dates %}<span class="tv-poster__meta">{{ card.dates }}</span>{% endif %}
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro card(card) %}
+  {% import _self as ui %}
+  {% if card.type == 'episode' %}{{ ui.episode(card) }}
+  {% elseif card.type == 'editorial' %}{{ ui.wiki(card) }}
+  {% elseif card.type == 'people' %}{{ ui.person(card) }}
+  {% elseif card.type in ['serie', 'saison'] %}{{ ui.poster(card) }}
+  {% else %}{{ ui.news(card) }}{% endif %}
+{% endmacro %}
+
+{% macro filters(filters, label) %}
+  {% if filters %}
+    <nav class="tv-filters" aria-label="{{ label|default('Filtrer') }}">
+      {% for filter in filters %}
+        <a class="tv-filter{{ filter.active ? ' is-active' }}" href="{{ filter.url }}"{% if filter.active %} aria-current="page"{% endif %}>{{ filter.label }}</a>
+      {% endfor %}
+    </nav>
+  {% endif %}
+{% endmacro %}
+
+{% macro pager(pager) %}
+  {% if pager %}
+    <nav class="tv-pager" aria-label="Pagination">
+      {% if pager.previous %}<a class="tv-pager__step" href="{{ pager.previous }}" rel="prev"><span aria-hidden="true">←</span> Précédent</a>{% endif %}
+      <ul class="tv-pager__list">
+        {% for item in pager.items %}
+          {% if item.gap %}<li class="tv-pager__gap" aria-hidden="true">…</li>
+          {% elseif item.current %}<li><span class="tv-pager__page is-current" aria-current="page"><span class="visually-hidden">Page </span>{{ item.label }}</span></li>
+          {% else %}<li><a class="tv-pager__page" href="{{ item.url }}"><span class="visually-hidden">Page </span>{{ item.label }}</a></li>{% endif %}
+        {% endfor %}
+      </ul>
+      {% if pager.next %}<a class="tv-pager__step" href="{{ pager.next }}" rel="next">Suivant <span aria-hidden="true">→</span></a>{% endif %}
+    </nav>
+  {% endif %}
+{% endmacro %}
+
+{% macro gallery(items, title) %}
+  {% if items %}
+    <section class="tv-section">
+      {% if title %}<h2 class="tv-subheading">{{ title }} <span class="tv-count">{{ items|length }}</span></h2>{% endif %}
+      <ul class="tv-gallery" data-tv-gallery>
+        {% for item in items %}
+          <li><a href="{{ item.full.src }}" data-width="{{ item.full.width }}" data-height="{{ item.full.height }}"><img src="{{ item.thumb.src }}" alt="{{ item.thumb.alt ?: (title ~ ' – image ' ~ loop.index) }}" width="{{ item.thumb.width }}" height="{{ item.thumb.height }}" loading="lazy" decoding="async"></a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+{% endmacro %}
+
+{% macro links(items) %}
+  {%- for item in items -%}
+    <a href="{{ item.url }}">{{ item.name }}</a>{{ not loop.last ? ', ' }}
+  {%- endfor -%}
+{% endmacro %}
+
+{% macro stores(items) %}
+  {% if items %}
+    <p class="tv-stores">
+      <span class="tv-stores__label">Voir ou acheter :</span>
+      {% for item in items %}<a class="tv-button tv-button--ghost" href="{{ item.url }}" rel="noopener sponsored">{{ item.label }}</a>{% endfor %}
+    </p>
+  {% endif %}
+{% endmacro %}
+
+{% macro breadcrumb(items, current) %}
+  <nav class="tv-breadcrumb" aria-label="Fil d’Ariane">
+    <a href="{{ path('<front>') }}">Accueil</a>
+    {% for item in items %}{% if item %}<span aria-hidden="true">/</span><a href="{{ item.url }}">{{ item.name }}</a>{% endif %}{% endfor %}
+    {% if current %}<span aria-hidden="true">/</span><span aria-current="page">{{ current }}</span>{% endif %}
+  </nav>
+{% endmacro %}

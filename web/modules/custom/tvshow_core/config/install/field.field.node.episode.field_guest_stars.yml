@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_guest_stars
+    - node.type.episode
+id: node.episode.field_guest_stars
+field_name: field_guest_stars
+entity_type: node
+bundle: episode
+label: 'Casting secondaire'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

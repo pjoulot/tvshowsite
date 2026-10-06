@@ -1,0 +1,35 @@
+/**
+ * Design tokens. A sub-theme restyles a whole site by redefining these.
+ */
+:root {
+  --tv-bg: #0f1317;
+  --tv-surface: #171d23;
+  --tv-surface-2: #1f262e;
+  --tv-line: #2c3640;
+  --tv-line-strong: #55636f;
+  --tv-text: #e8edf0;
+  --tv-text-soft: #c9d2d8;
+  --tv-muted: #a3b0b9;
+  --tv-title: #f2f5f7;
+  --tv-accent: #6fd3c7;
+  --tv-accent-ink: #0b1114;
+  --tv-button-bg: var(--tv-title);
+  --tv-button-ink: var(--tv-accent-ink);
+  --tv-header-bg: #080a0c;
+  --tv-nav-bg: #151a20;
+  --tv-footer-bg: #0b0e11;
+  --tv-footer-texture: none;
+  --tv-footer-texture-size: auto;
+  --tv-medallion-rim: #2a3138;
+  --tv-medallion-edge: var(--tv-line-strong);
+  --tv-medallion-teeth: var(--tv-accent);
+  --tv-medallion-core: #10151a;
+  --tv-font-body: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --tv-font-title: var(--tv-font-body);
+  --tv-title-weight: 700;
+  --tv-title-spacing: 0.02em;
+  --tv-title-transform: none;
+  --tv-width: 1160px;
+  --tv-gutter: clamp(16px, 4vw, 24px);
+  --tv-radius: 2px;
+}

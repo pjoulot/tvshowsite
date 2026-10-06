@@ -1,0 +1,5 @@
+tvshow_core.settings:
+  title: 'TV Show'
+  description: 'Footer text, tagline and social network links.'
+  route_name: tvshow_core.settings
+  parent: system.admin_config_system

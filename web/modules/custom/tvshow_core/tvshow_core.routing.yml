@@ -1,0 +1,82 @@
+tvshow_core.front:
+  path: '/accueil'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::front'
+    _title: 'Accueil'
+  requirements:
+    _permission: 'access content'
+tvshow_core.news:
+  path: '/actualites'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::news'
+    _title: 'Actualités'
+  requirements:
+    _permission: 'access content'
+tvshow_core.rss:
+  path: '/actualites/rss.xml'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::rss'
+  requirements:
+    _permission: 'access content'
+tvshow_core.episodes:
+  path: '/episodes'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::episodes'
+    _title: 'Guide des épisodes'
+  requirements:
+    _permission: 'access content'
+tvshow_core.wiki:
+  path: '/wiki'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::wiki'
+    _title: 'Wiki'
+  requirements:
+    _permission: 'access content'
+tvshow_core.cast:
+  path: '/casting'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::cast'
+    _title: 'Casting'
+  requirements:
+    _permission: 'access content'
+tvshow_core.people:
+  path: '/personnalites'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::people'
+    _title: 'Personnalités'
+  requirements:
+    _permission: 'access content'
+tvshow_core.partners:
+  path: '/partenaires'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::partners'
+    _title: 'Partenaires'
+  requirements:
+    _permission: 'access content'
+tvshow_core.search:
+  path: '/recherche'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::search'
+    _title: 'Recherche'
+  requirements:
+    _permission: 'access content'
+tvshow_core.sitemap:
+  path: '/sitemap.xml'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::sitemap'
+  requirements:
+    _permission: 'access content'
+tvshow_core.settings:
+  path: '/admin/config/system/tvshow'
+  defaults:
+    _form: '\Drupal\tvshow_core\Form\SettingsForm'
+    _title: 'Réglages du site TV Show'
+  requirements:
+    _permission: 'administer site configuration'
+tvshow_core.not_found:
+  path: '/introuvable'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\PageController::notFound'
+    _title: 'Page introuvable'
+  requirements:
+    _access: 'TRUE'

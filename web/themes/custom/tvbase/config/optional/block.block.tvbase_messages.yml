@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - tvbase
+id: tvbase_messages
+theme: tvbase
+region: content
+weight: -30
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

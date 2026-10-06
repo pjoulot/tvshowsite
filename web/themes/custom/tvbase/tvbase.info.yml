@@ -1,0 +1,12 @@
+name: 'TV Show'
+type: theme
+description: 'Base theme of the TV show sites. Framework-free CSS driven by design tokens; each site restyles it from a sub-theme.'
+core_version_requirement: ^11
+base theme: false
+libraries:
+  - tvbase/global
+regions:
+  content: 'Content'
+  hidden: 'Hidden'
+regions_hidden:
+  - hidden

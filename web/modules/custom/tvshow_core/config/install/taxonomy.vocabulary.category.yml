@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Catégorie du wiki'
+vid: category
+description: 'Les rubriques du wiki (personnages, vaisseaux, technologies…).'
+weight: 0
+new_revision: false

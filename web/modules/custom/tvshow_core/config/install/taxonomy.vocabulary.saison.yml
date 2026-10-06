@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Saison
+vid: saison
+description: 'Les saisons de chaque série.'
+weight: 0
+new_revision: false

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_full
+label: 'Pleine taille (1600 px)'
+effects:
+  5d082a75-46cc-47a3-b8e6-eea7adb55cde:
+    uuid: 5d082a75-46cc-47a3-b8e6-eea7adb55cde
+    id: image_scale
+    weight: 0
+    data:
+      width: 1600
+      height: null
+      upscale: false
+  d2d5e772-8bcc-4ac1-989d-b029867c1f23:
+    uuid: d2d5e772-8bcc-4ac1-989d-b029867c1f23
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

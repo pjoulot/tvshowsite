@@ -1,0 +1,17 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<div class="tv-page tv-season">
+  {{ ui.breadcrumb([serie], season.title) }}
+  <header class="tv-pagehead">
+    {% if serie %}<p class="tv-kicker">{{ serie.name }}</p>{% endif %}
+    {{ ui.heading(season.title, null, null, 1) }}
+    {% if season.dates %}<p class="tv-lede">{{ season.dates }} · {{ episodes|length }} {{ episodes|length > 1 ? 'épisodes' : 'épisode' }}</p>{% endif %}
+    {% if season.description %}<div class="tv-intro tv-prose">{{ season.description }}</div>{% endif %}
+    {{ ui.stores(season.stores) }}
+  </header>
+  {% if siblings|length > 1 %}{{ ui.filters(siblings, 'Saisons') }}{% endif %}
+  {% if episodes %}
+    <div class="tv-grid tv-grid--episodes">{% for card in episodes %}{{ ui.episode(card) }}{% endfor %}</div>
+  {% else %}
+    <p class="tv-empty">Aucun épisode pour cette saison.</p>
+  {% endif %}
+</div>

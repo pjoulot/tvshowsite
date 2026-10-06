@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_card
+label: 'Carte (640×400)'
+effects:
+  978c3519-84ec-4afd-adea-08ec61dcf8a9:
+    uuid: 978c3519-84ec-4afd-adea-08ec61dcf8a9
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 640
+      height: 400
+      anchor: center-top
+  ee6771aa-8e69-45a0-af4d-435830588293:
+    uuid: ee6771aa-8e69-45a0-af4d-435830588293
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

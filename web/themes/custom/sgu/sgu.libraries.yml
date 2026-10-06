@@ -1,0 +1,5 @@
+identity:
+  css:
+    theme:
+      css/fonts.css: {}
+      css/identity.css: {}

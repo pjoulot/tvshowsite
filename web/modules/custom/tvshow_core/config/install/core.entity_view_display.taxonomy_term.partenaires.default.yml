@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.partenaires.field_logo
+    - field.field.taxonomy_term.partenaires.field_url
+    - taxonomy.vocabulary.partenaires
+  module:
+    - text
+id: taxonomy_term.partenaires.default
+targetEntityType: taxonomy_term
+bundle: partenaires
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_logo: true
+  field_url: true
+  langcode: true

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_episode
+    - node.type.episode
+id: node.episode.field_episode
+field_name: field_episode
+entity_type: node
+bundle: episode
+label: 'Numéro de l’épisode'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,15 @@
+tvbase.settings:
+  type: theme_settings
+  label: 'TV Show theme settings'
+  mapping:
+    header_image:
+      type: sequence
+      label: 'Header banner file'
+      sequence:
+        type: integer
+    header_image_default:
+      type: string
+      label: 'Default banner, relative to the theme folder'
+    header_title_position:
+      type: string
+      label: 'Site name position on the banner'

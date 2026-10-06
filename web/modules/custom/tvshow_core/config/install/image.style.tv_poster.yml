@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_poster
+label: 'Affiche (480×640)'
+effects:
+  4a285bc6-8846-483e-bda5-e9b7ca291312:
+    uuid: 4a285bc6-8846-483e-bda5-e9b7ca291312
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 480
+      height: 640
+      anchor: center-top
+  90058855-e3b4-42c9-bebb-213054a1b1cb:
+    uuid: 90058855-e3b4-42c9-bebb-213054a1b1cb
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

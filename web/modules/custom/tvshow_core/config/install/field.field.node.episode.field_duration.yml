@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_duration
+    - node.type.episode
+id: node.episode.field_duration
+field_name: field_duration
+entity_type: node
+bundle: episode
+label: Durée
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ' min'
+field_type: integer

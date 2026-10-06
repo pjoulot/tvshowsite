@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.serie.field_abreviation
+    - field.field.taxonomy_term.serie.field_creators
+    - field.field.taxonomy_term.serie.field_dates
+    - field.field.taxonomy_term.serie.field_image
+    - taxonomy.vocabulary.serie
+  module:
+    - text
+id: taxonomy_term.serie.default
+targetEntityType: taxonomy_term
+bundle: serie
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_abreviation: true
+  field_creators: true
+  field_dates: true
+  field_image: true
+  langcode: true

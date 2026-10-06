@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for the TV Show core module.
+ */
+
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Implements hook_install().
+ */
+function tvshow_core_install($is_syncing): void {
+  if ($is_syncing) {
+    return;
+  }
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/accueil')->save();
+
+  // Visitors may read the site and use the contact form.
+  if (\Drupal::moduleHandler()->moduleExists('contact')) {
+    user_role_grant_permissions('anonymous', ['access site-wide contact form']);
+    user_role_grant_permissions('authenticated', ['access site-wide contact form']);
+    $mail = \Drupal::config('system.site')->get('mail') ?: 'admin@example.com';
+    $forms = \Drupal::entityTypeManager()->getStorage('contact_form');
+    if (!$forms->load('feedback')) {
+      $forms->create(['id' => 'feedback', 'label' => 'Contact', 'recipients' => [$mail], 'reply' => '', 'weight' => 0])->save();
+    }
+    \Drupal::configFactory()->getEditable('contact.settings')->set('default_form', 'feedback')->save();
+  }
+
+  // French is the site language. Interface translations are fetched later by
+  // the locale module, if it is enabled.
+  if (\Drupal::moduleHandler()->moduleExists('language')) {
+    if (!\Drupal\language\Entity\ConfigurableLanguage::load('fr')) {
+      \Drupal\language\Entity\ConfigurableLanguage::createFromLangcode('fr')->save();
+    }
+    \Drupal::configFactory()->getEditable('system.site')->set('default_langcode', 'fr')->save();
+  }
+  \Drupal::configFactory()->getEditable('system.site')->set('page.404', '/introuvable')->save();
+  // Accounts are for the editorial team only.
+  \Drupal::configFactory()->getEditable('user.settings')->set('register', 'admin_only')->save();
+  \Drupal::configFactory()->getEditable('system.date')->set('country.default', 'FR')->set('timezone.default', 'Europe/Paris')->save();
+
+  $main = [
+    'Accueil' => 'internal:/',
+    'Actualités' => 'internal:/actualites',
+    'Épisodes' => 'internal:/episodes',
+    'Casting' => 'internal:/casting',
+    'Wiki' => 'internal:/wiki',
+    'Partenaires' => 'internal:/partenaires',
+    'Contact' => 'internal:/contact',
+  ];
+  $weight = 0;
+  foreach ($main as $title => $uri) {
+    MenuLinkContent::create(['title' => $title, 'link' => ['uri' => $uri], 'menu_name' => 'main', 'weight' => $weight++])->save();
+  }
+  $footer = [
+    'Flux RSS' => 'internal:/actualites/rss.xml',
+    'Partenaires' => 'internal:/partenaires',
+    'Contact' => 'internal:/contact',
+  ];
+  $weight = 0;
+  foreach ($footer as $title => $uri) {
+    MenuLinkContent::create(['title' => $title, 'link' => ['uri' => $uri], 'menu_name' => 'footer', 'weight' => $weight++])->save();
+  }
+}

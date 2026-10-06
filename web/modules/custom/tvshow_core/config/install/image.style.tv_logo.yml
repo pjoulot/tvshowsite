@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tv_logo
+label: 'Logo (320 px)'
+effects:
+  be4e2a04-0bd7-4be4-9672-d8f8fa39ed1a:
+    uuid: be4e2a04-0bd7-4be4-9672-d8f8fa39ed1a
+    id: image_scale
+    weight: 0
+    data:
+      width: 320
+      height: null
+      upscale: false
+  245f3802-63ce-45e5-b6ae-72cc6d4e9a5f:
+    uuid: 245f3802-63ce-45e5-b6ae-72cc6d4e9a5f
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

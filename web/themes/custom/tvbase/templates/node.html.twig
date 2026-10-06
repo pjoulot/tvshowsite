@@ -1,0 +1,6 @@
+{# Full pages are laid out by tvshow_core's own templates inside "content". #}
+<div{{ attributes.addClass('tv-node', not node.isPublished() ? 'tv-node--unpublished') }}>
+  {{ title_prefix }}{{ title_suffix }}
+  {% if not node.isPublished() %}<p class="tv-unpublished">Ce contenu n’est pas publié : vous seul le voyez.</p>{% endif %}
+  {{ content }}
+</div>

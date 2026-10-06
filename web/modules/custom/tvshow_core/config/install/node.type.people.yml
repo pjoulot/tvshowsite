@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Personnalité
+type: people
+description: 'Un acteur ou un membre de l’équipe.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

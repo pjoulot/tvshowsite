@@ -1,0 +1,27 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<article class="tv-page tv-entry">
+  {{ ui.breadcrumb([{name: 'Casting', url: path('tvshow_core.cast')}], null) }}
+  <div class="tv-entry__layout">
+    <div class="tv-entry__main">
+      <header>
+        {% if data.jobs %}<p class="tv-meta"><span class="tv-meta__category">{{ ui.links(data.jobs) }}</span></p>{% endif %}
+        <h1 class="tv-title">{{ data.title }}</h1>
+      </header>
+      {% if data.body %}<div class="tv-prose">{{ data.body }}</div>{% endif %}
+      {% if data.episodes %}
+        <section class="tv-section">
+          <h2 class="tv-subheading">Épisodes <span class="tv-count">{{ data.episodes|length }}</span></h2>
+          <ul class="tv-creditlist">
+            {% for card in data.episodes %}<li><a href="{{ card.url }}">{{ card.title }}</a><span>{% if card.season %}{{ card.season.name }}, {% endif %}épisode {{ card.number }}</span></li>{% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+    </div>
+    <aside class="tv-infobox">
+      {{ ui.img(data.image, 'tv-infobox__image') }}
+      {% if data.roles %}
+        <dl class="tv-infobox__facts"><div><dt>{{ data.roles|length > 1 ? 'Rôles' : 'Rôle' }}</dt><dd>{% for card in data.roles %}<a href="{{ card.url }}">{{ card.title }}</a>{{ not loop.last ? ', ' }}{% endfor %}</dd></div></dl>
+      {% endif %}
+    </aside>
+  </div>
+</article>
