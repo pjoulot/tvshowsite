@@ -209,7 +209,7 @@ class ContribSetup {
     }
     $indexes = $this->entityTypeManager->getStorage('search_api_index');
     if ($indexes->load(self::SEARCH_INDEX)) {
-      return 'index already exists';
+      return 'index already exists; ' . $this->createSearchView();
     }
     $index = $indexes->create([
       'id' => self::SEARCH_INDEX,
@@ -240,7 +240,67 @@ class ContribSetup {
       $index->addProcessor($plugin_helper->createProcessorPlugin($index, $processor));
     }
     $index->save();
-    return 'server and index created';
+    return 'server and index created; ' . $this->createSearchView();
+  }
+
+  /**
+   * The /recherche results as a view on the Search API index.
+   *
+   * Until it exists and the index is filled, the page uses the tvshow_search
+   * view, which searches the database directly.
+   */
+  protected function createSearchView(): string {
+    $storage = $this->entityTypeManager->getStorage('view');
+    if ($storage->load('tvshow_search_api')) {
+      return 'search view already exists';
+    }
+    $table = 'search_api_index_' . self::SEARCH_INDEX;
+    $card_modes = ['article' => 'line', 'editorial' => 'line', 'episode' => 'line', 'people' => 'line', 'page' => 'line'];
+    $options = [
+      'title' => 'Recherche',
+      'access' => ['type' => 'none', 'options' => []],
+      'cache' => ['type' => 'none', 'options' => []],
+      'query' => ['type' => 'search_api_query', 'options' => ['bypass_access' => FALSE, 'skip_access' => FALSE]],
+      'exposed_form' => ['type' => 'basic', 'options' => ['submit_button' => 'Rechercher', 'reset_button' => FALSE]],
+      'exposed_block' => TRUE,
+      'pager' => ['type' => 'full', 'options' => ['items_per_page' => 15, 'offset' => 0, 'id' => 0, 'quantity' => 5]],
+      'style' => ['type' => 'default', 'options' => ['row_class' => '', 'default_row_class' => FALSE, 'uses_fields' => FALSE]],
+      'row' => ['type' => 'search_api', 'options' => ['view_modes' => ['entity:node' => $card_modes]]],
+      'filters' => [
+        'search_api_fulltext' => [
+          'id' => 'search_api_fulltext', 'table' => $table, 'field' => 'search_api_fulltext', 'plugin_id' => 'search_api_fulltext',
+          'operator' => 'and', 'value' => '', 'group' => 1, 'exposed' => TRUE,
+          'expose' => ['operator_id' => 'search_api_fulltext_op', 'label' => 'Rechercher', 'identifier' => 's', 'required' => FALSE, 'remember' => FALSE, 'multiple' => FALSE],
+          'parse_mode' => 'terms', 'min_length' => 2, 'fields' => [],
+        ],
+      ],
+      'filter_groups' => ['operator' => 'AND', 'groups' => [1 => 'AND']],
+      'sorts' => [
+        'search_api_relevance' => ['id' => 'search_api_relevance', 'table' => $table, 'field' => 'search_api_relevance', 'plugin_id' => 'search_api', 'order' => 'DESC'],
+        'created' => ['id' => 'created', 'table' => $table, 'field' => 'created', 'plugin_id' => 'search_api', 'order' => 'DESC'],
+      ],
+      'header' => ['result' => ['id' => 'result', 'table' => 'views', 'field' => 'result', 'plugin_id' => 'result', 'empty' => FALSE, 'content' => '<p class="tv-resultcount">Résultats trouvés : @total</p>']],
+      'empty' => ['area_text_custom' => ['id' => 'area_text_custom', 'table' => 'views', 'field' => 'area_text_custom', 'plugin_id' => 'text_custom', 'empty' => TRUE, 'content' => '<p class="tv-empty">Rien ne correspond à cette recherche. Essayez avec moins de mots ou un autre terme.</p>']],
+      'css_class' => 'tv-newslist tv-newslist--wide',
+      'use_ajax' => FALSE,
+      'display_extenders' => [],
+    ];
+    $storage->create([
+      'id' => 'tvshow_search_api',
+      'label' => 'Recherche (Search API)',
+      'description' => 'Résultats de /recherche, sur l’index Search API « Contenus du site ».',
+      'module' => 'views',
+      'tag' => 'tvshow',
+      'base_table' => $table,
+      'base_field' => 'search_api_id',
+      'langcode' => 'fr',
+      'status' => TRUE,
+      'display' => [
+        'default' => ['id' => 'default', 'display_title' => 'Défaut', 'display_plugin' => 'default', 'position' => 0, 'display_options' => $options],
+        'results' => ['id' => 'results', 'display_title' => 'Résultats', 'display_plugin' => 'embed', 'position' => 1, 'display_options' => ['display_extenders' => []]],
+      ],
+    ])->save();
+    return 'search view created';
   }
 
   /**

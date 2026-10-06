@@ -17,11 +17,13 @@
         </section>
       {% endif %}
     </div>
+    {% if data.image or data.roles %}
     <aside class="tv-infobox">
-      {{ ui.img(data.image, 'tv-infobox__image') }}
+      {% if data.image %}{{ ui.img(data.image, 'tv-infobox__image') }}{% endif %}
       {% if data.roles %}
         <dl class="tv-infobox__facts"><div><dt>{{ data.roles|length > 1 ? 'Rôles' : 'Rôle' }}</dt><dd>{% for card in data.roles %}<a href="{{ card.url }}">{{ card.title }}</a>{{ not loop.last ? ', ' }}{% endfor %}</dd></div></dl>
       {% endif %}
     </aside>
+    {% endif %}
   </div>
 </article>

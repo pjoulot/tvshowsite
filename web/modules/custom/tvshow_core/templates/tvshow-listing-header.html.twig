@@ -1,0 +1,12 @@
+{#
+  Chrome of a listing: breadcrumb, title, intro and rubric links. Printed by
+  tvshow-listing.html.twig and by the "TV Show page header" Views area.
+#}
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+{{ ui.breadcrumb([], title) }}
+<header class="tv-pagehead">
+  {% if kicker %}<p class="tv-kicker">{{ kicker }}</p>{% endif %}
+  {{ ui.heading(title, feed_url, 'Flux RSS', 1) }}
+  {% if intro %}<div class="tv-intro tv-prose">{{ intro }}</div>{% endif %}
+</header>
+{{ ui.filters(filters, 'Rubriques') }}

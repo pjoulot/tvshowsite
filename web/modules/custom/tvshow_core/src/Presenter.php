@@ -197,6 +197,16 @@ class Presenter {
     return $card;
   }
 
+  /**
+   * A character of the cast: portrait and the people who play it.
+   */
+  public function roleCard(NodeInterface $node): array {
+    $card = $this->card($node);
+    $card['image'] = $this->image($node, 'field_image', 'tv_poster');
+    $card['actors'] = $node->hasField('field_actor') ? $this->references($node, 'field_actor') : [];
+    return $card;
+  }
+
   public function cards(array $nodes): array {
     return array_map(fn(NodeInterface $node) => $this->card($node), $nodes);
   }
@@ -206,6 +216,17 @@ class Presenter {
    */
   public function termCard(TermInterface $term, ?int $count = NULL): array {
     $poster = in_array($term->bundle(), ['serie', 'saison']);
+    if ($term->bundle() === 'partenaires') {
+      $link = $term->get('field_url')->first();
+      return [
+        'type' => 'partenaires',
+        'id' => $term->id(),
+        'title' => $term->label(),
+        'url' => $link ? $link->getUrl()->toString() : NULL,
+        'image' => $this->image($term, 'field_logo', 'tv_logo'),
+        'summary' => $this->summary($term, 'description', 220),
+      ];
+    }
     return [
       'type' => $term->bundle(),
       'id' => $term->id(),

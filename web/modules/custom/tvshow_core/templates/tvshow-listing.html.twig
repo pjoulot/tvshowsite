@@ -1,22 +1,5 @@
-{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+{# A listing page: chrome around one Views display ("content"). #}
 <div class="tv-page tv-listing tv-listing--{{ layout }}">
-  {{ ui.breadcrumb([], title) }}
-  <header class="tv-pagehead">
-    {% if kicker %}<p class="tv-kicker">{{ kicker }}</p>{% endif %}
-    {{ ui.heading(title, feed_url, 'Flux RSS', 1) }}
-    {% if intro %}<div class="tv-intro tv-prose">{{ intro }}</div>{% endif %}
-  </header>
-  {{ ui.filters(filters, 'Rubriques') }}
-  {% if cards %}
-    {% if layout == 'news' %}
-      <div class="tv-newslist tv-newslist--wide">{% for card in cards %}{{ ui.news(card) }}{% endfor %}</div>
-    {% elseif layout == 'posters' %}
-      <div class="tv-grid tv-grid--posters">{% for card in cards %}{{ ui.poster(card) }}{% endfor %}</div>
-    {% else %}
-      <div class="tv-grid tv-grid--tiles">{% for card in cards %}{{ ui.card(card) }}{% endfor %}</div>
-    {% endif %}
-    {{ ui.pager(pager) }}
-  {% else %}
-    <p class="tv-empty">{{ empty_text }}</p>
-  {% endif %}
+  {% include '@tvshow_core/tvshow-listing-header.html.twig' %}
+  {{ content }}
 </div>

@@ -118,6 +118,34 @@
   </a>
 {% endmacro %}
 
+{% macro role(card) %}
+  {% import _self as ui %}
+  <article class="tv-role">
+    <a class="tv-role__media" href="{{ card.url }}" tabindex="-1" aria-hidden="true">{{ ui.img(card.image, 'tv-role__image') }}</a>
+    <div class="tv-role__body">
+      <h2 class="tv-role__title"><a href="{{ card.url }}">{{ card.title }}</a></h2>
+      {% if card.actors %}<p class="tv-role__actor">interprété par {{ ui.links(card.actors) }}</p>{% endif %}
+    </div>
+  </article>
+{% endmacro %}
+
+{% macro category(card) %}
+  {% import _self as ui %}
+  <a class="tv-category" href="{{ card.url }}">
+    {{ ui.img(card.image, 'tv-category__image') }}
+    <span class="tv-category__body"><span class="tv-category__title">{{ card.title }}</span>{% if card.count is not null %}<span class="tv-category__count">{{ card.count }} {{ card.count > 1 ? 'fiches' : 'fiche' }}</span>{% endif %}</span>
+  </a>
+{% endmacro %}
+
+{% macro partner(card) %}
+  {% import _self as ui %}
+  <a class="tv-partner" href="{{ card.url }}" rel="noopener">
+    {% if card.image %}{{ ui.img(card.image, 'tv-partner__logo') }}{% endif %}
+    <span class="tv-partner__title">{{ card.title }}</span>
+    {% if card.summary %}<span class="tv-partner__summary">{{ card.summary }}</span>{% endif %}
+  </a>
+{% endmacro %}
+
 {% macro card(card) %}
   {% import _self as ui %}
   {% if card.type == 'episode' %}{{ ui.episode(card) }}
@@ -133,22 +161,6 @@
       {% for filter in filters %}
         <a class="tv-filter{{ filter.active ? ' is-active' }}" href="{{ filter.url }}"{% if filter.active %} aria-current="page"{% endif %}>{{ filter.label }}</a>
       {% endfor %}
-    </nav>
-  {% endif %}
-{% endmacro %}
-
-{% macro pager(pager) %}
-  {% if pager %}
-    <nav class="tv-pager" aria-label="Pagination">
-      {% if pager.previous %}<a class="tv-pager__step" href="{{ pager.previous }}" rel="prev"><span aria-hidden="true">←</span> Précédent</a>{% endif %}
-      <ul class="tv-pager__list">
-        {% for item in pager.items %}
-          {% if item.gap %}<li class="tv-pager__gap" aria-hidden="true">…</li>
-          {% elseif item.current %}<li><span class="tv-pager__page is-current" aria-current="page"><span class="visually-hidden">Page </span>{{ item.label }}</span></li>
-          {% else %}<li><a class="tv-pager__page" href="{{ item.url }}"><span class="visually-hidden">Page </span>{{ item.label }}</a></li>{% endif %}
-        {% endfor %}
-      </ul>
-      {% if pager.next %}<a class="tv-pager__step" href="{{ pager.next }}" rel="next">Suivant <span aria-hidden="true">→</span></a>{% endif %}
     </nav>
   {% endif %}
 {% endmacro %}

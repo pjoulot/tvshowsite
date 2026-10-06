@@ -1,0 +1,10 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.role
+label: 'Rôle (casting)'
+description: null
+targetEntityType: node
+cache: true

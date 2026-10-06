@@ -1,0 +1,18 @@
+{#
+  A Views display. The display's "CSS class" (Advanced > CSS class) goes on
+  the wrapper of the rows, so it can name a grid or list: tv-newslist,
+  tv-grid tv-grid--tiles…
+#}
+{% set row_markup = rows|render %}
+<div{{ attributes.removeClass(css_class|split(' ')) }}>
+  {{ title_prefix }}{{ title_suffix }}
+  {{ header }}
+  {{ exposed }}
+  {{ attachments_before }}
+  {% if row_markup|trim %}<div class="tv-view__rows {{ css_class }}">{{ row_markup }}</div>{% endif %}
+  {{ empty }}
+  {{ pager }}
+  {{ attachments_after }}
+  {{ more }}
+  {{ footer }}
+</div>

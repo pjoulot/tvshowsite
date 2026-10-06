@@ -1,18 +1,7 @@
+{# Partners page. partners is a Views display. #}
 {% import '@tvshow_core/partials/ui.html.twig' as ui %}
 <div class="tv-page tv-partners">
   {{ ui.breadcrumb([], 'Partenaires') }}
   <header class="tv-pagehead">{{ ui.heading('Partenaires', null, null, 1) }}</header>
-  {% if partners %}
-    <div class="tv-grid tv-grid--partners">
-      {% for partner in partners %}
-        <a class="tv-partner" href="{{ partner.url }}" rel="noopener">
-          {% if partner.image %}{{ ui.img(partner.image, 'tv-partner__logo') }}{% endif %}
-          <span class="tv-partner__title">{{ partner.title }}</span>
-          {% if partner.summary %}<span class="tv-partner__summary">{{ partner.summary }}</span>{% endif %}
-        </a>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p class="tv-empty">Aucun partenaire pour le moment. <a href="{{ contact_url }}">Contactez-nous</a> pour proposer un échange de liens.</p>
-  {% endif %}
+  {{ partners }}
 </div>

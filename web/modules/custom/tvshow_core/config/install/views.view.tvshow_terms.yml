@@ -1,0 +1,293 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.card
+    - taxonomy.vocabulary.category
+    - taxonomy.vocabulary.partenaires
+    - taxonomy.vocabulary.saison
+    - taxonomy.vocabulary.serie
+  module:
+    - taxonomy
+    - user
+id: tvshow_terms
+label: 'Séries, saisons, rubriques et partenaires'
+module: views
+description: 'Listes de termes : séries, saisons d’une série, rubriques du wiki, partenaires.'
+tag: tvshow
+base_table: taxonomy_term_field_data
+base_field: tid
+display:
+  default:
+    id: default
+    display_title: Défaut
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Séries
+      pager:
+        type: none
+        options:
+          offset: 0
+          items_per_page: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Rechercher
+          reset_button: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p class="tv-empty">Aucune série n’a encore été ajoutée.</p>'
+      sorts:
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: standard
+          order: ASC
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+          value:
+            serie: serie
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: false
+          uses_fields: false
+      row:
+        type: 'entity:taxonomy_term'
+        options:
+          view_mode: card
+      query:
+        type: views_query
+        options:
+          distinct: false
+      css_class: 'tv-grid tv-grid--posters'
+      use_ajax: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - user.permissions
+      tags: {  }
+  partners:
+    id: partners
+    display_title: Partenaires
+    display_plugin: embed
+    position: 4
+    display_options:
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p class="tv-empty">Aucun partenaire pour le moment. <a href="/contact">Contactez-nous</a> pour proposer un échange de liens.</p>'
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+          value:
+            partenaires: partenaires
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        empty: false
+        css_class: false
+        filters: false
+        filter_groups: false
+      css_class: 'tv-grid tv-grid--partners'
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - user.permissions
+      tags: {  }
+  seasons:
+    id: seasons
+    display_title: 'Saisons d’une série'
+    display_plugin: embed
+    position: 2
+    display_options:
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p class="tv-empty">Aucune saison n’a encore été ajoutée.</p>'
+      sorts:
+        field_season_number_value:
+          id: field_season_number_value
+          table: taxonomy_term__field_season_number
+          field: field_season_number_value
+          plugin_id: standard
+          order: ASC
+      arguments:
+        field_serie_target_id:
+          id: field_serie_target_id
+          table: taxonomy_term__field_serie
+          field: field_serie_target_id
+          plugin_id: entity_target_id
+          default_action: empty
+          break_phrase: false
+          not: false
+          target_entity_type_id: taxonomy_term
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+          value:
+            saison: saison
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        empty: false
+        sorts: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - user.permissions
+      tags: {  }
+  series:
+    id: series
+    display_title: Séries
+    display_plugin: embed
+    position: 1
+    display_options:
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - user.permissions
+      tags: {  }
+  wiki_categories:
+    id: wiki_categories
+    display_title: 'Rubriques du wiki'
+    display_plugin: embed
+    position: 3
+    display_options:
+      empty: {  }
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+          value:
+            category: category
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        empty: false
+        css_class: false
+        filters: false
+        filter_groups: false
+      css_class: tv-categories
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - user.permissions
+      tags: {  }

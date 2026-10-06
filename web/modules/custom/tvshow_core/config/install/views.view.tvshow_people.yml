@@ -1,0 +1,240 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - node.type.people
+  module:
+    - node
+    - tvshow_core
+    - user
+id: tvshow_people
+label: Personnalités
+module: views
+description: 'Acteurs et équipe : liste complète, par métier, et équipe hors casting.'
+tag: tvshow
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Défaut
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Personnalités
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 48
+          id: 0
+          tags:
+            next: 'Suivant →'
+            previous: '← Précédent'
+            first: «
+            last: »
+          quantity: 5
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Rechercher
+          reset_button: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p class="tv-empty">Aucune personnalité pour le moment.</p>'
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            people: people
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: false
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: card
+      query:
+        type: views_query
+        options:
+          distinct: false
+      css_class: 'tv-grid tv-grid--tiles'
+      use_ajax: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  crew:
+    id: crew
+    display_title: 'Casting : le reste de l’équipe'
+    display_plugin: embed
+    position: 3
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 12
+      empty: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            people: people
+          group: 1
+        field_actor_target_id:
+          id: field_actor_target_id
+          table: node__field_actor
+          field: field_actor_target_id
+          relationship: reverse__node__field_actor
+          plugin_id: numeric
+          operator: empty
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        empty: false
+        pager: false
+        relationships: false
+        filters: false
+        filter_groups: false
+      relationships:
+        reverse__node__field_actor:
+          id: reverse__node__field_actor
+          table: node_field_data
+          field: reverse__node__field_actor
+          admin_label: 'Fiche du personnage joué'
+          entity_type: node
+          plugin_id: entity_reverse
+          required: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  job:
+    id: job
+    display_title: Métier
+    display_plugin: embed
+    position: 2
+    display_options:
+      arguments:
+        field_job_target_id:
+          id: field_job_target_id
+          table: node__field_job
+          field: field_job_target_id
+          plugin_id: entity_target_id
+          default_action: empty
+          break_phrase: false
+          not: false
+          target_entity_type_id: taxonomy_term
+      defaults:
+        arguments: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page:
+    id: page
+    display_title: 'Page /personnalites'
+    display_plugin: page
+    position: 1
+    display_options:
+      defaults:
+        header: false
+      header:
+        tvshow_page_header:
+          id: tvshow_page_header
+          table: views
+          field: tvshow_page_header
+          plugin_id: tvshow_page_header
+          empty: true
+          kicker: ''
+          feed_link: false
+          vocabulary: ''
+          all_label: ''
+          layout: people
+      display_extenders: {  }
+      path: personnalites
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

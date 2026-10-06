@@ -29,6 +29,11 @@ class ContentPackImporter {
 
   protected string $source = '';
 
+  /**
+   * Folder of the pack file; its images/ folder holds hand-picked pictures.
+   */
+  protected string $packDir = '';
+
   protected $map;
 
   protected $files;
@@ -52,6 +57,7 @@ class ContentPackImporter {
     $log ??= fn(string $message) => NULL;
     $this->pack = json_decode(file_get_contents($pack_file), TRUE, 512, JSON_THROW_ON_ERROR);
     $this->source = rtrim($source_dir, '/');
+    $this->packDir = dirname($pack_file);
     $this->stats = [];
 
     $this->site();
@@ -102,6 +108,20 @@ class ContentPackImporter {
   }
 
   /**
+   * A picture dropped next to the pack as images/<slug>.jpg|png|webp.
+   *
+   * It wins over whatever the archive has for that content.
+   */
+  protected function override(string $slug): ?string {
+    foreach (['jpg', 'jpeg', 'png', 'webp'] as $extension) {
+      if (is_file("$this->packDir/images/$slug.$extension")) {
+        return "pack:images/$slug.$extension";
+      }
+    }
+    return NULL;
+  }
+
+  /**
    * Copies one picture from the source folder and returns its file entity id.
    */
   protected function file(?string $relative): ?int {
@@ -113,12 +133,12 @@ class ContentPackImporter {
     if ($known && $storage->load($known)) {
       return (int) $known;
     }
-    $path = $this->source . '/' . $relative;
+    $path = str_starts_with($relative, 'pack:') ? $this->packDir . '/' . substr($relative, 5) : $this->source . '/' . $relative;
     if (!is_file($path)) {
       $this->count('missing pictures');
       return NULL;
     }
-    $clean = preg_replace('~^wp-content/~', '', $relative);
+    $clean = preg_replace('~^(wp-content/|pack:)~', '', $relative);
     $clean = preg_replace('/[^A-Za-z0-9._\/-]+/', '-', $clean);
     $destination = 'public://import/' . $clean;
     $directory = dirname($destination);
@@ -297,9 +317,10 @@ class ContentPackImporter {
       $node->set('field_category', $category->id());
       $node->set('field_serie', $serie->id());
       $node->set('field_actor', isset($people[$data['actor']]) ? [$people[$data['actor']]] : []);
-      $image = $this->file($data['image'] ?? NULL);
+      $portrait = $this->override($data['slug']) ?? ($data['image'] ?? NULL);
+      $image = $this->file($portrait);
       $node->set('field_image', $image ? ['target_id' => $image, 'alt' => $data['character']] : []);
-      $node->set('field_gallery', $this->images(array_values(array_diff($data['gallery'] ?? [], [$data['image'] ?? ''])), $data['character']));
+      $node->set('field_gallery', $this->images(array_values(array_diff($data['gallery'] ?? [], [$portrait ?? ''])), $data['character']));
       // Keeps the old site's cast order on the cast page.
       $node->setCreatedTime($created + $index * 60);
       $node->save();

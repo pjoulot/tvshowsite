@@ -3,7 +3,6 @@
 namespace Drupal\tvshow_core\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Url;
 use Drupal\tvshow_core\ContentRepository;
 use Drupal\tvshow_core\Presenter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -11,6 +10,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Shared plumbing for the site's page controllers.
+ *
+ * Controllers only assemble pages: every list on them is a Views display
+ * (the tvshow_* views), embedded with embed().
  */
 abstract class TvControllerBase extends ControllerBase {
 
@@ -27,48 +29,14 @@ abstract class TvControllerBase extends ControllerBase {
   }
 
   /**
-   * Zero-based page number from ?page=.
+   * Render array of one Views display.
    */
-  protected function page(): int {
-    return max(0, (int) $this->requests->getCurrentRequest()->query->get('page', 0));
+  protected function embed(string $view, string $display, ...$arguments): array {
+    return ['#type' => 'view', '#name' => $view, '#display_id' => $display, '#arguments' => $arguments, '#embed' => TRUE];
   }
 
   /**
-   * Pager data: previous/next links and a short window of page links.
-   */
-  protected function pager(int $total, int $per_page, Url $url): ?array {
-    $pages = (int) ceil($total / $per_page);
-    if ($pages < 2) {
-      return NULL;
-    }
-    $current = min($this->page(), $pages - 1);
-    $query = $url->getOption('query') ?: [];
-    $link = function (int $page) use ($url, $query) {
-      $u = clone $url;
-      return $u->setOption('query', $page ? $query + ['page' => $page] : $query)->toString();
-    };
-    $items = [];
-    $previous_shown = -1;
-    for ($page = 0; $page < $pages; $page++) {
-      if ($page === 0 || $page === $pages - 1 || abs($page - $current) <= 2) {
-        if ($page - $previous_shown > 1) {
-          $items[] = ['gap' => TRUE];
-        }
-        $items[] = ['label' => $page + 1, 'url' => $link($page), 'current' => $page === $current];
-        $previous_shown = $page;
-      }
-    }
-    return [
-      'items' => $items,
-      'previous' => $current > 0 ? $link($current - 1) : NULL,
-      'next' => $current < $pages - 1 ? $link($current + 1) : NULL,
-      'current' => $current + 1,
-      'pages' => $pages,
-    ];
-  }
-
-  /**
-   * Render array of the generic listing page.
+   * Render array of the generic listing page: page chrome around a view.
    */
   protected function listing(array $variables): array {
     $build = ['#theme' => 'tvshow_listing', '#cache' => self::CACHE];

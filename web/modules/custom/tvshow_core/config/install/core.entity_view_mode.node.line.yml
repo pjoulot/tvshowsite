@@ -1,0 +1,10 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.line
+label: 'Ligne avec résumé'
+description: null
+targetEntityType: node
+cache: true

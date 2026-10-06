@@ -64,7 +64,7 @@ function tvbase_preprocess_page(array &$variables): void {
   $route_match = \Drupal::routeMatch();
   $route_name = (string) $route_match->getRouteName();
   $variables['fallback_title'] = NULL;
-  if (!str_starts_with($route_name, 'tvshow_core.') && !in_array($route_name, ['entity.node.canonical', 'entity.taxonomy_term.canonical']) && $route_match->getRouteObject()) {
+  if (!str_starts_with($route_name, 'tvshow_core.') && !str_starts_with($route_name, 'view.tvshow_') && !in_array($route_name, ['entity.node.canonical', 'entity.taxonomy_term.canonical']) && $route_match->getRouteObject()) {
     $variables['fallback_title'] = \Drupal::service('title_resolver')->getTitle(\Drupal::request(), $route_match->getRouteObject());
     if ($route_name === 'contact.site_page') {
       $variables['fallback_title'] = 'Contact';
@@ -158,4 +158,30 @@ function tvbase_page_attachments_alter(array &$attachments): void {
       $attachments['#attached']['html_head_link'][] = [$attributes];
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ *
+ * Page displays are whole pages: they get the page container classes.
+ */
+function tvbase_preprocess_views_view(array &$variables): void {
+  $view = $variables['view'];
+  $variables['css_class'] = (string) ($variables['css_class'] ?? '');
+  if ($view->getDisplay()->getPluginId() === 'page') {
+    $header = $view->display_handler->getOption('header')['tvshow_page_header'] ?? [];
+    $variables['attributes']['class'][] = 'tv-page';
+    $variables['attributes']['class'][] = 'tv-listing';
+    if (!empty($header['layout'])) {
+      $variables['attributes']['class'][] = 'tv-listing--' . $header['layout'];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_pager().
+ */
+function tvbase_preprocess_pager(array &$variables): void {
+  $pager = \Drupal::service('pager.manager')->getPager($variables['pager']['#element'] ?? 0);
+  $variables['last_page'] = $pager ? $pager->getTotalPages() : NULL;
 }

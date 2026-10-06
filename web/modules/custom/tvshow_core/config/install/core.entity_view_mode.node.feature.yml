@@ -1,0 +1,10 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.feature
+label: 'À la une'
+description: null
+targetEntityType: node
+cache: true

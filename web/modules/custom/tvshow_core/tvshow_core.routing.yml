@@ -1,21 +1,10 @@
+# /actualites, /actualites/rss.xml and /personnalites are page displays of the
+# tvshow_news and tvshow_people views.
 tvshow_core.front:
   path: '/accueil'
   defaults:
     _controller: '\Drupal\tvshow_core\Controller\PageController::front'
     _title: 'Accueil'
-  requirements:
-    _permission: 'access content'
-tvshow_core.news:
-  path: '/actualites'
-  defaults:
-    _controller: '\Drupal\tvshow_core\Controller\PageController::news'
-    _title: 'Actualités'
-  requirements:
-    _permission: 'access content'
-tvshow_core.rss:
-  path: '/actualites/rss.xml'
-  defaults:
-    _controller: '\Drupal\tvshow_core\Controller\PageController::rss'
   requirements:
     _permission: 'access content'
 tvshow_core.episodes:
@@ -37,13 +26,6 @@ tvshow_core.cast:
   defaults:
     _controller: '\Drupal\tvshow_core\Controller\PageController::cast'
     _title: 'Casting'
-  requirements:
-    _permission: 'access content'
-tvshow_core.people:
-  path: '/personnalites'
-  defaults:
-    _controller: '\Drupal\tvshow_core\Controller\PageController::people'
-    _title: 'Personnalités'
   requirements:
     _permission: 'access content'
 tvshow_core.partners:

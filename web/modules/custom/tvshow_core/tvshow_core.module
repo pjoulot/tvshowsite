@@ -9,7 +9,9 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\TermInterface;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
@@ -17,13 +19,16 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 function tvshow_core_theme(): array {
   $hooks = [
-    'tvshow_front' => ['variables' => ['featured' => [], 'news' => [], 'wiki' => [], 'series' => []]],
-    'tvshow_listing' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'layout' => 'news', 'filters' => [], 'cards' => [], 'pager' => NULL, 'empty_text' => '', 'feed_url' => NULL]],
+    // Listings are Views displays; these templates only add the page chrome.
+    'tvshow_front' => ['variables' => ['featured' => [], 'news' => [], 'wiki' => [], 'series' => NULL]],
+    'tvshow_listing' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'layout' => 'news', 'filters' => [], 'content' => [], 'feed_url' => NULL]],
+    'tvshow_listing_header' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'filters' => [], 'feed_url' => NULL]],
+    'tvshow_card' => ['variables' => ['card' => [], 'variant' => 'card']],
     'tvshow_wiki' => ['variables' => ['categories' => [], 'latest' => []]],
-    'tvshow_cast' => ['variables' => ['roles' => [], 'crew' => []]],
-    'tvshow_partners' => ['variables' => ['partners' => [], 'contact_url' => '/contact']],
-    'tvshow_search' => ['variables' => ['keys' => '', 'total' => 0, 'cards' => [], 'pager' => NULL, 'action' => '']],
-    'tvshow_serie' => ['variables' => ['serie' => [], 'seasons' => [], 'show_episodes' => TRUE]],
+    'tvshow_cast' => ['variables' => ['roles' => [], 'crew' => [], 'has_roles' => TRUE, 'has_crew' => TRUE]],
+    'tvshow_partners' => ['variables' => ['partners' => []]],
+    'tvshow_search' => ['variables' => ['keys' => '', 'results' => [], 'action' => '']],
+    'tvshow_serie' => ['variables' => ['serie' => [], 'seasons' => [], 'season_list' => [], 'show_episodes' => TRUE]],
     'tvshow_not_found' => ['variables' => ['action' => '', 'news' => []]],
     'tvshow_season' => ['variables' => ['season' => [], 'serie' => NULL, 'siblings' => [], 'episodes' => []]],
   ];
@@ -195,5 +200,91 @@ function tvshow_core_form_contact_message_feedback_form_alter(array &$form, Form
   }
   if (isset($form['actions']['preview'])) {
     $form['actions']['preview']['#access'] = FALSE;
+  }
+}
+
+/**
+ * View modes Views rows are rendered in, and the card each one prints.
+ */
+const TVSHOW_CORE_CARD_MODES = ['card', 'row', 'line', 'feature', 'role'];
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter() for nodes.
+ *
+ * Listing rows (the "card" family of view modes) are printed by the module's
+ * card template, so every listing shares one markup per content type.
+ */
+function tvshow_core_node_view_alter(array &$build, NodeInterface $node, EntityViewDisplayInterface $display): void {
+  $mode = $build['#view_mode'] ?? 'full';
+  if ($mode === 'rss') {
+    // Feed items carry a plain-text summary.
+    foreach (Element::children($build) as $key) {
+      unset($build[$key]);
+    }
+    $build['summary'] = ['#plain_text' => \Drupal::service('tvshow_core.presenter')->summary($node, $node->bundle() === 'episode' ? 'field_synopsis' : 'body', 400)];
+    return;
+  }
+  if (!in_array($mode, TVSHOW_CORE_CARD_MODES, TRUE)) {
+    return;
+  }
+  $presenter = \Drupal::service('tvshow_core.presenter');
+  foreach (Element::children($build) as $key) {
+    unset($build[$key]);
+  }
+  $build['#theme'] = 'tvshow_card';
+  $build['#card'] = $mode === 'role' ? $presenter->roleCard($node) : $presenter->card($node);
+  $build['#variant'] = $mode;
+  unset($build['#contextual_links']);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter() for taxonomy terms.
+ */
+function tvshow_core_taxonomy_term_view_alter(array &$build, TermInterface $term, EntityViewDisplayInterface $display): void {
+  if (($build['#view_mode'] ?? 'full') !== 'card') {
+    return;
+  }
+  $repository = \Drupal::service('tvshow_core.repository');
+  $count = match ($term->bundle()) {
+    'saison' => $repository->countEpisodes((int) $term->id()),
+    'category' => $repository->countWikiEntries((int) $term->id()),
+    default => NULL,
+  };
+  foreach (Element::children($build) as $key) {
+    unset($build[$key]);
+  }
+  $build['#cache']['tags'][] = 'node_list';
+  if ($term->bundle() === 'category' && !$count) {
+    // A wiki rubric without entries is not listed.
+    $build['#access'] = FALSE;
+    return;
+  }
+  $build['#theme'] = 'tvshow_card';
+  $build['#card'] = \Drupal::service('tvshow_core.presenter')->termCard($term, $count);
+  $build['#variant'] = 'card';
+  $build['#cache']['tags'][] = 'node_list';
+  unset($build['#contextual_links']);
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function tvshow_core_views_data(): array {
+  $data['views']['tvshow_page_header'] = [
+    'title' => t('TV Show page header'),
+    'help' => t('Breadcrumb, page title, optional rubric links and feed link, in the site design.'),
+    'area' => ['id' => 'tvshow_page_header'],
+  ];
+  return $data;
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ *
+ * Embedded listings get their keywords from the page's own search form.
+ */
+function tvshow_core_preprocess_views_view(array &$variables): void {
+  if ($variables['view']->getDisplay()->getPluginId() === 'embed' && $variables['view']->storage->get('tag') === 'tvshow') {
+    $variables['exposed'] = [];
   }
 }

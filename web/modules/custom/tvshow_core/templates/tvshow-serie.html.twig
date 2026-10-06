@@ -28,17 +28,13 @@
     {% for season in seasons %}
       <section class="tv-section" id="{{ season.anchor }}">
         {{ ui.heading(season.title, season.url, 'La saison en détail') }}
-        {% if season.episodes %}
-          <div class="tv-grid tv-grid--episodes">{% for card in season.episodes %}{{ ui.episode(card) }}{% endfor %}</div>
-        {% else %}
-          <p class="tv-empty">Aucun épisode pour cette saison.</p>
-        {% endif %}
+        {{ season.episodes }}
       </section>
     {% endfor %}
   {% else %}
     <section class="tv-section">
       {{ ui.heading('Saisons') }}
-      <div class="tv-grid tv-grid--posters">{% for season in seasons %}{{ ui.poster(season) }}{% endfor %}</div>
+      {{ season_list }}
     </section>
   {% endif %}
 </div>

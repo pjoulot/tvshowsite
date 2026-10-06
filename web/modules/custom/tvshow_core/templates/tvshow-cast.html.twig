@@ -1,25 +1,13 @@
+{# Cast page. roles and crew are Views displays. #}
 {% import '@tvshow_core/partials/ui.html.twig' as ui %}
 <div class="tv-page tv-cast">
   {{ ui.breadcrumb([], 'Casting') }}
   <header class="tv-pagehead">{{ ui.heading('Casting', null, null, 1) }}</header>
-  {% if roles %}
-    <div class="tv-grid tv-grid--posters">
-      {% for card in roles %}
-        <article class="tv-role">
-          <a class="tv-role__media" href="{{ card.url }}" tabindex="-1" aria-hidden="true">{{ ui.img(card.image, 'tv-role__image') }}</a>
-          <div class="tv-role__body">
-            <h2 class="tv-role__title"><a href="{{ card.url }}">{{ card.title }}</a></h2>
-            <p class="tv-role__actor">interprété par {{ ui.links(card.actors) }}</p>
-          </div>
-        </article>
-      {% endfor %}
-    </div>
-  {% endif %}
-  {% if crew %}
+  {{ roles }}
+  {% if has_crew %}
     <section class="tv-section">
-      {{ ui.heading(roles ? 'Le reste de l’équipe' : 'L’équipe', path('tvshow_core.people'), 'Toutes les personnalités') }}
-      <div class="tv-grid tv-grid--tiles">{% for card in crew|slice(0, 12) %}{{ ui.person(card) }}{% endfor %}</div>
+      {{ ui.heading('Le reste de l’équipe', path('view.tvshow_people.page'), 'Toutes les personnalités') }}
+      {{ crew }}
     </section>
   {% endif %}
-  {% if not roles and not crew %}<p class="tv-empty">Le casting n’a pas encore été renseigné.</p>{% endif %}
 </div>

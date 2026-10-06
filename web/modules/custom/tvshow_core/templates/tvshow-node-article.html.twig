@@ -1,6 +1,6 @@
 {% import '@tvshow_core/partials/ui.html.twig' as ui %}
 <article class="tv-page tv-article">
-  {{ ui.breadcrumb([{name: 'Actualités', url: path('tvshow_core.news')}, data.category], null) }}
+  {{ ui.breadcrumb([{name: 'Actualités', url: path('view.tvshow_news.page')}, data.category], null) }}
   <header class="tv-articlehead">
     <p class="tv-meta">{% if data.category %}<a class="tv-meta__category" href="{{ data.category.url }}">{{ data.category.name }}</a><span aria-hidden="true"> · </span>{% endif %}<time datetime="{{ data.date_iso }}">{{ data.date }}</time>{% if data.byline %}<span aria-hidden="true"> · </span>par {{ data.byline }}{% endif %}</p>
     <h1 class="tv-title">{{ data.title }}</h1>

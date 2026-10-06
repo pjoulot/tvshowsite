@@ -1,0 +1,3 @@
+{# Rows are printed bare: each one is a card that is a direct grid child. #}
+{% if title %}<h3 class="tv-subheading">{{ title }}</h3>{% endif %}
+{% for row in rows %}{{ row.content }}{% endfor %}

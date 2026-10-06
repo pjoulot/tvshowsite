@@ -1,0 +1,378 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - core.entity_view_mode.node.feature
+    - core.entity_view_mode.node.rss
+    - node.type.article
+  module:
+    - node
+    - tvshow_core
+    - user
+id: tvshow_news
+label: Actualités
+module: views
+description: 'Liste des actualités, flux RSS, blocs de la page d’accueil et rubriques.'
+tag: tvshow
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Défaut
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Actualités
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 12
+          id: 0
+          tags:
+            next: 'Suivant →'
+            previous: '← Précédent'
+            first: «
+            last: »
+          quantity: 5
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Rechercher
+          reset_button: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p class="tv-empty">Aucune actualité pour le moment.</p>'
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            article: article
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: false
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: card
+      query:
+        type: views_query
+        options:
+          distinct: false
+      css_class: 'tv-newslist tv-newslist--wide'
+      use_ajax: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  category:
+    id: category
+    display_title: Rubrique
+    display_plugin: embed
+    position: 3
+    display_options:
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p class="tv-empty">Aucune actualité dans cette rubrique pour le moment.</p>'
+      arguments:
+        field_article_category_target_id:
+          id: field_article_category_target_id
+          table: node__field_article_category
+          field: field_article_category_target_id
+          plugin_id: entity_target_id
+          default_action: empty
+          break_phrase: false
+          not: false
+          target_entity_type_id: taxonomy_term
+      defaults:
+        empty: false
+        arguments: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  featured:
+    id: featured
+    display_title: 'Accueil : à la une'
+    display_plugin: embed
+    position: 4
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 2
+      empty: {  }
+      sorts:
+        promote:
+          id: promote
+          table: node_field_data
+          field: promote
+          entity_type: node
+          entity_field: promote
+          plugin_id: standard
+          order: DESC
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            article: article
+          group: 1
+        field_image_target_id:
+          id: field_image_target_id
+          table: node__field_image
+          field: field_image_target_id
+          plugin_id: numeric
+          operator: 'not empty'
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: feature
+      defaults:
+        empty: false
+        css_class: false
+        pager: false
+        row: false
+        sorts: false
+        filters: false
+        filter_groups: false
+      css_class: tv-features
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  feed:
+    id: feed
+    display_title: 'Flux RSS'
+    display_plugin: feed
+    position: 2
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 20
+      style:
+        type: rss
+        options:
+          grouping: {  }
+          uses_fields: false
+          description: 'Les dernières actualités du site.'
+      row:
+        type: node_rss
+        options:
+          view_mode: rss
+      defaults:
+        pager: false
+        style: false
+        row: false
+      display_extenders: {  }
+      path: actualites/rss.xml
+      sitename_title: true
+      displays:
+        page: page
+        default: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  latest:
+    id: latest
+    display_title: 'Accueil : dernières actualités'
+    display_plugin: embed
+    position: 5
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 6
+      arguments:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: ignore
+          break_phrase: true
+          not: true
+      defaults:
+        css_class: false
+        pager: false
+        arguments: false
+      css_class: tv-newslist
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page:
+    id: page
+    display_title: 'Page /actualites'
+    display_plugin: page
+    position: 1
+    display_options:
+      defaults:
+        header: false
+      header:
+        tvshow_page_header:
+          id: tvshow_page_header
+          table: views
+          field: tvshow_page_header
+          plugin_id: tvshow_page_header
+          empty: true
+          kicker: ''
+          feed_link: true
+          vocabulary: article_category
+          all_label: Toutes
+          layout: news
+      display_extenders: {  }
+      path: actualites
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  short:
+    id: short
+    display_title: 'Trois dernières (page 404)'
+    display_plugin: embed
+    position: 6
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      empty: {  }
+      defaults:
+        empty: false
+        pager: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

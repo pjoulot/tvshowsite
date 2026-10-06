@@ -1,0 +1,13 @@
+{#
+  One row of a listing. Views renders nodes and terms in the "card", "row", "line",
+  "feature" and "role" view modes; tvshow_core swaps the entity template for
+  this one so each content type has a single card markup.
+#}
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+{% if variant == 'feature' %}{{ ui.feature(card) }}
+{% elseif variant == 'row' %}{{ ui.wiki_row(card) }}
+{% elseif variant == 'line' %}{{ ui.news(card) }}
+{% elseif variant == 'role' %}{{ ui.role(card) }}
+{% elseif card.type == 'category' %}{{ ui.category(card) }}
+{% elseif card.type == 'partenaires' %}{{ ui.partner(card) }}
+{% else %}{{ ui.card(card) }}{% endif %}
