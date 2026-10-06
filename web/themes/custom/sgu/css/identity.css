@@ -18,14 +18,14 @@
   --tv-header-bg: #070605;
   --tv-nav-bg: #1b1712;
   --tv-footer-bg: #17130f;
-  --tv-footer-texture: url(../images/bronze-tile.jpg);
+  --tv-footer-texture: url(../images/bronze-tile.webp);
   --tv-footer-texture-size: 384px 384px;
   --tv-medallion-rim: #2a2118;
   --tv-medallion-edge: #c9a45c;
   --tv-medallion-teeth: #b5803a;
   --tv-medallion-core: #14110e;
-  --tv-font-body: "Barlow", system-ui, sans-serif;
-  --tv-font-title: "Barlow Condensed", "Barlow", system-ui, sans-serif;
+  --tv-font-body: "Barlow", "Barlow Fallback", system-ui, sans-serif;
+  --tv-font-title: "Barlow Condensed", "Barlow Condensed Fallback", "Barlow", system-ui, sans-serif;
   --tv-title-spacing: 0.06em;
   --tv-title-transform: uppercase;
 }

@@ -29,6 +29,13 @@ class SettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('tagline'),
       '#maxlength' => 120,
     ];
+    $form['description'] = [
+      '#type' => 'textarea',
+      '#rows' => 2,
+      '#title' => $this->t('Description of the site'),
+      '#description' => $this->t('One or two sentences (about 150 characters) shown by search engines under the home page. Leave empty for a description built from the site name and tagline.'),
+      '#default_value' => $config->get('description'),
+    ];
     $form['footer_text'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Footer text'),
@@ -46,6 +53,7 @@ class SettingsForm extends ConfigFormBase {
     $social = array_map(fn($value) => $value ?: NULL, $form_state->getValue('social'));
     $this->config('tvshow_core.settings')
       ->set('tagline', $form_state->getValue('tagline'))
+      ->set('description', trim((string) $form_state->getValue('description')))
       ->set('footer_text', $form_state->getValue('footer_text'))
       ->set('social', $social)
       ->save();

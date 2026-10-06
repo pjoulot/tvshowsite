@@ -176,6 +176,18 @@ class ContentPackImporter {
     }, $html);
     // Drop images and links whose picture could not be found.
     $html = preg_replace('~<img[^>]*src="#"[^>]*/?>~', '', $html);
+    // Inline pictures carry their size, so the page does not jump as they load.
+    $html = preg_replace_callback('~<img\b[^>]*>~', function ($m) {
+      $tag = $m[0];
+      if (preg_match('~\ssrc="([^"]+)"~', $tag, $src) && !preg_match('~\swidth=~', $tag)) {
+        $path = DRUPAL_ROOT . rawurldecode(parse_url($src[1], PHP_URL_PATH) ?: '');
+        $size = is_file($path) ? @getimagesize($path) : FALSE;
+        if ($size) {
+          $tag = preg_replace('~\s*/?>$~', sprintf(' width="%d" height="%d" loading="lazy" decoding="async">', $size[0], $size[1]), $tag);
+        }
+      }
+      return $tag;
+    }, $html);
     $html = preg_replace('~<a href="#">(.*?)</a>~s', '$1', $html);
     return $html;
   }

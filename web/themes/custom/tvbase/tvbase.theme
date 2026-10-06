@@ -81,9 +81,18 @@ function tvbase_preprocess_page(array &$variables): void {
   }
   elseif ($default = theme_get_setting('header_image_default')) {
     $theme = \Drupal::theme()->getActiveTheme();
+    // A .webp next to the default banner is served instead: same picture, lighter.
+    $webp = preg_replace('/\.(jpe?g|png)$/i', '.webp', ltrim($default, '/'));
+    $default = is_file(DRUPAL_ROOT . '/' . $theme->getPath() . '/' . $webp) ? $webp : $default;
     $header = base_path() . $theme->getPath() . '/' . ltrim($default, '/');
   }
   $variables['header_image'] = $header;
+  $variables['header_image_size'] = NULL;
+  if ($header) {
+    $local = isset($file) && $file ? \Drupal::service('file_system')->realpath($file->getFileUri()) : DRUPAL_ROOT . '/' . substr($header, strlen(base_path()));
+    $size = $local && is_file($local) ? @getimagesize($local) : FALSE;
+    $variables['header_image_size'] = $size ? ['width' => $size[0], 'height' => $size[1]] : NULL;
+  }
   $variables['header_title_position'] = theme_get_setting('header_title_position') ?: 'center';
   $variables['#cache']['tags'][] = 'config:system.menu.main';
   $variables['#cache']['tags'][] = 'config:system.menu.footer';
@@ -100,6 +109,17 @@ function tvbase_preprocess_html(array &$variables): void {
   $route = \Drupal::routeMatch()->getRouteName();
   if ($route) {
     $variables['attributes']['class'][] = 'route-' . strtr($route, ['.' => '-', '_' => '-']);
+  }
+  // The front page is titled "Site – tagline", not "Accueil | Site".
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $tagline = \Drupal::config('tvshow_core.settings')->get('tagline') ?: \Drupal::config('system.site')->get('slogan');
+    $variables['head_title'] = ['title' => \Drupal::config('system.site')->get('name') . ($tagline ? ' – ' . $tagline : '')];
+  }
+  // "Actualités – page 2 | Site": each page of a listing has its own title.
+  $page = (int) \Drupal::request()->query->get('page', 0);
+  if ($page > 0 && isset($variables['head_title']['title'])) {
+    $variables['head_title']['title'] = $variables['head_title']['title'] . ' – page ' . ($page + 1);
+    $variables['#cache']['contexts'][] = 'url.query_args:page';
   }
 }
 

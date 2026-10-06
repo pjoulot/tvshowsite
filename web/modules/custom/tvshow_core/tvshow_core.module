@@ -62,6 +62,9 @@ function tvshow_core_node_view(array &$build, NodeInterface $node, EntityViewDis
   }
   $presenter = \Drupal::service('tvshow_core.presenter');
   $description = trim((string) $node->get('field_meta_description')->value) ?: $presenter->summary($node, $node->bundle() === 'episode' ? 'field_synopsis' : 'body', 160);
+  if ($description === '') {
+    $description = _tvshow_core_default_description($node);
+  }
   $image_field = $node->bundle() === 'people' ? 'field_picture' : 'field_image';
   $image = $presenter->image($node, $image_field, 'tv_wide');
   $tags = [
@@ -72,8 +75,15 @@ function tvshow_core_node_view(array &$build, NodeInterface $node, EntityViewDis
     ['property' => 'og:url', 'content' => $node->toUrl('canonical', ['absolute' => TRUE])->toString()],
     ['property' => 'og:site_name', 'content' => \Drupal::config('system.site')->get('name')],
   ];
-  if ($image) {
-    $tags[] = ['property' => 'og:image', 'content' => \Drupal::request()->getSchemeAndHttpHost() . $image['src']];
+  $image_url = $image ? $image['src'] : NULL;
+  if (!$image_url) {
+    // No picture of its own: share the site banner.
+    $theme = \Drupal::theme()->getActiveTheme();
+    $default = theme_get_setting('header_image_default', $theme->getName());
+    $image_url = $default ? base_path() . $theme->getPath() . '/' . ltrim($default, '/') : NULL;
+  }
+  if ($image_url) {
+    $tags[] = ['property' => 'og:image', 'content' => \Drupal::request()->getSchemeAndHttpHost() . $image_url];
     $tags[] = ['name' => 'twitter:card', 'content' => 'summary_large_image'];
   }
   foreach ($tags as $index => $attributes) {
@@ -286,5 +296,156 @@ function tvshow_core_views_data(): array {
 function tvshow_core_preprocess_views_view(array &$variables): void {
   if ($variables['view']->getDisplay()->getPluginId() === 'embed' && $variables['view']->storage->get('tag') === 'tvshow') {
     $variables['exposed'] = [];
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Every page gets a description, a canonical address and sharing tags.
+ * Whatever Metatag or the node pages already provide is left alone; this only
+ * fills what is missing (listings, the front page, term pages, content without
+ * a hand-written description).
+ */
+function tvshow_core_page_attachments_alter(array &$attachments): void {
+  $route_match = \Drupal::routeMatch();
+  $route = (string) $route_match->getRouteName();
+  if (\Drupal::service('router.admin_context')->isAdminRoute() || $route === '') {
+    return;
+  }
+  $metatag = \Drupal::moduleHandler()->moduleExists('metatag');
+  $node = $route_match->getParameter('node');
+  $node = $node instanceof NodeInterface && $route === 'entity.node.canonical' ? $node : NULL;
+  if ($node && !$metatag) {
+    // tvshow_core_node_view() writes the whole set.
+    return;
+  }
+
+  // What is already there.
+  $have = [];
+  foreach ($attachments['#attached']['html_head'] ?? [] as $item) {
+    $attributes = $item[0]['#attributes'] ?? [];
+    $key = $attributes['name'] ?? $attributes['property'] ?? (($attributes['rel'] ?? '') === 'canonical' ? 'canonical' : NULL);
+    if ($key && trim((string) ($attributes['content'] ?? $attributes['href'] ?? '')) !== '') {
+      $have[$key] = TRUE;
+    }
+  }
+  foreach ($attachments['#attached']['html_head_link'] ?? [] as $item) {
+    if (($item[0]['rel'] ?? '') === 'canonical') {
+      $have['canonical'] = TRUE;
+    }
+  }
+
+  $presenter = \Drupal::service('tvshow_core.presenter');
+  $site = \Drupal::config('system.site');
+  $settings = \Drupal::config('tvshow_core.settings');
+  $name = (string) $site->get('name');
+  $tagline = trim((string) ($settings->get('tagline') ?: $site->get('slogan')));
+  $request = \Drupal::request();
+  $is_front = \Drupal::service('path.matcher')->isFrontPage();
+  $title = $is_front ? $name : (string) \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+  $title = trim(strip_tags($title)) ?: $name;
+  $image = NULL;
+  $term = $route_match->getParameter('taxonomy_term');
+
+  if ($node) {
+    $description = trim((string) $node->get('field_meta_description')->value) ?: $presenter->summary($node, $node->bundle() === 'episode' ? 'field_synopsis' : 'body', 160);
+    $description = $description ?: _tvshow_core_default_description($node);
+    $image = $presenter->image($node, $node->bundle() === 'people' ? 'field_picture' : 'field_image', 'tv_wide');
+    $title = $node->label();
+  }
+  elseif ($term instanceof TermInterface) {
+    $title = $term->label();
+    $description = $presenter->summary($term, 'description', 160);
+    $image = $presenter->image($term, 'field_image', 'tv_wide');
+  }
+  elseif ($is_front) {
+    $description = trim((string) $settings->get('description')) ?: $name . ($tagline ? ' – ' . $tagline : '') . ' : actualités, guide des épisodes, wiki et casting.';
+  }
+  else {
+    $description = match ($route) {
+      'view.tvshow_news.page' => "Toutes les actualités de $name : diffusion, audiences, interviews, vidéos et photos.",
+      'tvshow_core.episodes' => "Le guide des épisodes de $name : saisons, résumés, dates de diffusion, réalisateurs et scénaristes.",
+      'tvshow_core.wiki' => "Le wiki de $name : les personnages et l’univers de la série, fiche par fiche.",
+      'tvshow_core.cast' => "Le casting de $name : les personnages, leurs interprètes et l’équipe de la série.",
+      'view.tvshow_people.page' => "Acteurs, réalisateurs et scénaristes de $name : toutes les personnalités de la série.",
+      'tvshow_core.partners' => "Les sites partenaires de $name.",
+      default => '',
+    };
+  }
+  if (trim($description) === '') {
+    $description = $title . ' – ' . $name . ($tagline ? ', ' . mb_strtolower(mb_substr($tagline, 0, 1)) . mb_substr($tagline, 1) : '') . '.';
+  }
+  $page = (int) $request->query->get('page', 0);
+  if ($page > 0) {
+    $description = rtrim($description, '.') . ' – page ' . ($page + 1) . '.';
+  }
+
+  // The address without tracking parameters: only the page number and the
+  // search keywords are part of what the page shows.
+  $query = array_intersect_key($request->query->all(), ['page' => 1, 's' => 1]);
+  $canonical = $is_front && !$query
+    ? \Drupal\Core\Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString()
+    : \Drupal\Core\Url::fromRoute('<current>', [], ['absolute' => TRUE, 'query' => $query])->toString();
+
+  if (!$image) {
+    // No picture of its own: share the site banner.
+    $theme = \Drupal::theme()->getActiveTheme();
+    $default = theme_get_setting('header_image_default', $theme->getName());
+    $image_url = $default ? $request->getSchemeAndHttpHost() . base_path() . $theme->getPath() . '/' . ltrim($default, '/') : NULL;
+  }
+  else {
+    $image_url = $request->getSchemeAndHttpHost() . $image['src'];
+  }
+
+  $tags = [
+    'description' => ['name' => 'description', 'content' => $description],
+    'og:title' => ['property' => 'og:title', 'content' => $title],
+    'og:description' => ['property' => 'og:description', 'content' => $description],
+    'og:type' => ['property' => 'og:type', 'content' => $node && $node->bundle() === 'article' ? 'article' : 'website'],
+    'og:url' => ['property' => 'og:url', 'content' => $canonical],
+    'og:site_name' => ['property' => 'og:site_name', 'content' => $name],
+    'og:image' => ['property' => 'og:image', 'content' => $image_url],
+    'twitter:card' => ['name' => 'twitter:card', 'content' => $image_url ? 'summary_large_image' : 'summary'],
+  ];
+  foreach ($tags as $key => $attributes) {
+    if (empty($have[$key]) && trim((string) $attributes['content']) !== '') {
+      $attachments['#attached']['html_head'][] = [['#tag' => 'meta', '#attributes' => $attributes], 'tvshow_fallback_' . strtr($key, ':', '_')];
+    }
+  }
+  // Entity pages get their canonical link from core or Metatag.
+  if (empty($have['canonical']) && !$node && !($metatag && $term)) {
+    $attachments['#attached']['html_head_link'][] = [['rel' => 'canonical', 'href' => $canonical]];
+  }
+  $attachments['#cache']['contexts'][] = 'url';
+  $attachments['#cache']['tags'][] = 'config:tvshow_core.settings';
+  $attachments['#cache']['tags'][] = 'config:system.site';
+}
+
+/**
+ * A one-line description for content that has no text yet.
+ */
+function _tvshow_core_default_description(NodeInterface $node): string {
+  $presenter = \Drupal::service('tvshow_core.presenter');
+  $site = (string) \Drupal::config('system.site')->get('name');
+  $card = $presenter->card($node);
+  switch ($node->bundle()) {
+    case 'episode':
+      $text = $node->label();
+      if (!empty($card['original_title']) && $card['original_title'] !== $node->label()) {
+        $text .= ' (' . $card['original_title'] . ')';
+      }
+      $text .= ' : épisode ' . $card['number'] . (!empty($card['season']) ? ' de la ' . mb_strtolower($card['season']['name']) : '');
+      $season = $node->get('field_season')->entity;
+      $serie = $season && $season->hasField('field_serie') ? $season->get('field_serie')->entity : NULL;
+      $text .= ' de ' . ($serie ? $serie->label() : $site);
+      return $text . (!empty($card['date']) ? ', diffusé le ' . $card['date'] : '') . '.';
+
+    case 'people':
+      $jobs = array_map(fn($job) => mb_strtolower($job['name']), $card['jobs'] ?? []);
+      return $node->label() . ($jobs ? ', ' . implode(' et ', $jobs) : '') . ' – ' . $site . ' : sa fiche et les épisodes auxquels il ou elle a participé.';
+
+    default:
+      return $node->label() . ' – ' . $site . '.';
   }
 }

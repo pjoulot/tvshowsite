@@ -4,3 +4,8 @@
 @font-face { font-family: "Barlow"; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/barlow-latin-600-normal.woff2) format("woff2"); }
 @font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/barlow-condensed-latin-600-normal.woff2) format("woff2"); }
 @font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 700; font-display: swap; src: url(../fonts/barlow-condensed-latin-700-normal.woff2) format("woff2"); }
+
+/* Metric-matched fallbacks: text takes the same room before the web fonts
+   arrive, so nothing moves when they swap in. */
+@font-face { font-family: "Barlow Fallback"; src: local("Arial"), local("Liberation Sans"), local("Helvetica Neue"); size-adjust: 96%; }
+@font-face { font-family: "Barlow Condensed Fallback"; font-weight: 600 700; src: local("Arial Bold"), local("Arial"), local("Liberation Sans Bold"), local("Liberation Sans"); size-adjust: 69%; ascent-override: 130%; descent-override: 36%; line-gap-override: 0%; }

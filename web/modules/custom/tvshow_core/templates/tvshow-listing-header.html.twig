@@ -10,3 +10,5 @@
   {% if intro %}<div class="tv-intro tv-prose">{{ intro }}</div>{% endif %}
 </header>
 {{ ui.filters(filters, 'Rubriques') }}
+{# Cards are titled with h3: this keeps the heading order h1 > h2 > h3. #}
+<h2 class="visually-hidden">Liste</h2>

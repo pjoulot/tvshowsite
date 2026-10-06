@@ -5,7 +5,7 @@
 <a class="tv-skip" href="#main-content">Aller au contenu</a>
 <header class="tv-header tv-header--{{ header_title_position }}{{ header_image ? ' has-banner' }}">
   <div class="tv-header__inner">
-    {% if header_image %}<img class="tv-header__banner" src="{{ header_image }}" alt="" fetchpriority="high">{% endif %}
+    {% if header_image %}<img class="tv-header__banner" src="{{ header_image }}" alt=""{% if header_image_size %} width="{{ header_image_size.width }}" height="{{ header_image_size.height }}"{% endif %} fetchpriority="high">{% endif %}
     <div class="tv-header__brand">
       <a class="tv-header__name" href="{{ front_url }}" rel="home">{{ site_name }}</a>
       {% if tagline %}<p class="tv-header__tagline"><span aria-hidden="true"></span>{{ tagline }}<span aria-hidden="true"></span></p>{% endif %}

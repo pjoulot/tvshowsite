@@ -490,6 +490,12 @@ def main():
             ep['image'] = next((by_slug[slug]['image'] for slug in ep['posts'] if by_slug[slug]['image']), None)
 
     tags = sorted({t for p in posts for t in p['tags']}, key=str.lower)
+    # Links to a tag no post carries any more become a search for that word.
+    tag_slugs = {slugify(t) for t in tags}
+    def fix_tag_links(html):
+        return re.sub(r'href="/tags/([^"/]+)"', lambda m: m.group(0) if m.group(1) in tag_slugs else 'href="/recherche?s=%s"' % m.group(1).replace('-', '+'), html or '')
+    for item in posts + pages:
+        item['body'] = fix_tag_links(item.get('body'))
     out = {
         'site': {'name': 'Stargate Universe', 'slogan': 'Le site francophone', 'theme': 'sgu'},
         'series': {'name': 'Stargate Universe', 'abbreviation': 'sgu', 'dates': '2009 – 2011',

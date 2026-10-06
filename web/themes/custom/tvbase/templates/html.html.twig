@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html{{ html_attributes }}>
   <head>
+    {# Before the first paint, so the collapsed mobile menu never shows open and pushes the page down. #}
+    <script>document.documentElement.classList.add('js');</script>
     <head-placeholder token="{{ placeholder_token }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token }}">

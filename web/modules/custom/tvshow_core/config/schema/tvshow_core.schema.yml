@@ -8,6 +8,9 @@ tvshow_core.settings:
     tagline:
       type: label
       label: 'Tagline shown in the header'
+    description:
+      type: text
+      label: 'Description of the site for search engines'
     social:
       type: mapping
       label: 'Social network addresses'
