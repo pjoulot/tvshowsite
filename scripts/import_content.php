@@ -21,7 +21,7 @@ foreach ($stats as $what => $count) {
   print str_pad($what, 28) . $count . "\n";
 }
 // Menu entry for the series page, once.
-$page = \Drupal::keyValue('tvshow_core.import')->get('node:page:la-serie');
+$page = \Drupal::keyValue('tvshow_core.import')->get(\Drupal\tvshow_core\Import\ContentPackImporter::key('node:page:la-serie'));
 $links = \Drupal::entityTypeManager()->getStorage('menu_link_content');
 if ($page && !$links->loadByProperties(['menu_name' => 'main', 'title' => 'La série'])) {
   $links->create(['title' => 'La série', 'link' => ['uri' => 'entity:node/' . $page], 'menu_name' => 'main', 'weight' => 0])->save();

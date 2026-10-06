@@ -70,6 +70,16 @@ class ContentPackImporter {
     return $this->stats;
   }
 
+  /**
+   * Storage key for the key-value tables.
+   *
+   * Those keys are ASCII-only and at most 128 characters on MySQL/MariaDB,
+   * while pack keys hold accented names and long file paths.
+   */
+  public static function key(string $key): string {
+    return hash('sha256', $key);
+  }
+
   protected function count(string $what): void {
     $this->stats[$what] = ($this->stats[$what] ?? 0) + 1;
   }
@@ -97,7 +107,7 @@ class ContentPackImporter {
       return NULL;
     }
     $storage = $this->entityTypeManager->getStorage('file');
-    $known = $this->files->get($relative);
+    $known = $this->files->get(self::key($relative));
     if ($known && $storage->load($known)) {
       return (int) $known;
     }
@@ -114,7 +124,7 @@ class ContentPackImporter {
     $uri = $this->fileSystem->copy($path, $destination, FileExists::Replace);
     $file = $storage->create(['uri' => $uri, 'status' => 1, 'uid' => 1]);
     $file->save();
-    $this->files->set($relative, $file->id());
+    $this->files->set(self::key($relative), $file->id());
     $this->count('pictures');
     return (int) $file->id();
   }
@@ -153,7 +163,7 @@ class ContentPackImporter {
    */
   protected function entity(string $type, string $key, array $create) {
     $storage = $this->entityTypeManager->getStorage($type);
-    $id = $this->map->get("$type:$key");
+    $id = $this->map->get(self::key("$type:$key"));
     $entity = $id ? $storage->load($id) : NULL;
     if (!$entity) {
       $entity = $storage->create($create);
@@ -163,7 +173,7 @@ class ContentPackImporter {
   }
 
   protected function remember(string $type, string $key, $entity): void {
-    $this->map->set("$type:$key", $entity->id());
+    $this->map->set(self::key("$type:$key"), $entity->id());
   }
 
   protected function term(string $vocabulary, string $name, array $values = []) {
@@ -377,7 +387,7 @@ class ContentPackImporter {
   protected function legacyRedirects(): void {
     $store = $this->keyValue->get('tvshow_core.legacy');
     foreach ($this->legacy as $old => $entity) {
-      $store->set(rtrim($old, '/'), $entity->toUrl()->toString());
+      $store->set(self::key(rtrim($old, '/')), $entity->toUrl()->toString());
     }
     $fixed = [
       '/equipe' => '/casting',
@@ -392,13 +402,13 @@ class ContentPackImporter {
       '/feed/rss' => '/actualites/rss.xml',
     ];
     foreach ($fixed as $old => $new) {
-      $store->set($old, $new);
+      $store->set(self::key($old), $new);
     }
     foreach ($this->pack['tags'] ?? [] as $tag) {
-      $id = $this->map->get('taxonomy_term:tags:' . mb_strtolower(trim($tag)));
+      $id = $this->map->get(self::key('taxonomy_term:tags:' . mb_strtolower(trim($tag))));
       $term = $id ? $this->entityTypeManager->getStorage('taxonomy_term')->load($id) : NULL;
       if ($term) {
-        $store->set('/tag/' . $this->aliasGenerator->slug($tag), $term->toUrl()->toString());
+        $store->set(self::key('/tag/' . $this->aliasGenerator->slug($tag)), $term->toUrl()->toString());
       }
     }
     $this->stats['old addresses redirected'] = count($this->legacy) + count($fixed);

@@ -6,6 +6,7 @@ use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\path_alias\AliasRepositoryInterface;
+use Drupal\tvshow_core\Import\ContentPackImporter;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -39,7 +40,7 @@ class LegacyRedirectSubscriber implements EventSubscriberInterface {
     if ($path === '/' || str_starts_with($path, '/sites/') || str_starts_with($path, '/core/')) {
       return;
     }
-    $target = $this->keyValue->get('tvshow_core.legacy')->get($path);
+    $target = $this->keyValue->get('tvshow_core.legacy')->get(ContentPackImporter::key(rawurldecode($path)));
     if (!$target && substr_count($path, '/') === 1) {
       $langcode = $this->languageManager->getDefaultLanguage()->getId();
       $candidate = '/actualites' . $path;
