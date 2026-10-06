@@ -30,12 +30,13 @@
 .tv-nav__menu ul ul { display: none; position: absolute; left: 0; top: 100%; z-index: 20; min-width: 240px; flex-direction: column; background: var(--tv-nav-bg); border: 1px solid var(--tv-line-strong); }
 .tv-nav__menu li:hover > ul, .tv-nav__menu li:focus-within > ul { display: flex; }
 .tv-nav__menu ul ul a { padding: 12px 16px; font-size: 1rem; }
-.tv-nav__search { display: flex; align-items: stretch; height: 40px; border: 1px solid var(--tv-line-strong); background: var(--tv-bg); transition: border-color 0.15s; }
+.tv-nav__search { flex: 0 0 auto; box-sizing: content-box; display: flex; align-items: stretch; height: 40px; border: 1px solid var(--tv-line-strong); background: var(--tv-bg); transition: border-color 0.15s; }
 /* One box for the field and its button: the frame is on the form, and it is the form that lights up on focus. */
 .tv-nav__search:focus-within { border-color: var(--tv-accent); box-shadow: 0 0 0 1px var(--tv-accent); }
-.tv-nav__search input { width: 170px; min-height: 0; height: auto; padding: 0 12px; background: none; border: 0; border-radius: 0; }
+.tv-nav__search input { flex: 0 0 auto; width: 170px; min-width: 0; min-height: 0; height: auto; padding: 0 12px; background: none; border: 0; border-radius: 0; }
 .tv-nav__search input:focus-visible { outline: 0; border: 0; box-shadow: none; }
-.tv-nav__search button { flex: 0 0 44px; display: grid; place-items: center; padding: 0; background: none; border: 0; border-left: 1px solid var(--tv-line-strong); color: var(--tv-text); cursor: pointer; }
+/* width, not flex-basis: Firefox sizes the form from its content, and a flex-basis alone left the button hanging outside the frame. */
+.tv-nav__search button { flex: none; width: 44px; display: grid; place-items: center; padding: 0; background: none; border: 0; border-left: 1px solid var(--tv-line-strong); color: var(--tv-text); cursor: pointer; }
 .tv-nav__search button:focus-visible { outline: 2px solid var(--tv-accent); outline-offset: -4px; }
 .tv-nav__search button:hover { color: var(--tv-accent); }
 .tv-nav__toggle { display: none; align-items: center; gap: 12px; min-height: 52px; padding: 0 4px; background: none; border: 0; font-family: var(--tv-font-title); font-weight: 600; font-size: 1.15rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }

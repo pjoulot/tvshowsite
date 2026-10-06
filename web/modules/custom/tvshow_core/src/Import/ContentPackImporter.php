@@ -363,7 +363,8 @@ class ContentPackImporter {
       $viewers = $data['us_viewers_millions'] ?? NULL;
       $node->set('field_audience', $viewers ? str_replace('.', ',', (string) round($viewers, 2)) . ' million' . ($viewers >= 2 ? 's' : '') . ' de téléspectateurs (États-Unis)' : NULL);
       $node->set('field_synopsis', !empty($data['synopsis']) ? ['value' => $this->html($data['synopsis']), 'format' => 'full_html'] : NULL);
-      $image = $this->file($data['image'] ?? NULL);
+      // images/episode-1-16.jpg next to the pack fills or replaces the picture.
+      $image = $this->file($this->override(sprintf('episode-%d-%02d', $data['season'], $data['number'])) ?? ($data['image'] ?? NULL));
       $node->set('field_image', $image ? ['target_id' => $image, 'alt' => $title] : []);
       $node->set('field_promotional_pictures', $this->images($data['promo'] ?? [], $title));
       $node->set('field_gallery', $this->images($data['backstage'] ?? [], $title));

@@ -137,6 +137,27 @@ get 'files/wp-content/uploads/2010/12/FullSize-sgu0210-0215xb.jpeg' 201101080217
 get 'thumbs/wp-content/uploads/2011/04/44.jpg.png' 20150720215523 'http://www.stargateuniverse.fr/wp-content/themes/church_40/tools/timthumb.php?src=http://www.stargateuniverse.fr/wp-content/uploads/2011/04/44.jpg&h=128&w=188&zc=1'
 get 'files/wp-content/uploads/2011/04/44.jpg' 20150720215523 'http://www.stargateuniverse.fr/wp-content/uploads/2011/04/44.jpg'
 
+
+# Episode stills for the episodes the archive has no picture for, from TVmaze
+# (https://www.tvmaze.com/shows/207/stargate-universe). Saved where the import
+# looks for hand-picked pictures: content/sgu/images/episode-<season>-<nn>.jpg
+direct() {
+  local file="content/sgu/$1"
+  [ -s "$file" ] && { ok=$((ok+1)); return; }
+  mkdir -p "$(dirname "$file")"
+  if curl -sSfL --max-time 120 -o "$file" "$2"; then ok=$((ok+1)); echo "got: $1"; else rm -f "$file"; failed=$((failed+1)); echo "failed: $1"; fi
+  sleep 1
+}
+direct 'images/episode-1-16.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127098.jpg'
+direct 'images/episode-1-17.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127099.jpg'
+direct 'images/episode-1-20.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127102.jpg'
+direct 'images/episode-2-01.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127103.jpg'
+direct 'images/episode-2-02.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127104.jpg'
+direct 'images/episode-2-04.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127106.jpg'
+direct 'images/episode-2-07.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127109.jpg'
+direct 'images/episode-2-09.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127111.jpg'
+direct 'images/episode-2-10.jpg' 'https://static.tvmaze.com/uploads/images/original_untouched/50/127112.jpg'
+
 # One flat archive next to the folder, easy to hand over.
-tar czf content/sgu/wayback.tar.gz -C content/sgu wayback
+tar czf content/sgu/wayback.tar.gz -C content/sgu wayback images
 echo "Done: $ok fetched or already there, $missing not archived, $failed failed. Result: content/sgu/wayback.tar.gz"
