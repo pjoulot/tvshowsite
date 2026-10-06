@@ -139,3 +139,23 @@ function tvbase_theme_settings_submit(array $form, FormStateInterface $form_stat
     \Drupal::service('file.usage')->add($file, 'tvbase', 'theme', 1);
   }
 }
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Adds the SVG and touch icons of the active theme, when it ships them.
+ * The classic favicon.ico at the theme root is picked up by Drupal itself.
+ */
+function tvbase_page_attachments_alter(array &$attachments): void {
+  $path = \Drupal::theme()->getActiveTheme()->getPath();
+  $icons = [
+    'images/favicon.svg' => ['rel' => 'icon', 'type' => 'image/svg+xml'],
+    'images/apple-touch-icon.png' => ['rel' => 'apple-touch-icon'],
+  ];
+  foreach ($icons as $file => $attributes) {
+    if (is_file(DRUPAL_ROOT . '/' . $path . '/' . $file)) {
+      $attributes['href'] = base_path() . $path . '/' . $file;
+      $attachments['#attached']['html_head_link'][] = [$attributes];
+    }
+  }
+}
