@@ -108,6 +108,22 @@ class ContentPackImporter {
   }
 
   /**
+   * Pictures of a folder next to the pack, split into promotional and
+   * behind-the-scenes ("bts" subfolder), in file-name order.
+   */
+  protected function localSets(string $folder): array {
+    $sets = ['promo' => [], 'backstage' => []];
+    foreach (['promo' => '', 'backstage' => '/bts'] as $set => $sub) {
+      $files = glob("$this->packDir/$folder$sub/*.{jpg,jpeg,png,JPG,JPEG,PNG}", GLOB_BRACE) ?: [];
+      natcasesort($files);
+      foreach ($files as $file) {
+        $sets[$set][] = 'pack:' . substr($file, strlen($this->packDir) + 1);
+      }
+    }
+    return $sets;
+  }
+
+  /**
    * A picture dropped next to the pack as images/<slug>.jpg|png|webp.
    *
    * It wins over whatever the archive has for that content.
@@ -362,12 +378,18 @@ class ContentPackImporter {
       $node->set('field_guest_stars', $data['guest_cast'] ?? NULL);
       $viewers = $data['us_viewers_millions'] ?? NULL;
       $node->set('field_audience', $viewers ? str_replace('.', ',', (string) round($viewers, 2)) . ' million' . ($viewers >= 2 ? 's' : '') . ' de téléspectateurs (États-Unis)' : NULL);
-      $node->set('field_synopsis', !empty($data['synopsis']) ? ['value' => $this->html($data['synopsis']), 'format' => 'full_html'] : NULL);
+      // A synopsis written on the site is kept when the pack has none.
+      if (!empty($data['synopsis']) || $node->get('field_synopsis')->isEmpty()) {
+        $node->set('field_synopsis', !empty($data['synopsis']) ? ['value' => $this->html($data['synopsis']), 'format' => 'full_html'] : NULL);
+      }
       // images/episode-1-16.jpg next to the pack fills or replaces the picture.
       $image = $this->file($this->override(sprintf('episode-%d-%02d', $data['season'], $data['number'])) ?? ($data['image'] ?? NULL));
       $node->set('field_image', $image ? ['target_id' => $image, 'alt' => $title] : []);
-      $node->set('field_promotional_pictures', $this->images($data['promo'] ?? [], $title));
-      $node->set('field_gallery', $this->images($data['backstage'] ?? [], $title));
+      // Full sets fetched by scripts/fetch_gateworld_promos.sh, when they are
+      // there, replace the smaller sets of the archive.
+      $sets = $this->localSets(sprintf('gateworld/%d-%02d', $data['season'], $data['number']));
+      $node->set('field_promotional_pictures', $this->images($sets['promo'] ?: ($data['promo'] ?? []), $title));
+      $node->set('field_gallery', $this->images($sets['backstage'] ?: ($data['backstage'] ?? []), $title));
       if (!empty($data['air_date'])) {
         $node->setCreatedTime(strtotime($data['air_date'] . ' 12:00:00 UTC'));
       }
@@ -395,7 +417,22 @@ class ContentPackImporter {
       foreach ($data['legacy'] ?? [] as $old) {
         $this->legacy[$old] = $node;
       }
+      if (!empty($data['footer'])) {
+        $this->footerLink($data['title'], '/' . $data['slug']);
+      }
     }
+  }
+
+  /**
+   * Adds a page to the footer menu, once.
+   */
+  protected function footerLink(string $title, string $path): void {
+    $storage = $this->entityTypeManager->getStorage('menu_link_content');
+    if ($storage->loadByProperties(['menu_name' => 'footer', 'link__uri' => 'internal:' . $path])) {
+      return;
+    }
+    $storage->create(['title' => $title, 'link' => ['uri' => 'internal:' . $path], 'menu_name' => 'footer', 'weight' => 20])->save();
+    $this->count('footer links');
   }
 
   protected function articles(callable $log): void {

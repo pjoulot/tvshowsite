@@ -1744,6 +1744,22 @@
    "gallery": []
   },
   {
+   "slug": "mentions-legales",
+   "title": "Mentions légales",
+   "body": "<h2>Éditeur du site</h2>\n<p>Ce site est édité à titre personnel et non commercial par <strong>[NOM DE L’ÉDITEUR]</strong>, directeur de la publication.</p>\n<p>Contact : par le <a href=\"/contact\">formulaire de contact</a>.</p>\n\n<h2>Hébergement</h2>\n<p><strong>[NOM DE L’HÉBERGEUR]</strong><br>[ADRESSE DE L’HÉBERGEUR]<br>[TÉLÉPHONE OU SITE DE L’HÉBERGEUR]</p>\n\n<h2>Un site de fans</h2>\n<p>Ce site est un site de fans, non officiel. Il n’est affilié ni à Metro-Goldwyn-Mayer Studios Inc., ni à Amazon MGM Studios, ni à aucune chaîne ou société de production.</p>\n\n<h2>Propriété intellectuelle</h2>\n<p><em>Stargate</em>, <em>Stargate Universe</em>, <em>SGU</em> et l’ensemble des titres, personnages, logos et éléments qui s’y rattachent sont des marques et des œuvres protégées, propriété de Metro-Goldwyn-Mayer Studios Inc. et de leurs ayants droit.</p>\n<p>Les photographies, visuels promotionnels et extraits présentés sur ce site restent la propriété de leurs auteurs et ayants droit. Ils sont reproduits à titre d’illustration et d’information, sans but lucratif.</p>\n<p>Les textes rédigés par l’équipe du site (actualités, fiches, résumés) ne peuvent être repris sans mention de la source.</p>\n\n<h2>Demande de retrait</h2>\n<p>Si vous êtes titulaire de droits sur un contenu publié ici et souhaitez sa modification ou son retrait, écrivez-nous par le <a href=\"/contact\">formulaire de contact</a> en indiquant la page concernée : la demande sera traitée dans les meilleurs délais.</p>\n\n<h2>Liens externes</h2>\n<p>Ce site contient des liens vers d’autres sites. Nous ne sommes pas responsables de leur contenu ni de leur disponibilité.</p>\n\n<h2>Données personnelles</h2>\n<p>Voir la <a href=\"/politique-de-confidentialite\">politique de confidentialité</a>.</p>",
+   "image": null,
+   "gallery": [],
+   "footer": true
+  },
+  {
+   "slug": "politique-de-confidentialite",
+   "title": "Politique de confidentialité",
+   "body": "<p>Cette page explique quelles données sont traitées lorsque vous visitez ce site, et pourquoi.</p>\n\n<h2>Responsable du traitement</h2>\n<p><strong>[NOM DE L’ÉDITEUR]</strong>, éditeur du site. Contact : par le <a href=\"/contact\">formulaire de contact</a>.</p>\n\n<h2>Formulaire de contact</h2>\n<p>Lorsque vous nous écrivez, nous recevons votre nom, votre adresse e-mail et votre message. Ces informations servent uniquement à vous répondre. Elles ne sont ni cédées ni utilisées à d’autres fins, et sont supprimées au plus tard [DURÉE, par exemple douze mois] après le dernier échange.</p>\n\n<h2>Journaux du serveur</h2>\n<p>Comme tout site web, le serveur enregistre des informations techniques sur chaque requête (adresse IP, date, page demandée, navigateur). Ces journaux servent à assurer la sécurité et le bon fonctionnement du site et sont conservés [DURÉE, par exemple trente jours].</p>\n\n<h2>Cookies et mesure d’audience</h2>\n<p>[À COMPLÉTER SELON L’OUTIL RETENU. Indiquer : le nom de l’outil de mesure d’audience, les cookies déposés et leur durée, si le dépôt est soumis à votre consentement, et comment modifier votre choix.]</p>\n<p>Le site n’affiche pas de publicité et ne dépose pas de cookies publicitaires.</p>\n\n<h2>Vidéos et contenus intégrés</h2>\n<p>Certaines pages proposent des vidéos hébergées par des services tiers (YouTube, Dailymotion). La vidéo n’est chargée que lorsque vous cliquez dessus ; le service concerné peut alors déposer ses propres cookies, selon sa politique.</p>\n\n<h2>Vos droits</h2>\n<p>Conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés, vous disposez d’un droit d’accès, de rectification, d’effacement et d’opposition sur les données qui vous concernent. Pour l’exercer, écrivez-nous par le <a href=\"/contact\">formulaire de contact</a>. Vous pouvez aussi adresser une réclamation à la CNIL (<a href=\"https://www.cnil.fr\">cnil.fr</a>).</p>",
+   "image": null,
+   "gallery": [],
+   "footer": true
+  },
+  {
    "slug": "galerie/casting-saison-1",
    "title": "Photos du casting – Saison 1",
    "body": "",

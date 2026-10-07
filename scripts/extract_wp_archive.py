@@ -9,7 +9,9 @@ and writes one JSON content pack that the Drupal importer
 archive root; the importer copies the files at import time.
 Reader comments are deliberately not extracted.
 """
+import glob
 import json
+from html import escape as html_escape
 import os
 import re
 import sys
@@ -374,6 +376,16 @@ def main():
     html = re.sub(r'^\s*(<h2>La série</h2>|<br/?>|\s)*', '', html)
     pages.append({'slug': 'la-serie', 'title': 'La série', 'body': html, 'image': None, 'gallery': []})
 
+    # Pages written for the new site (legal notice, privacy…): one HTML file each
+    # in <pack folder>/pages/, titled by a first-line comment. Linked in the footer.
+    pack_dir = os.path.dirname(os.path.abspath(OUT))
+    for path in sorted(glob.glob(os.path.join(pack_dir, 'pages', '*.html'))):
+        text = open(path, encoding='utf-8').read()
+        title = re.search(r'<!--\s*title:\s*(.*?)\s*-->', text)
+        slug = os.path.splitext(os.path.basename(path))[0]
+        pages.append({'slug': slug, 'title': title.group(1) if title else slug, 'body': re.sub(r'<!--.*?-->\s*', '', text, count=1, flags=re.S).strip(),
+                      'image': None, 'gallery': [], 'footer': True})
+
     # Characters and actors
     characters = []
     order = ['nicholas-rush-robert-carlyle', 'everett-young-justin-louis', 'eli-wallace-david-blue', 'matthew-scott-brian-j-smith',
@@ -508,6 +520,19 @@ def main():
         if not ep['image']:
             by_slug = {post['slug']: post for post in posts}
             ep['image'] = next((by_slug[slug]['image'] for slug in ep['posts'] if by_slug[slug]['image']), None)
+
+    # Synopses written for the new site: <pack folder>/synopses.md, one section per
+    # episode headed "## 1x16 …". They fill episodes the archive has no text for.
+    syn_file = os.path.join(pack_dir, 'synopses.md')
+    written = 0
+    if os.path.isfile(syn_file):
+        for m in re.finditer(r'^##\s*(\d+)x(\d+)[^\n]*\n(.*?)(?=^##\s|\Z)', open(syn_file, encoding='utf-8').read(), flags=re.S | re.M):
+            key = (int(m.group(1)), int(m.group(2)))
+            paragraphs = [re.sub(r'\s*\n\s*', ' ', x).strip() for x in re.split(r'\n\s*\n', m.group(3)) if x.strip() and not x.strip().startswith('<!--')]
+            if paragraphs and key in episodes and not episodes[key]['synopsis']:
+                episodes[key]['synopsis'] = ''.join('<p>%s</p>' % html_escape(x) for x in paragraphs)
+                written += 1
+    print('synopses from synopses.md', written)
 
     tags = sorted({t for p in posts for t in p['tags']}, key=str.lower)
     # Links to a tag no post carries any more become a search for that word.

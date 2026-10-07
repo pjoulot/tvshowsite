@@ -22,14 +22,15 @@ Nothing here is expected to fail; none of it has been checked on a real install.
 
 ## 2. Content that must be there on day one (1–2 days, mostly yours)
 
-- [ ] Episode pictures: run `scripts/fetch_wayback_extras.sh`, hand the archive
-      back, re-import. Target: 40 of 40 episodes with a picture.
-- [ ] Decide on synopses. 35 of 40 episodes have none. Either write them
-      before launch, or launch with facts only (cast, crew, dates, audience,
-      related news) and add them over time. **Decision needed.**
-- [ ] A "Mentions légales" page: publisher, host, contact, and the fan-site
-      disclaimer. Required for a French site. I can draft it once you give me
-      the publisher and host details.
+- [x] Episode pictures: 40 of 40 (31 from the archive, 9 stills from TVmaze).
+- [ ] Episode photo sets: run `scripts/fetch_gateworld_promos.sh` (about 1,500
+      promotional and behind-the-scenes photos from the GateWorld gallery, kept
+      out of the repo), then re-import.
+- [ ] Synopses: 35 of 40 episodes to write, in `content/sgu/synopses.md`.
+- [ ] Legal pages: fill the bracketed placeholders in
+      `content/sgu/pages/mentions-legales.html` and
+      `politique-de-confidentialite.html`.
+- [ ] Analytics and cookie banner, once the tool is chosen.
 - [ ] Front-page description (*Réglages du site TV Show*) and social links, or
       leave the social links empty.
 - [ ] `/partenaires`: add partners or remove the menu link.
@@ -89,14 +90,30 @@ biographies, new wiki rubrics, dead video embeds.
       contact form) now that the contrib modules are proven. Code cleanup, no
       visible change.
 
-## Decisions I need from you
+## Decisions (6 October)
 
-1. Launch with or without episode synopses.
-2. Analytics: none, or a privacy-friendly one (Matomo, Plausible). With none
-   there is no cookie banner to add.
-3. Comments: the old site had them. Not rebuilt. Keep it that way?
-4. Canonical host: `www.stargateuniverse.fr` or `stargateuniverse.fr`.
-5. Who publishes the site legally (name for the legal page) and which host.
+1. **Synopses are required for launch.** Philippe writes them in
+   `content/sgu/synopses.md` (one block per episode, 35 to write); the import
+   publishes them. A synopsis typed directly on the site is also kept.
+2. **Analytics with a cookie banner.** Tool still to choose, see below.
+3. **Design tweaks and a mobile check before launch.** First mobile pass done
+   (news lists are compact rows on phones); Philippe's list of tweaks to come.
+4. **Canonical host: `www.stargateuniverse.fr`**; the bare domain and `http://`
+   redirect to it. Set up with the server, last.
+5. **Legal pages.** Drafts of "Mentions légales" and "Politique de
+   confidentialité" are in `content/sgu/pages/` and linked in the footer. To
+   fill in: publisher name, host name and address, retention periods, and the
+   cookies paragraph once the analytics tool is chosen. Have the wording checked
+   if in doubt: these are sensible drafts, not legal advice.
+
+## Still to decide
+
+- **Which analytics.** Matomo (self-hosted on the VPS, free) or Plausible
+  (hosted, paid) can run without cookies, which in France means no consent
+  banner is required for them. Google Analytics needs the banner and consent
+  before loading. If a banner is wanted regardless (YouTube and Dailymotion
+  embeds set cookies when played), the `klaro` module handles it.
+- **Comments:** left out, as now, unless said otherwise.
 
 ## After launch
 
