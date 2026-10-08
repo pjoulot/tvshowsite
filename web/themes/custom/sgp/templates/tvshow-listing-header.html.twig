@@ -1,0 +1,30 @@
+{#
+  Chrome of a listing: breadcrumb, title, filters (rubrics, series, letters).
+  Printed by tvshow-listing.html.twig and by the "TV Show page header" Views area.
+#}
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs(breadcrumb|default([]), title) }}
+<header class="sgp-listhead">
+  {{ sgp.tabhead(kicker and kicker != title ? kicker ~ ' — ' ~ title : title, 1, feed_url, feed_url ? 'Flux RSS') }}
+  {% if intro %}<div class="sgp-intro sgp-prose">{{ intro }}</div>{% endif %}
+  {% if filters or serie_filters|default([]) %}
+    <div class="sgp-filterbar">
+      {{ sgp.chips(filters, 'Rubriques') }}
+      {{ sgp.chips(serie_filters|default([]), 'Séries', 'sgp-chips--series') }}
+    </div>
+  {% endif %}
+  {% if letters|default([]) %}
+    <nav class="sgp-letters" aria-label="Par lettre">
+      {% for item in letters %}
+        {% if item.url %}<a class="sgp-letter{{ item.active ? ' is-on' }}{{ loop.first ? ' sgp-letter--all' }}" href="{{ item.url }}"{% if item.active %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% else %}<span class="sgp-letter is-off" aria-hidden="true">{{ item.label }}</span>{% endif %}
+      {% endfor %}
+    </nav>
+  {% endif %}
+  {% if letter %}
+    <p class="sgp-letterhead"><span class="sgp-letterhead__letter">{{ letter }}</span> <span class="sgp-meta">{{ count }} {{ count > 1 ? 'fiches' : 'fiche' }}</span></p>
+  {% elseif count is not null and count is not empty %}
+    <p class="sgp-listcount sgp-meta">{{ count }} {{ count > 1 ? 'fiches' : 'fiche' }}</p>
+  {% endif %}
+</header>
+<h2 class="visually-hidden">Liste</h2>

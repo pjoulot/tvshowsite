@@ -1,0 +1,33 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([{name: data.wiki_label, url: path('tvshow_core.wiki')}, {name: 'Acteurs', url: path('tvshow_core.actors')}], data.title) }}
+<div class="sgp-entry">
+  {% if data.picture or data.facts_list or data.series or data.roles %}
+    <aside class="sgp-entry__side">
+      <div class="sgp-frame sgp-frame--panel">
+        <div class="sgp-frame__in">
+          <div class="sgp-frame__line sgp-infobox">
+            {% if data.picture %}{{ sgp.img(data.picture, 'sgp-infobox__image') }}{% endif %}
+            <dl class="sgp-facts">
+              {% for fact in data.facts_list %}<dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd>{% endfor %}
+              {% if data.jobs %}<dt>Métier</dt><dd>{{ sgp.links(data.jobs) }}</dd>{% endif %}
+              {% if data.series %}<dt>{{ data.series|length > 1 ? 'Séries' : 'Série' }}</dt><dd>{{ sgp.links(data.series) }}</dd>{% endif %}
+              {% if data.roles %}<dt>{{ data.roles|length > 1 ? 'Rôles' : 'Rôle' }}</dt><dd>{% for card in data.roles %}<a href="{{ card.url }}">{{ card.title }}</a>{{ not loop.last ? ', ' }}{% endfor %}</dd>{% endif %}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </aside>
+  {% endif %}
+  <article class="sgp-entry__main">
+    <p class="sgp-kicker sgp-kicker--amber">{{ data.wiki_label }} · {{ data.jobs ? data.jobs|map(j => j.name)|join(', ') : 'Personnalité' }}{% if data.series %} · {{ data.series|map(s => s.name)|join(', ') }}{% endif %}</p>
+    <h1 class="sgp-title sgp-title--caps">{{ data.title }}</h1>
+    {% if data.body %}<div class="sgp-prose sgp-prose--large">{{ data.body }}</div>{% endif %}
+    {% if data.episodes %}
+      <h2 class="sgp-sec">Épisodes <span class="sgp-count">{{ data.episodes|length }}</span></h2>
+      <ol class="sgp-eplist sgp-eplist--wide">
+        {% for card in data.episodes %}<li><a href="{{ card.url }}"><span class="sgp-eplist__num">{{ card.code ?: card.number }}</span><span>{{ card.title }}{% if card.serie %} <span class="sgp-meta">· {{ card.serie.name }}</span>{% endif %}</span></a></li>{% endfor %}
+      </ol>
+    {% endif %}
+    {% if not data.body and not data.episodes %}<p class="sgp-empty">Cette fiche n’a pas encore de texte.</p>{% endif %}
+  </article>
+</div>

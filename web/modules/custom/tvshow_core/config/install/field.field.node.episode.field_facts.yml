@@ -1,0 +1,18 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_facts
+    - node.type.episode
+id: node.episode.field_facts
+field_name: field_facts
+entity_type: node
+bundle: episode
+label: 'Autres informations (une ligne « Libellé : valeur » par information)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

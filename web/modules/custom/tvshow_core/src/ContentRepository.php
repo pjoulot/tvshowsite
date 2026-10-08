@@ -23,7 +23,7 @@ class ContentRepository {
       ->condition('status', 1)
       ->condition('type', $bundle);
     foreach ($conditions as $field => $value) {
-      $query->condition($field, $value);
+      is_array($value) ? $query->condition($field, $value ?: [0], 'IN') : $query->condition($field, $value);
     }
     return $query;
   }
@@ -58,6 +58,45 @@ class ContentRepository {
 
   public function countWikiEntries(int $category_id): int {
     return (int) $this->nodeQuery('editorial', ['field_category' => $category_id])->count()->execute();
+  }
+
+  public function products(?int $limit = NULL, array $conditions = []): array {
+    $query = $this->nodeQuery('product', $conditions)->sort('title');
+    if ($limit) {
+      $query->range(0, $limit);
+    }
+    return $this->loadNodes($query->execute());
+  }
+
+  /**
+   * Published nodes of a bundle that reference each series, by series id.
+   *
+   * Used to show only the series filters that lead somewhere.
+   */
+  public function seriesWith(string $bundle, string $field, array $conditions = []): array {
+    $counts = [];
+    foreach ($this->terms('serie') as $serie) {
+      $count = (int) $this->nodeQuery($bundle, $conditions + [$field => $serie->id()])->count()->execute();
+      if ($count) {
+        $counts[$serie->id()] = $count;
+      }
+    }
+    return $counts;
+  }
+
+  /**
+   * First letters of the titles of matching nodes, with their counts.
+   */
+  public function initials(string $bundle, array $conditions = []): array {
+    $letters = [];
+    foreach (array_chunk($this->nodeQuery($bundle, $conditions)->execute(), 200) as $ids) {
+      foreach ($this->entityTypeManager->getStorage('node')->loadMultiple($ids) as $node) {
+        $letter = mb_strtolower(mb_substr(\Drupal::service('transliteration')->transliterate($node->label(), 'fr'), 0, 1));
+        $letters[$letter] = ($letters[$letter] ?? 0) + 1;
+      }
+    }
+    ksort($letters);
+    return $letters;
   }
 
   public function countEpisodes(int $season_id): int {

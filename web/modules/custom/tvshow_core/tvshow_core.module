@@ -20,19 +20,19 @@ use GuzzleHttp\Exception\GuzzleException;
 function tvshow_core_theme(): array {
   $hooks = [
     // Listings are Views displays; these templates only add the page chrome.
-    'tvshow_front' => ['variables' => ['featured' => [], 'news' => [], 'wiki' => [], 'series' => NULL]],
-    'tvshow_listing' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'layout' => 'news', 'filters' => [], 'content' => [], 'feed_url' => NULL]],
-    'tvshow_listing_header' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'filters' => [], 'feed_url' => NULL]],
+    'tvshow_front' => ['variables' => ['featured' => [], 'news' => [], 'wiki' => [], 'series' => NULL, 'lead' => [], 'more' => [], 'rubrics' => [], 'series_cards' => [], 'news_pages' => 0, 'ad' => '']],
+    'tvshow_listing' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'layout' => 'news', 'filters' => [], 'content' => [], 'feed_url' => NULL, 'serie_filters' => [], 'letters' => [], 'letter' => NULL, 'count' => NULL, 'breadcrumb' => [], 'aside' => []]],
+    'tvshow_listing_header' => ['variables' => ['title' => '', 'kicker' => NULL, 'intro' => NULL, 'filters' => [], 'feed_url' => NULL, 'serie_filters' => [], 'letters' => [], 'letter' => NULL, 'count' => NULL, 'breadcrumb' => []]],
     'tvshow_card' => ['variables' => ['card' => [], 'variant' => 'card']],
-    'tvshow_wiki' => ['variables' => ['categories' => [], 'latest' => []]],
+    'tvshow_wiki' => ['variables' => ['categories' => [], 'latest' => [], 'title' => 'Wiki', 'rubrics' => []]],
     'tvshow_cast' => ['variables' => ['roles' => [], 'crew' => [], 'has_roles' => TRUE, 'has_crew' => TRUE]],
     'tvshow_partners' => ['variables' => ['partners' => []]],
     'tvshow_search' => ['variables' => ['keys' => '', 'results' => [], 'action' => '']],
-    'tvshow_serie' => ['variables' => ['serie' => [], 'seasons' => [], 'season_list' => [], 'show_episodes' => TRUE]],
+    'tvshow_serie' => ['variables' => ['serie' => [], 'seasons' => [], 'season_list' => [], 'show_episodes' => TRUE, 'explore' => [], 'season_cards' => []]],
     'tvshow_not_found' => ['variables' => ['action' => '', 'news' => []]],
     'tvshow_season' => ['variables' => ['season' => [], 'serie' => NULL, 'siblings' => [], 'episodes' => []]],
   ];
-  foreach (['article', 'editorial', 'episode', 'people', 'page'] as $bundle) {
+  foreach (['article', 'editorial', 'episode', 'people', 'page', 'product'] as $bundle) {
     $hooks['tvshow_node_' . $bundle] = ['variables' => ['data' => []]];
   }
   return $hooks;
@@ -44,7 +44,7 @@ function tvshow_core_theme(): array {
  * Full pages are rendered by the module's own templates.
  */
 function tvshow_core_node_view(array &$build, NodeInterface $node, EntityViewDisplayInterface $display, $view_mode): void {
-  if ($view_mode !== 'full' || !in_array($node->bundle(), ['article', 'editorial', 'episode', 'people', 'page'])) {
+  if ($view_mode !== 'full' || !in_array($node->bundle(), ['article', 'editorial', 'episode', 'people', 'page', 'product'])) {
     return;
   }
   $data = \Drupal::service('tvshow_core.node_page')->build($node);

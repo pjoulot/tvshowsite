@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.episode.field_director
     - field.field.node.episode.field_duration
     - field.field.node.episode.field_episode
+    - field.field.node.episode.field_facts
     - field.field.node.episode.field_gallery
     - field.field.node.episode.field_guest_stars
     - field.field.node.episode.field_image
@@ -51,7 +52,7 @@ content:
     third_party_settings: {  }
   field_affiliates_links:
     type: link_default
-    weight: 26
+    weight: 27
     region: content
     settings:
       placeholder_url: ''
@@ -59,7 +60,7 @@ content:
     third_party_settings: {  }
   field_audience:
     type: string_textfield
-    weight: 23
+    weight: 24
     region: content
     settings:
       size: 60
@@ -67,13 +68,13 @@ content:
     third_party_settings: {  }
   field_date_de_diffusion:
     type: datetime_default
-    weight: 17
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   field_director:
     type: entity_reference_autocomplete
-    weight: 19
+    weight: 20
     region: content
     settings:
       match_operator: CONTAINS
@@ -83,16 +84,24 @@ content:
     third_party_settings: {  }
   field_duration:
     type: number
-    weight: 22
+    weight: 23
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_episode:
     type: number
-    weight: 15
+    weight: 16
     region: content
     settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_facts:
+    type: string_textarea
+    weight: 14
+    region: content
+    settings:
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_gallery:
@@ -105,7 +114,7 @@ content:
     third_party_settings: {  }
   field_guest_stars:
     type: string_textarea
-    weight: 21
+    weight: 22
     region: content
     settings:
       rows: 5
@@ -121,7 +130,7 @@ content:
     third_party_settings: {  }
   field_linked_content:
     type: entity_reference_autocomplete
-    weight: 27
+    weight: 28
     region: content
     settings:
       match_operator: CONTAINS
@@ -139,7 +148,7 @@ content:
     third_party_settings: {  }
   field_original_title:
     type: string_textfield
-    weight: 16
+    weight: 17
     region: content
     settings:
       size: 60
@@ -147,7 +156,7 @@ content:
     third_party_settings: {  }
   field_promotional_pictures:
     type: image_image
-    weight: 24
+    weight: 25
     region: content
     settings:
       progress_indicator: throbber
@@ -155,13 +164,13 @@ content:
     third_party_settings: {  }
   field_season:
     type: options_select
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   field_synopsis:
     type: text_textarea
-    weight: 18
+    weight: 19
     region: content
     settings:
       rows: 5
@@ -169,7 +178,7 @@ content:
     third_party_settings: {  }
   field_trailers:
     type: link_default
-    weight: 25
+    weight: 26
     region: content
     settings:
       placeholder_url: ''
@@ -177,7 +186,7 @@ content:
     third_party_settings: {  }
   field_writers:
     type: entity_reference_autocomplete
-    weight: 20
+    weight: 21
     region: content
     settings:
       match_operator: CONTAINS

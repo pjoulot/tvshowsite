@@ -4,7 +4,9 @@ dependencies:
   config:
     - field.field.node.editorial.body
     - field.field.node.editorial.field_actor
+    - field.field.node.editorial.field_appearance
     - field.field.node.editorial.field_category
+    - field.field.node.editorial.field_facts
     - field.field.node.editorial.field_gallery
     - field.field.node.editorial.field_image
     - field.field.node.editorial.field_meta_description
@@ -39,7 +41,17 @@ content:
     third_party_settings: {  }
   field_actor:
     type: entity_reference_autocomplete
-    weight: 17
+    weight: 18
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_appearance:
+    type: entity_reference_autocomplete_tags
+    weight: 19
     region: content
     settings:
       match_operator: CONTAINS
@@ -49,9 +61,17 @@ content:
     third_party_settings: {  }
   field_category:
     type: options_select
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_facts:
+    type: string_textarea
+    weight: 14
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_gallery:
     type: image_image
@@ -79,13 +99,13 @@ content:
     third_party_settings: {  }
   field_serie:
     type: options_select
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete_tags
-    weight: 14
+    weight: 15
     region: content
     settings:
       match_operator: CONTAINS

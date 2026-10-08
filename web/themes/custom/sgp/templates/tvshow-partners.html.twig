@@ -1,0 +1,7 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([], 'Partenaires') }}
+<div class="sgp-partners">
+  {{ sgp.tabhead('Partenaires', 1) }}
+  <p class="sgp-chapo">Les sites amis de Stargate Pegasus. Pour proposer un échange de liens, <a href="{{ path('<front>') }}contact">contactez-nous</a>.</p>
+  {{ partners }}
+</div>

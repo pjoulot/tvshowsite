@@ -1,0 +1,158 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - node.type.product
+  module:
+    - node
+    - taxonomy
+    - user
+id: tvshow_products
+label: 'Produits dérivés'
+module: views
+description: 'Produits d’un type (et de ses sous-types), éventuellement d’une série.'
+tag: tvshow
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Défaut
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Produits dérivés'
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 24
+          id: 0
+          tags:
+            next: 'Suivant →'
+            previous: '← Précédent'
+            first: «
+            last: »
+          quantity: 5
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Rechercher
+          reset_button: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: '<p class="tv-empty">Aucun produit dans ce rayon pour le moment.</p>'
+      sorts:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
+          order: ASC
+      arguments:
+        term_node_tid_depth:
+          id: term_node_tid_depth
+          table: node_field_data
+          field: term_node_tid_depth
+          plugin_id: taxonomy_index_tid_depth
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: Tout
+          break_phrase: false
+          depth: 2
+          use_taxonomy_term_path: false
+        field_series_target_id:
+          id: field_series_target_id
+          table: node__field_series
+          field: field_series_target_id
+          plugin_id: numeric
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: Tout
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            product: product
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: false
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: card
+      query:
+        type: views_query
+        options:
+          distinct: true
+      css_class: 'tv-grid tv-grid--products'
+      use_ajax: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  type:
+    id: type
+    display_title: 'Type de produit'
+    display_plugin: embed
+    position: 1
+    display_options:
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

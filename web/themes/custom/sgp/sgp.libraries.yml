@@ -1,0 +1,10 @@
+identity:
+  css:
+    theme:
+      css/fonts.css: {}
+      css/sgp.css: {}
+  js:
+    js/sgp.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

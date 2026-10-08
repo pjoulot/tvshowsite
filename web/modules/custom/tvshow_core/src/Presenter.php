@@ -40,9 +40,23 @@ class Presenter {
     if (!$value) {
       return NULL;
     }
-    $time = is_numeric($value) ? (int) $value : strtotime($value . ' 12:00:00 UTC');
-    $day = (int) gmdate('j', $time);
-    return ($day === 1 ? '1er' : $day) . ' ' . self::MONTHS[(int) gmdate('n', $time)] . ' ' . gmdate('Y', $time);
+    if (is_numeric($value)) {
+      // A moment: the day it was in the site's time zone.
+      [$day, $month, $year] = explode(' ', \Drupal::service('date.formatter')->format((int) $value, 'custom', 'j n Y'));
+    }
+    else {
+      // A calendar date ("2005-02-11").
+      $time = strtotime($value . ' 12:00:00 UTC');
+      [$day, $month, $year] = [gmdate('j', $time), gmdate('n', $time), gmdate('Y', $time)];
+    }
+    return ((int) $day === 1 ? '1er' : $day) . ' ' . self::MONTHS[(int) $month] . ' ' . $year;
+  }
+
+  /**
+   * "2005-02-11" of a timestamp, in the site's time zone.
+   */
+  public function isoDate(int $time): string {
+    return \Drupal::service('date.formatter')->format($time, 'custom', 'Y-m-d');
   }
 
   /**
@@ -74,6 +88,90 @@ class Presenter {
   }
 
   /**
+   * A small picture: the file itself when it is already small (the old
+   * sites' 150 px thumbnails), else the given image style.
+   */
+  public function thumb(?ContentEntityInterface $entity, string $field, string $style = 'tv_thumb', int $max = 320): ?array {
+    if (!$entity || !$entity->hasField($field) || $entity->get($field)->isEmpty()) {
+      return NULL;
+    }
+    $width = (int) $entity->get($field)->first()->width;
+    if ($width && $width <= $max) {
+      $file = $entity->get($field)->entity;
+      if ($file) {
+        $item = $entity->get($field)->first();
+        return [
+          'src' => $this->fileUrlGenerator->generateString($file->getFileUri()),
+          'alt' => (string) $item->alt,
+          'width' => $width,
+          'height' => (int) $item->height ?: NULL,
+        ];
+      }
+    }
+    return $this->image($entity, $field, $style);
+  }
+
+  /**
+   * Lines "Label : value" of a facts field, as label/value pairs.
+   */
+  public function facts(?ContentEntityInterface $entity, string $field = 'field_facts'): array {
+    if (!$entity || !$entity->hasField($field) || $entity->get($field)->isEmpty()) {
+      return [];
+    }
+    $facts = [];
+    foreach (preg_split('/\R/u', (string) $entity->get($field)->value) as $line) {
+      $line = trim($line);
+      if ($line === '') {
+        continue;
+      }
+      $parts = preg_split('/\s*:\s*/u', $line, 2);
+      $facts[] = count($parts) === 2 ? ['label' => $parts[0], 'value' => $parts[1]] : ['label' => '', 'value' => $line];
+    }
+    return $facts;
+  }
+
+  /**
+   * "1 h 24 min" from a number of minutes.
+   */
+  public function duration(?int $minutes): ?string {
+    if (!$minutes) {
+      return NULL;
+    }
+    return $minutes >= 60 ? sprintf('%d h %02d min', intdiv($minutes, 60), $minutes % 60) : $minutes . ' min';
+  }
+
+  /**
+   * "1.04" for the 4th episode of season 1; NULL for TV films.
+   */
+  public function episodeCode(NodeInterface $episode): ?string {
+    $season = $episode->get('field_season')->entity;
+    $number = (int) $episode->get('field_episode')->value;
+    $season_number = (int) $season?->get('field_season_number')->value;
+    if (!$season_number || $season_number >= 90) {
+      return NULL;
+    }
+    return sprintf('%d.%02d', $season_number, $number);
+  }
+
+  /**
+   * Short name of a series: "Atlantis" for "Stargate Atlantis".
+   */
+  public function shortName(?TermInterface $serie): ?string {
+    if (!$serie) {
+      return NULL;
+    }
+    $words = explode(' ', $serie->label());
+    return count($words) > 1 ? implode(' ', array_slice($words, 1)) : $serie->label();
+  }
+
+  /**
+   * Name of the wiki on this site ("Wiki", "Encyclopédie"…).
+   */
+  public function wikiLabel(): string {
+    return (string) ($this->configFactory->get('tvshow_core.settings')->get('wiki_label') ?: 'Wiki');
+  }
+
+  /**
    * Every image of a multi-value field as thumbnail + full-size pairs.
    */
   public function gallery(ContentEntityInterface $entity, string $field): array {
@@ -99,6 +197,8 @@ class Presenter {
     }
     $item = $entity->get($field)->first();
     $text = trim((string) ($item->summary ?? '')) ?: (string) $item->value;
+    // Section titles ("Description", "Biographie") are not part of a summary.
+    $text = preg_replace('~<h[1-6]\b[^>]*>.*?</h[1-6]>~is', ' ', $text);
     $text = preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags(str_replace(['</p>', '<br'], [' </p>', ' <br'], $text)), ENT_QUOTES | ENT_HTML5));
     return Unicode::truncate(trim($text), $length, TRUE, TRUE);
   }
@@ -150,10 +250,11 @@ class Presenter {
       case 'article':
         $card += [
           'date' => $this->date($node->getCreatedTime()),
-          'date_iso' => gmdate('Y-m-d', $node->getCreatedTime()),
+          'date_iso' => $this->isoDate($node->getCreatedTime()),
           'category' => $this->termLink($node->get('field_article_category')->entity),
           'image' => $this->image($node, 'field_image', 'tv_card'),
           'image_wide' => $this->image($node, 'field_image', 'tv_wide'),
+          'thumb' => $this->thumb($node, 'field_image'),
           'summary' => $this->summary($node),
           'kicker' => 'Actualité',
         ];
@@ -162,22 +263,31 @@ class Presenter {
       case 'editorial':
         $card += [
           'category' => $this->termLink($node->get('field_category')->entity),
+          'serie' => $this->termLink($node->get('field_serie')->entity),
+          'serie_short' => $this->shortName($node->get('field_serie')->entity),
           'image' => $this->image($node, 'field_image', 'tv_square'),
+          'thumb' => $this->thumb($node, 'field_image', 'tv_square'),
           'summary' => $this->summary($node, 'body', 140),
-          'kicker' => 'Wiki',
+          'kicker' => $this->wikiLabel(),
         ];
         break;
 
       case 'episode':
         $season = $node->get('field_season')->entity;
+        $serie = $season?->get('field_serie')->entity;
+        $teaser = trim((string) $node->get('field_meta_description')->value);
         $card += [
           'number' => $node->get('field_episode')->value,
+          'code' => $this->episodeCode($node),
           'season' => $this->termLink($season),
           'season_number' => $season?->get('field_season_number')->value,
+          'serie' => $this->termLink($serie),
           'original_title' => $node->get('field_original_title')->value,
           'date' => $this->date($node->get('field_date_de_diffusion')->value),
           'image' => $this->image($node, 'field_image', 'tv_card'),
+          'thumb' => $this->image($node, 'field_image', 'tv_thumb'),
           'summary' => $this->summary($node, 'field_synopsis', 150),
+          'teaser' => $teaser !== '' ? Unicode::truncate($teaser, 220, TRUE, TRUE) : $this->summary($node, 'field_synopsis', 220),
           'kicker' => 'Épisode',
         ];
         break;
@@ -185,9 +295,31 @@ class Presenter {
       case 'people':
         $card += [
           'image' => $this->image($node, 'field_picture', 'tv_square'),
+          'thumb' => $this->thumb($node, 'field_picture', 'tv_square'),
           'jobs' => $this->references($node, 'field_job'),
+          'series' => $node->hasField('field_series') ? $this->references($node, 'field_series') : [],
           'summary' => $this->summary($node, 'body', 140),
           'kicker' => 'Personnalité',
+        ];
+        break;
+
+      case 'product':
+        $type = $node->get('field_product_type')->entity;
+        $subtitle = NULL;
+        foreach ($this->facts($node) as $fact) {
+          if (in_array(mb_strtolower($fact['label']), ['distributeur', 'editeur', 'éditeur', 'marque', 'développeur', 'developpeur', 'auteur', 'compositeurs', 'créateur'], TRUE)) {
+            $subtitle = $fact['value'];
+            break;
+          }
+        }
+        $card += [
+          'category' => $this->termLink($type),
+          'series' => $this->references($node, 'field_series'),
+          'image' => $this->image($node, 'field_image', 'tv_poster'),
+          'thumb' => $this->thumb($node, 'field_image', 'tv_content', 420),
+          'subtitle' => $subtitle ?? $type?->label(),
+          'summary' => $this->summary($node, 'body', 140),
+          'kicker' => $type?->label() ?? 'Produit',
         ];
         break;
 
@@ -227,16 +359,31 @@ class Presenter {
         'summary' => $this->summary($term, 'description', 220),
       ];
     }
-    return [
+    $card = [
       'type' => $term->bundle(),
       'id' => $term->id(),
       'title' => $term->label(),
       'url' => $term->toUrl()->toString(),
       'image' => $this->image($term, 'field_image', $poster ? 'tv_poster' : 'tv_card'),
+      'image_wide' => $this->image($term, 'field_image', 'tv_card'),
       'summary' => $this->summary($term, 'description', 160),
       'dates' => $term->hasField('field_dates') ? $term->get('field_dates')->value : NULL,
       'count' => $count,
     ];
+    if ($term->bundle() === 'saison' && !$card['image']) {
+      // A season without its own picture shows its first episode.
+      $ids = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck(TRUE)->condition('status', 1)->condition('type', 'episode')
+        ->condition('field_season', $term->id())->exists('field_image')->sort('field_episode')->range(0, 1)->execute();
+      $first = $ids ? $this->entityTypeManager->getStorage('node')->load(reset($ids)) : NULL;
+      $card['image_wide'] = $this->image($first, 'field_image', 'tv_card');
+    }
+    if ($term->bundle() === 'saison') {
+      $card['is_films'] = (int) $term->get('field_season_number')->value >= 90;
+    }
+    if ($term->bundle() === 'serie') {
+      $card['abbreviation'] = $term->get('field_abreviation')->value;
+    }
+    return $card;
   }
 
   /**

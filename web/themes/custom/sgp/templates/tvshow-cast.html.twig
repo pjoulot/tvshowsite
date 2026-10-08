@@ -1,0 +1,7 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([], 'Casting') }}
+<div class="sgp-cast">
+  {{ sgp.tabhead('Casting', 1) }}
+  {{ roles }}
+  {% if has_crew %}<section class="sgp-section">{{ sgp.tabhead('L’équipe', 2) }}{{ crew }}</section>{% endif %}
+</div>

@@ -22,6 +22,14 @@ class AliasGenerator {
   ) {}
 
   /**
+   * First segment of the wiki addresses ("wiki" unless the site renamed it).
+   */
+  public static function wikiPath(): string {
+    $path = trim((string) \Drupal::config('tvshow_core.settings')->get('wiki_path'), '/');
+    return $path !== '' ? $path : 'wiki';
+  }
+
+  /**
    * URL-safe version of a label.
    */
   public function slug(?string $text): string {
@@ -42,7 +50,11 @@ class AliasGenerator {
 
       case 'node:editorial':
         $category = $entity->get('field_category')->entity;
-        return '/wiki/' . ($category ? $this->slug($category->label()) : 'divers') . "/$title";
+        return '/' . self::wikiPath() . '/' . ($category ? $this->slug($category->label()) : 'divers') . "/$title";
+
+      case 'node:product':
+        $type = $entity->get('field_product_type')->entity;
+        return ($type ? $this->termPath($type) : '/produits') . "/$title";
 
       case 'node:episode':
         $season = $entity->get('field_season')->entity;
@@ -66,7 +78,10 @@ class AliasGenerator {
         return $serie ? '/' . $this->serieSlug($serie) . "/$title" : NULL;
 
       case 'taxonomy_term:category':
-        return "/wiki/$title";
+        return '/' . self::wikiPath() . "/$title";
+
+      case 'taxonomy_term:product_type':
+        return $this->termPath($entity);
 
       case 'taxonomy_term:article_category':
         return "/actualites/rubrique/$title";
@@ -78,6 +93,18 @@ class AliasGenerator {
         return "/personnalites/metier/$title";
     }
     return NULL;
+  }
+
+  /**
+   * /parent/child path of a term of a hierarchical vocabulary.
+   */
+  protected function termPath(ContentEntityInterface $term): string {
+    $parts = [];
+    $storage = $this->entityTypeManager->getStorage('taxonomy_term');
+    foreach (array_reverse($storage->loadAllParents($term->id())) as $ancestor) {
+      $parts[] = $this->slug($ancestor->label());
+    }
+    return '/' . implode('/', $parts ?: [$this->slug($term->label())]);
   }
 
   protected function serieSlug(ContentEntityInterface $serie): string {

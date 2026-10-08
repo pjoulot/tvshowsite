@@ -27,6 +27,7 @@ $vocabularies = [
   'tags' => ['Tags', 'Mots-clés libres.'],
   'job' => ['Métier', 'Les métiers des personnalités (acteur, réalisateur, scénariste…).'],
   'partenaires' => ['Partenaire', 'Les sites partenaires.'],
+  'product_type' => ['Type de produit', 'Les rayons des produits dérivés et des jeux (DVD, livres, jeux officiels…), sur deux niveaux.'],
 ];
 foreach ($vocabularies as $vid => [$name, $description]) {
   if (!Vocabulary::load($vid)) {
@@ -40,6 +41,7 @@ $types = [
   'episode' => ['Épisode', 'Un épisode rattaché à une saison.'],
   'people' => ['Personnalité', 'Un acteur ou un membre de l’équipe.'],
   'page' => ['Page', 'Une page libre (présentation, mentions légales, galerie…).'],
+  'product' => ['Produit dérivé', 'Un DVD, un livre, une figurine, un jeu vidéo… classé par type de produit.'],
 ];
 foreach ($types as $id => [$name, $description]) {
   if (!NodeType::load($id)) {
@@ -57,10 +59,11 @@ $ref = fn(string $target, array $bundles, bool $auto = FALSE) => [
 $image = fn(string $dir) => ['file_directory' => $dir, 'file_extensions' => 'png gif jpg jpeg webp', 'alt_field' => TRUE, 'alt_field_required' => FALSE, 'title_field' => FALSE, 'max_filesize' => '', 'max_resolution' => '', 'min_resolution' => ''];
 $fields = [
   'node' => [
-    'body' => ['text_with_summary', 'Texte', 1, [], ['article' => [], 'editorial' => [], 'episode' => ['label' => 'Résumé détaillé'], 'people' => ['label' => 'Biographie'], 'page' => []]],
-    'field_image' => ['image', 'Image principale', 1, [], ['article' => $image('actualites'), 'editorial' => $image('wiki'), 'episode' => $image('episodes'), 'page' => $image('pages')]],
-    'field_gallery' => ['image', 'Galerie', -1, [], ['article' => $image('galeries'), 'editorial' => $image('galeries'), 'page' => $image('galeries'), 'episode' => $image('galeries') + ['label' => 'Photos des coulisses']]],
-    'field_meta_description' => ['string_long', 'Description pour les moteurs de recherche', 1, [], ['article' => [], 'editorial' => [], 'episode' => [], 'people' => [], 'page' => []]],
+    'body' => ['text_with_summary', 'Texte', 1, [], ['article' => [], 'editorial' => [], 'episode' => ['label' => 'Résumé détaillé'], 'people' => ['label' => 'Biographie'], 'page' => [], 'product' => ['label' => 'Description']]],
+    'field_image' => ['image', 'Image principale', 1, [], ['article' => $image('actualites'), 'editorial' => $image('wiki'), 'episode' => $image('episodes'), 'page' => $image('pages'), 'product' => $image('produits') + ['label' => 'Visuel']]],
+    'field_gallery' => ['image', 'Galerie', -1, [], ['article' => $image('galeries'), 'editorial' => $image('galeries'), 'page' => $image('galeries'), 'episode' => $image('galeries') + ['label' => 'Photos des coulisses'], 'product' => $image('galeries')]],
+    'field_meta_description' => ['string_long', 'Description pour les moteurs de recherche', 1, [], ['article' => [], 'editorial' => [], 'episode' => ['label' => 'Résumé court (listes et moteurs de recherche)'], 'people' => [], 'page' => [], 'product' => []]],
+    'field_facts' => ['string_long', 'Fiche technique', 1, [], ['editorial' => ['label' => 'Fiche (une ligne « Libellé : valeur » par information)'], 'episode' => ['label' => 'Autres informations (une ligne « Libellé : valeur » par information)'], 'people' => ['label' => 'Fiche (une ligne « Libellé : valeur » par information)'], 'product' => ['label' => 'Caractéristiques (une ligne « Libellé : valeur » par information)']]],
     'field_article_category' => ['entity_reference', 'Rubrique', 1, ['target_type' => 'taxonomy_term'], ['article' => $ref('taxonomy_term', ['article_category'])]],
     'field_tags' => ['entity_reference', 'Tags', -1, ['target_type' => 'taxonomy_term'], ['article' => $ref('taxonomy_term', ['tags'], TRUE), 'editorial' => $ref('taxonomy_term', ['tags'], TRUE)]],
     'field_source' => ['link', 'Source', 1, [], ['article' => ['link_type' => 16, 'title' => 1]]],
@@ -68,6 +71,9 @@ $fields = [
     'field_category' => ['entity_reference', 'Rubrique du wiki', 1, ['target_type' => 'taxonomy_term'], ['editorial' => $ref('taxonomy_term', ['category'])]],
     'field_serie' => ['entity_reference', 'Série', 1, ['target_type' => 'taxonomy_term'], ['editorial' => $ref('taxonomy_term', ['serie'])]],
     'field_actor' => ['entity_reference', 'Interprète', -1, ['target_type' => 'node'], ['editorial' => $ref('node', ['people'])]],
+    'field_appearance' => ['entity_reference', 'Première apparition', -1, ['target_type' => 'node'], ['editorial' => $ref('node', ['episode'])]],
+    'field_series' => ['entity_reference', 'Séries', -1, ['target_type' => 'taxonomy_term'], ['people' => $ref('taxonomy_term', ['serie']), 'product' => $ref('taxonomy_term', ['serie'])]],
+    'field_product_type' => ['entity_reference', 'Type de produit', 1, ['target_type' => 'taxonomy_term'], ['product' => $ref('taxonomy_term', ['product_type']) + ['required' => TRUE]]],
     'field_season' => ['entity_reference', 'Saison', 1, ['target_type' => 'taxonomy_term'], ['episode' => $ref('taxonomy_term', ['saison'])]],
     'field_episode' => ['integer', 'Numéro de l’épisode', 1, [], ['episode' => ['min' => 0]]],
     'field_original_title' => ['string', 'Titre original', 1, [], ['episode' => []]],
@@ -80,13 +86,14 @@ $fields = [
     'field_audience' => ['string', 'Audience', 1, [], ['episode' => []]],
     'field_promotional_pictures' => ['image', 'Photos promotionnelles', -1, [], ['episode' => $image('episodes/promo')]],
     'field_trailers' => ['link', 'Bandes-annonces', -1, [], ['episode' => ['link_type' => 16, 'title' => 1]]],
-    'field_affiliates_links' => ['link', 'Liens d’achat', -1, [], ['episode' => ['link_type' => 16, 'title' => 1]]],
+    'field_affiliates_links' => ['link', 'Liens d’achat', -1, [], ['episode' => ['link_type' => 16, 'title' => 1], 'product' => ['link_type' => 16, 'title' => 1]]],
     'field_linked_content' => ['entity_reference', 'Contenus liés', -1, ['target_type' => 'node'], ['episode' => $ref('node', ['article', 'editorial'])]],
     'field_picture' => ['image', 'Photo', 1, [], ['people' => $image('personnalites')]],
     'field_job' => ['entity_reference', 'Métier', -1, ['target_type' => 'taxonomy_term'], ['people' => $ref('taxonomy_term', ['job'], TRUE)]],
   ],
   'taxonomy_term' => [
-    'field_image' => ['image', 'Image', 1, [], ['serie' => $image('series'), 'saison' => $image('saisons'), 'category' => $image('rubriques'), 'article_category' => $image('rubriques'), 'tags' => $image('rubriques')]],
+    'field_image' => ['image', 'Image', 1, [], ['serie' => $image('series'), 'saison' => $image('saisons'), 'category' => $image('rubriques'), 'article_category' => $image('rubriques'), 'tags' => $image('rubriques'), 'product_type' => $image('rubriques')]],
+    'field_facts' => ['string_long', 'Fiche technique (une ligne « Libellé : valeur » par information)', 1, [], ['serie' => []]],
     'field_abreviation' => ['string', 'Abréviation (utilisée dans les adresses)', 1, [], ['serie' => ['required' => TRUE]]],
     'field_dates' => ['string', 'Dates de diffusion', 1, [], ['serie' => [], 'saison' => []]],
     'field_creators' => ['string', 'Créateurs', 1, [], ['serie' => []]],
@@ -128,11 +135,14 @@ foreach ($fields as $entity_type => $definitions) {
     $weight = 10;
     foreach ($names as [$name, $type]) {
       $options = ['weight' => $weight++];
-      if ($type === 'entity_reference' && in_array($name, ['field_tags', 'field_job'])) {
+      if ($type === 'entity_reference' && in_array($name, ['field_tags', 'field_job', 'field_appearance'])) {
         $options['type'] = 'entity_reference_autocomplete_tags';
       }
-      elseif ($type === 'entity_reference' && str_contains($name, 'categor') || in_array($name, ['field_serie', 'field_season'])) {
+      elseif ($type === 'entity_reference' && str_contains($name, 'categor') || in_array($name, ['field_serie', 'field_season', 'field_product_type'])) {
         $options['type'] = 'options_select';
+      }
+      elseif ($name === 'field_series') {
+        $options['type'] = 'options_buttons';
       }
       $form->setComponent($name, $options);
       // Pages are rendered by tvshow_core's own templates, not by formatters.

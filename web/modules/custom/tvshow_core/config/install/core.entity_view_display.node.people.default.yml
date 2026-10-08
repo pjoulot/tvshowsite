@@ -3,9 +3,11 @@ status: true
 dependencies:
   config:
     - field.field.node.people.body
+    - field.field.node.people.field_facts
     - field.field.node.people.field_job
     - field.field.node.people.field_meta_description
     - field.field.node.people.field_picture
+    - field.field.node.people.field_series
     - node.type.people
   module:
     - user
@@ -21,7 +23,9 @@ content:
     region: content
 hidden:
   body: true
+  field_facts: true
   field_job: true
   field_meta_description: true
   field_picture: true
+  field_series: true
   langcode: true

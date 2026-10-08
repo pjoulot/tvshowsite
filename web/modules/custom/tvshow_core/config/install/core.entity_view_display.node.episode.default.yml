@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.episode.field_director
     - field.field.node.episode.field_duration
     - field.field.node.episode.field_episode
+    - field.field.node.episode.field_facts
     - field.field.node.episode.field_gallery
     - field.field.node.episode.field_guest_stars
     - field.field.node.episode.field_image
@@ -41,6 +42,7 @@ hidden:
   field_director: true
   field_duration: true
   field_episode: true
+  field_facts: true
   field_gallery: true
   field_guest_stars: true
   field_image: true

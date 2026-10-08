@@ -1,0 +1,16 @@
+{# Encyclopedia home: its rubrics, then the latest entries. #}
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([], title) }}
+<div class="sgp-wikihome">
+  {{ sgp.tabhead(title, 1) }}
+  <div class="sgp-grid sgp-grid--rubrics">
+    {% for rubric in rubrics %}
+      <a class="sgp-card sgp-explore" href="{{ rubric.url }}"><span class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span><span class="sgp-explore__title">{{ rubric.label }}</span><span class="sgp-meta">{{ rubric.count }} {{ rubric.count > 1 ? 'fiches' : 'fiche' }}{% if rubric.summary %} · {{ rubric.summary }}{% endif %}</span></span></a>
+    {% endfor %}
+    <a class="sgp-card sgp-explore" href="{{ actors_url }}"><span class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span><span class="sgp-explore__title">Acteurs</span><span class="sgp-meta">Les acteurs de Stargate SG-1, Atlantis et Universe</span></span></a>
+  </div>
+  <section class="sgp-section">
+    {{ sgp.tabhead('Dernières fiches', 2) }}
+    {{ latest }}
+  </section>
+</div>

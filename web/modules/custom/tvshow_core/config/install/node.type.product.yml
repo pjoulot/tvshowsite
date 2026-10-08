@@ -1,0 +1,10 @@
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Produit dérivé'
+type: product
+description: 'Un DVD, un livre, une figurine, un jeu vidéo… classé par type de produit.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

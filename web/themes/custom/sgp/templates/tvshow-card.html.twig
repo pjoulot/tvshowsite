@@ -1,0 +1,6 @@
+{# One row of a listing, in the Stargate Pegasus design. #}
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{% if variant == 'feature' %}{{ sgp.feature(card) }}
+{% elseif variant == 'row' %}{{ sgp.wiki_row(card) }}
+{% elseif variant == 'role' %}{{ sgp.wiki(card) }}
+{% else %}{{ sgp.card(card) }}{% endif %}

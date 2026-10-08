@@ -237,6 +237,37 @@ display:
           break_phrase: false
           not: false
           target_entity_type_id: taxonomy_term
+        field_serie_target_id:
+          id: field_serie_target_id
+          table: node__field_serie
+          field: field_serie_target_id
+          plugin_id: entity_target_id
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: Tout
+          break_phrase: false
+          not: false
+          target_entity_type_id: taxonomy_term
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: Tout
+          glossary: true
+          limit: 1
+          case: lower
+          path_case: lower
+          transform_dash: false
+          break_phrase: false
       defaults:
         empty: false
         pager: false
@@ -262,6 +293,51 @@ display:
         options:
           offset: 0
           items_per_page: 6
+      sorts:
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+          order: DESC
+        random:
+          id: random
+          table: views
+          field: random
+          plugin_id: random
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            editorial: editorial
+          group: 1
+        field_image_target_id:
+          id: field_image_target_id
+          table: node__field_image
+          field: field_image_target_id
+          plugin_id: numeric
+          operator: 'not empty'
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       row:
         type: 'entity:node'
         options:
@@ -270,10 +346,13 @@ display:
         css_class: false
         pager: false
         row: false
+        sorts: false
+        filters: false
+        filter_groups: false
       css_class: tv-wikilist
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_interface'
         - 'user.node_grants:view'
@@ -285,9 +364,25 @@ display:
     display_plugin: embed
     position: 1
     display_options:
+      sorts:
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+          order: DESC
+        random:
+          id: random
+          table: views
+          field: random
+          plugin_id: random
+      defaults:
+        sorts: false
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_interface'
         - 'user.node_grants:view'

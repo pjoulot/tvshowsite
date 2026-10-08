@@ -327,6 +327,61 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
+  lead:
+    id: lead
+    display_title: 'Accueil : la plus récente, en grand'
+    display_plugin: embed
+    position: 6
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
+      empty: {  }
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: feature
+      defaults:
+        empty: false
+        css_class: false
+        pager: false
+        row: false
+      css_class: tv-lead-news
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  more:
+    id: more
+    display_title: 'Accueil : les suivantes'
+    display_plugin: embed
+    position: 7
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 1
+          items_per_page: 9
+      empty: {  }
+      defaults:
+        empty: false
+        css_class: false
+        pager: false
+      css_class: tv-newslist
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
   page:
     id: page
     display_title: 'Page /actualites'
@@ -361,7 +416,7 @@ display:
     id: short
     display_title: 'Trois dernières (page 404)'
     display_plugin: embed
-    position: 6
+    position: 8
     display_options:
       pager:
         type: some

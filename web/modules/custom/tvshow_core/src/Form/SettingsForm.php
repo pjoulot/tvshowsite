@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class SettingsForm extends ConfigFormBase {
 
-  const NETWORKS = ['facebook' => 'Facebook', 'x' => 'X (Twitter)', 'instagram' => 'Instagram', 'youtube' => 'YouTube', 'bluesky' => 'Bluesky'];
+  const NETWORKS = ['facebook' => 'Facebook', 'x' => 'X (Twitter)', 'instagram' => 'Instagram', 'youtube' => 'YouTube', 'bluesky' => 'Bluesky', 'steam' => 'Steam'];
 
   public function getFormId(): string {
     return 'tvshow_core_settings';
@@ -42,6 +42,20 @@ class SettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('footer_text'),
       '#rows' => 3,
     ];
+    $form['wiki_label'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Name of the wiki'),
+      '#description' => $this->t('Shown in titles and breadcrumbs, for example “Wiki” or “Encyclopédie”.'),
+      '#default_value' => $config->get('wiki_label') ?: 'Wiki',
+      '#maxlength' => 40,
+    ];
+    $form['ad_html'] = [
+      '#type' => 'textarea',
+      '#rows' => 4,
+      '#title' => $this->t('Advertising code'),
+      '#description' => $this->t('HTML or script given by the ad network (for example Google AdSense), printed in the ad slots of the theme. Leave empty to keep the slots empty.'),
+      '#default_value' => $config->get('ad_html'),
+    ];
     $form['social'] = ['#type' => 'details', '#title' => $this->t('Social networks'), '#open' => TRUE, '#tree' => TRUE];
     foreach (self::NETWORKS as $key => $label) {
       $form['social'][$key] = ['#type' => 'url', '#title' => $label, '#default_value' => $config->get('social.' . $key)];
@@ -56,6 +70,8 @@ class SettingsForm extends ConfigFormBase {
       ->set('description', trim((string) $form_state->getValue('description')))
       ->set('footer_text', $form_state->getValue('footer_text'))
       ->set('social', $social)
+      ->set('wiki_label', trim((string) $form_state->getValue('wiki_label')) ?: 'Wiki')
+      ->set('ad_html', (string) $form_state->getValue('ad_html'))
       ->save();
     parent::submitForm($form, $form_state);
   }

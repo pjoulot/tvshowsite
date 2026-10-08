@@ -1,0 +1,24 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs(data.trail|slice(0, -1)|merge([data.type]), data.title) }}
+<article class="sgp-frame sgp-product">
+  <div class="sgp-frame__in"><span class="sgp-frame__tab" aria-hidden="true"></span>
+    <div class="sgp-frame__line sgp-product__body">
+      {% if data.picture %}<div class="sgp-product__media">{{ sgp.img(data.picture, 'sgp-product__image') }}</div>{% endif %}
+      <div class="sgp-product__text">
+        <p class="sgp-kicker sgp-kicker--amber">{{ data.trail|map(t => t.name)|join(' · ') }}{% if data.series %} · {{ data.series|map(s => s.name)|join(', ') }}{% endif %}</p>
+        <h1 class="sgp-title">{{ data.title }}</h1>
+        {% if data.body %}<div class="sgp-prose sgp-prose--large">{{ data.body }}</div>{% endif %}
+        {{ sgp.facts(data.facts_list) }}
+        {% if data.stores %}<p class="sgp-stores">{% for store in data.stores %}<a class="sgp-button" href="{{ store.url }}" rel="noopener sponsored">{{ store.label }}</a>{% endfor %}</p>{% endif %}
+        {% if data.season %}<p><a class="sgp-button" href="{{ data.season.url }}">Voir les épisodes de la {{ data.season.name|lower }}</a></p>{% endif %}
+      </div>
+    </div>
+  </div>
+</article>
+{{ sgp.gallery(data.gallery, 'Galerie') }}
+{% if data.related %}
+  <section class="sgp-section">
+    {{ sgp.tabhead('Dans le même rayon', 2, data.type.url, 'Tout le rayon') }}
+    <div class="sgp-grid sgp-grid--products">{% for card in data.related %}{{ sgp.product(card) }}{% endfor %}</div>
+  </section>
+{% endif %}

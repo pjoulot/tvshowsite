@@ -1,0 +1,112 @@
+{#
+  Page chrome of Stargate Pegasus: navy header with bevelled lower edge,
+  menu bar with search and mega menu, mobile menu, footer.
+  sections, logo, banner and ad_html come from sgp_preprocess_page().
+#}
+{% set search_icon %}<svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" focusable="false"><circle cx="7.5" cy="7.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M11.6 11.6L16.5 16.5" stroke="currentColor" stroke-width="2.4"/></svg>{% endset %}
+<a class="tv-skip" href="#main-content">Aller au contenu</a>
+<header class="sgp-header">
+  <div class="sgp-band">
+    <div class="sgp-band__inner sgp-wrap">
+      <a class="sgp-brand" href="{{ front_url }}" rel="home">
+        <img class="sgp-brand__logo" src="{{ logo }}" alt="" width="140" height="140">
+        <span class="sgp-brand__text">
+          <span class="sgp-brand__name">{{ site_name }}</span>
+          {% if tagline %}<span class="sgp-brand__rule" aria-hidden="true"></span><span class="sgp-brand__tagline">{{ tagline }}</span>{% endif %}
+        </span>
+      </a>
+      <img class="sgp-band__art" src="{{ banner }}" alt="Les équipes de SG-1, Atlantis et Universe devant leurs portes des étoiles" width="900" height="208" fetchpriority="high">
+      <button class="sgp-menubutton" type="button" aria-expanded="false" aria-controls="sgp-drawer"><span class="sgp-menubutton__label">Menu</span><span class="sgp-menubutton__icon" aria-hidden="true"></span></button>
+    </div>
+  </div>
+  <span class="sgp-band__tab sgp-band__tab--left" aria-hidden="true"></span>
+  <span class="sgp-band__tab sgp-band__tab--right" aria-hidden="true"></span>
+</header>
+
+<div class="sgp-nav">
+  <nav class="sgp-nav__bar sgp-wrap" aria-label="Navigation principale">
+    <ul class="sgp-nav__items">
+      {% for section in sections %}
+        <li>
+          <a class="sgp-nav__item{{ section.active ? ' is-active' }}" href="{{ section.url ?: front_url }}"{% if section.columns %} data-panel="{{ section.id }}"{% endif %}{% if section.active %} aria-current="{{ section.columns ? 'true' : 'page' }}"{% endif %}>{{ section.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <form class="sgp-search" action="{{ search_action }}" method="get" role="search">
+      <input class="sgp-search__input" type="search" name="s" placeholder="Rechercher" aria-label="Rechercher sur le site" required>
+      <button class="sgp-search__submit" type="submit" aria-label="Lancer la recherche">{{ search_icon }}</button>
+    </form>
+  </nav>
+  {% for section in sections|filter(section => section.columns) %}
+    <div class="sgp-panel" id="{{ section.id }}" hidden>
+      <div class="sgp-panel__inner sgp-wrap">
+        <div class="sgp-panel__intro">
+          <p class="sgp-panel__title">{{ section.title }}</p>
+          {% if section.intro %}<p class="sgp-panel__text">{{ section.intro }}</p>{% endif %}
+          {% if section.url %}<a class="sgp-panel__all" href="{{ section.url }}">{{ section.all }}</a>{% endif %}
+        </div>
+        <div class="sgp-panel__columns">
+          {% for column in section.columns %}
+            <div class="sgp-panel__column">
+              {% if column.url %}<a class="sgp-panel__heading" href="{{ column.url }}">{{ column.title }}</a>{% else %}<span class="sgp-panel__heading">{{ column.title }}</span>{% endif %}
+              {% for item in column.below %}<a class="sgp-panel__link{{ item.active ? ' is-active' }}" href="{{ item.url }}">{{ item.title }}</a>{% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="sgp-drawer" id="sgp-drawer">
+  <form class="sgp-search sgp-search--drawer" action="{{ search_action }}" method="get" role="search">
+    <input class="sgp-search__input" type="search" name="s" placeholder="Rechercher" aria-label="Rechercher sur le site" required>
+    <button class="sgp-search__submit" type="submit" aria-label="Lancer la recherche">{{ search_icon }}</button>
+  </form>
+  <ul class="sgp-drawer__list">
+    {% for section in sections %}
+      <li class="sgp-drawer__section">
+        {% if section.mobile_columns %}
+          <button class="sgp-drawer__toggle{{ section.active ? ' is-active' }}" type="button" aria-expanded="false" aria-controls="{{ section.id }}-m">{{ section.title }}<span class="sgp-drawer__sign" aria-hidden="true"></span></button>
+          <div class="sgp-drawer__body" id="{{ section.id }}-m">
+            {% if section.url %}<a class="sgp-drawer__all" href="{{ section.url }}">{{ section.all }}</a>{% endif %}
+            {% for column in section.mobile_columns %}
+              <div class="sgp-drawer__group">
+                <p class="sgp-drawer__heading">{{ column.title }}</p>
+                {% for item in column.below %}<a class="sgp-drawer__link" href="{{ item.url }}">{{ item.title }}</a>{% endfor %}
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <a class="sgp-drawer__toggle sgp-drawer__toggle--link{{ section.active ? ' is-active' }}" href="{{ section.url ?: front_url }}">{{ section.title }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<main class="sgp-main" id="main-content" tabindex="-1">
+  <div class="sgp-wrap">
+    {% if fallback_title %}
+      <div class="sgp-tabrow"><h1 class="sgp-tab">{{ fallback_title }}</h1><span class="sgp-tabrow__line" aria-hidden="true"></span><span class="sgp-tabrow__end" aria-hidden="true"></span></div>
+    {% endif %}
+    {{ page.content }}
+  </div>
+</main>
+
+<footer class="sgp-footer">
+  <span class="sgp-footer__tab sgp-footer__tab--left" aria-hidden="true"></span>
+  <span class="sgp-footer__tab sgp-footer__tab--right" aria-hidden="true"></span>
+  <div class="sgp-footer__band">
+    <div class="sgp-footer__inner sgp-wrap">
+      <div class="sgp-footer__about">
+        <img class="sgp-footer__logo" src="{{ logo }}" alt="" width="64" height="64" loading="lazy">
+        <p class="sgp-footer__text">{{ footer_text ?: site_name }}</p>
+      </div>
+      <nav class="sgp-footer__menu" aria-label="Pied de page">
+        {% for link in footer_menu %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+        {% for network, url in social %}<a href="{{ url }}" rel="noopener me">{{ network == 'x' ? 'X' : network|capitalize }}</a>{% endfor %}
+      </nav>
+    </div>
+  </div>
+</footer>

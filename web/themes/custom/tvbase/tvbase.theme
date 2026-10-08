@@ -10,11 +10,11 @@ use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Url;
 
 /**
- * Links of a menu the current user may see, two levels deep.
+ * Links of a menu the current user may see, two levels deep (or $depth).
  */
-function _tvbase_menu(string $menu_name): array {
+function _tvbase_menu(string $menu_name, int $depth = 2): array {
   $tree_service = \Drupal::menuTree();
-  $parameters = (new MenuTreeParameters())->setMaxDepth(2)->onlyEnabledLinks();
+  $parameters = (new MenuTreeParameters())->setMaxDepth($depth)->onlyEnabledLinks();
   $parameters->setActiveTrail(\Drupal::service('menu.active_trail')->getActiveTrailIds($menu_name));
   $tree = $tree_service->transform($tree_service->load($menu_name, $parameters), [
     ['callable' => 'menu.default_tree_manipulators:checkAccess'],
@@ -26,9 +26,11 @@ function _tvbase_menu(string $menu_name): array {
       if ($element->access !== NULL && !$element->access->isAllowed()) {
         continue;
       }
+      $url = $element->link->getUrlObject();
       $links[] = [
         'title' => $element->link->getTitle(),
-        'url' => $element->link->getUrlObject()->toString(),
+        'url' => $url->isRouted() && $url->getRouteName() === '<nolink>' ? NULL : $url->toString(),
+        'description' => (string) $element->link->getDescription(),
         'active' => $element->inActiveTrail,
         'below' => $element->subtree ? $convert($element->subtree) : [],
       ];

@@ -1,0 +1,8 @@
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Type de produit'
+vid: product_type
+description: 'Les rayons des produits dérivés et des jeux (DVD, livres, jeux officiels…), sur deux niveaux.'
+weight: 0
+new_revision: false

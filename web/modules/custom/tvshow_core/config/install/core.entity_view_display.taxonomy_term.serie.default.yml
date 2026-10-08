@@ -5,6 +5,7 @@ dependencies:
     - field.field.taxonomy_term.serie.field_abreviation
     - field.field.taxonomy_term.serie.field_creators
     - field.field.taxonomy_term.serie.field_dates
+    - field.field.taxonomy_term.serie.field_facts
     - field.field.taxonomy_term.serie.field_image
     - taxonomy.vocabulary.serie
   module:
@@ -25,5 +26,6 @@ hidden:
   field_abreviation: true
   field_creators: true
   field_dates: true
+  field_facts: true
   field_image: true
   langcode: true

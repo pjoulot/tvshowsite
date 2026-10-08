@@ -1,0 +1,57 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([data.serie, data.season], (data.code ? data.code ~ ' ' : '') ~ data.title) }}
+<div class="sgp-columns sgp-episode">
+  <article class="sgp-columns__main">
+    <div class="sgp-frame">
+      <div class="sgp-frame__in"><span class="sgp-frame__tab" aria-hidden="true"></span>
+        <div class="sgp-frame__line sgp-episode__body">
+          <p class="sgp-episode__kicker">{% if data.code %}<span class="sgp-numtab sgp-numtab--large">{{ data.code }}</span>{% endif %}<span class="sgp-kicker sgp-kicker--amber">{% if data.serie %}{{ data.serie.name }} · {% endif %}{% if data.season %}{{ data.season.name }}{% endif %}{% if not data.is_film and data.number %} · Épisode {{ data.number }}{% endif %}</span></p>
+          <h1 class="sgp-title">{{ data.title }}</h1>
+          <div class="sgp-episode__top">
+            {% if data.image %}{{ sgp.img(data.image, 'sgp-episode__image') }}{% endif %}
+            <dl class="sgp-facts">
+              {% for label, value in data.facts %}<dt>{{ label == 'Première diffusion' ? 'Diffusion' : label }}</dt><dd>{{ value }}</dd>{% endfor %}
+              {% if data.directors %}<dt>Réalisation</dt><dd>{{ sgp.links(data.directors) }}</dd>{% endif %}
+              {% if data.writers %}<dt>Scénario</dt><dd>{{ sgp.links(data.writers) }}</dd>{% endif %}
+              {% for fact in data.extra_facts %}<dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd>{% endfor %}
+            </dl>
+          </div>
+          {% if data.synopsis %}<h2 class="sgp-sec">Synopsis</h2><div class="sgp-prose sgp-prose--large">{{ data.synopsis }}</div>{% endif %}
+          {% if data.guest_stars %}<h2 class="sgp-sec">{{ data.is_film ? 'Distribution' : 'Invités' }}</h2><p class="sgp-guests">{{ data.guest_stars }}</p>{% endif %}
+          {% if data.body %}<div class="sgp-prose">{{ data.body }}</div>{% endif %}
+          {% if not data.synopsis and not data.body %}<p class="sgp-empty">Le synopsis de cet épisode n’a pas encore été rédigé.</p>{% endif %}
+          {% if data.trailers %}
+            <h2 class="sgp-sec">Bandes-annonces</h2>
+            {% for video in data.trailers %}{% if video.youtube %}<div class="video-embed" data-youtube="{{ video.youtube }}" data-title="{{ video.title }}"></div>{% else %}<p><a href="{{ video.url }}" rel="noopener">{{ video.title }}</a></p>{% endif %}{% endfor %}
+          {% endif %}
+          {{ sgp.gallery(data.promo, 'Photos promotionnelles') }}
+          {{ sgp.gallery(data.gallery, 'Photos des coulisses') }}
+        </div>
+      </div>
+    </div>
+    {% if data.previous or data.next %}
+      <nav class="sgp-prevnext" aria-label="Épisodes voisins">
+        {% if data.previous %}<a class="sgp-card sgp-prevnext__link" href="{{ data.previous.url }}" rel="prev"><span class="sgp-card__in"><span class="sgp-kicker">← {{ data.is_film ? 'Film précédent' : 'Épisode précédent' }}</span><span class="sgp-prevnext__title">{{ data.previous.code ? data.previous.code ~ ' ' }}{{ data.previous.title }}</span></span></a>
+        {% else %}<span class="sgp-card sgp-prevnext__link is-off" aria-hidden="true"><span class="sgp-card__in"><span class="sgp-kicker">← {{ data.is_film ? 'Film précédent' : 'Épisode précédent' }}</span><span class="sgp-prevnext__title">{{ data.is_film ? 'Premier film' : 'Premier épisode de la saison' }}</span></span></span>{% endif %}
+        {% if data.next %}<a class="sgp-card sgp-prevnext__link sgp-prevnext__link--next" href="{{ data.next.url }}" rel="next"><span class="sgp-card__in"><span class="sgp-kicker">{{ data.is_film ? 'Film suivant' : 'Épisode suivant' }} →</span><span class="sgp-prevnext__title">{{ data.next.code ? data.next.code ~ ' ' }}{{ data.next.title }}</span></span></a>
+        {% else %}<span class="sgp-card sgp-prevnext__link sgp-prevnext__link--next is-off" aria-hidden="true"><span class="sgp-card__in"><span class="sgp-kicker">{{ data.is_film ? 'Film suivant' : 'Épisode suivant' }} →</span><span class="sgp-prevnext__title">{{ data.is_film ? 'Dernier film' : 'Dernier épisode de la saison' }}</span></span></span>{% endif %}
+      </nav>
+    {% endif %}
+    {% if data.linked %}
+      <section class="sgp-section">
+        <h2 class="sgp-sec">À lire aussi</h2>
+        <div class="sgp-grid sgp-grid--news">{% for card in data.linked %}{{ sgp.news(card) }}{% endfor %}</div>
+      </section>
+    {% endif %}
+  </article>
+  <aside class="sgp-columns__side">
+    {% if data.season_list %}
+      <h2 class="sgp-sec">{{ data.season.name }}</h2>
+      <ol class="sgp-eplist">
+        {% for item in data.season_list %}<li><a href="{{ item.url }}"{% if item.active %} class="is-on" aria-current="page"{% endif %}><span class="sgp-eplist__num">{{ item.code ?: item.number }}</span><span>{{ item.title }}</span></a></li>{% endfor %}
+      </ol>
+      {% if data.season %}<a class="sgp-more" href="{{ data.season.url }}">Toute la {{ data.season.name|lower }}</a>{% endif %}
+    {% endif %}
+    {{ sgp.ad(ad_html) }}
+  </aside>
+</div>

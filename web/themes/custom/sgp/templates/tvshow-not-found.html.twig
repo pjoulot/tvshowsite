@@ -1,0 +1,13 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+<div class="sgp-notfound">
+  {{ sgp.tabhead('Page introuvable', 1) }}
+  <p class="sgp-chapo">Cette adresse ne mène nulle part : la page a peut-être changé d’adresse avec la nouvelle version du site.</p>
+  <form class="sgp-search sgp-search--page" action="{{ action }}" method="get" role="search">
+    <input class="sgp-search__input" type="search" name="s" placeholder="Rechercher" aria-label="Rechercher sur le site" required>
+    <button class="sgp-search__submit" type="submit" aria-label="Lancer la recherche"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18"><circle cx="7.5" cy="7.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M11.6 11.6L16.5 16.5" stroke="currentColor" stroke-width="2.4"/></svg></button>
+  </form>
+  <section class="sgp-section">
+    {{ sgp.tabhead('Dernières actualités', 2, path('view.tvshow_news.page'), 'Toutes les actualités') }}
+    {{ news }}
+  </section>
+</div>

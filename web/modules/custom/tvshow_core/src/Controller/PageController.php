@@ -16,12 +16,43 @@ class PageController extends TvControllerBase {
     // The two featured articles are not repeated in the list under them.
     $featured = array_map(fn($row) => (int) $row->nid, views_get_view_result('tvshow_news', 'featured'));
     $multi_show = count($this->repository->terms('serie')) > 1;
+    $rubrics = [];
+    foreach ($this->repository->terms('category') as $category) {
+      if ($count = $this->repository->countWikiEntries((int) $category->id())) {
+        $rubrics[] = ['label' => $category->label(), 'url' => $category->toUrl()->toString(), 'count' => $count];
+      }
+    }
+    $series_cards = [];
+    if ($multi_show) {
+      foreach ($this->repository->terms('serie') as $serie) {
+        $card = $this->presenter->termCard($serie);
+        $links = [['label' => 'La série', 'url' => $card['url']]];
+        foreach ($this->repository->seasons((int) $serie->id()) as $season) {
+          if ((int) $season->get('field_season_number')->value >= 90) {
+            $links[] = ['label' => $season->label(), 'url' => $season->toUrl()->toString()];
+          }
+          elseif (count($links) === 1) {
+            $links[] = ['label' => 'Épisodes', 'url' => $season->toUrl()->toString()];
+          }
+        }
+        $links[] = ['label' => 'Acteurs', 'url' => Url::fromRoute('tvshow_core.actors', [], ['query' => ['serie' => $card['abbreviation']]])->toString()];
+        $card['links'] = $links;
+        $series_cards[] = $card;
+      }
+    }
+    $per_page = 12;
     return [
       '#theme' => 'tvshow_front',
       '#featured' => $featured ? $this->embed('tvshow_news', 'featured') : [],
       '#news' => $this->embed('tvshow_news', 'latest', $featured ? implode('+', $featured) : 'all'),
+      '#lead' => $this->embed('tvshow_news', 'lead'),
+      '#more' => $this->embed('tvshow_news', 'more'),
+      '#news_pages' => (int) ceil($this->repository->countArticles() / $per_page),
       '#wiki' => $this->embed('tvshow_wiki', 'front'),
+      '#rubrics' => $rubrics,
       '#series' => $multi_show ? $this->embed('tvshow_terms', 'series') : NULL,
+      '#series_cards' => $series_cards,
+      '#ad' => $this->adCode(),
       '#cache' => self::CACHE,
     ];
   }
@@ -42,8 +73,16 @@ class PageController extends TvControllerBase {
   }
 
   public function wiki(): array {
+    $rubrics = [];
+    foreach ($this->repository->terms('category') as $category) {
+      if ($count = $this->repository->countWikiEntries((int) $category->id())) {
+        $rubrics[] = ['label' => $category->label(), 'url' => $category->toUrl()->toString(), 'count' => $count, 'summary' => $this->presenter->summary($category, 'description', 160)];
+      }
+    }
     return [
       '#theme' => 'tvshow_wiki',
+      '#title' => $this->presenter->wikiLabel(),
+      '#rubrics' => $rubrics,
       '#categories' => $this->embed('tvshow_terms', 'wiki_categories'),
       '#latest' => $this->embed('tvshow_wiki', 'latest'),
       '#cache' => self::CACHE,
@@ -97,6 +136,13 @@ class PageController extends TvControllerBase {
     return ['tvshow_search', 'results'];
   }
 
+  /**
+   * Title of the wiki page, which each site names its own way.
+   */
+  public function wikiTitle(): string {
+    return $this->presenter->wikiLabel();
+  }
+
   public function notFound(): array {
     return [
       '#theme' => 'tvshow_not_found',
@@ -113,10 +159,17 @@ class PageController extends TvControllerBase {
     $escape = fn($text) => htmlspecialchars((string) $text, ENT_XML1 | ENT_QUOTES, 'UTF-8');
     $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     $options = ['absolute' => TRUE];
-    foreach (['<front>', 'view.tvshow_news.page', 'tvshow_core.episodes', 'tvshow_core.wiki', 'tvshow_core.cast', 'tvshow_core.partners'] as $route) {
+    $routes = ['<front>', 'view.tvshow_news.page', 'tvshow_core.episodes', 'tvshow_core.wiki', 'tvshow_core.partners'];
+    if (views_get_view_result('tvshow_wiki', 'cast')) {
+      $routes[] = 'tvshow_core.cast';
+    }
+    if (\Drupal::classResolver(TermController::class)->actorsTerm()) {
+      $routes[] = 'tvshow_core.actors';
+    }
+    foreach ($routes as $route) {
       $xml .= '<url><loc>' . $escape(Url::fromRoute($route, [], $options)->toString()) . '</loc></url>';
     }
-    foreach (['serie', 'saison', 'category', 'article_category'] as $vocabulary) {
+    foreach (['serie', 'saison', 'category', 'article_category', 'product_type'] as $vocabulary) {
       foreach ($this->repository->terms($vocabulary) as $term) {
         $xml .= '<url><loc>' . $escape($term->toUrl('canonical', $options)->toString()) . '</loc></url>';
       }

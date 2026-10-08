@@ -1,0 +1,48 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([], serie.title) }}
+<div class="sgp-serie">
+  <section class="sgp-frame">
+    <div class="sgp-frame__in"><span class="sgp-frame__tab" aria-hidden="true"></span>
+      <div class="sgp-frame__line sgp-serie__head">
+        {% if serie.picture or serie.image %}{{ sgp.img(serie.picture ?: serie.image, 'sgp-serie__image') }}{% endif %}
+        <div class="sgp-serie__intro">
+          <p class="sgp-kicker sgp-kicker--amber">La série</p>
+          <h1 class="sgp-title sgp-title--caps">{{ serie.title }}</h1>
+          <dl class="sgp-facts">
+            {% if serie.creators %}<dt>Créateurs</dt><dd>{{ serie.creators }}</dd>{% endif %}
+            {% if serie.dates %}<dt>Production</dt><dd>{{ serie.dates }}</dd>{% endif %}
+            {% for fact in serie.facts %}<dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd>{% endfor %}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sgp-columns">
+    <div class="sgp-columns__main">
+      {% if serie.description %}
+        <h2 class="sgp-sec">L’histoire</h2>
+        <div class="sgp-prose sgp-prose--large sgp-serie__story">{{ serie.description }}</div>
+      {% endif %}
+    </div>
+    {% if explore %}
+      <aside class="sgp-columns__side">
+        <h2 class="sgp-sec">Explorer</h2>
+        <div class="sgp-stack">
+          {% for item in explore %}
+            <a class="sgp-card sgp-explore" href="{{ item.url }}"><span class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span><span class="sgp-explore__title">{{ item.title }}</span><span class="sgp-meta">{{ item.text }}</span></span></a>
+          {% endfor %}
+        </div>
+      </aside>
+    {% endif %}
+  </div>
+
+  {% if season_cards %}
+    <section class="sgp-section">
+      {{ sgp.tabhead('Les saisons', 2) }}
+      <div class="sgp-grid sgp-grid--seasons">{% for card in season_cards %}{{ sgp.term(card) }}{% endfor %}</div>
+    </section>
+  {% else %}
+    <p class="sgp-empty">Aucune saison n’a encore été ajoutée.</p>
+  {% endif %}
+</div>

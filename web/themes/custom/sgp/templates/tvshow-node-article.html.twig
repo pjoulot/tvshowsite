@@ -1,0 +1,34 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([{name: 'Actualités', url: path('view.tvshow_news.page')}, data.category], data.title) }}
+<div class="sgp-columns sgp-article">
+  <article class="sgp-columns__main">
+    <div class="sgp-frame">
+      <div class="sgp-frame__in"><span class="sgp-frame__tab" aria-hidden="true"></span>
+        <div class="sgp-frame__line sgp-article__body">
+          <p class="sgp-kicker sgp-kicker--amber">{% if data.category %}<a href="{{ data.category.url }}">{{ data.category.name }}</a> · {% endif %}Publié le <time datetime="{{ data.date_iso }}">{{ data.date }}</time>{% if data.byline %} par {{ data.byline }}{% endif %}</p>
+          <h1 class="sgp-title">{{ data.title }}</h1>
+          {% if data.summary %}<p class="sgp-chapo">{{ data.summary }}</p>{% endif %}
+          <hr class="sgp-rule">
+          {% if data.image %}<figure class="sgp-figure">{{ sgp.img(data.image, 'sgp-figure__image') }}</figure>{% endif %}
+          <div class="sgp-article__text">
+            {% if data.thumb %}{{ sgp.img(data.thumb, 'sgp-framed sgp-article__thumb') }}{% endif %}
+            {% if data.body %}<div class="sgp-prose">{{ data.body }}</div>{% endif %}
+          </div>
+          {{ sgp.gallery(data.gallery, 'Galerie') }}
+          {% if data.tags %}
+            <div class="sgp-keywords"><span class="sgp-kicker">Mots-clés</span>{% for tag in data.tags %}<a class="sgp-chip" href="{{ tag.url }}">{{ tag.name }}</a>{% endfor %}</div>
+          {% endif %}
+          {% if data.source %}<p class="sgp-meta">Source : <a href="{{ data.source.url }}" rel="noopener">{{ data.source.title }}</a></p>{% endif %}
+        </div>
+      </div>
+    </div>
+  </article>
+  <aside class="sgp-columns__side">
+    {% if data.related %}
+      <h2 class="sgp-sec">Dans la même rubrique</h2>
+      <div class="sgp-stack">{% for card in data.related %}{{ sgp.news(card) }}{% endfor %}</div>
+      {% if data.category %}<a class="sgp-more" href="{{ data.category.url }}">Toute la rubrique {{ data.category.name }}</a>{% endif %}
+    {% endif %}
+    {{ sgp.ad(ad_html) }}
+  </aside>
+</div>

@@ -1,0 +1,23 @@
+name: 'Stargate Pegasus'
+type: theme
+description: 'Identity of stargate-pegasus.com: navy header with bevelled edges, light Atlantis blues, amber and bronze accents, cut-corner frames, Exo 2 and Source Sans 3.'
+core_version_requirement: ^11
+base theme: tvbase
+libraries:
+  - sgp/identity
+regions:
+  content: 'Content'
+  hidden: 'Hidden'
+regions_hidden:
+  - hidden
+# The base theme's look is replaced; its scripts (videos, lightbox) are kept.
+libraries-override:
+  tvbase/global:
+    css:
+      base:
+        css/tokens.css: false
+        css/base.css: false
+      layout:
+        css/layout.css: false
+      component:
+        css/components.css: false

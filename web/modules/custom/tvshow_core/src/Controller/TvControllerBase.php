@@ -36,6 +36,53 @@ abstract class TvControllerBase extends ControllerBase {
   }
 
   /**
+   * Series filter of a listing (?serie=sga).
+   *
+   * Returns [links, selected series term or NULL]. $counts limits the links
+   * to the series that have something to show (series id => count); with
+   * fewer than two of them, there is nothing to filter and no link is given.
+   */
+  protected function serieFilter(string $base_url, ?array $counts = NULL, array $query = []): array {
+    $wanted = (string) $this->requests->getCurrentRequest()->query->get('serie', '');
+    $selected = NULL;
+    $links = [];
+    $series = $this->repository->terms('serie');
+    if ($counts !== NULL) {
+      $series = array_values(array_filter($series, fn($term) => isset($counts[$term->id()])));
+    }
+    foreach ($series as $term) {
+      $abbreviation = (string) $term->get('field_abreviation')->value;
+      $active = $wanted !== '' && strcasecmp($wanted, $abbreviation) === 0;
+      if ($active) {
+        $selected = $term;
+      }
+      $links[] = [
+        'label' => $this->presenter->shortName($term),
+        'title' => $term->label(),
+        'url' => $base_url . '?' . http_build_query($query + ['serie' => $abbreviation]),
+        'active' => $active,
+      ];
+    }
+    if (count($links) < 2 && !$selected) {
+      return [[], NULL];
+    }
+    array_unshift($links, [
+      'label' => 'Toutes les séries',
+      'title' => 'Toutes les séries',
+      'url' => $base_url . ($query ? '?' . http_build_query($query) : ''),
+      'active' => !$selected,
+    ]);
+    return [$links, $selected];
+  }
+
+  /**
+   * The advertising code of the ad slots.
+   */
+  protected function adCode(): string {
+    return (string) $this->config('tvshow_core.settings')->get('ad_html');
+  }
+
+  /**
    * Render array of the generic listing page: page chrome around a view.
    */
   protected function listing(array $variables): array {

@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Stargate Pegasus identity.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * The fonts every page shows first are fetched early.
+ */
+function sgp_page_attachments_alter(array &$attachments): void {
+  $path = base_path() . \Drupal::service('extension.list.theme')->getPath('sgp') . '/fonts/';
+  foreach (['exo-2-latin-600-normal', 'exo-2-latin-300-normal', 'source-sans-3-latin-400-normal'] as $font) {
+    $attachments['#attached']['html_head_link'][] = [['rel' => 'preload', 'href' => $path . $font . '.woff2', 'as' => 'font', 'type' => 'font/woff2', 'crossorigin' => 'anonymous']];
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * The main menu is a mega menu: section > column > links. A section's
+ * description holds its introduction and the label of its "see all" link,
+ * separated by "|": "Toutes les nouvelles de la franchise. | Toutes les actualités".
+ */
+function sgp_preprocess_page(array &$variables): void {
+  $theme_path = base_path() . \Drupal::service('extension.list.theme')->getPath('sgp');
+  $variables['logo'] = $theme_path . '/images/logo.webp';
+  $variables['banner'] = $theme_path . '/images/banner.webp';
+  $variables['ad_html'] = (string) \Drupal::config('tvshow_core.settings')->get('ad_html');
+
+  $sections = [];
+  foreach (_tvbase_menu('main', 3) as $index => $link) {
+    [$intro, $all] = array_map('trim', explode('|', $link['description'] ?? '', 2) + [1 => '']);
+    $columns = [];
+    foreach ($link['below'] as $column) {
+      $columns[] = $column;
+    }
+    // On phones, "Épisodes (suite)" continues the "Épisodes" column.
+    $mobile = [];
+    foreach ($columns as $column) {
+      $previous = end($mobile);
+      if ($previous && str_starts_with($column['title'], $previous['title'] . ' (')) {
+        $mobile[array_key_last($mobile)]['below'] = array_merge($previous['below'], $column['below']);
+        continue;
+      }
+      $mobile[] = $column;
+    }
+    $sections[] = $link + [
+      'id' => 'sgp-section-' . $index,
+      'intro' => $intro,
+      'all' => $all ?: $link['title'],
+      'columns' => $columns,
+      'mobile_columns' => $mobile,
+    ];
+  }
+  // A section is also current on the pages under its address
+  // (/actualites/… for Actualités, /sga/… for Atlantis).
+  $current = \Drupal::service('path_alias.manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
+  foreach ($sections as &$section) {
+    $url = rtrim((string) parse_url((string) $section['url'], PHP_URL_PATH), '/');
+    // The menu's own active trail would also light up "SG-1" on the DVD
+    // page, through its "DVD ?serie=sg1" link: addresses decide alone.
+    $section['active'] = $url !== '' && $url !== rtrim(base_path(), '/') && str_starts_with($current . '/', $url . '/');
+  }
+  unset($section);
+  $variables['#cache']['contexts'][] = 'url.path';
+  // The front page marks "Accueil" only.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    foreach ($sections as &$section) {
+      $section['active'] = $section['url'] === $variables['front_url'];
+    }
+    unset($section);
+  }
+  $variables['sections'] = $sections;
+  $variables['contact_url'] = Url::fromUserInput('/contact')->toString();
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for tvshow_front.
+ */
+function sgp_preprocess_tvshow_front(array &$variables): void {
+  $variables['news_url'] = Url::fromRoute('view.tvshow_news.page')->toString();
+  $variables['wiki_url'] = Url::fromRoute('tvshow_core.wiki')->toString();
+  $variables['wiki_label'] = \Drupal::service('tvshow_core.presenter')->wikiLabel();
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for tvshow_listing_header.
+ */
+function sgp_preprocess_tvshow_listing_header(array &$variables): void {
+  $variables['wiki_label'] = \Drupal::service('tvshow_core.presenter')->wikiLabel();
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for tvshow_wiki.
+ */
+function sgp_preprocess_tvshow_wiki(array &$variables): void {
+  $variables['actors_url'] = Url::fromRoute('tvshow_core.actors')->toString();
+}
+
+/**
+ * Implements hook_preprocess().
+ *
+ * Content pages print the ad slot of their side column.
+ */
+function sgp_preprocess(array &$variables, string $hook): void {
+  if (str_starts_with($hook, 'tvshow_node_')) {
+    $variables['ad_html'] = (string) \Drupal::config('tvshow_core.settings')->get('ad_html');
+  }
+}

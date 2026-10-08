@@ -1,0 +1,33 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([{name: data.wiki_label, url: path('tvshow_core.wiki')}, data.category], data.title) }}
+<div class="sgp-entry">
+  <aside class="sgp-entry__side">
+    <div class="sgp-frame sgp-frame--panel">
+      <div class="sgp-frame__in">
+        <div class="sgp-frame__line sgp-infobox">
+          {% if data.picture %}{{ sgp.img(data.picture, 'sgp-infobox__image') }}{% endif %}
+          <dl class="sgp-facts">
+            {% if data.category %}<dt>Rubrique</dt><dd><a href="{{ data.category.url }}">{{ data.category.name }}</a></dd>{% endif %}
+            {% if data.serie %}<dt>Série</dt><dd><a href="{{ data.serie.url }}">{{ data.serie.name }}</a></dd>{% endif %}
+            {% for fact in data.facts_list %}<dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd>{% endfor %}
+            {% if data.actors %}<dt>{{ data.actors|length > 1 ? 'Interprètes' : 'Interprète' }}</dt><dd>{{ sgp.links(data.actors) }}</dd>{% endif %}
+            {% if data.appearance %}<dt>{{ data.appearance|length > 1 ? 'Apparitions' : 'Apparition' }}</dt><dd>{{ sgp.links(data.appearance, '<br>') }}</dd>{% endif %}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <article class="sgp-entry__main">
+    <p class="sgp-kicker sgp-kicker--amber">{{ data.wiki_label }}{% if data.category %} · {{ data.category.name }}{% endif %}{% if data.serie %} · {{ data.serie.name }}{% endif %}</p>
+    <h1 class="sgp-title sgp-title--caps">{{ data.title }}</h1>
+    {% if data.body %}<div class="sgp-prose sgp-prose--large">{{ data.body }}</div>{% else %}<p class="sgp-empty">Cette fiche n’a pas encore de texte.</p>{% endif %}
+    {{ sgp.gallery(data.gallery, 'Galerie') }}
+    {% if data.tags %}<div class="sgp-keywords"><span class="sgp-kicker">Mots-clés</span>{% for tag in data.tags %}<a class="sgp-chip" href="{{ tag.url }}">{{ tag.name }}</a>{% endfor %}</div>{% endif %}
+  </article>
+</div>
+{% if data.related %}
+  <section class="sgp-section">
+    {{ sgp.tabhead('Dans la même rubrique', 2, data.category.url, 'Toute la rubrique') }}
+    <div class="sgp-grid sgp-grid--wiki">{% for card in data.related %}{{ sgp.wiki(card) }}{% endfor %}</div>
+  </section>
+{% endif %}

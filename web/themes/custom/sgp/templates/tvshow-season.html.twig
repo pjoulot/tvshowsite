@@ -1,0 +1,12 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([serie], season.title) }}
+<div class="sgp-season">
+  {{ sgp.tabhead((serie ? serie.name ~ ' — ' : '') ~ season.title, 1) }}
+  <div class="sgp-filterbar">
+    {% if siblings|length > 1 %}{{ sgp.chips(siblings|map(s => s|merge({url: s.url})), 'Saisons') }}{% endif %}
+    <p class="sgp-meta sgp-season__info">{{ season.episode_total }} {{ season.episode_total > 1 ? 'épisodes' : 'épisode' }}{% if season.dates %} · {{ season.dates }}{% endif %}</p>
+  </div>
+  {% if season.description %}<div class="sgp-intro sgp-prose">{{ season.description }}</div>{% endif %}
+  <h2 class="visually-hidden">Épisodes</h2>
+  {{ episodes }}
+</div>

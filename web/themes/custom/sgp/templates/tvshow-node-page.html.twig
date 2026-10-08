@@ -1,0 +1,8 @@
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+{{ sgp.crumbs([], data.title) }}
+<article class="sgp-page">
+  {{ sgp.tabhead(data.title, 1) }}
+  {% if data.image %}<figure class="sgp-figure">{{ sgp.img(data.image, 'sgp-figure__image') }}</figure>{% endif %}
+  {% if data.body %}<div class="sgp-prose sgp-prose--page">{{ data.body }}</div>{% endif %}
+  {{ sgp.gallery(data.gallery, null) }}
+</article>

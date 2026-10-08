@@ -18,7 +18,7 @@ tvshow_core.wiki:
   path: '/wiki'
   defaults:
     _controller: '\Drupal\tvshow_core\Controller\PageController::wiki'
-    _title: 'Wiki'
+    _title_callback: '\Drupal\tvshow_core\Controller\PageController::wikiTitle'
   requirements:
     _permission: 'access content'
 tvshow_core.cast:
@@ -26,6 +26,13 @@ tvshow_core.cast:
   defaults:
     _controller: '\Drupal\tvshow_core\Controller\PageController::cast'
     _title: 'Casting'
+  requirements:
+    _permission: 'access content'
+tvshow_core.actors:
+  path: '/acteurs'
+  defaults:
+    _controller: '\Drupal\tvshow_core\Controller\TermController::actors'
+    _title: 'Acteurs'
   requirements:
     _permission: 'access content'
 tvshow_core.partners:

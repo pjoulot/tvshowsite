@@ -1,0 +1,63 @@
+{# Front page: lead news and the next ones, the encyclopedia panel, an ad slot, the series. #}
+{% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+<div class="sgp-front">
+  <h1 class="visually-hidden">Accueil</h1>
+  <div class="sgp-columns">
+    <section class="sgp-columns__main" aria-labelledby="sgp-front-news">
+      <div class="sgp-tabrow"><h2 class="sgp-tab" id="sgp-front-news">Dernières actualités</h2><span class="sgp-tabrow__line" aria-hidden="true"></span><a class="sgp-tabrow__more" href="{{ news_url }}">Toutes les actualités</a></div>
+      {{ lead }}
+      {{ more }}
+      {% if news_pages > 1 %}
+        <nav class="tv-pager sgp-front__pager" aria-label="Pages des actualités">
+          <ul class="tv-pager__list">
+            {% for page in 1..(news_pages > 4 ? 3 : news_pages) %}
+              <li><a class="tv-pager__page" href="{{ news_url }}{{ page > 1 ? '?page=' ~ (page - 1) }}"><span class="visually-hidden">Page </span>{{ page }}</a></li>
+            {% endfor %}
+            {% if news_pages > 4 %}<li class="tv-pager__gap" aria-hidden="true">…</li><li><a class="tv-pager__page" href="{{ news_url }}?page={{ news_pages - 1 }}"><span class="visually-hidden">Page </span>{{ news_pages }}</a></li>{% endif %}
+          </ul>
+          {# The front page shows fewer news than a page of /actualites: carry on from its first page. #}
+          <a class="tv-pager__step" href="{{ news_url }}">Suivant</a>
+        </nav>
+      {% endif %}
+      <a class="sgp-button sgp-front__all" href="{{ news_url }}">Toutes les actualités</a>
+    </section>
+
+    <aside class="sgp-columns__side">
+      <section class="sgp-frame sgp-frame--panel sgp-wikipanel" aria-labelledby="sgp-front-wiki">
+        <div class="sgp-frame__in"><span class="sgp-frame__tab sgp-frame__tab--bottom" aria-hidden="true"></span>
+          <div class="sgp-frame__line">
+            <h2 class="sgp-wikipanel__title" id="sgp-front-wiki">{{ wiki_label }}</h2>
+            {% if rubrics %}
+              <ul class="sgp-rubrics">
+                {% for rubric in rubrics %}<li><a href="{{ rubric.url }}">{{ rubric.label }}</a></li>{% endfor %}
+                <li><a href="{{ path('tvshow_core.actors') }}">Acteurs</a></li>
+              </ul>
+            {% endif %}
+            <div class="sgp-wikipanel__list">{{ wiki }}</div>
+            <a class="sgp-more" href="{{ wiki_url }}">Toute l’{{ wiki_label|lower }}</a>
+          </div>
+        </div>
+      </section>
+      {{ sgp.ad(ad) }}
+    </aside>
+  </div>
+
+  {% if series_cards %}
+    <section class="sgp-section" aria-labelledby="sgp-front-series">
+      {{ sgp.tabhead('Les séries', 2, null, null, 'sgp-front-series') }}
+      <div class="sgp-series">
+        {% for serie in series_cards %}
+          <article class="sgp-frame sgp-frame--panel sgp-seriecard sgp-seriecard--{{ serie.abbreviation }}">
+            <div class="sgp-frame__in">
+              <a href="{{ serie.url }}" tabindex="-1" aria-hidden="true">{{ sgp.img(serie.image_wide ?: serie.image, 'sgp-seriecard__image') }}</a>
+              <div class="sgp-seriecard__body">
+                <h3 class="sgp-seriecard__title"><a href="{{ serie.url }}">{{ serie.title }}</a></h3>
+                <p class="sgp-seriecard__links">{% for link in serie.links %}<a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}</p>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>

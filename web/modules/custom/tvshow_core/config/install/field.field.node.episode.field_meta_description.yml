@@ -8,7 +8,7 @@ id: node.episode.field_meta_description
 field_name: field_meta_description
 entity_type: node
 bundle: episode
-label: 'Description pour les moteurs de recherche'
+label: 'Résumé court (listes et moteurs de recherche)'
 description: ''
 required: false
 translatable: true

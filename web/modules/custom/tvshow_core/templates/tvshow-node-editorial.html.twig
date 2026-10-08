@@ -1,6 +1,6 @@
 {% import '@tvshow_core/partials/ui.html.twig' as ui %}
 <article class="tv-page tv-entry">
-  {{ ui.breadcrumb([{name: 'Wiki', url: path('tvshow_core.wiki')}, data.category], null) }}
+  {{ ui.breadcrumb([{name: data.wiki_label, url: path('tvshow_core.wiki')}, data.category], null) }}
   <div class="tv-entry__layout">
     <div class="tv-entry__main">
       <header>
@@ -15,6 +15,8 @@
         {% if data.actors %}<div><dt>{{ data.actors|length > 1 ? 'Interprètes' : 'Interprète' }}</dt><dd>{{ ui.links(data.actors) }}</dd></div>{% endif %}
         {% if data.serie %}<div><dt>Série</dt><dd><a href="{{ data.serie.url }}">{{ data.serie.name }}</a></dd></div>{% endif %}
         {% if data.category %}<div><dt>Rubrique</dt><dd><a href="{{ data.category.url }}">{{ data.category.name }}</a></dd></div>{% endif %}
+        {% for fact in data.facts_list %}<div><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div>{% endfor %}
+        {% if data.appearance %}<div><dt>{{ data.appearance|length > 1 ? 'Apparitions' : 'Apparition' }}</dt><dd>{{ ui.links(data.appearance) }}</dd></div>{% endif %}
       </dl>
     </aside>
   </div>

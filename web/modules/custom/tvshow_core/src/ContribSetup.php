@@ -93,16 +93,19 @@ class ContribSetup {
    * URL patterns, the same addresses AliasGenerator produces.
    */
   protected function configurePathauto(): string {
+    $wiki = AliasGenerator::wikiPath();
     $patterns = [
       // id => [label, entity type, bundle, pattern, weight].
       'tv_article' => ['Actualité', 'node', 'article', '/actualites/[node:title]', 0],
-      'tv_editorial' => ['Fiche du wiki', 'node', 'editorial', '/wiki/[node:field_category:entity:name]/[node:title]', 0],
+      'tv_editorial' => ['Fiche du wiki', 'node', 'editorial', "/$wiki/[node:field_category:entity:name]/[node:title]", 0],
+      'tv_product' => ['Produit dérivé', 'node', 'product', '/[node:field_product_type:entity:parents:join-path]/[node:field_product_type:entity:name]/[node:title]', 0],
       'tv_episode' => ['Épisode', 'node', 'episode', '/[node:field_season:entity:field_serie:entity:field_abreviation]/[node:field_season:entity:name]/[node:title]', 0],
       'tv_people' => ['Personnalité', 'node', 'people', '/personnalites/[node:title]', 0],
       'tv_page' => ['Page', 'node', 'page', '/[node:title]', 0],
       'tv_serie' => ['Série', 'taxonomy_term', 'serie', '/[term:field_abreviation]', 0],
       'tv_saison' => ['Saison', 'taxonomy_term', 'saison', '/[term:field_serie:entity:field_abreviation]/[term:name]', 0],
-      'tv_category' => ['Rubrique du wiki', 'taxonomy_term', 'category', '/wiki/[term:name]', 0],
+      'tv_category' => ['Rubrique du wiki', 'taxonomy_term', 'category', "/$wiki/[term:name]", 0],
+      'tv_product_type' => ['Type de produit', 'taxonomy_term', 'product_type', '/[term:parents:join-path]/[term:name]', 0],
       'tv_article_category' => ['Rubrique d’actualité', 'taxonomy_term', 'article_category', '/actualites/rubrique/[term:name]', 0],
       'tv_tags' => ['Tag', 'taxonomy_term', 'tags', '/tags/[term:name]', 0],
       'tv_job' => ['Métier', 'taxonomy_term', 'job', '/personnalites/metier/[term:name]', 0],
@@ -131,13 +134,30 @@ class ContribSetup {
     }
     // Keep accents out of addresses and old aliases reachable.
     $settings = $this->configFactory->getEditable('pathauto.settings');
-    $settings->set('transliterate', TRUE)->set('reduce_ascii', TRUE)->set('enabled_entity_types', ['node', 'taxonomy_term']);
+    // Every word of a title is kept ("once-upon-a-time"), like AliasGenerator.
+    $settings->set('transliterate', TRUE)->set('reduce_ascii', TRUE)->set('ignore_words', '')->set('enabled_entity_types', ['node', 'taxonomy_term']);
     if ($this->moduleHandler->moduleExists('redirect')) {
       // 2 = create a new alias and redirect the old one (needs Redirect).
       $settings->set('update_action', 2);
     }
     $settings->save();
     return "$created patterns created";
+  }
+
+  /**
+   * Puts the wiki prefix of tvshow_core.settings into the Pathauto patterns.
+   *
+   * The import of a content pack sets that prefix after the install wrote
+   * the patterns.
+   */
+  public function refreshWikiPatterns(): void {
+    $wiki = AliasGenerator::wikiPath();
+    $storage = \Drupal::entityTypeManager()->getStorage('pathauto_pattern');
+    foreach (['tv_editorial' => "/$wiki/[node:field_category:entity:name]/[node:title]", 'tv_category' => "/$wiki/[term:name]"] as $id => $pattern) {
+      if ($entity = $storage->load($id)) {
+        $entity->setPattern($pattern)->save();
+      }
+    }
   }
 
   /**
@@ -182,10 +202,10 @@ class ContribSetup {
     $manager = \Drupal::service('simple_sitemap.entity_manager');
     $manager->enableEntityType('node');
     $manager->enableEntityType('taxonomy_term');
-    foreach (['article', 'editorial', 'episode', 'people', 'page'] as $bundle) {
+    foreach (['article', 'editorial', 'episode', 'people', 'page', 'product'] as $bundle) {
       $manager->setBundleSettings('node', $bundle, ['index' => TRUE, 'priority' => $bundle === 'article' ? '0.7' : '0.5']);
     }
-    foreach (['serie', 'saison', 'category', 'article_category'] as $bundle) {
+    foreach (['serie', 'saison', 'category', 'article_category', 'product_type'] as $bundle) {
       $manager->setBundleSettings('taxonomy_term', $bundle, ['index' => TRUE]);
     }
     return 'node and term bundles indexed';
@@ -255,7 +275,7 @@ class ContribSetup {
       return 'search view already exists';
     }
     $table = 'search_api_index_' . self::SEARCH_INDEX;
-    $card_modes = ['article' => 'line', 'editorial' => 'line', 'episode' => 'line', 'people' => 'line', 'page' => 'line'];
+    $card_modes = ['article' => 'line', 'editorial' => 'line', 'episode' => 'line', 'people' => 'line', 'page' => 'line', 'product' => 'line'];
     $options = [
       'title' => 'Recherche',
       'access' => ['type' => 'none', 'options' => []],

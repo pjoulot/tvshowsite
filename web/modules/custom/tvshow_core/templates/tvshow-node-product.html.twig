@@ -1,0 +1,28 @@
+{% import '@tvshow_core/partials/ui.html.twig' as ui %}
+<article class="tv-page tv-entry tv-product">
+  {{ ui.breadcrumb(data.trail|slice(0, -1)|merge([data.type]), null) }}
+  <div class="tv-entry__layout">
+    <div class="tv-entry__main">
+      <header>
+        {% if data.type %}<p class="tv-meta"><a class="tv-meta__category" href="{{ data.type.url }}">{{ data.type.name }}</a>{% if data.series %}<span aria-hidden="true"> · </span>{{ ui.links(data.series) }}{% endif %}</p>{% endif %}
+        <h1 class="tv-title">{{ data.title }}</h1>
+      </header>
+      {% if data.body %}<div class="tv-prose">{{ data.body }}</div>{% endif %}
+      {% if data.facts_list %}
+        <dl class="tv-facts tv-facts--panel">
+          {% for fact in data.facts_list %}<div><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div>{% endfor %}
+        </dl>
+      {% endif %}
+      {{ ui.stores(data.stores) }}
+      {% if data.season %}<p><a class="tv-button" href="{{ data.season.url }}">Voir les épisodes : {{ data.season.name }}</a></p>{% endif %}
+    </div>
+    {% if data.picture %}<aside class="tv-infobox">{{ ui.img(data.picture, 'tv-infobox__image') }}</aside>{% endif %}
+  </div>
+  {{ ui.gallery(data.gallery, 'Galerie') }}
+  {% if data.related %}
+    <section class="tv-section">
+      {{ ui.heading('Dans le même rayon', data.type.url, 'Tout le rayon') }}
+      <div class="tv-grid tv-grid--tiles">{% for card in data.related %}{{ ui.card(card) }}{% endfor %}</div>
+    </section>
+  {% endif %}
+</article>

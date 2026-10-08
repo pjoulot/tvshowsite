@@ -11,6 +11,15 @@ tvshow_core.settings:
     description:
       type: text
       label: 'Description of the site for search engines'
+    wiki_path:
+      type: string
+      label: 'First segment of the wiki addresses'
+    wiki_label:
+      type: label
+      label: 'Name of the wiki in menus and titles'
+    ad_html:
+      type: text
+      label: 'Advertising code of the ad slots'
     social:
       type: mapping
       label: 'Social network addresses'
@@ -34,4 +43,8 @@ tvshow_core.settings:
         bluesky:
           type: uri
           label: 'Bluesky'
+          nullable: true
+        steam:
+          type: uri
+          label: 'Steam'
           nullable: true

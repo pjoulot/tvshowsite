@@ -1,0 +1,22 @@
+{# Full pager in the Stargate Pegasus design. #}
+{% if items %}
+  <nav class="tv-pager" role="navigation" aria-labelledby="{{ heading_id }}">
+    <h4 id="{{ heading_id }}" class="visually-hidden">Pagination</h4>
+    {% if items.previous %}<a class="tv-pager__step" href="{{ items.previous.href }}" rel="prev">Précédent</a>{% endif %}
+    <ul class="tv-pager__list">
+      {% if ellipses.previous %}
+        <li><a class="tv-pager__page" href="{{ items.first.href }}"><span class="visually-hidden">Page </span>1</a></li>
+        <li class="tv-pager__gap" aria-hidden="true">…</li>
+      {% endif %}
+      {% for key, item in items.pages %}
+        {% if current == key %}<li><span class="tv-pager__page is-current" aria-current="page"><span class="visually-hidden">Page </span>{{ key }}</span></li>
+        {% else %}<li><a class="tv-pager__page" href="{{ item.href }}"><span class="visually-hidden">Page </span>{{ key }}</a></li>{% endif %}
+      {% endfor %}
+      {% if ellipses.next %}
+        <li class="tv-pager__gap" aria-hidden="true">…</li>
+        {% if items.last and last_page %}<li><a class="tv-pager__page" href="{{ items.last.href }}"><span class="visually-hidden">Page </span>{{ last_page }}</a></li>{% endif %}
+      {% endif %}
+    </ul>
+    {% if items.next %}<a class="tv-pager__step" href="{{ items.next.href }}" rel="next">Suivant</a>{% endif %}
+  </nav>
+{% endif %}

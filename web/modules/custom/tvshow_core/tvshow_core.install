@@ -39,6 +39,10 @@ function tvshow_core_install($is_syncing): void {
     \Drupal::configFactory()->getEditable('language.negotiation')->set('url.prefixes.fr', '')->set('url.prefixes.en', 'en')->save();
   }
   \Drupal::configFactory()->getEditable('system.site')->set('page.404', '/introuvable')->save();
+  // The news feed is /actualites/rss.xml; core's /rss.xml would be a second one.
+  if (\Drupal::moduleHandler()->moduleExists('views') && ($frontpage = \Drupal\views\Entity\View::load('frontpage'))) {
+    $frontpage->disable()->save();
+  }
   // Listings embedded in pages are "embed" displays: let the Views UI add them.
   \Drupal::configFactory()->getEditable('views.settings')->set('ui.show.display_embed', TRUE)->save();
   // Accounts are for the editorial team only.
@@ -67,4 +71,78 @@ function tvshow_core_install($is_syncing): void {
   foreach ($footer as $title => $uri) {
     MenuLinkContent::create(['title' => $title, 'link' => ['uri' => $uri], 'menu_name' => 'footer', 'weight' => $weight++])->save();
   }
+}
+
+/**
+ * Products, facts, first appearances, series of people and listing filters.
+ *
+ * Adds the "Produit dérivé" content type and the "Type de produit"
+ * vocabulary, the fields added since the first release, the product listing
+ * and the new displays and filters of the news, wiki and people listings.
+ * The news, wiki and people views are replaced by the module's versions.
+ */
+function tvshow_core_update_11001(): string {
+  $source = new \Drupal\Core\Config\FileStorage(\Drupal::service('extension.list.module')->getPath('tvshow_core') . '/config/install');
+  $manager = \Drupal::entityTypeManager();
+  $config_manager = \Drupal::service('config.manager');
+  $order = ['taxonomy.vocabulary.', 'node.type.', 'field.storage.', 'field.field.', 'core.entity_form_display.', 'core.entity_view_display.', 'views.view.'];
+  $replace = ['views.view.tvshow_news', 'views.view.tvshow_wiki', 'views.view.tvshow_people'];
+  $done = [];
+  foreach ($order as $prefix) {
+    foreach ($source->listAll($prefix) as $name) {
+      $exists = (bool) \Drupal::configFactory()->get($name)->getRawData();
+      if ($exists && !in_array($name, $replace, TRUE)) {
+        continue;
+      }
+      $entity_type = $config_manager->getEntityTypeIdByName($name);
+      if (!$entity_type) {
+        continue;
+      }
+      $storage = $manager->getStorage($entity_type);
+      $record = $source->read($name);
+      if ($exists) {
+        $entity = $storage->load($storage->getIDFromConfigName($name, $storage->getEntityType()->getConfigPrefix()));
+        $entity = $storage->updateFromStorageRecord($entity, $record);
+      }
+      else {
+        $entity = $storage->createFromStorageRecord($record);
+      }
+      $entity->save();
+      $done[] = $name;
+    }
+  }
+  // New fields of existing content types appear in their edit forms.
+  $repository = \Drupal::service('entity_display.repository');
+  $new_fields = [
+    'node' => ['editorial' => ['field_facts' => 'string_textarea', 'field_appearance' => 'entity_reference_autocomplete_tags'], 'episode' => ['field_facts' => 'string_textarea'], 'people' => ['field_facts' => 'string_textarea', 'field_series' => 'options_buttons']],
+    'taxonomy_term' => ['serie' => ['field_facts' => 'string_textarea']],
+  ];
+  foreach ($new_fields as $entity_type => $bundles) {
+    foreach ($bundles as $bundle => $widgets) {
+      $form = $repository->getFormDisplay($entity_type, $bundle);
+      foreach ($widgets as $field => $widget) {
+        if (!$form->getComponent($field)) {
+          $form->setComponent($field, ['type' => $widget, 'weight' => 50]);
+        }
+      }
+      $form->save();
+    }
+  }
+  if ($frontpage = \Drupal\views\Entity\View::load('frontpage')) {
+    $frontpage->disable()->save();
+  }
+  $settings = \Drupal::configFactory()->getEditable('tvshow_core.settings');
+  foreach (['wiki_path' => 'wiki', 'wiki_label' => 'Wiki', 'ad_html' => '', 'social.steam' => NULL] as $key => $default) {
+    if ($settings->get($key) === NULL && $default !== NULL) {
+      $settings->set($key, $default);
+    }
+  }
+  $settings->save();
+  if (\Drupal::moduleHandler()->moduleExists('user') && ($role = \Drupal\user\Entity\Role::load('editor'))) {
+    foreach (['create product content', 'edit any product content', 'delete own product content', 'view product revisions'] as $permission) {
+      $role->grantPermission($permission);
+    }
+    $role->save();
+  }
+  return 'Created or updated: ' . implode(', ', $done);
 }

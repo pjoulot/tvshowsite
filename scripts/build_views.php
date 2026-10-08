@@ -49,6 +49,11 @@ $by_weight = ['weight' => $term('weight', 'standard', ['order' => 'ASC']), 'name
 // Contextual filter on a reference field; the embedding page passes the id.
 $reference = fn(string $entity, string $name) => ["{$name}_target_id" => $field($entity, $name, 'target_id', 'numeric', ['default_action' => 'empty', 'break_phrase' => FALSE, 'not' => FALSE])];
 
+// Optional contextual filter: "all" (or nothing) shows everything.
+$optional = fn(string $entity, string $name) => ["{$name}_target_id" => $field($entity, $name, 'target_id', 'numeric', ['default_action' => 'ignore', 'exception' => ['value' => 'all', 'title_enable' => FALSE, 'title' => 'Tout'], 'break_phrase' => FALSE, 'not' => FALSE])];
+// First letter of the title ("a"…"z"), or "all".
+$letter = ['title' => $node('title', 'string', ['default_action' => 'ignore', 'exception' => ['value' => 'all', 'title_enable' => FALSE, 'title' => 'Tout'], 'glossary' => TRUE, 'limit' => 1, 'case' => 'lower', 'path_case' => 'lower', 'transform_dash' => FALSE, 'break_phrase' => FALSE])];
+
 $rows = fn(string $entity, string $mode) => ['type' => "entity:$entity", 'options' => ['view_mode' => $mode]];
 $plain = ['type' => 'default', 'options' => ['row_class' => '', 'default_row_class' => FALSE, 'uses_fields' => FALSE]];
 $full = fn(int $per_page) => ['type' => 'full', 'options' => ['items_per_page' => $per_page, 'offset' => 0, 'id' => 0, 'quantity' => 5, 'tags' => ['previous' => '← Précédent', 'next' => 'Suivant →', 'first' => '«', 'last' => '»']]];
@@ -160,6 +165,17 @@ tv_view('tvshow_news', 'Actualités', 'Liste des actualités, flux RSS, blocs de
     'pager' => $some(6),
     'css_class' => 'tv-newslist',
   ]],
+  'lead' => ['embed', 'Accueil : la plus récente, en grand', [
+    'row' => $rows('node', 'feature'),
+    'pager' => $some(1),
+    'css_class' => 'tv-lead-news',
+    'empty' => [],
+  ]],
+  'more' => ['embed', 'Accueil : les suivantes', [
+    'pager' => ['type' => 'some', 'options' => ['items_per_page' => 9, 'offset' => 1]],
+    'css_class' => 'tv-newslist',
+    'empty' => [],
+  ]],
   'short' => ['embed', 'Trois dernières (page 404)', [
     'pager' => $some(3),
     'empty' => [],
@@ -192,14 +208,20 @@ tv_view('tvshow_wiki', 'Wiki', 'Fiches du wiki : dernières fiches, rubriques et
   'css_class' => 'tv-grid tv-grid--tiles',
   'empty' => $empty('Le wiki est encore vide.'),
 ], [
-  'latest' => ['embed', 'Dernières fiches', []],
+  'latest' => ['embed', 'Dernières fiches', [
+    'sorts' => ['changed' => $node('changed', 'date', ['order' => 'DESC']), 'random' => ['id' => 'random', 'table' => 'views', 'field' => 'random', 'plugin_id' => 'random']],
+  ]],
   'front' => ['embed', 'Accueil : dernières fiches', [
+    // Fiches imported together share their dates: mix the rubrics.
+    'sorts' => ['changed' => $node('changed', 'date', ['order' => 'DESC']), 'random' => ['id' => 'random', 'table' => 'views', 'field' => 'random', 'plugin_id' => 'random']],
+    'filters' => $published + $bundle('editorial') + ['field_image_target_id' => $field('node', 'field_image', 'target_id', 'numeric', ['operator' => 'not empty', 'group' => 1])],
     'row' => $rows('node', 'row'),
     'pager' => $some(6),
     'css_class' => 'tv-wikilist',
   ]],
   'category' => ['embed', 'Rubrique', [
-    'arguments' => $reference('node', 'field_category'),
+    // Rubric, then optionally a series and a first letter.
+    'arguments' => $reference('node', 'field_category') + $optional('node', 'field_serie') + $letter,
     'sorts' => $by_title,
     'pager' => $all,
     'empty' => $empty('Aucune fiche dans cette rubrique pour le moment.'),
@@ -232,7 +254,8 @@ tv_view('tvshow_people', 'Personnalités', 'Acteurs et équipe : liste complète
     'header' => $header(['kicker' => '', 'feed_link' => FALSE, 'vocabulary' => '', 'all_label' => '', 'layout' => 'people']),
   ]],
   'job' => ['embed', 'Métier', [
-    'arguments' => $reference('node', 'field_job'),
+    // Job, then optionally a series.
+    'arguments' => $reference('node', 'field_job') + $optional('node', 'field_series'),
   ]],
   'crew' => ['embed', 'Casting : le reste de l’équipe', [
     // People no wiki entry names as an actor.
@@ -241,6 +264,26 @@ tv_view('tvshow_people', 'Personnalités', 'Acteurs et équipe : liste complète
     'pager' => $some(12),
     'empty' => [],
   ]],
+]);
+
+/* ---- Produits dérivés --------------------------------------------------- */
+
+tv_view('tvshow_products', 'Produits dérivés', 'Produits d’un type (et de ses sous-types), éventuellement d’une série.', 'node_field_data', [
+  'title' => 'Produits dérivés',
+  'filters' => $published + $bundle('product'),
+  // Creation order: the order of the old site (saison 1, 2… 10).
+  'sorts' => ['nid' => $node('nid', 'standard', ['order' => 'ASC'])],
+  'arguments' => [
+    'term_node_tid_depth' => ['id' => 'term_node_tid_depth', 'table' => 'node_field_data', 'field' => 'term_node_tid_depth', 'plugin_id' => 'taxonomy_index_tid_depth', 'default_action' => 'ignore', 'exception' => ['value' => 'all', 'title_enable' => FALSE, 'title' => 'Tout'], 'depth' => 2, 'break_phrase' => FALSE, 'use_taxonomy_term_path' => FALSE],
+  ] + $optional('node', 'field_series'),
+  'row' => $rows('node', 'card'),
+  'style' => $plain,
+  'pager' => $full(24),
+  'css_class' => 'tv-grid tv-grid--products',
+  'query' => ['type' => 'views_query', 'options' => ['distinct' => TRUE]],
+  'empty' => $empty('Aucun produit dans ce rayon pour le moment.'),
+], [
+  'type' => ['embed', 'Type de produit', []],
 ]);
 
 /* ---- Épisodes ----------------------------------------------------------- */

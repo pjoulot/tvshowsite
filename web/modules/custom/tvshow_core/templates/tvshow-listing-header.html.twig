@@ -3,12 +3,18 @@
   tvshow-listing.html.twig and by the "TV Show page header" Views area.
 #}
 {% import '@tvshow_core/partials/ui.html.twig' as ui %}
-{{ ui.breadcrumb([], title) }}
+{{ ui.breadcrumb(breadcrumb|default([]), title) }}
 <header class="tv-pagehead">
   {% if kicker %}<p class="tv-kicker">{{ kicker }}</p>{% endif %}
   {{ ui.heading(title, feed_url, 'Flux RSS', 1) }}
   {% if intro %}<div class="tv-intro tv-prose">{{ intro }}</div>{% endif %}
 </header>
 {{ ui.filters(filters, 'Rubriques') }}
+{{ ui.filters(serie_filters|default([]), 'Séries') }}
+{% if letters|default([]) %}
+  <nav class="tv-filters tv-filters--letters" aria-label="Par lettre">
+    {% for item in letters %}{% if item.url %}<a class="tv-filter{{ item.active ? ' is-active' }}" href="{{ item.url }}"{% if item.active %} aria-current="page"{% endif %}>{{ item.label }}</a>{% else %}<span class="tv-filter is-disabled">{{ item.label }}</span>{% endif %}{% endfor %}
+  </nav>
+{% endif %}
 {# Cards are titled with h3: this keeps the heading order h1 > h2 > h3. #}
 <h2 class="visually-hidden">Liste</h2>

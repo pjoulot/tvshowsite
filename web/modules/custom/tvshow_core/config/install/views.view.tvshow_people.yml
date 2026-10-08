@@ -196,6 +196,19 @@ display:
           break_phrase: false
           not: false
           target_entity_type_id: taxonomy_term
+        field_series_target_id:
+          id: field_series_target_id
+          table: node__field_series
+          field: field_series_target_id
+          plugin_id: entity_target_id
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: false
+            title: Tout
+          break_phrase: false
+          not: false
+          target_entity_type_id: taxonomy_term
       defaults:
         arguments: false
       display_extenders: {  }

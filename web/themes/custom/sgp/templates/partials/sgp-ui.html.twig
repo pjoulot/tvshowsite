@@ -1,0 +1,205 @@
+{#
+  Building blocks of the Stargate Pegasus theme.
+  {% import '@sgp/partials/sgp-ui.html.twig' as sgp %}
+#}
+
+{% macro img(image, class, decorative) %}
+  {%- if image -%}
+    <img class="{{ class }}" src="{{ image.src }}" alt="{{ decorative ? '' : image.alt }}"{% if image.width %} width="{{ image.width }}"{% endif %}{% if image.height %} height="{{ image.height }}"{% endif %} loading="lazy" decoding="async">
+  {%- else -%}
+    <span class="sgp-ph {{ class }}" aria-hidden="true"></span>
+  {%- endif -%}
+{% endmacro %}
+
+{# Navy title tab on a blue line, ending with an amber tab or a link. #}
+{% macro tabhead(title, level, link_url, link_label, id) %}
+  <div class="sgp-tabrow"{% if id %} id="{{ id }}"{% endif %}>
+    <h{{ level|default(2) }} class="sgp-tab">{{ title }}</h{{ level|default(2) }}>
+    <span class="sgp-tabrow__line" aria-hidden="true"></span>
+    {% if link_url %}<a class="sgp-tabrow__more" href="{{ link_url }}">{{ link_label }}</a>{% else %}<span class="sgp-tabrow__end" aria-hidden="true"></span>{% endif %}
+  </div>
+{% endmacro %}
+
+{% macro crumbs(items, current) %}
+  <nav class="sgp-crumbs" aria-label="Fil d’Ariane">
+    <a href="{{ path('<front>') }}">Accueil</a>
+    {% for item in items %}{% if item %}<span aria-hidden="true">›</span><a href="{{ item.url }}">{{ item.name }}</a>{% endif %}{% endfor %}
+    {% if current %}<span aria-hidden="true">›</span><span aria-current="page">{{ current }}</span>{% endif %}
+  </nav>
+{% endmacro %}
+
+{% macro chips(items, label, class) %}
+  {% if items %}
+    <nav class="sgp-chips {{ class }}" aria-label="{{ label }}">
+      {% for item in items %}
+        {% if item.url %}<a class="sgp-chip{{ item.active ? ' is-on' }}" href="{{ item.url }}"{% if item.active %} aria-current="page"{% endif %}{% if item.title and item.title != item.label %} title="{{ item.title }}"{% endif %}>{{ item.label }}</a>
+        {% else %}<span class="sgp-chip is-off">{{ item.label }}</span>{% endif %}
+      {% endfor %}
+    </nav>
+  {% endif %}
+{% endmacro %}
+
+{% macro facts(list) %}
+  {% if list %}
+    <dl class="sgp-facts">
+      {% for fact in list %}<dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd>{% endfor %}
+    </dl>
+  {% endif %}
+{% endmacro %}
+
+{% macro links(items, separator) %}
+  {%- for item in items -%}<a href="{{ item.url }}">{{ item.name }}</a>{{ not loop.last ? separator|default(', ') }}{%- endfor -%}
+{% endmacro %}
+
+{# Ad slot: the network's code, or an empty frame until there is one. #}
+{% macro ad(code) %}
+  <aside class="sgp-ad" aria-label="Publicité">
+    <p class="sgp-ad__label">Publicité</p>
+    <div class="sgp-ad__slot">{% if code %}{{ code|raw }}{% else %}<span class="sgp-ad__empty">Espace publicitaire<br>300 × 250</span>{% endif %}</div>
+  </aside>
+{% endmacro %}
+
+{# The large framed news at the top of the front page. #}
+{% macro feature(card) %}
+  {% import _self as sgp %}
+  <article class="sgp-frame sgp-lead">
+    <div class="sgp-frame__in"><span class="sgp-frame__tab" aria-hidden="true"></span>
+      <div class="sgp-frame__line sgp-lead__body">
+        {% if card.thumb %}<a class="sgp-lead__media" href="{{ card.url }}" tabindex="-1" aria-hidden="true">{{ sgp.img(card.thumb, 'sgp-framed') }}</a>{% endif %}
+        <div class="sgp-lead__text">
+          <p class="sgp-kicker sgp-kicker--amber">À la une{% if card.category %} · {{ card.category.name }}{% endif %} · <time datetime="{{ card.date_iso }}">{{ card.date }}</time></p>
+          <h3 class="sgp-lead__title"><a href="{{ card.url }}">{{ card.title }}</a></h3>
+          {% if card.summary %}<p class="sgp-lead__summary">{{ card.summary }}</p>{% endif %}
+        </div>
+      </div>
+    </div>
+  </article>
+{% endmacro %}
+
+{% macro news(card) %}
+  {% import _self as sgp %}
+  <article class="sgp-card sgp-newscard">
+    <div class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span>
+      <a class="sgp-newscard__media" href="{{ card.url }}" tabindex="-1" aria-hidden="true">{{ sgp.img(card.thumb, 'sgp-newscard__image') }}</a>
+      <div class="sgp-newscard__text">
+        {% if card.category %}<p class="sgp-kicker">{{ card.category.name }}</p>{% elseif card.kicker %}<p class="sgp-kicker">{{ card.kicker }}</p>{% endif %}
+        <h3 class="sgp-newscard__title"><a href="{{ card.url }}">{{ card.title }}</a></h3>
+        {% if card.date %}<p class="sgp-meta"><time{% if card.date_iso %} datetime="{{ card.date_iso }}"{% endif %}>{{ card.date }}</time></p>{% endif %}
+      </div>
+    </div>
+  </article>
+{% endmacro %}
+
+{% macro wiki(card) %}
+  {% import _self as sgp %}
+  <article class="sgp-card sgp-wikicard">
+    <div class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span>
+      <a href="{{ card.url }}" tabindex="-1" aria-hidden="true">{{ sgp.img(card.thumb, 'sgp-wikicard__image') }}</a>
+      <div class="sgp-wikicard__text">
+        <p class="sgp-kicker">{{ card.category ? card.category.name : card.kicker }}{% if card.serie_short %} · {{ card.serie_short }}{% endif %}</p>
+        <h3 class="sgp-wikicard__title"><a href="{{ card.url }}">{{ card.title }}</a></h3>
+      </div>
+    </div>
+  </article>
+{% endmacro %}
+
+{# Compact line of the front page's encyclopedia panel. #}
+{% macro wiki_row(card) %}
+  {% import _self as sgp %}
+  <a class="sgp-wikirow" href="{{ card.url }}">
+    {{ sgp.img(card.thumb ?: card.image, 'sgp-wikirow__image', true) }}
+    <span class="sgp-wikirow__text">
+      {% if card.category %}<span class="sgp-kicker sgp-kicker--amber">{{ card.category.name }}</span>{% endif %}
+      <span class="sgp-wikirow__title">{{ card.title }}</span>
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro episode(card) %}
+  {% import _self as sgp %}
+  <article class="sgp-card sgp-epcard">
+    <div class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span>
+      <a class="sgp-epcard__media" href="{{ card.url }}" tabindex="-1" aria-hidden="true">
+        {{ sgp.img(card.thumb, 'sgp-epcard__image') }}
+        <span class="sgp-numtab">{{ card.code ?: card.number }}</span>
+      </a>
+      <div class="sgp-epcard__text">
+        <h3 class="sgp-epcard__title"><a href="{{ card.url }}">{{ card.title }}</a></h3>
+        {% if card.teaser %}<p class="sgp-epcard__teaser">{{ card.teaser }}</p>{% endif %}
+      </div>
+    </div>
+  </article>
+{% endmacro %}
+
+{% macro person(card) %}
+  {% import _self as sgp %}
+  <article class="sgp-card sgp-personcard">
+    <div class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span>
+      <a href="{{ card.url }}" tabindex="-1" aria-hidden="true">{{ sgp.img(card.thumb, 'sgp-personcard__image') }}</a>
+      <div class="sgp-personcard__text">
+        {% if card.jobs %}<p class="sgp-kicker">{{ card.jobs|map(j => j.name)|join(', ') }}</p>{% endif %}
+        <h3 class="sgp-personcard__title"><a href="{{ card.url }}">{{ card.title }}</a></h3>
+        {% if card.series %}<p class="sgp-meta">{{ card.series|map(s => s.name)|join(', ') }}</p>{% endif %}
+      </div>
+    </div>
+  </article>
+{% endmacro %}
+
+{% macro product(card) %}
+  {% import _self as sgp %}
+  <article class="sgp-card sgp-productcard">
+    <div class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span>
+      <a class="sgp-productcard__media" href="{{ card.url }}" tabindex="-1" aria-hidden="true">{{ sgp.img(card.thumb, 'sgp-productcard__image') }}</a>
+      <h3 class="sgp-productcard__title"><a href="{{ card.url }}">{{ card.title }}</a></h3>
+      {% if card.subtitle %}<p class="sgp-meta">{{ card.subtitle }}</p>{% endif %}
+    </div>
+  </article>
+{% endmacro %}
+
+{# Season, series or rubric card. #}
+{% macro term(card) %}
+  {% import _self as sgp %}
+  <a class="sgp-card sgp-termcard" href="{{ card.url }}">
+    <span class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span>
+      {% if card.image_wide or card.image %}{{ sgp.img(card.image_wide ?: card.image, 'sgp-termcard__image') }}{% endif %}
+      <span class="sgp-termcard__title">{{ card.title }}</span>
+      {% if card.count is not null %}<span class="sgp-meta sgp-termcard__meta">{{ card.count }} {{ card.is_films ? (card.count > 1 ? 'films' : 'film') : card.type == 'saison' ? (card.count > 1 ? 'épisodes' : 'épisode') : (card.count > 1 ? 'fiches' : 'fiche') }}</span>
+      {% elseif card.dates %}<span class="sgp-meta sgp-termcard__meta">{{ card.dates }}</span>{% endif %}
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro partner(card) %}
+  {% import _self as sgp %}
+  <a class="sgp-card sgp-partnercard" href="{{ card.url }}" rel="noopener">
+    <span class="sgp-card__in"><span class="sgp-card__bar" aria-hidden="true"></span>
+      {% if card.image %}{{ sgp.img(card.image, 'sgp-partnercard__logo') }}{% endif %}
+      <span class="sgp-partnercard__title">{{ card.title }}</span>
+      {% if card.summary %}<span class="sgp-meta">{{ card.summary }}</span>{% endif %}
+    </span>
+  </a>
+{% endmacro %}
+
+{% macro card(card) %}
+  {% import _self as sgp %}
+  {% if card.type == 'episode' %}{{ sgp.episode(card) }}
+  {% elseif card.type == 'editorial' %}{{ sgp.wiki(card) }}
+  {% elseif card.type == 'people' %}{{ sgp.person(card) }}
+  {% elseif card.type == 'product' %}{{ sgp.product(card) }}
+  {% elseif card.type == 'partenaires' %}{{ sgp.partner(card) }}
+  {% elseif card.type in ['serie', 'saison', 'category', 'product_type', 'article_category'] %}{{ sgp.term(card) }}
+  {% else %}{{ sgp.news(card) }}{% endif %}
+{% endmacro %}
+
+{% macro gallery(items, title) %}
+  {% if items %}
+    <section class="sgp-section">
+      {% if title %}<h2 class="sgp-sec">{{ title }} <span class="sgp-count">{{ items|length }}</span></h2>{% endif %}
+      <ul class="sgp-gallery" data-tv-gallery>
+        {% for item in items %}
+          <li><a href="{{ item.full.src }}"><img src="{{ item.thumb.src }}" alt="{{ item.thumb.alt ?: (title ~ ' – image ' ~ loop.index) }}" width="{{ item.thumb.width }}" height="{{ item.thumb.height }}" loading="lazy" decoding="async"></a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+{% endmacro %}

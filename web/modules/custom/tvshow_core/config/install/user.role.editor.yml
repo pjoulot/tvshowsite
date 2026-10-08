@@ -6,6 +6,7 @@ dependencies:
     - node.type.editorial
     - node.type.episode
     - node.type.page
+    - node.type.product
     - node.type.people
   module:
     - contextual
@@ -32,21 +33,25 @@ permissions:
   - 'create episode content'
   - 'create page content'
   - 'create people content'
+  - 'create product content'
   - 'create url aliases'
   - 'delete own article content'
   - 'delete own editorial content'
   - 'delete own episode content'
   - 'delete own page content'
   - 'delete own people content'
+  - 'delete own product content'
   - 'edit any article content'
   - 'edit any editorial content'
   - 'edit any episode content'
   - 'edit any page content'
   - 'edit any people content'
+  - 'edit any product content'
   - 'view article revisions'
   - 'view editorial revisions'
   - 'view episode revisions'
   - 'view own unpublished content'
   - 'view page revisions'
   - 'view people revisions'
+  - 'view product revisions'
   - 'view the administration theme'

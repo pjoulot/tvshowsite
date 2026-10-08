@@ -5,6 +5,7 @@ dependencies:
     - field.field.taxonomy_term.serie.field_abreviation
     - field.field.taxonomy_term.serie.field_creators
     - field.field.taxonomy_term.serie.field_dates
+    - field.field.taxonomy_term.serie.field_facts
     - field.field.taxonomy_term.serie.field_image
     - image.style.thumbnail
     - taxonomy.vocabulary.serie
@@ -27,7 +28,7 @@ content:
     third_party_settings: {  }
   field_abreviation:
     type: string_textfield
-    weight: 11
+    weight: 12
     region: content
     settings:
       size: 60
@@ -35,7 +36,7 @@ content:
     third_party_settings: {  }
   field_creators:
     type: string_textfield
-    weight: 13
+    weight: 14
     region: content
     settings:
       size: 60
@@ -43,10 +44,18 @@ content:
     third_party_settings: {  }
   field_dates:
     type: string_textfield
-    weight: 12
+    weight: 13
     region: content
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_facts:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_image:
