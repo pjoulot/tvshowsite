@@ -269,7 +269,9 @@ a.sgp-card:hover, .sgp-card:has(a:hover) { background: var(--sgp-blue); }
 .sgp-prose > :first-child { margin-top: 0; }
 .sgp-prose p, .sgp-prose ul, .sgp-prose ol, .sgp-prose table, .sgp-prose blockquote { margin: 0 0 1em; }
 .sgp-prose h2 { clear: both; margin: 28px 0 14px; padding-bottom: 6px; border-bottom: 2px solid var(--sgp-bronze); font-size: 22px; letter-spacing: 0.05em; text-transform: uppercase; }
-.sgp-prose h3 { margin: 22px 0 10px; font-size: 20px; }
+.sgp-prose h3 { clear: both; margin: 22px 0 10px; font-size: 20px; }
+/* A floated picture stays within its own paragraph. */
+.sgp-prose p:has(> img.align-left, > img.align-right) { display: flow-root; }
 .sgp-prose img { max-width: 100%; height: auto; }
 .sgp-prose img.align-left { float: left; max-width: min(45%, 300px); margin: 4px 22px 12px 0; }
 .sgp-prose img.align-right { float: right; max-width: min(45%, 300px); margin: 4px 0 12px 22px; }
